@@ -10,6 +10,11 @@
         </a>
     </li>
     <li class="dropdown">
+        <a href="{{ route('company')}}" class="dropdown-toggle no-arrow {{ (request()->is('company*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Company</span>
+        </a>
+    </li>
+    <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Dropdown</span>
         </a>
