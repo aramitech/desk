@@ -312,5 +312,10 @@
 	<script src="{{ asset('src/plugins/datatables/js/vfs_fonts.js')}}"></script>
 		<!-- Datatable Setting js -->
 	<!-- <script src="vendors/scripts/datatable-setting.js"></script> -->
+
+	<!-- Sweet Alert -->
+	<script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+
+
 </body>
 </html>
