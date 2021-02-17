@@ -26,8 +26,29 @@ methods: {
                 //sweet alert with redirect
                 var mtext = this.text;
                 var back = this.redirect;
-                alert(mtext);
-                window.location.href = back;
+                swal({
+                    title: 'Success',
+                    text: mtext,
+                    icon: 'success',
+                    type: 'success',
+                    buttons:{
+                      confirm: {
+                        text : 'Go Back',
+                        className : 'btn btn-success'
+                      },
+                      cancel: {
+                        text: 'Add more..',
+                        visible: true,
+                        className: 'btn btn-info'
+                      }
+                    }
+                  }).then((Delete) => {
+                    if (Delete) {
+                      window.location.href = back;
+                    } else {
+                      swal.close();
+                    }
+                  });
             }).catch(error => {
                 this.loaded = true;
                 if (error.response.status === 422) {

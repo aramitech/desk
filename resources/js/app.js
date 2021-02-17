@@ -27,6 +27,7 @@ Vue.component('edit-user-component', require('./components/user/EditUserComponen
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import swal from 'sweetalert';
 import DeleteMixin from './components/shared/DeleteMixin';
 const app = new Vue({
     el: '#app',
