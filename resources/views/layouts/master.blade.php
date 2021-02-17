@@ -310,5 +310,7 @@
 	<script src="{{ asset('src/plugins/datatables/js/buttons.flash.min.js')}}"></script>
 	<script src="{{ asset('src/plugins/datatables/js/pdfmake.min.js')}}"></script>
 	<script src="{{ asset('src/plugins/datatables/js/vfs_fonts.js')}}"></script>
+		<!-- Datatable Setting js -->
+	<!-- <script src="vendors/scripts/datatable-setting.js"></script> -->
 </body>
 </html>

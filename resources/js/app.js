@@ -22,6 +22,11 @@ window.Vue = require('vue').default;
 Vue.component('add-user-component', require('./components/user/AddUserComponent.vue').default);
 Vue.component('edit-user-component', require('./components/user/EditUserComponent.vue').default);
 
+Vue.component('add-company-component', require('./components/company/AddCompanyComponent.vue').default);
+
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,3 +37,11 @@ const app = new Vue({
     el: '#app',
     mixins: [ DeleteMixin ]
 });
+
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+app.use(VueSweetalert2);
+
+app.mount('#app');
