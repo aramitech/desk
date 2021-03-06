@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\BookMarkers;
+use App\Models\PublicLottery;
+use App\Models\Publicgamings;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $publiclotteries = PublicLottery::all();
+        $bookmarkers = BookMarkers::all();
+        return view('home', compact('publiclotteries','bookmarkers'));
     }
 }

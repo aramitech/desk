@@ -50,10 +50,35 @@ class UsersController extends Controller
         return back()->with('success','Updated succesfully');
     }
 
+    public function updaterole(Request $request)
+    {
+    
+        $user = User::findOrFail($request->id);
+        $user->editstatus = $request->editstatus;
+        $user->deletestatus = $request->deletestatus;
+        $user->bookmarkersstatus = $request->bookmarkersstatus;
+        $user->publiclotterystatus = $request->publiclotterystatus;
+        $user->publicgamingstatus = $request->publicgamingstatus;
+ 
+        $user->save();
+        return back()->with('success','Role Updated succesfully');
+    }
+
+
+    
     public function destroy(Request $request)
     {
         $user = User::findOrFail($request->id);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }
+
+
+    public function profile()
+    {
+        $auth=Auth::user()->email; 
+        $users = User::where('email',$auth)->get();
+        return view('profile.index', compact('users'));
+    }
+
 }

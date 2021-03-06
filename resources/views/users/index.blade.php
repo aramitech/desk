@@ -34,7 +34,7 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Users List</h2>
         <div class="pb-20">
-            <table class="data-table table stripe hover nowrap">
+            <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
@@ -59,6 +59,9 @@
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#edituser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#assignroleuser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Assign Role</button>
+
+                                    
                                     <button class="btn btn-sm btn-danger" @click="deleteItem('userdelete',{{$user}})"><i class="dw dw-delete-3"></i> Delete</button>
                                 <!-- </div> -->
                             </div>
@@ -67,6 +70,12 @@
                     <div class="modal fade" id="edituser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-user-component :userdata="{{ json_encode($user)}}"/>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="assignroleuser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <assignrole-user-component :userdata="{{ json_encode($user)}}"/>
                         </div>
                     </div>
                     @endforeach

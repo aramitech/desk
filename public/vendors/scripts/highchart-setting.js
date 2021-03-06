@@ -1,14 +1,14 @@
 // chart 1
 Highcharts.chart('chart1', {
 	title: {
-		text: 'Solar Employment Growth by Sector, 2010-2016'
+		text: 'Bookmarkers  Growth by Sector, 2010-2016'
 	},
 	subtitle: {
-		text: 'Source: thesolarfoundation.com'
+		text: 'Source: bclb.com'
 	},
 	yAxis: {
 		title: {
-			text: 'Number of Employees'
+			text: 'Number of Bookmarkers'
 		}
 	},
 	chart: {
@@ -28,19 +28,19 @@ Highcharts.chart('chart1', {
 		}
 	},
 	series: [{
-		name: 'Installation',
+		name: 'Deposits',
 		data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
 	}, {
-		name: 'Manufacturing',
+		name: 'Total Sales ',
 		data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
 	}, {
-		name: 'Sales & Distribution',
+		name: 'Total Payout',
 		data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
 	}, {
-		name: 'Project Development',
+		name: 'WHT',
 		data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
 	}, {
-		name: 'Other',
+		name: 'GGR',
 		data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
 	}],
 	responsive: {

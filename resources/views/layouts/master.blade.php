@@ -169,8 +169,13 @@
 						</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-						<a class="dropdown-item" href="#profile"><i class="dw dw-user1"></i> Profile</a>
-						<a class="dropdown-item" href="#setting"><i class="dw dw-settings2"></i> Setting</a>
+						<a class="dropdown-item" href="{{ route('users.profile')}}" class="dropdown-toggle no-arrow {{ (request()->is('users.profile*')) ? 'active' : '' }}">
+						<i class="dw dw-user1"></i>Profile </span>
+                        </a>
+					
+						<a class="dropdown-item" href="{{ route('users.profile')}}"><i class="dw dw-settings2"></i> Setting</a>
+				
+						
 						<a class="dropdown-item" 
 							onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> 
@@ -299,7 +304,7 @@
 	<script src="{{ asset('src/plugins/apexcharts/apexcharts.min.js')}}"></script>
 	<script src="{{ asset('src/plugins/datatables/js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{ asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js')}}"></script>
-	<!-- <script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js')}}"></script> -->
+	<script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js')}}"></script>
 	<script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/dashboard.js')}}"></script>
 		<!-- buttons for Export datatable -->
@@ -315,6 +320,10 @@
 
 	<!-- Sweet Alert -->
 	<script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+
+
+	<script src="{{ asset('vendors/scripts/datatable-setting.js')}}"></script>
+
 
 
 </body>

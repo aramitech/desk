@@ -11,8 +11,8 @@
                         <div id="chart"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">2020</div>
-                        <div class="weight-600 font-14">Contact</div>
+                        <div class="h4 mb-0"> {{ count($bookmarkers) }}</div>
+                        <div class="weight-600 font-14">Bookmarkers</div>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                         <div id="chart2"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">400</div>
-                        <div class="weight-600 font-14">Deals</div>
+                        <div class="h4 mb-0">{{ count($publiclotteries) }}</div>
+                        <div class="weight-600 font-14">Public Lottery</div>
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@
                         <div id="chart3"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">350</div>
-                        <div class="weight-600 font-14">Campaign</div>
+                    <div class="h4 mb-0"> {{ count($bookmarkers) }}</div>
+                        <div class="weight-600 font-14">Public Gaming</div>
                     </div>
                 </div>
             </div>
@@ -50,95 +50,18 @@
                         <div id="chart4"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">$6060</div>
-                        <div class="weight-600 font-14">Worth</div>
+                        <div class="h4 mb-0">Ksh 6060</div>
+                        <div class="weight-600 font-14">Deposits</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xl-8 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">Activity</h2>
-                <div id="chart5"></div>
-            </div>
-        </div>
-        <div class="col-xl-4 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">Lead Target</h2>
-                <div id="chart6"></div>
-            </div>
-        </div>
-    </div>
-    <div class="card-box mb-30">
-        <h2 class="h4 pd-20">Best Selling Products</h2>
-        <table class="data-table table nowrap">
-            <thead>
-                <tr>
-                    <th class="table-plus datatable-nosort">Product</th>
-                    <th>Name</th>
-                    <th>Color</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Oty</th>
-                    <th class="datatable-nosort">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="table-plus">
-                        <img src="vendors/images/product-1.jpg" width="70" height="70" alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Shirt</h5>
-                        by John Doe
-                    </td>
-                    <td>Black</td>
-                    <td>M</td>
-                    <td>$1000</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="table-plus">
-                        <img src="vendors/images/product-5.jpg" width="70" height="70" alt="">
-                    </td>
-                    <td>
-                        <h5 class="font-16">Blazer</h5>
-                        by Vicki M. Coleman
-                    </td>
-                    <td>Blue</td>
-                    <td>M</td>
-                    <td>$1000</td>
-                    <td>1</td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+   
     </div>
 
+	<script src="src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="src/plugins/highcharts-6.0.7/code/highcharts-more.js"></script>
+	<script src="vendors/scripts/highchart-setting.js"></script>
 @endsection
