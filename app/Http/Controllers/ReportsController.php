@@ -10,6 +10,8 @@ use Auth;
 use Hash;
 Use \Carbon\Carbon;
 use PDF;
+use EloquentBuilder;
+
 class ReportsController extends Controller
 {
     /**
@@ -24,26 +26,26 @@ class ReportsController extends Controller
     }
 
 
-    public function bookmarkersreport(Request  $request)
+    public function bookmarkersreport($id)
     {
-       
-         $request;
+
          $company_name=BookmarkersCompany::all('company_name');
         $bookmarkers = BookmarkersCompany::where('category_type_id',1)->where('company_name',$company_name)->get();
     
-        $bcompanies = BookmarkersCompany::where('company_id',3)->get();
-        $bookmarkers = BookMarkers::where('company_id',3)->get();
-        return view('reports.bookmarkers', compact('bookmarkers','bcompanies'));
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
+        return view('reports.bookmarkers', compact('bookmarkers','bcompanies','id'));
     }
 
 
-    public function createPDF(Request  $request) {
+    public function createPDF($id) {
         // retreive all records from db
-        $data = BookMarkers::where('company_id',3)->get();
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
   
         // share data to view
-        view()->share('BookMarkers',$data);
-        $pdf = PDF::loadView('reports.pdf_view', $data);
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);
+        $pdf = PDF::loadView('reports.pdf_view', compact('bcompanies','bookmarkers','id'));
   
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');

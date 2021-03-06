@@ -2,6 +2,31 @@
 @section('title')
     Admin
 @endsection
+@section('filter')
+<form>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">From</label>
+		<div class="col-sm-12 col-md-10">
+			<input name="from" class="form-control form-control-sm form-control-line" type="date">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">To</label>
+		<div class="col-sm-12 col-md-10">
+			<input name="to" class="form-control form-control-sm form-control-line" type="date">
+		</div>
+	</div>
+	<!-- <div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">Subject</label>
+		<div class="col-sm-12 col-md-10">
+			<input class="form-control form-control-sm form-control-line" type="text">
+		</div>
+	</div> -->
+	<div class="text-right">
+		<button type="submit" class="btn btn-primary">Search</button>
+	</div>
+</form>
+@endsection
 @section('content')
 <div id="app">
     <!-- ./header and breadcrumbs -->
@@ -29,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a>
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="btn btn-primary" href="{{ URL::to('/bookmarkersrepo/pdf') }}">Export to PDF</a>
+									<a class="dropdown-item" href="{{ URL::to('/bookmarkersrepo/pdf',$id) }}">Export to PDF</a>
         </div>
 
 								</div>
@@ -51,13 +76,13 @@
 							<div class="col-md-6"> 
 								<h5 class="mb-15">NAME OF LICENSEE: {{ $bcompany->company_name}}</h5>
 								<p class="font-14 mb-5">LICENSEE NO: <strong class="weight-600">{{ $bcompany->license_no}}</strong></p>
-								<p class="font-14 mb-5">RETURN FOR THE PERIOD OF: <strong class="weight-600">....</strong></p>
+								<p class="font-14 mb-5">RETURN FOR THE PERIOD OF: <strong class="weight-600">{{ request()->from ?? '....'}}</strong></p>
 							</div>
 							<div class="col-md-6">
 								<div class="text-right">
 									<p class="font-14 mb-5">BRANCH :  {{ $bcompany->branch}} </strong></p>
 									<p class="font-14 mb-5">DATE :  {{ date('Y-m-d H:i:s') }}</p>
-									<p class="font-14 mb-5">TO</p>
+									<p class="font-14 mb-5">TO : {{ request()->to ?? '....'}}</p>
 									<p class="font-14 mb-5"></p>
 								</div>
 							</div>

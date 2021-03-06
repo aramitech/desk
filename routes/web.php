@@ -102,9 +102,9 @@ Route::get('/CategoryTypeNam/get',[App\Http\Controllers\CategoryTypesController:
 
 Route::get('/useractivitylogs',[App\Http\Controllers\AuditLogsController::class, 'index'])->name('useractivitylogs');   
 
-Route::get('/bookmarkersrepo/pdf',[App\Http\Controllers\ReportsController::class, 'createPDF']);
+Route::get('/bookmarkersrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'createPDF'])->name('bookmarkersrepo.pdf');
 Route::get('/reports',[App\Http\Controllers\ReportsController::class, 'index'])->name('reports');   
-Route::get('/reportsview',[App\Http\Controllers\ReportsController::class, 'bookmarkersreport'])->name('reportsview');   
+Route::get('/reportsview/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersreport'])->name('reportsview');   
 Route::get('/publiclotterysreport',[App\Http\Controllers\ReportsController::class, 'publiclotterysreport'])->name('publiclotterysreport');   
 Route::get('/publicgamingreport',[App\Http\Controllers\ReportsController::class, 'publicgamingreport'])->name('publicgamingreport');   
 

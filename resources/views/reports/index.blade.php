@@ -58,7 +58,7 @@
                      
                         <td>
                         <!-- <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button> -->
-                        <a href="{{route('reportsview', [$bookmarker->company_id, $bookmarker->company_name] )}}" class="btn btn-info btn-xs" role="button">View</a> 
+                        <a href="{{route('reportsview',$bookmarker->company_id)}}" class="btn btn-info btn-xs" role="button">View</a> 
                           
                     
                        
