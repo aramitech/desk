@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
-                    <h4> Public Gaming Companies</h4>
+                    <h4> Company</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
@@ -19,11 +19,9 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-12 text-right">
-                <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Company
-                    </a>
-                </div>
+                <div> 
+                
+                 </div>
             </div>
         </div>
     </div>
@@ -32,7 +30,7 @@
     <div class="card-box mb-30">
     @include('layouts.messages')
     @include('layouts.errors')
-    <h2 class="h4 pd-20"> Public Gaming Companies List</h2>
+    <h2 class="h4 pd-20">Public Lottery Company List</h2>
         <div class="pb-20">
         <table class="table hover multiple-select-row data-table-export nowrap">
                 <thead>
@@ -48,32 +46,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($publicgamings as $publicgaming)
+                    @foreach($publiclotteries as $publiclottery)
                     <tr>
-                        <td>{{ $publicgaming->company_id }}</td>
-                        <td>{{ $publicgaming->company_name }}</td>
-                        <td>{{ $publicgaming->trading_name }}</td>
-                        <td>{{ $publicgaming->license_no }}</td>
-                        <td>{{ $publicgaming->email }}</td>
-                        <td>{{ $publicgaming->physicaladdress }}</td>
+                        <td>{{ $publiclottery->company_id }}</td>
+                        <td>{{ $publiclottery->company_name }}</td>
+                        <td>{{ $publiclottery->trading_name }}</td>
+                        <td>{{ $publiclottery->license_no }}</td>
+                        <td>{{ $publiclottery->email }}</td>
+                        <td>{{ $publiclottery->physicaladdress }}</td>
     
                      
                         <td>
-                        <!-- <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpublicgamingcompany{{$publicgaming->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button> -->
-                        <a href="{{route('reportsview_publicgaming', $publicgaming->company_id)}}" class="btn btn-info btn-xs" role="button">Views</a> 
+                        <!-- <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpubliclotterycompany{{$publiclottery->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button> -->
+                        <a href="{{route('reportsview_publiclottery',$publiclottery->company_id)}}" class="btn btn-info btn-xs" role="button">View</a> 
+                          
+                    
+                       
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editpublicgamingcompany{{$publicgaming->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpubliclotterycompany{{$publiclottery->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-publicgamingcompany-component :publicgamingdata="{{ json_encode($publicgaming)}}"/>
+                            <edit-publiclotterycompany-component :publiclotterydata="{{ json_encode($publiclottery)}}"/>
                         </div>
                     </div>
                     @endforeach
                 </tbody>
+            
             </table>
         </div>
     </div>
     <!-- ./main content card -->
-    <add-publicgamingscompany-component/>
+    <add-publiclotteryscompany-component/>
 </div>
 @endsection

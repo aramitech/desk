@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PublicLottery;
 use App\Models\BookmarkersCompany;
-
+use Auth;
 use Illuminate\Http\Request;
 
 class PublicLotteryController extends Controller
@@ -61,6 +61,8 @@ class PublicLotteryController extends Controller
         $user->payouts = $request->payouts;
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
+          $user->ggrtax = $request->ggrtax;
+          $user->id = Auth::user()->id;
         $user->save();
         return back()->with('success','Added succesfully');
     }

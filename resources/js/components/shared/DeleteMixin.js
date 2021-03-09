@@ -18,6 +18,7 @@ export default {
         var adminuserdeletepath='/admin_users/delete';
         var bookmarkerdeletepath='/bookmarkers/delete';
         var publiclotterydeletepath='/publiclottery/delete';
+         var publicgamingdeletepath='/publicgaming/delete';
         var bookmarkerscompanydeletepath='/company/delete_destroybookmarkerscompany';
         var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
         var publiclotterycompanydeletepath='/company/delete';
@@ -42,6 +43,11 @@ export default {
         {
           fpath=publiclotterydeletepath;
           item="Public Lottery";
+        }
+        else if(path == "publicgamingdelete")
+        {
+          fpath=publicgamingdeletepath;
+          item="Public Gaming";
         }
         else if(path == "publicgamingcompanydelete")
         {

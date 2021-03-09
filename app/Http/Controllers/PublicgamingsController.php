@@ -6,7 +6,7 @@ use App\Models\Publicgamings;
 use App\Models\PublicLottery;
 use App\Models\BookmarkersCompany;
 use Illuminate\Http\Request;
-
+use Auth;
 class PublicgamingsController extends Controller
 {
     /**
@@ -57,6 +57,8 @@ class PublicgamingsController extends Controller
         $user->payouts = $request->payouts;
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
+        $user->ggrtax = $request->ggrtax;
+        $user->id = Auth::user()->id;
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -80,5 +82,10 @@ class PublicgamingsController extends Controller
         $user->save();
         return back()->with('success','Updated succesfully');
     }
-
+    public function destroy(Request $request)
+    {
+        $user = Publicgamings::findOrFail($request->publicgaming_id);
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }
 }

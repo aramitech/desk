@@ -54,27 +54,31 @@
                                     
                            <div class="col-md-6">
 							<label>Sales</label>
-							<input class="form-control"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
                            </div>
           <div class="form-group row">              
                         <div class="col-md-6">
 							<label>Payouts</label>
-							<input class="form-control"  name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
-                           <div class="col-md-4">
+                           <div class="col-md-6">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
+							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>          
-                           <div class="col-md-4">
+                           <div class="col-md-6">
 							<label>GGR</label>
-							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
+							<input class="form-control" :disabled="validated ? false : true" name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
-                  
+                         <div class="col-md-6">
+							<label>GGR TAX</label>
+							<input class="form-control" :disabled="validated ? false : true" name="ggrtax" v-model="fields.ggrtax" value="" type="text"  placeholder="GGR TAX" required>
+                            <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
+						</div>
                         </div>
                         
                     </div>
@@ -116,7 +120,14 @@ methods: {
           this.company_names = response.data;        
         }.bind(this));
       },
-
+   sum()
+   {
+     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+  this.fields.ggr=this.fields.sales - this.fields.payouts;
+  this.fields.wht=0.2 * this.fields.payouts;
+  this.fields.ggrtax=0.15 * this.fields.ggr;  
+   
+   },
 
    
  onChange (value) {

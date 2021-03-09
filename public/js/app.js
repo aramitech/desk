@@ -2031,6 +2031,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
  // register globally
 
@@ -2065,7 +2067,12 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
     },
     sum: function sum() {
       //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-      this.fields.ggr = this.fields.total_payout * 0.2;
+      this.fields.ggr = this.fields.total_sales - this.fields.total_payout;
+      this.fields.wht = 0.2 * this.fields.total_payout;
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
+    },
+    ggrtax: function ggrtax() {
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
     },
     onChange: function onChange(value) {
       this.value = value;
@@ -2877,6 +2884,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -2899,6 +2910,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/publicgaming_license_name/get').then(function (response) {
         this.company_names = response.data;
       }.bind(this));
+    },
+    sum: function sum() {
+      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+      this.fields.ggr = this.fields.sales - this.fields.payouts;
+      this.fields.wht = 0.2 * this.fields.payouts;
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
     },
     onChange: function onChange(value) {
       this.value = value;
@@ -3315,6 +3332,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3337,6 +3365,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/publiclottery_license_name/get').then(function (response) {
         this.company_names = response.data;
       }.bind(this));
+    },
+    sum: function sum() {
+      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+      this.fields.ggr = this.fields.sales - this.fields.total_payout;
+      this.fields.wht = 0.2 * this.fields.total_payout;
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
     },
     onChange: function onChange(value) {
       this.value = value;
@@ -4038,6 +4072,7 @@ __webpack_require__.r(__webpack_exports__);
       var adminuserdeletepath = '/admin_users/delete';
       var bookmarkerdeletepath = '/bookmarkers/delete';
       var publiclotterydeletepath = '/publiclottery/delete';
+      var publicgamingdeletepath = '/publicgaming/delete';
       var bookmarkerscompanydeletepath = '/company/delete_destroybookmarkerscompany';
       var publicgamingcompanydeletepath = '/company/delete_destroypublicgamingcompany';
       var publiclotterycompanydeletepath = '/company/delete';
@@ -4056,6 +4091,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (path == "publiclotterydelete") {
         fpath = publiclotterydeletepath;
         item = "Public Lottery";
+      } else if (path == "publicgamingdelete") {
+        fpath = publicgamingdeletepath;
+        item = "Public Gaming";
       } else if (path == "publicgamingcompanydelete") {
         fpath = publicgamingcompanydeletepath;
         item = "Public Gaming Company";
@@ -37494,6 +37532,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.total_sales },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -37578,6 +37617,7 @@ var render = function() {
                         value: "",
                         type: "text",
                         placeholder: "WHT",
+                        disabled: _vm.validated ? false : true,
                         required: ""
                       },
                       domProps: { value: _vm.fields.wht },
@@ -37599,7 +37639,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Win Loss")]),
+                    _c("label", [_vm._v("GGR TAX")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -37614,9 +37654,9 @@ var render = function() {
                       attrs: {
                         name: "winloss",
                         value: "",
-                        type: "text",
-                        placeholder: "winloss",
-                        required: ""
+                        type: "hidden",
+                        disabled: _vm.validated ? false : true,
+                        placeholder: "winloss"
                       },
                       domProps: { value: _vm.fields.winloss },
                       on: {
@@ -37629,9 +37669,38 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.winloss
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.ggrtax,
+                          expression: "fields.ggrtax"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "ggrtax",
+                        value: "",
+                        type: "text",
+                        placeholder: "ggrtax",
+                        disabled: _vm.validated ? false : true,
+                        required: ""
+                      },
+                      domProps: { value: _vm.fields.ggrtax },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.ggrtax
                       ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.winloss[0]))
+                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
                         ])
                       : _vm._e()
                   ]),
@@ -37655,10 +37724,12 @@ var render = function() {
                         value: "ggr",
                         type: "text",
                         placeholder: "GGR",
+                        disabled: _vm.validated ? false : true,
                         required: ""
                       },
                       domProps: { value: _vm.fields.ggr },
                       on: {
+                        keydown: _vm.ggrtax,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -40681,6 +40752,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.sales },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -40721,6 +40793,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.payouts },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -40737,7 +40810,7 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
                     _c("label", [_vm._v("WHT")]),
                     _vm._v(" "),
                     _c("input", {
@@ -40751,6 +40824,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        disabled: _vm.validated ? false : true,
                         name: "wht",
                         value: "",
                         type: "text",
@@ -40775,7 +40849,7 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
                     _c("label", [_vm._v("GGR")]),
                     _vm._v(" "),
                     _c("input", {
@@ -40789,6 +40863,7 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        disabled: _vm.validated ? false : true,
                         name: "ggr",
                         value: "",
                         type: "text",
@@ -40809,6 +40884,45 @@ var render = function() {
                     _vm.errors && _vm.errors.ggr
                       ? _c("div", { staticClass: "text-danger" }, [
                           _vm._v(_vm._s(_vm.errors.ggr[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("label", [_vm._v("GGR TAX")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.ggrtax,
+                          expression: "fields.ggrtax"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        disabled: _vm.validated ? false : true,
+                        name: "ggrtax",
+                        value: "",
+                        type: "text",
+                        placeholder: "GGR TAX",
+                        required: ""
+                      },
+                      domProps: { value: _vm.fields.ggrtax },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.ggrtax
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
                         ])
                       : _vm._e()
                   ])
@@ -42165,7 +42279,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
                     _c("label", [_vm._v("Sales")]),
                     _vm._v(" "),
                     _c("input", {
@@ -42187,6 +42301,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.sales },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -42203,7 +42318,7 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
                     _c("label", [_vm._v("Payouts")]),
                     _vm._v(" "),
                     _c("input", {
@@ -42225,6 +42340,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.payouts },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -42239,10 +42355,8 @@ var render = function() {
                           _vm._v(_vm._s(_vm.errors.payouts[0]))
                         ])
                       : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
                     _c("label", [_vm._v("Total Payout")]),
                     _vm._v(" "),
@@ -42265,6 +42379,7 @@ var render = function() {
                       },
                       domProps: { value: _vm.fields.total_payout },
                       on: {
+                        keyup: _vm.sum,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -42283,8 +42398,10 @@ var render = function() {
                           _vm._v(_vm._s(_vm.errors.total_payout[0]))
                         ])
                       : _vm._e()
-                  ]),
-                  _vm._v(" "),
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
                   _c("div", { staticClass: "col-md-4" }, [
                     _c("label", [_vm._v("WHT")]),
                     _vm._v(" "),
@@ -42302,6 +42419,7 @@ var render = function() {
                         name: "wht",
                         value: "",
                         type: "text",
+                        disabled: _vm.validated ? false : true,
                         placeholder: "WHT",
                         required: ""
                       },
@@ -42340,6 +42458,7 @@ var render = function() {
                         name: "ggr",
                         value: "",
                         type: "text",
+                        disabled: _vm.validated ? false : true,
                         placeholder: "GGR",
                         required: ""
                       },
@@ -42357,6 +42476,45 @@ var render = function() {
                     _vm.errors && _vm.errors.ggr
                       ? _c("div", { staticClass: "text-danger" }, [
                           _vm._v(_vm._s(_vm.errors.ggr[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("label", [_vm._v("GGR TAX")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.ggrtax,
+                          expression: "fields.ggrtax"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "ggrtax",
+                        value: "",
+                        type: "text",
+                        disabled: _vm.validated ? false : true,
+                        placeholder: "GGR TAX",
+                        required: ""
+                      },
+                      domProps: { value: _vm.fields.ggrtax },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.ggrtax
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
                         ])
                       : _vm._e()
                   ])

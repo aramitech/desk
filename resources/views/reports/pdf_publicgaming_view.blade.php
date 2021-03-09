@@ -111,7 +111,7 @@ width: 20%;
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
 <h3 align="center">COMPANY LETTER HEAD</h3>
-<h3 align="center">BOOKMARKERS RETURN FORM</h3>
+<h3 align="center">PUBLIC GAMING RETURNS FORM</h3>
 <img style="width: 180px;" src="" alt="">
 <div style="width: 100%; clear: both;">
 </div>
@@ -131,7 +131,7 @@ width: 20%;
         <h4>RETURN FOR THE PERIOD OF: <strong class="weight-600">{{ request()->from ?? '....'}}</strong></h4>
         </th>
         <th align="left">
-        <h4>BRANCH :  {{ $bcompany->branch}}</h4>
+        <h4>TRADING AS :  {{ $bcompany->trading_name}}</h4>
         <h4>DATE :  {{ date('Y-m-d H:i:s') }}<h4>
         <h4>TO : {{ request()->to ?? '....'}}</h4>
         </th>
@@ -143,49 +143,48 @@ width: 20%;
         <tr>
             <th class="table-plus">#</th>
             <th>Date</th>
-            <th>No. of Bets</th>
-            <th>Deposits</th>
-            <th>Total Sales</th>
-            <th>TOTAL Payouts</th>
-            <th>WHT</th>
-            <th>GGR</th> 
+           
+                        <th>Sales</th>
+                        <th>Payouts</th>
+                        <th>GGR </th>
+                        <th>WHT</th>
         </tr>
     </thead>
     <tbody>
     @php $sum=0;
-    $deposits=0;
-				$total_sales=0;
-				$total_payout=0;
+    $sales=0;
+				$payouts=0;
+				$ggr=0;
 				$wht=0;
 				$ggr=0;
     @endphp
-        @foreach($bookmarkers as $bookmarker)
-        @php $sum +=$bookmarker->bets_no ;
-        $deposits +=$bookmarker->deposits ;
-				 $total_sales +=$bookmarker->total_sales ;
-				 $total_payout +=$bookmarker->total_payout ;
-				 $wht +=$bookmarker->wht ;
-				 $ggr +=$bookmarker->ggr ;
+        @foreach($publicgamings as $publicgaming)
+        @php
+        $sales +=$publicgaming->sales ;
+				 $payouts +=$publicgaming->payouts ;
+				 $ggr +=$publicgaming->ggr ;
+				 $wht +=$publicgaming->wht ;
+				 $ggr +=$publicgaming->ggr ;
     @endphp
         <tr>
-            <td>{{ $bookmarker->bookmarker_id }}</td>
-            <td>{{ $bookmarker->date }}</td>
-            <td>{{ $bookmarker->bets_no }}</td>
-            <td>{{ $bookmarker->deposits }}</td>
-            <td>{{ $bookmarker->total_sales }}</td>
-            <td>{{ $bookmarker->total_payout }}</td>
-            <td>{{ $bookmarker->wht }}</td>
-            <td>{{ $bookmarker->ggr }}</td> 
+            <td>{{ $publicgaming->publicgaming_id }}</td>
+            <td>{{ $publicgaming->date }}</td>
+        
+            <td>{{ $publicgaming->sales }}</td>
+            <td>{{ $publicgaming->payouts }}</td>
+            <td>{{ $publicgaming->ggr }}</td>
+            <td>{{ $publicgaming->wht }}</td>
+       
         </tr>
     @endforeach
     </tbody><tbody>
 			<th colspan="2">Total</th>
-            <td >{{ $sum }}</td> 
-            <td >{{ $deposits }}</td>
-			<td >{{ $total_sales }}</td>
-			<td >{{ $total_payout }}</td>
-			<td >{{ $wht }}</td>
+         
+            <td >{{ $sales }}</td>
+			<td >{{ $payouts }}</td>
 			<td >{{ $ggr }}</td>
+			<td >{{ $wht }}</td>
+		
             
              </tbody>
 </table>

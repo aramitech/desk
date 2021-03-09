@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\BookMarkers;
+use App\Models\PublicLottery;
+use App\Models\Publicgamings;
 use App\Models\BookmarkersCompany;
 use Illuminate\Http\Request;
 use Auth;
@@ -38,6 +39,31 @@ class ReportsController extends Controller
     }
 
 
+
+    public function reportsview_publiclottery($id)
+    {
+
+        $company_name=BookmarkersCompany::all('company_name');
+        $bookmarkers = BookmarkersCompany::where('category_type_id',1)->where('company_name',$company_name)->get();
+    
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $publicLotteries = EloquentBuilder::to(PublicLottery::where('company_id',$id), request()->all())->get();
+        return view('reports.publiclottery', compact('publicLotteries','bcompanies','id'));
+    }
+
+
+    public function reportsview_publicgaming($id)
+    {
+
+        $company_name=BookmarkersCompany::all('company_name');
+        $bookmarkers = BookmarkersCompany::where('category_type_id',1)->where('company_name',$company_name)->get();
+    
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $publicgamings = EloquentBuilder::to(Publicgamings::where('company_id',$id), request()->all())->get();
+        return view('reports.reportsview_publicgaming', compact('publicgamings','bcompanies','id'));
+    }
+
+
     public function createPDF($id) {
         // retreive all records from db
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
@@ -51,10 +77,41 @@ class ReportsController extends Controller
         return $pdf->download('pdf_file.pdf');
 
     }
+
+
+    public function puliclottery_createPDF($id) {
+        // retreive all records from db
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $publicLotteries = EloquentBuilder::to(PublicLottery::where('company_id',$id), request()->all())->get();
+  
+        // share data to view
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);
+        $pdf = PDF::loadView('reports.pdf_publiclottery_view', compact('bcompanies','publicLotteries','id'));
+  
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+
+    }
+    
+    public function publicgaming_createPDF($id) {
+        // retreive all records from db
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $publicgamings = EloquentBuilder::to(Publicgamings::where('company_id',$id), request()->all())->get();
+  
+        // share data to view
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);
+        $pdf = PDF::loadView('reports.pdf_publicgaming_view', compact('bcompanies','publicgamings','id'));
+  
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+
+    }
+
+    
     public function indexpubliclottery()
     {
-        $bookmarkers = BookmarkersCompany::where('category_type_id',2)->get();
-        return view('reports.index', compact('bookmarkers'));
+        $publiclotteries = BookmarkersCompany::where('category_type_id',2)->get();
+        return view('reports.indexpubliclottery', compact('publiclotteries'));
     }
     public function publiclotterysreport()
     {
@@ -66,8 +123,8 @@ class ReportsController extends Controller
 
     public function indexpublicgaming()
     {
-        $bookmarkers = BookmarkersCompany::where('category_type_id',3)->get();
-        return view('reports.index', compact('bookmarkers'));
+        $publicgamings = BookmarkersCompany::where('category_type_id',3)->get();
+        return view('reports.publicgaming', compact('publicgamings'));
     }
     public function publicgamingreport() 
     {

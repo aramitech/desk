@@ -78,7 +78,7 @@
                                     
                                     @else   
                                     @endif
-                                    @if ( Auth::user()->deletestatus == 'Allowed' )
+                                    @if ( Auth::user()->deletestatus == 'Allowed' )  
                                     <button class="btn btn-sm btn-danger" @click="deleteItem('publicgamingdelete',{{$publicgaming}})"><i class="dw dw-delete-3"></i> Delete</button>
                                     @else   
                                     @endif

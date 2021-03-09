@@ -56,33 +56,44 @@
                             <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
 						</div></div>    
                           <div class="form-group row">
-                           <div class="col-md-6">
+                           <div class="col-md-4">
 							<label>Sales</label>
-							<input class="form-control"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
-                            <div class="col-md-6">
-							<label>Payouts</label>
-							<input class="form-control"  name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
-                            <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
-						</div></div>
-                              <div class="form-group row">
                             <div class="col-md-4">
+							<label>Payouts</label>
+							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+                            <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
+						</div>
+                         <div class="col-md-4">
 							<label>Total Payout</label>
-							<input class="form-control"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div>
+                        
+                        </div>
+                              <div class="form-group row">
+                           
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" :disabled="validated ? false : true" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                        
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
+							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" :disabled="validated ? false : true" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
-						</div></div>
+						</div>
+                        
+                             <div class="col-md-4">
+							<label>GGR TAX</label>
+							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
+                            <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
+						</div>
+                        
+                        </div>
                         
                     </div>
                     <div class="modal-footer">
@@ -121,7 +132,14 @@ methods: {
           this.company_names = response.data;        
         }.bind(this));
       },
-
+   sum()
+   {
+     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+  this.fields.ggr=this.fields.sales - this.fields.total_payout;
+  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggrtax=0.15 * this.fields.ggr;  
+   
+   },
 
    
  onChange (value) {

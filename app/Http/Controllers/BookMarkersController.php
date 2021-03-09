@@ -75,6 +75,7 @@ class BookMarkersController extends Controller
         $user->wht = $request->wht;
         $user->winloss = $request->winloss;
         $user->ggr = $request->ggr;
+        $user->ggrtax = $request->ggrtax;
         $user->save();
 
         $id=Auth::user()->id;

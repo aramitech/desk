@@ -110,6 +110,13 @@ Route::get('/publicgamingreport',[App\Http\Controllers\ReportsController::class,
 
 Route::get('/indexpubliclottery',[App\Http\Controllers\ReportsController::class, 'indexpubliclottery'])->name('indexpubliclottery');   
 Route::get('/indexpublicgaming',[App\Http\Controllers\ReportsController::class, 'indexpublicgaming'])->name('indexpublicgaming');   
+Route::get('/reportsview_publiclottery/{id}',[App\Http\Controllers\ReportsController::class, 'reportsview_publiclottery'])->name('reportsview_publiclottery');   
+
+Route::get('/publicLotterysrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'puliclottery_createPDF'])->name('publicLotterysrepo.pdf');
+
+Route::get('/reportsview_publicgaming/{id}',[App\Http\Controllers\ReportsController::class, 'reportsview_publicgaming'])->name('reportsview_publicgaming');   
+
+Route::get('/publicgamingsrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgaming_createPDF'])->name('publicgamingsrepo.pdf');
 
 
-  
+
