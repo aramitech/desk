@@ -32,4 +32,8 @@ class BookmarkersCompany extends Model
  {
      return $this->belongsTo(Group::class,'group_id');
  }
+ public function bookmarkerscompany()
+ {
+     return $this->hasMany(BookMarkers::class,'company_id');
+ }
 }
