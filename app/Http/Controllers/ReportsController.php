@@ -24,8 +24,19 @@ class ReportsController extends Controller
     ////////////======//company ggr reposrt////===////////
     public function companyGGr()
     {
-        $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
-        $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+        $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('bookmarkerscompany', function($query){
+            // $query->select('ggr')->where('ggr','!=',0);
+        })->with('bookmarkerscompany'), request()->all())->get();
+
+        $labels_arr = [];
+        $data_arr = [];
+        foreach($companies as $company)
+        {
+            array_push($labels_arr,$company->company_name);
+            array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+        }
+        // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+        // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
         // chart
         $borderColors = [ "#30ba35", "#f25961" ];
         $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];

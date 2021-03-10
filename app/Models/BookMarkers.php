@@ -39,6 +39,6 @@ class BookMarkers extends Model
  }
  public function bookmarkerscompany()
  {
-     return $this->belongsTo(BookmarkersCompany::class,'license_no');
+     return $this->belongsTo(BookmarkersCompany::class,'company_id');
  }
 }
