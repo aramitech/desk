@@ -34,7 +34,7 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20"> Company List</h2>
         <div class="pb-20">
-        <table class="table hover multiple-select-row data-table-export nowrap">
+        <table class="table hover  data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
@@ -63,8 +63,9 @@
                                  <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     <i class="dw dw-more"></i>
                                 </a>
-                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
-                                   <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
+                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
                                     <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
                                </div> 
@@ -76,6 +77,14 @@
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                        </div>
+                    </div>
+
+
                     @endforeach
                 </tbody>
             </table>

@@ -41,8 +41,13 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('view-publiclottery-component', require('./components/publiclottery/ViewPubliclotteryComponent.vue').default);
  Vue.component('view-bookmarker-component', require('./components/bookmarker/ViewBookmarkerComponent.vue').default);
  Vue.component('add-categorytype-component', require('./components/categorytypes/AddCategoryTypeComponent.vue').default);
+ Vue.component('edit-bookmarkercompany-component', require('./components/company/EditBookmarkercompanyComponent.vue').default);
+ Vue.component('view-bookmarkercompany-component', require('./components/company/ViewBookmarkercompanyComponent.vue').default);
+
+ Vue.component('change_password-user-component', require('./components/user/ChangePasswordComponent.vue').default);
 
 
+ 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

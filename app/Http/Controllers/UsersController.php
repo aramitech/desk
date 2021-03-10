@@ -40,7 +40,9 @@ class UsersController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email', 
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+        'password_confirmation' => 'min:6'  
         ]);
         $user = User::findOrFail($request->id);
         $user->name = $request->name;
@@ -50,6 +52,24 @@ class UsersController extends Controller
         return back()->with('success','Updated succesfully');
     }
 
+    public function updatepassword(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'min:6'  
+        ]);
+        $user = User::findOrFail($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return back()->with('success','Updated succesfully');
+    }
+
+
+    
     public function updaterole(Request $request)
     {
     

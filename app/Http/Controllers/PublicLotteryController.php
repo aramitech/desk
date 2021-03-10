@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PublicLottery;
 use App\Models\BookmarkersCompany;
+use App\Models\AuditLog;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -52,7 +53,6 @@ class PublicLotteryController extends Controller
         $user = new PublicLottery();
         $user->company_id = $request->company_id['company_id'];
         $user->license_no = $request->license_no;
-        $user->license_no = $request->license_no;
         $user->return_for_of = $request->return_for_of;
         $user->return_to = $request->return_to;
         $user->date = $request->date;
@@ -64,6 +64,20 @@ class PublicLotteryController extends Controller
           $user->ggrtax = $request->ggrtax;
           $user->id = Auth::user()->id;
         $user->save();
+
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Added Public Lottery Entry Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Added succesfully');
     }
 
@@ -86,6 +100,19 @@ class PublicLotteryController extends Controller
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
         $user->save();
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Updated Public Lottery Entry Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Updated succesfully');
     }
 
@@ -94,6 +121,19 @@ class PublicLotteryController extends Controller
     {
         $user = PublicLottery::findOrFail($request->publiclottery_id);
         $user->delete();
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Deleted Public Lottery Record Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Deleted succesfully');
     }
 }

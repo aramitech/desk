@@ -81,14 +81,14 @@ class BookMarkersController extends Controller
         $id=Auth::user()->id;
         $email=Auth::user()->email;
         //log
-        $adminLog = new AuditLog();
-        $adminLog->audit_module = "User";
-        $adminLog->audit_activity = "Bookmarkers Entry Licence Name".$request->licensee_name ." added by user# " .$email;
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Added Bookmarkers Entry For Licence Name:".$request->licensee_name;
        
-        $adminLog->user_category = "User";
-       // $adminLog->audit_log_id = $id;
-        $adminLog->user_id = Auth::user()->id;  
-        $adminLog->save();
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
 
         return back()->with('success','Added succesfully');
     }
@@ -132,6 +132,18 @@ class BookMarkersController extends Controller
         $user->winloss = $request->winloss;
         $user->ggr = $request->ggr;
         $user->save();
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Updated Bookmarkers Entry For Licence Name:".$request->licensee_name;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
         return back()->with('success','Updated succesfully');
     }
 
@@ -139,6 +151,19 @@ class BookMarkersController extends Controller
     {
         $user = BookMarkers::findOrFail($request->bookmarker_id);
         $user->delete();
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Deleted Bookmarkers Record For Licence Name:".$request->licensee_name;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Deleted succesfully');
     }
 }

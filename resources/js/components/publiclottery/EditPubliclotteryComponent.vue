@@ -4,19 +4,34 @@
             <h4 class="modal-title" id="myLargeModalLabel">Edit Public Lottery</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
-       <form method="POST" @submit.prevent="submit">
+        <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                             <div class="form-group row">
-                        <div class="col-md-6">
-							<label>Company Name</label>
-							<input class="form-control" name="company_name" v-model="fields.company_name" type="text" placeholder="Company Name" required>
-                            <div v-if="errors && errors.company_name" class="text-danger">{{ errors.company_name[0] }}</div>
-						</div>
+                      
+                       <div class="col-md-6">
+            <label for="company_id"> Licensee Name</label>        
+            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+              
+            </multiselect>
+            <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
+       
+        </div> 
+                      
+               
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
-						</div></div>   
+						</div>
+                         <div class="col-md-6">
+							<label> </label>
+						</div>   
+                             <div class="col-md-6">
+							<label>Trading As</label>
+							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
+                            <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
+						</div>
+                        </div>   
                            <div class="form-group row">
                         <div class="col-md-6">
 							<label>Return For The Period Of</label>
@@ -40,33 +55,44 @@
                             <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
 						</div></div>    
                           <div class="form-group row">
-                           <div class="col-md-6">
+                           <div class="col-md-4">
 							<label>Sales</label>
-							<input class="form-control"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
-                            <div class="col-md-6">
-							<label>Payouts</label>
-							<input class="form-control"  name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
-                            <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
-						</div></div>
-                              <div class="form-group row">
                             <div class="col-md-4">
+							<label>Payouts</label>
+							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+                            <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
+						</div>
+                         <div class="col-md-4">
 							<label>Total Payout</label>
-							<input class="form-control"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div>
+                        
+                        </div>
+                              <div class="form-group row">
+                           
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" :disabled="validated ? false : true" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                        
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
+							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" :disabled="validated ? false : true" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
-						</div></div>
+						</div>
+                        
+                             <div class="col-md-4">
+							<label>GGR TAX</label>
+							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
+                            <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
+						</div>
+                        
+                        </div>
                         
                     </div>
                     <div class="modal-footer">
@@ -92,6 +118,9 @@ data() {
  company_names: [],
 
         fields: {
+                  license_no:"",
+        trading_name:'',
+        licensee_name:'',
             publiclottery_id:this.publiclotteryerdata.publiclottery_id,
             company_name:this.publiclotteryerdata.company_name,
             license_no:this.publiclotteryerdata.license_no,
@@ -104,21 +133,36 @@ data() {
               total_sales:this.publiclotteryerdata.total_sales,
                payouts:this.publiclotteryerdata.payouts,
                 ggr:this.publiclotteryerdata.ggr,
-                 wht:this.publiclotteryerdata.wht,
-             
+                 wht:this.publiclotteryerdata.wht,  
+               total_payout:this.publiclotteryerdata.total_payout, 
        }
         }
     },
 
 methods: {
     getLicenseeName: function(){
-        axios.get('/license_name/get')
+           axios.get('/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;
          
         }.bind(this));
          console.log(response, 'kkkkk')
       },
+         sum()
+   {
+     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+  this.fields.ggr=this.fields.sales - this.fields.total_payout;
+  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggrtax=0.15 * this.fields.ggr;  
+   
+   },
+    onChange (value) {
+      this.value = value
+    this.fields.license_no=this.value.license_no;
+       this.fields.trading_name=this.value.trading_name;
+     this.fields.licensee_name=this.value.company_name
+    console.log(value)
+    },
     },
         created: function(){  
      this.getLicenseeName()   
@@ -136,8 +180,9 @@ methods: {
               this.fields.total_sales=this.publiclotteryerdata.total_sales;
                this.fields.payouts=this.publiclotteryerdata.payouts;
                 this.fields.wht=this.publiclotteryerdata.wht;
-                 this.fields.ggr=this.publiclotteryerdata.ggr;
+                 this.fields.ggr=this.publiclotteryerdata.ggr;   
                  this.fields.wht=this.publiclotteryerdata.wht;
+                 this.fields.total_payout=this.publiclotteryerdata.total_payout;
    }
 }
 </script>

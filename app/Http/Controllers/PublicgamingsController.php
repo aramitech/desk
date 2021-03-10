@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Publicgamings;
 use App\Models\PublicLottery;
 use App\Models\BookmarkersCompany;
+use App\Models\AuditLog;
 use Illuminate\Http\Request;
 use Auth;
 class PublicgamingsController extends Controller
@@ -60,6 +61,19 @@ class PublicgamingsController extends Controller
         $user->ggrtax = $request->ggrtax;
         $user->id = Auth::user()->id;
         $user->save();
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Added Public Gamings Entry Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Added succesfully');
     }
 
@@ -80,12 +94,40 @@ class PublicgamingsController extends Controller
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
         $user->save();
+
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Updated Public Gamings Entry Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Updated succesfully');
     }
     public function destroy(Request $request)
     {
         $user = Publicgamings::findOrFail($request->publicgaming_id);
         $user->delete();
+
+
+        $id=Auth::user()->id;
+        $email=Auth::user()->email;
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Deleted Public Gamings Record Licence No:".$request->license_no;
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->user_id = Auth::user()->id;  
+        $userLog->save();
+
         return back()->with('success','Deleted succesfully');
     }
 }

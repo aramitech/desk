@@ -30,7 +30,7 @@ class ReportsController extends Controller
         $borderColors = [ "#30ba35", "#f25961" ];
         $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
         $companyggrchart = new CompanyChart;
-        $companyggrchart->minimalist(true);
+        $companyggrchart->minimalist(false);
         $companyggrchart->labels($labels_arr);
         $companyggrchart->dataset('Company GGR Reports', 'bar', $data_arr)
         // ->color($borderColors)

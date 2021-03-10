@@ -83,7 +83,9 @@ class CompanyController extends Controller
         $user->contact = $request->contact;
         $user->physicaladdress = $request->physicaladdress;
         $user->branch = $request->branch;
-        $user->category_type_id = $request->category_type_id['categorytypes_id'];       
+        $user->category_type_id = $request->category_type_id['categorytypes_id'];   
+        $user->paybillno = $request->paybillno;
+        
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -127,6 +129,26 @@ class CompanyController extends Controller
         $user->save();
         return back()->with('success','Updated succesfully');
     }
+
+
+  
+    public function updateBookmarkersCompany(Request $request)
+    {
+        
+        $user = BookmarkersCompany::findOrFail($request->company_id);
+        $user->company_name = $request->company_name;
+        $user->trading_name = $request->trading_name;
+        $user->license_no = $request->license_no;
+        $user->email = $request->email;
+        $user->contact = $request->contact;
+        $user->physicaladdress = $request->physicaladdress;
+        $user->branch = $request->branch;
+        $user->category_type_id = $request->category_type_id['categorytypes_id'];   
+        $user->paybillno = $request->paybillno;
+        $user->save();
+        return back()->with('success','Updated succesfully');
+    }
+
 
     public function destroy(Request $request)
     {

@@ -1,12 +1,10 @@
 <template>
-    <div class="modal fade" id="addcompany" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Add  Company</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <form method="POST" @submit.prevent="submit">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">Edit Company</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                         <div class="form-group">
                             <div class="form-group row">
@@ -76,8 +74,6 @@
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>  </div>
                 </form>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -86,14 +82,28 @@ import FormMixin from '../shared/FormMixin';
 
 export default {
   mixins: [ FormMixin ],
+  props: [ 'bookmarkerdata' ],
 data() {
     return {
-        action: '/company/addbookmarkers', //save action
-        text: 'Added Succesfully',
+        action: '/company/updateBookmarkersCompany', //edit action
+        text: 'Updated Succesfully',
         redirect: '/company/bookmarkers',
+         company_names:[],
+        fields: {
+            company_id:this.bookmarkerdata.company_id,
+            category_type_id:this.bookmarkerdata.category_type_id,
+            company_name:this.bookmarkerdata.company_name,
+            trading_name:this.bookmarkerdata.trading_name,
+            license_no:this.bookmarkerdata.license_no,
+            email:this.bookmarkerdata.email,
+            contact:this.bookmarkerdata.contact,
+            physicaladdress:this.bookmarkerdata.physicaladdress,
+            branch:this.bookmarkerdata.branch,
+             paybillno:this.bookmarkerdata.paybillno,
+            categorytype:this.bookmarkerdata.categorytype,
 
-        company_names:[],
-
+             
+        }
         }
     },
 
@@ -105,11 +115,21 @@ methods: {
         }.bind(this));
       },
     },
-
-         created: function(){  
+    mounted() {
+        this.fields.company_id=this.bookmarkerdata.company_id;
+        this.fields.category_type_id=this.getCategoryTypeName;
+        this.fields.company_name=this.bookmarkerdata.company_name;
+        this.fields.trading_name=this.bookmarkerdata.trading_name;
+        this.fields.license_no=this.bookmarkerdata.license_no;
+        this.fields.email=this.bookmarkerdata.email;
+        this.fields.contact=this.bookmarkerdata.contact;
+        this.fields.physicaladdress=this.bookmarkerdata.physicaladdress;
+        this.fields.branch=this.bookmarkerdata.branch;
+         this.fields.paybillno=this.bookmarkerdata.paybillno;
+           this.fields.categorytype=this.bookmarkerdata.categorytype;
+    },
+          created: function(){  
      this.getCategoryTypeName()   
     },
 }
 </script>
-<!--Add Multiselect CSS. Can be added as a static asset or inside a component. -->
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

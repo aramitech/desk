@@ -39,7 +39,7 @@
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category Name</th>
-                        <th>Date</th>
+               
                        
                         <th class="datatable-nosort">Action</th>
                     </tr>
@@ -50,7 +50,7 @@
                         <td>{{ $categorytype->categorytypes_id }}</td>
                         <td>{{ $categorytype->categorytype }}</td>
              
-                        <td>{{ $categorytype->created_at}}</td>
+                    
                         <td>
                             <div class="dropdown">
                                 <!-- <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -58,10 +58,10 @@
                                 </a> -->
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editcategorytype{{$categorytype->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <!-- <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editcategorytype{{$categorytype->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
 
                                     
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('categorytypedelete',{{$categorytype}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                    <button class="btn btn-sm btn-danger" @click="deleteItem('categorytypedelete',{{$categorytype}})"><i class="dw dw-delete-3"></i> Delete</button> -->
                                 <!-- </div> -->
                             </div>
                         </td>

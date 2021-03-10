@@ -26,7 +26,9 @@
 							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div>
-                        
+                         <div class="col-md-6">
+							<label> </label>
+						</div>   
                              <div class="col-md-6">
 							<label>Trading As</label>
 							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>

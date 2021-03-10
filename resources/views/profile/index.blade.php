@@ -33,7 +33,7 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Users List</h2>
         <div class="pb-20">
-            <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+            <table class="table table stripe hover nowrap  data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
@@ -66,21 +66,16 @@
                     </tr>
                     <div class="modal fade" id="edituser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-user-component :userdata="{{ json_encode($user)}}"/>
+                            <change_password-user-component :userdata="{{ json_encode($user)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="assignroleuser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <assignrole-user-component :userdata="{{ json_encode($user)}}"/>
-                        </div>
-                    </div>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <!-- ./main content card -->
-    <add-user-component/>
+  
 </div>
 @endsection
