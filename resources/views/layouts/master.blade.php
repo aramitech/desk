@@ -274,9 +274,14 @@
             </div>
         </div>
 	</div>
+	<!-- chart -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
+	@if(isset($companyggrchart))
+		{!! $companyggrchart->script() !!}
+	@endif
 	<!-- js -->
 	<script src="{{ asset('js/app.js')}}"></script>
-
 	<script src="{{ asset('vendors/scripts/core.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/script.min.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/process.js')}}"></script>

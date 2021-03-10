@@ -12,6 +12,7 @@ use Hash;
 Use \Carbon\Carbon;
 use PDF;
 use EloquentBuilder;
+use App\Charts\CompanyChart;
 
 class ReportsController extends Controller
 {
@@ -20,6 +21,24 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    ////////////======//company ggr reposrt////===////////
+    public function companyGGr()
+    {
+        $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+        $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+        // chart
+        $borderColors = [ "#30ba35", "#f25961" ];
+        $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
+        $companyggrchart = new CompanyChart;
+        $companyggrchart->minimalist(true);
+        $companyggrchart->labels($labels_arr);
+        $companyggrchart->dataset('Company GGR Reports', 'bar', $data_arr)
+        // ->color($borderColors)
+        ->backgroundcolor($fillColors);
+        return view('reports.company_ggr',compact('companyggrchart'));
+    }
+
+
     public function index()
     {
         $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();

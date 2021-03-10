@@ -68,10 +68,17 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Reports</span>
         </a>
         <ul class="submenu">
-        <li class="dropdown">
-        <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Companies</span>
-        </a>
+            <li class="dropdown">
+                <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
+                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Companies</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="{{ route('reports.company-ggr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.company-ggr*')) ? 'active' : '' }}">
+                    <span class="micon icon-copy ti-user"></span><span class="mtext">Company GGR</span>
+                </a>
+            </li>
+        </ul>
     </li>
 
     <li class="dropdown">

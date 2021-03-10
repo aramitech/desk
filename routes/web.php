@@ -118,5 +118,8 @@ Route::get('/reportsview_publicgaming/{id}',[App\Http\Controllers\ReportsControl
 
 Route::get('/publicgamingsrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgaming_createPDF'])->name('publicgamingsrepo.pdf');
 
+// =====Company GGR reporst ======///
+Route::get('/reports/company-ggr',[App\Http\Controllers\ReportsController::class, 'companyGGr'])->name('reports.company-ggr');
+
 
 
