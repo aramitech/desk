@@ -50,8 +50,8 @@
                         <div id="chart4"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">Ksh 6060</div>
-                        <div class="weight-600 font-14">Deposits</div>
+                        <div class="h4 mb-0"></div>
+                        <div class="weight-600 font-14"></div>
                     </div>
                 </div>
             </div>
@@ -61,32 +61,14 @@
     <div class="card-box mb-30">
         <h2 class="h4 pd-20">Best Gaming </h2>
         <div class="bg-white pd-20 card-box mb-30">
-					<div id="chart17"></div>
-				</div>
-                <div class="bg-white pd-20 card-box mb-30">
-					<div id="chart188"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart2"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart3"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart4"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart5"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart6"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart7"></div>
-				</div>
-				<div class="bg-white pd-20 card-box mb-30">
-					<div id="chart8"></div>
-				</div>
+        @section('content')
+    <div class="card-box mb-30">
+        <h2 class="h4 pd-20">Best Gaming </h2>
+            <div id="companyggrchart">
+                <!-- {!! $companyggrchart->container() !!} -->
+            </div>
+    </div>
+@endsection
     </div>
 
 	<script src="vendors/scripts/core.js"></script>

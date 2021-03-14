@@ -280,6 +280,16 @@
 	@if(isset($companyggrchart))
 		{!! $companyggrchart->script() !!}
 	@endif
+
+	@if(isset($publiclotteryggrchart))
+		{!! $publiclotteryggrchart->script() !!}
+	@endif
+	
+	@if(isset($publicgamingggrchart))
+		{!! $publicgamingggrchart->script() !!}
+	@endif
+
+	
 	<!-- js -->
 	<script src="{{ asset('js/app.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/core.js')}}"></script>

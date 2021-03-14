@@ -33,4 +33,10 @@ class Publicgamings extends Model
  {
      return $this->belongsTo(Group::class,'group_id');
  }
+
+ public function publicGamingcompany()
+ {
+     return $this->belongsTo(BookmarkersCompany::class,'company_id');
+ }
+
 }

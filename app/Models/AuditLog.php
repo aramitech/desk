@@ -19,8 +19,12 @@ class AuditLog extends Authenticatable
        'audit_module',
        'audit_activity',
        'user_category',
-        'user_id'
+        'id'
     ];
+    public function userlogs()
+    {
+        return $this->belongsTo(User::class,'id');
+    }
 }
 
 

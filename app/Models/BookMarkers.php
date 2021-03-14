@@ -12,6 +12,7 @@ class BookMarkers extends Model
   
     protected $fillable = [
         'bookmarker_id',
+        'company_id',
         'licensee_name',
         'license_no',
         'return_for_the_period_of',

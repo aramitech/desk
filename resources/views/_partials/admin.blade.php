@@ -62,39 +62,61 @@
     </li>
 
 
-
     <li class="dropdown">
-        <a href="javascript:;" class="dropdown-toggle">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Reports</span>
-        </a>
-        <ul class="submenu">
-            <li class="dropdown">
-                <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
-                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Companies</span>
-                </a>
-            </li>
-            <li class="dropdown">
-                <a href="{{ route('reports.company-ggr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.company-ggr*')) ? 'active' : '' }}">
-                    <span class="micon icon-copy ti-user"></span><span class="mtext">Company GGR</span>
-                </a>
-            </li>
-        </ul>
-    </li>
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-list3"></span><span class="mtext">Reports</span>
+						</a>
+						<ul class="submenu">
+                        <li class="dropdown">
+                            <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Companies</span>
+                             </a>
+                            </li>
+					
+                           <li class="dropdown">
+                            <a href="{{ route('indexpubliclottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpubliclottery*')) ? 'active' : '' }}">
+                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
+                            </a>
+                            </li>
+							
+                            <li class="dropdown">
+                            <a href="{{ route('indexpublicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpublicgaming*')) ? 'active' : '' }}">
+                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
+                            </a>
+                           </li>
 
-    <li class="dropdown">
-        <a href="{{ route('indexpubliclottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpubliclottery*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
-        </a>
-    </li>
-    
-    <li class="dropdown">
-        <a href="{{ route('indexpublicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpublicgaming*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
-        </a>
-    </li>
-        </ul>
-    </li>
+							<li class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle">
+									<span class="micon fa fa-plug"></span><span class="mtext">Graph</span>
+								</a>
+								<ul class="submenu child">
+								
+                                <li class="dropdown">
+                            <a href="{{ route('reports.publicgamingGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publicgamingGGr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming GGR</span>
+                                </a>
+                            </li>
 
+                            <li class="dropdown">
+                                <a href="{{ route('reports.publiclotteryGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publiclotteryGGr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery GGR</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('reports.company-ggr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.company-ggr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="graph">Bookmarkers GGR</span>
+                                </a>
+                            </li>
+
+                     	
+                                
+
+								</ul>
+							</li>
+				
+						</ul>
+					</li>
 
     <li class="dropdown">
         <a href="{{ route('useractivitylogs')}}" class="dropdown-toggle no-arrow {{ (request()->is('useractivitylogs*')) ? 'active' : '' }}">

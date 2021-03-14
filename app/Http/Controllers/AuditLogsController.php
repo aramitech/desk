@@ -16,7 +16,10 @@ class AuditLogsController extends Controller
     public function index()
     {
         //
-        $auditLogs = AuditLog::all();
+        $auditLogs = AuditLog::with('userlogs')->get();
+      //  $auditLogs = AuditLog::all()->with('userlogs')->get();
+      //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();
+
         return view('auditLog.index', compact('auditLogs'));
     }
 

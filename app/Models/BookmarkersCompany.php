@@ -36,4 +36,13 @@ class BookmarkersCompany extends Model
  {
      return $this->hasMany(BookMarkers::class,'company_id');
  }
+ public function publicLotterycompany()
+ {
+     return $this->hasMany(PublicLottery::class,'company_id');
+ }
+ public function publicGamingcompany()
+ {
+     return $this->hasMany(Publicgamings::class,'company_id');
+ }
+ 
 }

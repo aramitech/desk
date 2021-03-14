@@ -13,6 +13,7 @@ class PublicLottery extends Model
   
     protected $fillable = [
         'publiclottery_id',
+        'company_id',
         'company_name',
         'license_no',
         'return_for_of',
@@ -30,9 +31,9 @@ class PublicLottery extends Model
  {
      return $this->belongsTo(Organization::class,'organization_id');
  }
- //Contacts<>Group relationship
- public function contactGroup()
+
+ public function publicLotterycompany()
  {
-     return $this->belongsTo(Group::class,'group_id');
+     return $this->belongsTo(BookmarkersCompany::class,'company_id');
  }
 }

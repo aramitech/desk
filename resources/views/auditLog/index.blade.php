@@ -34,14 +34,15 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">auditLogs List</h2>
         <div class="pb-20">
-            <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+            <table class="table table stripe hover nowrap data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>audit_module</th>
-                        <th>audit_activity</th>
+                        <th>audit Module</th>
+                        <th>Name</th>
+                        <th>Audit Activity</th>
                         <th>Date</th>
-                        <th class="datatable-nosort">Action</th>
+          
                     </tr>
                 </thead>
                 <tbody>
@@ -49,23 +50,10 @@
                     <tr>
                         <td>{{ $auditLog->audit_log_id }}</td>
                         <td>{{ $auditLog->audit_module }}</td>
+                        <td>{{ $auditLog->userlogs->name }}</td>
                         <td>{{ $auditLog->audit_activity }}</td>
                         <td>{{ $auditLog->created_at }}</td>
-                        <td>
-                            <div class="dropdown">
-                                <!-- <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a> -->
-                                <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
-                                    <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editauditLog{{$auditLog->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#assignroleauditLog{{$auditLog->id}}" type="button"><i class="dw dw-edit2"></i> Assign Role</button>
-
-                                    
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('auditLogdelete',{{$auditLog}})"><i class="dw dw-delete-3"></i> Delete</button>
-                                <!-- </div> -->
-                            </div>
-                        </td>
+                   
                     </tr>
                     <div class="modal fade" id="editauditLog{{$auditLog->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

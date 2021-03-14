@@ -49,6 +49,62 @@ class ReportsController extends Controller
         return view('reports.company_ggr',compact('companyggrchart'));
     }
 
+   ////////////======//Public Lottery ggr reposrt////===////////
+   public function publiclotteryGGr()
+   {
+       $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('publicLotterycompany', function($query){
+           // $query->select('ggr')->where('ggr','!=',0);
+       })->with('publicLotterycompany'), request()->all())->get();
+
+       $labels_arr = [];
+       $data_arr = [];
+       foreach($companies as $company)
+       {
+           array_push($labels_arr,$company->company_name);
+           array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+       }
+       // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+       // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+       // chart
+       $borderColors = [ "#30ba35", "#f25961" ];
+       $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
+       $publiclotteryggrchart = new CompanyChart;
+       $publiclotteryggrchart->minimalist(false);
+       $publiclotteryggrchart->labels($labels_arr);
+       $publiclotteryggrchart->dataset('Company GGR Reports', 'bar', $data_arr)
+       // ->color($borderColors)
+       ->backgroundcolor($fillColors);
+       return view('reports.publiclottery_ggr_graph',compact('publiclotteryggrchart'));
+   }
+
+   ////////////======//Public Lottery ggr reposrt////===////////
+   public function publicGamingGGr()
+   {
+       $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('publicGamingcompany', function($query){
+           // $query->select('ggr')->where('ggr','!=',0);
+       })->with('publicGamingcompany'), request()->all())->get();
+
+       $labels_arr = [];
+       $data_arr = [];
+       foreach($companies as $company)
+       {
+           array_push($labels_arr,$company->company_name);
+           array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+       }
+       // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+       // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+       // chart
+       $borderColors = [ "#30ba35", "#f25961" ];
+       $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
+       $publicgamingggrchart = new CompanyChart;
+       $publicgamingggrchart->minimalist(false);
+       $publicgamingggrchart->labels($labels_arr);
+       $publicgamingggrchart->dataset('Public Gaming Company GGR Reports', 'bar', $data_arr)
+       // ->color($borderColors)
+       ->backgroundcolor($fillColors);
+       return view('reports.publicgaming_ggr_graph',compact('publicgamingggrchart'));
+   }
+
 
     public function index()
     {

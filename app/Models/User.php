@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userlogs()
+    {
+        return $this->hasMany(AuditLog::class,'audit_log_id');
+    }
 }

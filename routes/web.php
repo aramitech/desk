@@ -122,5 +122,6 @@ Route::get('/publicgamingsrepo/pdf/{id}',[App\Http\Controllers\ReportsController
 // =====Company GGR reporst ======///
 Route::get('/reports/company-ggr',[App\Http\Controllers\ReportsController::class, 'companyGGr'])->name('reports.company-ggr');
 
-
+Route::get('/reports/publiclotteryGGr',[App\Http\Controllers\ReportsController::class, 'publiclotteryGGr'])->name('reports.publiclotteryGGr');
+Route::get('/reports/publicgamingGGr',[App\Http\Controllers\ReportsController::class, 'publicGamingGGr'])->name('reports.publicgamingGGr');
 
