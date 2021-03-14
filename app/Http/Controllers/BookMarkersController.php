@@ -8,6 +8,9 @@ use App\Models\CategoryTypes;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\AuditLog;
+use App\Imports\BookMarkersImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class BookMarkersController extends Controller
 {
     /**
@@ -92,6 +95,24 @@ class BookMarkersController extends Controller
         $userLog->save();
 
         return back()->with('success','Added succesfully');
+    }
+
+    public function upload(Request $request)
+    {
+        
+        $request->validate([
+            'file' => 'required',
+        ]);
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw","csv");
+        $result = array($request->file('file')->getClientOriginalExtension());
+        
+        if(!in_array($result[0],$extensions)){
+            return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
+        }
+        $path = $request->file;
+        Excel::import(new BookMarkersImport($company_id,$licensee_name,$license_no,$trading_name), $path);
+
+        return response()->json('Success',200);
     }
 
 

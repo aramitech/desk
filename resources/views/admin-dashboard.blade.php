@@ -65,7 +65,7 @@
     <div class="card-box mb-30">
         <h2 class="h4 pd-20">Best Gaming </h2>
             <div id="companyggrchart">
-                <!-- {!! $companyggrchart->container() !!} -->
+                {{-- {!! $companyggrchart->container() !!} --}}
             </div>
     </div>
 @endsection

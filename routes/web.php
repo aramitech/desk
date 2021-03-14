@@ -60,6 +60,7 @@ Route::post('/company/delete_destroypubliclottery', [App\Http\Controllers\Compan
 
 Route::get('/bookmarkers', [App\Http\Controllers\BookMarkersController::class, 'index'])->name('bookmarkers');
 Route::post('/bookmarkers/add', [App\Http\Controllers\BookMarkersController::class, 'store'])->name('bookmarkers.add');
+Route::post('/bookmarkers/upload', [App\Http\Controllers\BookMarkersController::class, 'upload'])->name('bookmarkers.upload');
 Route::post('/bookmarkers/update', [App\Http\Controllers\BookMarkersController::class, 'update'])->name('bookmarkers.update');
 Route::post('/bookmarkers/delete', [App\Http\Controllers\BookMarkersController::class, 'destroy'])->name('bookmarkers.delete');
 Route::get('/license_name/get',[App\Http\Controllers\BookMarkersController::class, 'getLicenseeName']);

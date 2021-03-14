@@ -22,6 +22,9 @@
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
                         Add BookMarkers
+                    </a>&nbsp;
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
+                        Upload BookMarkers
                     </a>
                 </div>
             </div>
@@ -80,7 +83,7 @@
                     </tr>
                     <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <!-- <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/> -->
                         </div>
                     </div>
                     @endforeach
@@ -90,8 +93,8 @@
     </div>
     <!-- ./main content card -->
      
-    <add-bookmarker-component/>
- 
+    <!-- <add-bookmarker-component/> -->
+    <upload-bookmarker-component/>
 </div>
 @endsection
 
