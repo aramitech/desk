@@ -89,6 +89,7 @@ data() {
 
         company_names: [],
         fields: {
+            company_id:'',
             license_no:"",
             trading_name:'',
             licensee_name:'',
@@ -120,6 +121,7 @@ methods: {
         this.fields.license_no=this.value.license_no;
         this.fields.trading_name=this.value.trading_name;
         this.fields.licensee_name=this.value.company_name
+        this.fields.company_id=this.value.company_id
     },
    
      },

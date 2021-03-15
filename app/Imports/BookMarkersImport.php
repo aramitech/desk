@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+
 class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
 {
     use Importable;
@@ -30,28 +31,32 @@ class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, Wi
         $this->license_no = $license_no;
         $this->trading_name = $trading_name;
     }
+    
     //insert to db
     public function model(array $row)
     {
         try
         {
             \Log::info($row);
-            \Log::info($licensee_name);
-            $wht = 0.2*$row['total_payout'];
-            $ggr = $row['total_sales']-$row['total_payout'];
+            $wht = 0.2*$row['total_payout'] ?? $row['total_payouts'];
+            $ggr = $row['total_sales'] ?? $row['total_sale']-$row['total_payout'] ?? $row['total_payouts'];
             $ggrtax = 0.15*$ggr;
             BookMarkers::create([
                 'licensee_name'=> $this->licensee_name,
                 'license_no'=> $this->license_no,
-                'date' => $row['date'],
-                'deposits' => $row['deposits'],
-                'total_sales' => $row['total_sales'],
-                'total_payout' => $row['total_payout'],
+                'date' => $row[''],
+                'total_sales' => $row['total_sales'] ?? $row['total_sale'],
+                'total_payout' => $row['total_payout'] ?? $row['total_payouts'],
                 'wht' => $wht,
+                'return_for_the_period_of' => now(),
+                'return_for_the_period_to' => now(),
+                'branch' => 'N/A',
+                'deposits' => '0',
+                'bets_no' => '0',
                 'ggr' => $ggr,
                 'winloss' => $ggr,
             ]);
-            return redirect()->back()->with('success',"Bookmarkers Uploaded Succesfully" );
+            
         }
         catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
@@ -75,6 +80,10 @@ class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, Wi
         return [
             
         ];
+    }
+    public function headingRow(): int
+    {
+        return 3;
     }
     public function batchSize(): int
     {

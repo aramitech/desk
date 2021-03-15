@@ -112,7 +112,7 @@ class BookMarkersController extends Controller
         }
         $path = $request->file;
       
-        Excel::import(new BookMarkersImport($company_id,$licensee_name,$license_no,$trading_name), $path);
+        Excel::import(new BookMarkersImport($request->company_id,$request->licensee_name,$request->license_no,$request->trading_name), $path);
 
         return response()->json('Success',200);
     }

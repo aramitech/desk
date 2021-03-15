@@ -2396,6 +2396,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
       redirect: '',
       company_names: [],
       fields: {
+        company_id: '',
         license_no: "",
         trading_name: '',
         licensee_name: '',
@@ -2423,6 +2424,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
       this.fields.license_no = this.value.license_no;
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
+      this.fields.company_id = this.value.company_id;
     }
   },
   created: function created() {
