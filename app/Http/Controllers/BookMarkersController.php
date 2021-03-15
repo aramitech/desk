@@ -91,7 +91,7 @@ class BookMarkersController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Added succesfully');
@@ -99,7 +99,8 @@ class BookMarkersController extends Controller
 
     public function upload(Request $request)
     {
-        
+       // return 'jjjjjjj';
+        //$user->company_id = $request->company_id['company_id'];
         $request->validate([
             'file' => 'required',
         ]);
@@ -110,6 +111,7 @@ class BookMarkersController extends Controller
             return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
         }
         $path = $request->file;
+      
         Excel::import(new BookMarkersImport($company_id,$licensee_name,$license_no,$trading_name), $path);
 
         return response()->json('Success',200);
@@ -164,7 +166,7 @@ class BookMarkersController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
         return back()->with('success','Updated succesfully');
     }
@@ -183,7 +185,7 @@ class BookMarkersController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Deleted succesfully');

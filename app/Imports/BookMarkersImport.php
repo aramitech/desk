@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
-class ClientsImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
 {
     use Importable;
     /**

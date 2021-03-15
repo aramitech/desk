@@ -71,7 +71,7 @@ class PublicgamingsController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Added succesfully');
@@ -105,7 +105,7 @@ class PublicgamingsController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Updated succesfully');
@@ -125,7 +125,7 @@ class PublicgamingsController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->user_id = Auth::user()->id;  
+        $userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Deleted succesfully');
