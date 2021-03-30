@@ -69,7 +69,7 @@
 								<img src="vendors/images/deskapp-logo.png" alt="">
 							</div>
 						</div>
-						<h4 class="text-center mb-30 weight-600">COMPANY LETTER HEAD</h4>
+						<!-- <h4 class="text-center mb-30 weight-600">COMPANY LETTER HEAD</h4> -->
                         <h4 class="text-center mb-30 weight-600">PUBLIC LOTTERY RETURNS FORM</h4>
 						@foreach($bcompanies as $bcompany)
                         <div class="row pb-30">   
@@ -145,9 +145,9 @@
             </table>        @endforeach 
 							<div class="invoice-desc-footer">
 								<div class="invoice-desc-head clearfix">
-									<div class="invoice-sub">ATTENDANT / CLERK....</div>
+									<!-- <div class="invoice-sub">ATTENDANT / CLERK....</div> -->
 									<div class="invoice-rate"></div>
-									<div class="invoice-sub">MANAGER/ SUPERVISOR.................</div>
+									<!-- <div class="invoice-sub">MANAGER/ SUPERVISOR.................</div> -->
 								</div>
 								<div class="invoice-desc-body">
 									<ul>

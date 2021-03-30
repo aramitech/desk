@@ -110,7 +110,7 @@ width: 20%;
 
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
-<h3 align="center">COMPANY LETTER HEAD</h3>
+<!-- <h3 align="center">COMPANY LETTER HEAD</h3> -->
 <h3 align="center">PUBLIC LOTTERY RETURNS FORM</h3>
 <img style="width: 180px;" src="" alt="">
 <div style="width: 100%; clear: both;">
@@ -192,10 +192,10 @@ width: 20%;
 @endforeach
 <table>
     <tr style="text-align:left">
-        <th align="left"><h4><b>ATTENDANT / CLERK.....................</b> ......</h4>
+        <!-- <th align="left"><h4><b>ATTENDANT / CLERK.....................</b> ......</h4> -->
         </th>
         <th align="left">
-        <h4>MANAGER/ SUPERVISOR ........................</h4>
+        <!-- <h4>MANAGER/ SUPERVISOR ........................</h4> -->
         </th>
     </tr>
     <tr>

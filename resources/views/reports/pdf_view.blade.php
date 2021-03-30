@@ -110,7 +110,7 @@ width: 20%;
 
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
-<h3 align="center">COMPANY LETTER HEAD</h3>
+<!-- <h3 align="center">COMPANY LETTER HEAD</h3> -->
 <h3 align="center">BOOKMARKERS RETURN FORM</h3>
 <img style="width: 180px;" src="" alt="">
 <div style="width: 100%; clear: both;">
