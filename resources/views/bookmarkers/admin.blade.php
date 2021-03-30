@@ -20,13 +20,14 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
+                    <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
                         Add BookMarkers
-                    </a>&nbsp;
+                    </a>&nbsp; -->
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
                         Upload BookMarkers
                     </a>
                 </div>
+           
             </div>
         </div>
     </div>
@@ -38,17 +39,16 @@
     <h2 class="h4 pd-20">BookMarkers List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+        <table class="table table stripe hover nowrap  data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>License No</th>
-                        <th>From</th>
-                        <th>To</th>
+                 
                         <th>Branch</th>
                         <th>Date</th>
                         <th>Bets No</th>
-                        <th>Date</th>  <th>Action</th><th></th>
+                        <th>Date</th>  <th>Action</th>
                         <th class="datatable-nosort"></th>
                     </tr>
                 </thead>
@@ -57,8 +57,7 @@
                     <tr>
                         <td>{{ $bookmarker->bookmarker_id }}</td>
                         <td>{{ $bookmarker->license_no }}</td>
-                        <td>{{ $bookmarker->return_for_the_period_of }}</td>
-                        <td>{{ $bookmarker->return_for_the_period_to }}</td>
+                      
                         <td>{{ $bookmarker->branch }}</td>
                         <td>{{ $bookmarker->date }}</td>
                         <td>{{ $bookmarker->bets_no }}</td>
@@ -83,7 +82,7 @@
                     </tr>
                     <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <!-- <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/> -->
+                          <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
                     @endforeach

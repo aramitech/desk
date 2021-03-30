@@ -32,7 +32,7 @@ class PublicLottery extends Model
      return $this->belongsTo(Organization::class,'organization_id');
  }
 
- public function publicLotterycompany()
+ public function publicLotterycompany()  
  {
      return $this->belongsTo(BookmarkersCompany::class,'company_id');
  }

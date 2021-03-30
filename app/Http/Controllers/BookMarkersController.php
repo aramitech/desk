@@ -99,7 +99,8 @@ class BookMarkersController extends Controller
 
     public function upload(Request $request)
     {
-       // return 'jjjjjjj';
+       // return $request->company_id;
+       // exit();
         //$user->company_id = $request->company_id['company_id'];
         $request->validate([
             'file' => 'required',
@@ -157,17 +158,11 @@ class BookMarkersController extends Controller
         $user->ggr = $request->ggr;
         $user->save();
 
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
-        //log
-        $userLog = new AuditLog();
-        $userLog->audit_module = "User";
-        $userLog->audit_activity = "Updated Bookmarkers Entry For Licence Name:".$request->licensee_name;
-       
-        $userLog->user_category = "User";
-       // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
-        $userLog->save();
+       // $id=Auth::user()->id;
+    //    $userLog->user_category = "User";
+    //    // $userLog->audit_log_id = $id;
+    //     $userLog->id = Auth::user()->id;  
+    //     $userLog->save();
         return back()->with('success','Updated succesfully');
     }
 

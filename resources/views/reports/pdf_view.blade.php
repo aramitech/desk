@@ -128,12 +128,12 @@ width: 20%;
     <tr style="text-align:left">
         <th align="left"><h4><b>NAME OF LICENSEE</b> : {{ $bcompany->company_name}}</h4>
         <h4>LICENSEE NO: <strong class="weight-600">{{ $bcompany->license_no}}</strong></h4>
-        <h4>RETURN FOR THE PERIOD OF: <strong class="weight-600">{{ request()->from ?? '....'}}</strong></h4>
+        <h4>RETURN FOR THE PERIOD OF: <strong class="weight-600">{{ $from }}</strong></h4>
         </th>
         <th align="left">
         <h4>BRANCH :  {{ $bcompany->branch}}</h4>
         <h4>DATE :  {{ date('Y-m-d H:i:s') }}<h4>
-        <h4>TO : {{ request()->to ?? '....'}}</h4>
+        <h4>TO : {{ $to }}</h4>
         </th>
     </tr>
 </table>

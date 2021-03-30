@@ -4,7 +4,7 @@
             <h4 class="modal-title" id="myLargeModalLabel">Edit Public Lottery</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
-          <form method="POST" @submit.prevent="submit">
+                <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                         <div class="form-group row">
                       
@@ -43,41 +43,89 @@
                             <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
 						</div></div>
             <div class="form-group row">     
-                          <div class="col-md-6">
+                          <div class="col-md-4">
 							<label>Date</label>
 							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
                                     
-                           <div class="col-md-6">
+                           <div class="col-md-4">
 							<label>Sales</label>
 							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
-                           </div>
-          <div class="form-group row">              
-                        <div class="col-md-6">
+                         <div class="col-md-4">
 							<label>Payouts</label>
 							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
-                           <div class="col-md-6">
+                           </div>
+          <div class="form-group row">              
+                       
+                           <div class="col-md-4">
 							<label>WHT</label>
 							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>          
-                           <div class="col-md-6">
+                           <div class="col-md-4">
 							<label>GGR</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
-                         <div class="col-md-6">
+                         <div class="col-md-4">
 							<label>GGR TAX</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrtax" v-model="fields.ggrtax" value="" type="text"  placeholder="GGR TAX" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                         </div>
                         
+
+
+
+
+
+
+ 
+                         
+          <div class="form-group row">  
+
+ <div class="col-md-4">
+							<label>Sales Slot</label>
+							<input class="form-control" @keyup="sum"  name="salesslot" v-model="fields.salesslot" value="" type="text" placeholder="Sales slot" required>
+                            <div v-if="errors && errors.salesslot" class="text-danger">{{ errors.salesslot[0] }}</div>
+						</div>
+
+
+                        <div class="col-md-4">
+							<label>Payouts Slot</label>
+							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot" value="" type="text" placeholder="Payouts slot" required>
+                            <div v-if="errors && errors.payoutsslot" class="text-danger">{{ errors.payoutsslot[0] }}</div>
+						</div>
+                           <div class="col-md-4">
+							<label>WHT Slot</label>
+							<input class="form-control" :disabled="validated ? false : true" name="whtslot" v-model="fields.whtslot" value="" type="text" placeholder="WHT Slot" required>
+                            <div v-if="errors && errors.whtslot" class="text-danger">{{ errors.whtslot[0] }}</div>
+						</div>          
+                           <div class="col-md-4">
+							<label>GGR Slot</label>
+							<input class="form-control" :disabled="validated ? false : true" name="ggrslot" v-model="fields.ggrslot" value="" type="text" placeholder="GGR slot" required>
+                            <div v-if="errors && errors.ggrslot" class="text-danger">{{ errors.ggrslot[0] }}</div>
+						</div>
+                         <div class="col-md-4">
+							<label>GGR TAX Slot</label>
+							<input class="form-control" :disabled="validated ? false : true" name="ggrtaxslot" v-model="fields.ggrtaxslot" value="" type="text"  placeholder="GGR TAX slot" required>
+                            <div v-if="errors && errors.ggrtaxslot" class="text-danger">{{ errors.ggrtaxslot[0] }}</div>
+						</div>
+                        </div>  
+
+
+
+
+
+
+
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -119,6 +167,12 @@ data() {
                 ggr:this.publicgamingerdata.ggr,
                  wht:this.publicgamingerdata.wht,
                    ggrtax:this.publicgamingerdata.ggrtax,
+                   
+     salesslot:this.publicgamingerdata.salesslot,
+                          payoutsslot:this.publicgamingerdata.payoutsslot,
+                ggrslot:this.publicgamingerdata.ggrslot,
+                 whtslot:this.publicgamingerdata.whtslot,
+                   ggrtaxslot:this.publicgamingerdata.ggrtaxslot,
              
        }
         }
@@ -168,6 +222,13 @@ methods: {
                  this.fields.ggr=this.publicgamingerdata.ggr;
                  this.fields.wht=this.publicgamingerdata.wht;
                   this.fields.ggrtax=this.publicgamingerdata.ggrtax;
+   this.fields.salesslot=this.publicgamingerdata.salesslot;
+     this.fields.payoutsslot=this.publicgamingerdata.payoutsslot;
+                this.fields.whtslot=this.publicgamingerdata.whtslot;
+                 this.fields.ggrslot=this.publicgamingerdata.ggrslot;
+                 this.fields.whtslot=this.publicgamingerdata.whtslot;
+                  this.fields.ggrtaxslot=this.publicgamingerdata.ggrtaxslot;
+                  
    }
 }
 </script>

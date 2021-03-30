@@ -124,6 +124,18 @@ class ReportsController extends Controller
         return view('reports.bookmarkers', compact('bookmarkers','bcompanies','id'));
     }
 
+    public function bookmarkersAllreport($id)
+    {
+
+         $company_name=BookmarkersCompany::all('company_name');
+        $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
+    
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::where('bookmarker_id','!=',NULL))->get();
+        return view('reports.bookmarkers', compact('bookmarkers','bcompanies','id'));
+    }
+
+
 
 
     public function reportsview_publiclottery($id)
@@ -154,10 +166,11 @@ class ReportsController extends Controller
         // retreive all records from db
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
         $bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
-  
+        $from= request()->get('from');
+        $to= request()->get('to');
         // share data to view
         // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);
-        $pdf = PDF::loadView('reports.pdf_view', compact('bcompanies','bookmarkers','id'));
+        $pdf = PDF::loadView('reports.pdf_view', compact('bcompanies','bookmarkers','id','from','to'));
   
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');

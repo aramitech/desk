@@ -135,6 +135,7 @@ data() {
                 ggr:this.publiclotteryerdata.ggr,
                  wht:this.publiclotteryerdata.wht,  
                total_payout:this.publiclotteryerdata.total_payout, 
+               company_id:this.publiclotteryerdata.publicLotterycompany,
        }
         }
     },
@@ -144,7 +145,7 @@ methods: {
            axios.get('/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;
-         
+          console.log(this.company_names)
         }.bind(this));
          console.log(response, 'kkkkk')
       },
@@ -183,6 +184,7 @@ methods: {
                  this.fields.ggr=this.publiclotteryerdata.ggr;   
                  this.fields.wht=this.publiclotteryerdata.wht;
                  this.fields.total_payout=this.publiclotteryerdata.total_payout;
+                 console.log(this.publicLotterycompany)
    }
 }
 </script>

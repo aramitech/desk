@@ -8,6 +8,10 @@ use App\Models\BookmarkersCompany;
 use App\Models\AuditLog;
 use Illuminate\Http\Request;
 use Auth;
+use App\Imports\PublicgamingsImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 class PublicgamingsController extends Controller
 {
     /**
@@ -60,6 +64,13 @@ class PublicgamingsController extends Controller
         $user->ggr = $request->ggr;
         $user->ggrtax = $request->ggrtax;
         $user->id = Auth::user()->id;
+
+        $user->salesslot = $request->salesslot;
+        $user->payoutsslot = $request->payoutsslot;
+        $user->whtslot = $request->whtslot;
+        $user->ggrslot = $request->ggrslot;
+        $user->ggrtaxslot = $request->ggrtaxslot;
+
         $user->save();
 
         $id=Auth::user()->id;
@@ -78,6 +89,32 @@ class PublicgamingsController extends Controller
     }
 
 
+
+    public function upload(Request $request)
+    {
+       // return $request->company_id;
+       // exit();
+        //$user->company_id = $request->company_id['company_id'];
+        $request->validate([
+            'file' => 'required',
+        ]);
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw","csv");
+        $result = array($request->file('file')->getClientOriginalExtension());
+        
+        if(!in_array($result[0],$extensions)){
+            return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
+        }
+        $path = $request->file;
+      
+        Excel::import(new PublicgamingsImport($request->company_id,$request->licensee_name,$request->license_no,$request->trading_name), $path);
+
+        return response()->json('Success',200);
+    }
+
+
+
+
+
     public function update(Request $request)
     {
         $request->validate([
@@ -93,6 +130,12 @@ class PublicgamingsController extends Controller
         $user->payouts = $request->payouts;
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
+
+        $user->salesslot = $request->salesslot;
+        $user->payoutsslot = $request->payoutsslot;
+        $user->whtslot = $request->whtslot;
+        $user->ggrslot = $request->ggrslot;
+        $user->ggrtaxslot = $request->ggrtaxslot;
         $user->save();
 
 

@@ -115,6 +115,39 @@
 								</ul>
 							</li>
 				
+
+                            <li class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle">
+									<span class="micon fa fa-plug"></span><span class="mtext">All Rec</span>
+								</a>
+								<ul class="submenu child">
+								
+                                <li class="dropdown">
+                            <a href="{{ route('reports.publicgamingGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publicgamingGGr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming GGR</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('reports.publiclotteryGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publiclotteryGGr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery GGR</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('reports.company-ggr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.company-ggr*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="graph">Bookmarkers GGR</span>
+                                </a>
+                            </li>
+
+                     	
+                                
+
+								</ul>
+							</li>
+
+
+
 						</ul>
 					</li>
 

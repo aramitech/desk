@@ -48,7 +48,7 @@
 						</div>
                         
                                                  <div class="col-md-6">
-            <label for="category_type_id"> Category</label>        
+            <label for="category_type_id"> Categoryhhhhh</label>        
             <multiselect  name="category_type_id" v-model="fields.category_type_id"   label="categorytype" placeholder="Select Category name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
             </multiselect>
@@ -85,13 +85,13 @@ export default {
   props: [ 'bookmarkerdata' ],
 data() {
     return {
-        action: '/company/updateBookmarkersCompany', //edit action
+        action: '/company/update', //edit action
         text: 'Updated Succesfully',
         redirect: '/company/bookmarkers',
          company_names:[],
         fields: {
             company_id:this.bookmarkerdata.company_id,
-            category_type_id:this.bookmarkerdata.category_type_id,
+           // category_type_id:this.bookmarkerdata.category_type_id,
             company_name:this.bookmarkerdata.company_name,
             trading_name:this.bookmarkerdata.trading_name,
             license_no:this.bookmarkerdata.license_no,
@@ -101,7 +101,7 @@ data() {
             branch:this.bookmarkerdata.branch,
              paybillno:this.bookmarkerdata.paybillno,
             categorytype:this.bookmarkerdata.categorytype,
-
+            category_type_id:this.bookmarkerdata.CompanyCategoryType,
              
         }
         }

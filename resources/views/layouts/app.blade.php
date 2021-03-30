@@ -35,9 +35,18 @@
 	<div class="login-header box-shadow">
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="brand-logo">
-				<a href="/">
+				<!-- <a href="/">
 					<img src="vendors/images/favicon-32x32.png" alt="{{ config('app.name')}}">
-				</a>
+				</a> -->
+				<style>
+	p {
+  color: navy;
+  text-indent: 30px;
+  text-transform: uppercase;
+}
+</style>
+            <h1><p> BCLB (BETTNG CONTROL AND LICENCING BOARD)</p></h1>
+
 			</div>
 			<div class="login-menu">
 				<ul>

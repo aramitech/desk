@@ -9,19 +9,19 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
-                    <h4>categorytypes</h4>
+                    <h4>Category Types</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">categorytypes</li>
+                        <li class="breadcrumb-item active" aria-current="page">Category Types</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcategorytype" type="button">
-                        Add categorytype
+                        Add Category Type
                     </a>
                 </div>
             </div>
@@ -32,7 +32,7 @@
     <div class="card-box mb-30">
     @include('layouts.messages')
     @include('layouts.errors')
-    <h2 class="h4 pd-20">categorytypes List</h2>
+    <h2 class="h4 pd-20">Category Types List</h2>
         <div class="pb-20">
             <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
                 <thead>

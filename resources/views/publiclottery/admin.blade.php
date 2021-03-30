@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button">
-                        Add Public Lottery
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button">
+                        Upload Public Lottery
                     </a>
                 </div>
             </div>
@@ -35,30 +35,32 @@
     <h2 class="h4 pd-20">Public Lottery List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+        <table class="table hover  data-table-export nowrap">
                 <thead>
                     <tr>
-                        <th class="table-plus">#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Date</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Date</th>
-                        <th>Date</th>
+                    <th class="table-plus">#</th>
+                        <th>License No</th>
+                        <th>Toal Tickets</th>
+                        <th>Sales</th>
+                        <th>Payouts</th>
+                        <th>GGR</th>
+                        <th>WHT</th>
+                        {{--  <th>Date</th> --}}
                         <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($publiclotteries as $publiclottery)
                     <tr>
-                        <td>{{ $publiclottery->publiclottery_id }}</td>
-                        <td>{{ $publiclottery->company_name }}</td>
-                        <td>{{ $publiclottery->return_for_of }}</td>
-                        <td>{{ $publiclottery->return_to }}</td>
-                        <td>{{ $publiclottery->date }}</td>
-                        <td>{{ $publiclottery->total_tickets_sold }}</td>
-                        <td>{{ $publiclottery->created_at->format("y-M-d") }}</td>
+                    <td>{{ $publiclottery->publiclottery_id }}</td>
+                        {{-- <td>{{ $publiclottery->publicLotterycompany->company_name }}</td>  --}}
+                        <td>{{ $publiclottery->license_no }}</td> 
+                        <td>{{ $publiclottery->total_tickets_sold }}</td> 
+                        <td>{{ $publiclottery->sales }}</td>
+                        <td>{{ $publiclottery->payouts }}</td>
+                        <td>{{ $publiclottery->ggr }}</td>
+                        <td>{{ $publiclottery->wht }}</td>
+                        {{--   <td>{{ $publiclottery->created_at->format("y-M-d") }}</td> --}}
 
 
                         <td>
@@ -73,25 +75,34 @@
 
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpubliclottery{{$publiclottery->publiclottery_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
                                  
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publiclotterydelete',{{$publiclottery}})"><i class="dw dw-delete-3"></i> Delete</button>
                    
-                              
+                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publiclotterydelete',{{$publiclottery}})"><i class="dw dw-delete-3"></i> Delete</button>
+
                                 <!-- </div> -->
                             </div>
-                            </td>  <td></td>
+                            </td>  
                     </tr>
                     <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publiclottery-component :publiclotteryerdata="{{ json_encode($publiclottery)}}"/>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="viewpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <view-publiclottery-component :publiclotteryerdata="{{ json_encode($publiclottery)}}"/>
+                        </div>
+                    </div>
+
+
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <!-- ./main content card -->
-    <add-publiclottery-component/>
+    <!-- <add-publiclottery-component/> -->
+    <upload-publiclottery-component/>
 </div>
 @endsection
 

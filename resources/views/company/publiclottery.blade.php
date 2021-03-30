@@ -34,7 +34,7 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Public Lottery Company List</h2>
         <div class="pb-20">
-        <table class="table hover multiple-select-row data-table-export nowrap">
+        <table class="table hover  data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>

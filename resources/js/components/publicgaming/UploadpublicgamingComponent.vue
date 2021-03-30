@@ -1,9 +1,9 @@
 <template>
-    <div class="modal fade" id="uploadbookmarkers" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="uploadpublicgaming" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Upload Bookmarkers</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Upload Public Gaming</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form method="POST" @submit.prevent="formSubmit" enctype="multipart/form-data">
@@ -11,9 +11,9 @@
                           <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="company_id"> Licensee Name</label>        
-                             <multiselect  name="company_id" track-by="company_id" v-model="fields.company"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+                         <multiselect  name="company_id" v-model="fields.company"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
-                     </multiselect>
+                         </multiselect>
             <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
        
                             </div> 
@@ -83,7 +83,7 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/bookmarkers/upload', //save action
+        action: '/publicgaming/upload', //save action
         text: 'Uploaded Succesfully',
         redirect: '',
 
@@ -101,7 +101,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));
@@ -122,7 +122,6 @@ methods: {
         this.fields.trading_name=this.value.trading_name;
         this.fields.licensee_name=this.value.company_name
         this.fields.company_id=this.value.company_id
-        
     },
    
      },

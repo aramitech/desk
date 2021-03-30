@@ -18,7 +18,7 @@ class AdminBookMarkersController extends Controller
         // $Authdelete = Auth::user()->deletestatus;
         // $Authedit = Auth::user()->editstatus;
         
-        $bookmarkers = BookMarkers::all();
+        $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
         return view('bookmarkers.admin', compact('bookmarkers'));
     }
 

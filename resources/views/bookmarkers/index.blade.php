@@ -40,11 +40,12 @@
                     <tr>
                         <th class="table-plus">#</th>
                         <th>License No</th>
-                        <th>From</th>
-                        <th>To</th>
+            
                         <th>Branch</th>
                         <th>Date</th>
                         <th>Bets No</th>
+                        <th>Total Sales </th>
+                        <th>GGR </th>
                      <th>Action</th>
                         <th class="datatable-nosort"></th>
                     </tr>
@@ -54,13 +55,12 @@
                     <tr>
                         <td>{{ $bookmarker->bookmarker_id }}</td>
                         <td>{{ $bookmarker->license_no }}</td>
-                        <td>{{ $bookmarker->return_for_the_period_of }}</td>
-                        <td>{{ $bookmarker->return_for_the_period_to }}</td>
+              
                         <td>{{ $bookmarker->branch }}</td>
                         <td>{{ $bookmarker->date }}</td>
                         <td>{{ $bookmarker->bets_no }}</td>
-                     
-                        
+                        <td>{{ $bookmarker->total_sales }}</td>
+                        <td>{{ $bookmarker->ggr }}</td>
                         <td>
                             <div class="dropdown">
                                 <!-- <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">

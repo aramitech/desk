@@ -17,7 +17,7 @@ class CategoryTypes extends Model
     ];  
 
      //Category Type<>Company relationship
- public function CategoryTypeCompany()
+ public function CompanyCategoryType()
  {
      return $this->belongsTo(BookmarkersCompany::class,'company_id');
  }

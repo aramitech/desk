@@ -35,17 +35,17 @@
     <h2 class="h4 pd-20">Public Lottery List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+        <table class="table hover  data-table-export nowrap">
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>Company Name</th>
+                        <th>License No</th>
                         <th>Toal Tickets</th>
                         <th>Sales</th>
                         <th>Payouts</th>
                         <th>GGR</th>
                         <th>WHT</th>
-                        <th>Date</th>
+                        {{--  <th>Date</th> --}}
                         <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
@@ -53,13 +53,14 @@
                 @foreach($publiclotteries as $publiclottery)
                     <tr>
                         <td>{{ $publiclottery->publiclottery_id }}</td>
-                        <td>{{ $publiclottery->company_name }}</td> 
+                        {{-- <td>{{ $publiclottery->publicLotterycompany->company_name }}</td>  --}}
+                        <td>{{ $publiclottery->license_no }}</td> 
                         <td>{{ $publiclottery->total_tickets_sold }}</td> 
                         <td>{{ $publiclottery->sales }}</td>
                         <td>{{ $publiclottery->payouts }}</td>
                         <td>{{ $publiclottery->ggr }}</td>
                         <td>{{ $publiclottery->wht }}</td>
-                        <td>{{ $publiclottery->created_at->format("y-M-d") }}</td>
+                        {{--   <td>{{ $publiclottery->created_at->format("y-M-d") }}</td> --}}
 
 
                         <td>
@@ -85,7 +86,7 @@
                               
                                 <!-- </div> -->
                             </div>
-                            </td>  <td></td>
+                            </td>  
                     </tr>
                     <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

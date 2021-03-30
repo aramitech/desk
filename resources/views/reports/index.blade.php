@@ -19,9 +19,9 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-12 text-right">
-                <div>   @foreach($bookmarkers as $bookmarker)
-                <a href="{{route('reportsview', $bookmarker->company_id)}}" class="btn btn-info btn-xs" role="button">View All</a> 
-                @endforeach  </div>
+                <div>   
+                <a href="{{route('bookmarkersAllreport', $bookmarkers[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All</a> 
+     </div>
             </div>
         </div>
     </div>

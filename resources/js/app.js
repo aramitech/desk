@@ -31,6 +31,9 @@ Vue.component('add-bookmarker-component', require('./components/bookmarker/AddBo
 Vue.component('upload-bookmarker-component', require('./components/bookmarker/UploadBookmarkerComponent.vue').default);
 Vue.component('add-publiclottery-component', require('./components/publiclottery/AddPublicLotteryComponent.vue').default);
 Vue.component('add-publicgaming-component', require('./components/publicgaming/AddpublicgamingComponent.vue').default);
+Vue.component('upload-publicgaming-component', require('./components/publicgaming/UploadpublicgamingComponent.vue').default);
+
+
 Vue.component('add-adminuser-component', require('./components/adminuser/AddAdminuserComponent.vue').default);
 
 
@@ -40,6 +43,9 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('edit-bookmarker-component', require('./components/bookmarker/EditBookmarkerComponent.vue').default);
  Vue.component('edit-publiclottery-component', require('./components/publiclottery/EditPubliclotteryComponent.vue').default);
  Vue.component('view-publiclottery-component', require('./components/publiclottery/ViewPubliclotteryComponent.vue').default);
+ Vue.component('upload-publiclottery-component', require('./components/publiclottery/UploadPubliclotteryComponent.vue').default);
+
+
  Vue.component('view-bookmarker-component', require('./components/bookmarker/ViewBookmarkerComponent.vue').default);
  Vue.component('add-categorytype-component', require('./components/categorytypes/AddCategoryTypeComponent.vue').default);
  Vue.component('edit-bookmarkercompany-component', require('./components/company/EditBookmarkercompanyComponent.vue').default);

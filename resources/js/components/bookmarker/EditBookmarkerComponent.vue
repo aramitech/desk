@@ -120,7 +120,7 @@ data() {
     return {
         action: '/bookmarkers/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/bookmarkers',
+        redirect: '',
 
  company_names: [],
 
@@ -147,6 +147,8 @@ data() {
                  winloss:this.bookmarkerdata.winloss,
                   ggr:this.bookmarkerdata.ggr,
                     trading_name:this.bookmarkerdata.trading_name, 
+                     company_id:this.bookmarkerdata.bookmarkerscompany,
+                        
        }
         }
     },
@@ -156,6 +158,7 @@ data() {
         axios.get('/license_name/get')
         .then(function(response){
           this.company_names = response.data;
+           console.log(this.company_names)
         }.bind(this));
       },
 
@@ -198,7 +201,7 @@ onChange (value) {
                  this.fields.winloss=this.bookmarkerdata.winloss;
                  this.fields.ggr=this.bookmarkerdata.ggr;
                  this.fields.trading_name=this.bookmarkerdata.trading_name;
-                 
+                
    }
 }
 </script>

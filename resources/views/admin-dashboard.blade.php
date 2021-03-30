@@ -63,9 +63,9 @@
         <div class="bg-white pd-20 card-box mb-30">
         @section('content')
     <div class="card-box mb-30">
-        <h2 class="h4 pd-20">Best Gaming </h2>
+        <h2 class="h4 pd-20">Bookmarkers  </h2>
             <div id="companyggrchart">
-                {{-- {!! $companyggrchart->container() !!} --}}
+             {!! $companyggrchart->container() !!} 
             </div>
     </div>
 @endsection

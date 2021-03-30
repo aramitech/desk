@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button">
-                        Add Public Gaming
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
+                        Upload Public Gaming
                     </a>
                 </div>
             </div>
@@ -35,30 +35,30 @@
     <h2 class="h4 pd-20">Public Gaming List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
+        <table class="table table stripe hover nowrap data-table-export nowrap">
                 <thead>
                     <tr>
-                        <th class="table-plus">#</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                    <th class="table-plus">#</th>
                         <th>Date</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>sales</th>
+                        <th>payouts</th>
+                        <th>WHT</th>
+                        <th>GGR</th>
                         <th>Date</th>
                         <th>Date</th>
                         <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($publiclotteries as $publiclottery)
+                @foreach($publicgamings as $publicgaming)
                     <tr>
-                        <td>{{ $publiclottery->publiclottery_id }}</td>
-                        <td>{{ $publiclottery->company_name }}</td>
-                        <td>{{ $publiclottery->return_for_of }}</td>
-                        <td>{{ $publiclottery->return_to }}</td>
-                        <td>{{ $publiclottery->date }}</td>
-                        <td>{{ $publiclottery->total_tickets_sold }}</td>
-                        <td>{{ $publiclottery->created_at->format("y-M-d") }}</td>
+                        <td>{{ $publicgaming->publicgaming_id }}</td>
+                        <td>{{ $publicgaming->date }}</td>
+                        <td>{{ $publicgaming->sales }}</td>
+                        <td>{{ $publicgaming->payouts }}</td>
+                        <td>{{ $publicgaming->wht }}</td>
+                        <td>{{ $publicgaming->ggr }}</td>
+                        <td>{{ $publicgaming->created_at->format("y-M-d") }}</td>
 
 
                         <td>
@@ -69,18 +69,18 @@
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
                                  
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpubliclottery{{$publiclottery->publiclottery_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpubliclottery{{$publicgaming->publiclottery_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
                                   
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publiclotterydelete',{{$publiclottery}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publiclotterydelete',{{$publicgaming}})"><i class="dw dw-delete-3"></i> Delete</button>
                               
                                 
                                 <!-- </div> -->
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpubliclottery{{$publicgaming->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-publiclottery-component :publiclotteryerdata="{{ json_encode($publiclottery)}}"/>
+                            <edit-publiclottery-component :publiclotteryerdata="{{ json_encode($publicgaming)}}"/>
                         </div>
                     </div>
                     @endforeach
@@ -89,7 +89,9 @@
         </div>
     </div>
     <!-- ./main content card -->
-    <add-publicgaming-component/>
+    <!-- <add-publicgaming-component/> --> 
+    
+     <upload-publicgaming-component/>
 </div>
 @endsection
 

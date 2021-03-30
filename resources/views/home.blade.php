@@ -47,11 +47,11 @@
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="progress-data">
-                        <div id="chart4"></div>
+                        <!-- <div id="chart4"></div> -->
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">Ksh 6060</div>
-                        <div class="weight-600 font-14">Deposits</div>
+                        <div class="h4 mb-0"></div>
+                        <div class="weight-600 font-14"></div>
                     </div>
                 </div>
             </div>

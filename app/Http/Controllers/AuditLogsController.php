@@ -6,6 +6,7 @@ use App\Models\AuditLog;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
+use EloquentBuilder;
 class AuditLogsController extends Controller
 {
     /**
@@ -17,6 +18,8 @@ class AuditLogsController extends Controller
     {
         //
         $auditLogs = AuditLog::with('userlogs')->get();
+        //$auditLogs = EloquentBuilder::to(AuditLog::all())->get();
+
       //  $auditLogs = AuditLog::all()->with('userlogs')->get();
       //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();
 

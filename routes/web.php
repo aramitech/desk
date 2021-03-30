@@ -46,7 +46,7 @@ Route::get('/super-admin/dashboard', [App\Http\Controllers\SuperAdminController:
 
 Route::get('/company', [App\Http\Controllers\CompanyController::class, 'index'])->name('company');
 Route::post('/company/add', [App\Http\Controllers\CompanyController::class, 'store'])->name('company.add');
-Route::post('/company/update', [App\Http\Controllers\CompanyController::class, 'update'])->name('company.update');
+Route::post('/company/update', [App\Http\Controllers\CompanyController::class, 'updateBookmarkersCompany'])->name('company.update');
 Route::post('/company/delete', [App\Http\Controllers\CompanyController::class, 'destroy'])->name('company.delete');
 Route::get('/company/bookmarkers', [App\Http\Controllers\CompanyController::class, 'bookmarkers'])->name('company.bookmarkers');
 Route::post('/company/addbookmarkers', [App\Http\Controllers\CompanyController::class, 'addbookmarkers']);
@@ -56,7 +56,7 @@ Route::post('/company/addpublicgaming', [App\Http\Controllers\CompanyController:
 Route::post('/company/delete_destroybookmarkerscompany', [App\Http\Controllers\CompanyController::class, 'destroybookmarkerscompany'])->name('company.delete_destroybookmarkerscompany');
 Route::post('/company/delete_destroypublicgamingcompany', [App\Http\Controllers\CompanyController::class, 'destroypublicgamingcompany'])->name('company.delete_destroypublicgamingcompany');
 Route::post('/company/delete_destroypubliclottery', [App\Http\Controllers\CompanyController::class, 'destroypubliclottery'])->name('company.delete_destroypubliclottery');
-
+//company/updateBookmarkersCompany
 
 Route::get('/bookmarkers', [App\Http\Controllers\BookMarkersController::class, 'index'])->name('bookmarkers');
 Route::post('/bookmarkers/add', [App\Http\Controllers\BookMarkersController::class, 'store'])->name('bookmarkers.add');
@@ -79,12 +79,14 @@ Route::post('/publiclottery/add', [App\Http\Controllers\PublicLotteryController:
 Route::post('/publiclottery/update', [App\Http\Controllers\PublicLotteryController::class, 'update'])->name('publiclottery.update');
 Route::post('/publiclottery/delete', [App\Http\Controllers\PublicLotteryController::class, 'destroy'])->name('publiclottery.delete');
 Route::get('/publiclottery_license_name/get',[App\Http\Controllers\PublicLotteryController::class, 'getLicenseeName']);
+Route::post('/publiclottery/upload', [App\Http\Controllers\PublicLotteryController::class, 'upload'])->name('publiclottery.upload');
 
 Route::get('/publicgaming', [App\Http\Controllers\PublicgamingsController::class, 'index'])->name('publicgaming');
 Route::post('/publicgaming/add', [App\Http\Controllers\PublicgamingsController::class, 'store'])->name('publicgaming.add');
 Route::post('/publicgaming/update', [App\Http\Controllers\PublicgamingsController::class, 'update'])->name('publicgaming.update');
 Route::post('/publicgaming/delete', [App\Http\Controllers\PublicgamingsController::class, 'destroy'])->name('publicgaming.delete');
 Route::get('/publicgaming_license_name/get',[App\Http\Controllers\PublicgamingsController::class, 'getLicenseeName']);
+Route::post('/publicgaming/upload', [App\Http\Controllers\PublicgamingsController::class, 'upload'])->name('publicgaming.upload');
 
 Route::get('/admin_users', [App\Http\Controllers\AdminuserController::class, 'index'])->name('admin_users');
 Route::post('/admin_users/add', [App\Http\Controllers\AdminuserController::class, 'store'])->name('admin_users.add');
@@ -107,6 +109,9 @@ Route::get('/useractivitylogs',[App\Http\Controllers\AuditLogsController::class,
 Route::get('/bookmarkersrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'createPDF'])->name('bookmarkersrepo.pdf');
 Route::get('/reports',[App\Http\Controllers\ReportsController::class, 'index'])->name('reports');   
 Route::get('/reportsview/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersreport'])->name('reportsview');   
+Route::get('/bookmarkersAllreport/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersAllreport'])->name('bookmarkersAllreport');   
+
+
 Route::get('/publiclotterysreport',[App\Http\Controllers\ReportsController::class, 'publiclotterysreport'])->name('publiclotterysreport');   
 Route::get('/publicgamingreport',[App\Http\Controllers\ReportsController::class, 'publicgamingreport'])->name('publicgamingreport');   
 

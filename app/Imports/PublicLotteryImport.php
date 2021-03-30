@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\BookMarkers;
+use App\Models\PublicLottery;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
-class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
+class PublicLotteryImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkReading, WithValidation
 {
     use Importable;
     /**
@@ -38,24 +38,24 @@ class BookMarkersImport implements ToModel, WithHeadingRow, WithBatchInserts, Wi
         try
         {
             \Log::info($row);
-            $wht = 0.2*$row['total_payout'] ?? $row['total_payouts'];
-            $ggr = $row['total_sales'] ?? $row['total_sale']-$row['total_payout'] ?? $row['total_payouts'];
+            $wht = 0.2*$row['total_payout'] ?? $row['total_payout'];
+            $ggr = $row['sales'] ?? $row['total_sale']-$row['total_payout'] ?? $row['total_payout'];
             $ggrtax = 0.15*$ggr;
-            BookMarkers::create([
+            PublicLottery::create([
                 'company_id'=> $this->company_id,
-                'licensee_name'=> $this->licensee_name,
                 'license_no'=> $this->license_no,
                 'date' => $row[''],
-                'total_sales' => $row['total_sales'] ?? $row['total_sale'],
-                'total_payout' => $row['total_payout'] ?? $row['total_payouts'],
+                'sales' => $row['sales'] ?? $row['total_sale'],
+                'total_payout' => $row['total_payout'] ?? $row['total_payout'],
                 'wht' => $wht,
-                'return_for_the_period_of' => now(),
-                'return_for_the_period_to' => now(),
-                'branch' => 'N/A',
-                'deposits' => '0',
-                'bets_no' => '0',
+                'return_for_of' => now(),
+                'return_to' => now(),
+                'total_tickets_sold'=>'11',
+                'payouts'=>'44',
                 'ggr' => $ggr,
-                'winloss' => $ggr,
+                'ggrtax'=> '222',
+                'id'=>'11',
+            
             ]);
             
         }
