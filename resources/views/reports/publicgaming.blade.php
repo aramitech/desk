@@ -45,9 +45,8 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Company
-                    </a>
+                <a href="{{route('gamingsAllreport', $publicgamings[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All Public Gamings</a> 
+
                 </div>
             </div>
         </div>

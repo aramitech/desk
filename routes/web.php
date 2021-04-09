@@ -66,6 +66,7 @@ Route::post('/bookmarkers/delete', [App\Http\Controllers\BookMarkersController::
 Route::get('/license_name/get',[App\Http\Controllers\BookMarkersController::class, 'getLicenseeName']);
 
 Route::get('/addbookmarkers',[App\Http\Controllers\BookMarkersController::class, 'addbookmarkers'])->name('bookmarkers.addbookmarkers');
+Route::get('/bookmarkersdata/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarkersdata'])->name('bookmarkers.bookmarkersdata');
 
 
 Route::get('/adminbookmarkers', [App\Http\Controllers\AdminBookMarkersController::class, 'index'])->name('adminbookmarkers');
@@ -110,7 +111,10 @@ Route::get('/bookmarkersrepo/pdf/{id}',[App\Http\Controllers\ReportsController::
 Route::get('/reports',[App\Http\Controllers\ReportsController::class, 'index'])->name('reports');   
 Route::get('/reportsview/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersreport'])->name('reportsview');   
 Route::get('/bookmarkersAllreport/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersAllreport'])->name('bookmarkersAllreport');   
+Route::get('/bookmarkersAllreport_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'bookmarkersAllreport_createPDF'])->name('bookmarkersAllreport_createPDF');   
 
+
+Route::get('/publiclotteryAllreport/{id}',[App\Http\Controllers\ReportsController::class, 'publiclotteryAllreport'])->name('publiclotteryAllreport');   
 
 Route::get('/publiclotterysreport',[App\Http\Controllers\ReportsController::class, 'publiclotterysreport'])->name('publiclotterysreport');   
 Route::get('/publicgamingreport',[App\Http\Controllers\ReportsController::class, 'publicgamingreport'])->name('publicgamingreport');   
@@ -122,6 +126,7 @@ Route::get('/reportsview_publiclottery/{id}',[App\Http\Controllers\ReportsContro
 Route::get('/publicLotterysrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'puliclottery_createPDF'])->name('publicLotterysrepo.pdf');
 
 Route::get('/reportsview_publicgaming/{id}',[App\Http\Controllers\ReportsController::class, 'reportsview_publicgaming'])->name('reportsview_publicgaming');   
+Route::get('/gamingsAllreport/{id}',[App\Http\Controllers\ReportsController::class, 'gamingsAllreport'])->name('gamingsAllreport');   
 
 Route::get('/publicgamingsrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgaming_createPDF'])->name('publicgamingsrepo.pdf');
 
@@ -130,4 +135,10 @@ Route::get('/reports/company-ggr',[App\Http\Controllers\ReportsController::class
 
 Route::get('/reports/publiclotteryGGr',[App\Http\Controllers\ReportsController::class, 'publiclotteryGGr'])->name('reports.publiclotteryGGr');
 Route::get('/reports/publicgamingGGr',[App\Http\Controllers\ReportsController::class, 'publicGamingGGr'])->name('reports.publicgamingGGr');
+
+
+
+Route::get('/sendsms',[App\Http\Controllers\SendSmsController::class, 'index'])->name('sendsms');   
+Route::post('/sendsms/add', [App\Http\Controllers\SendSmsController::class, 'store'])->name('sendsms.add');
+Route::get('/sendsms/get',[App\Http\Controllers\SendSmsController::class, 'CategoryTypes']);
 

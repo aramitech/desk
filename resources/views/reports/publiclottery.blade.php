@@ -50,8 +50,8 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a class="dropdown-item" href="#">Export List</a>
-									<a class="dropdown-item" href="#">Policies</a>
-									<a class="dropdown-item" href="#">View Assets</a>
+									<!-- <a class="dropdown-item" href="#">Policies</a>
+									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
 									<a class="dropdown-item" href="{{ URL::to('/publicLotterysrepo/pdf',$id) }}">Export to PDF</a>

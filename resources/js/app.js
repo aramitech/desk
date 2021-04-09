@@ -53,6 +53,8 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 
  Vue.component('change_password-user-component', require('./components/user/ChangePasswordComponent.vue').default);
 
+ Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
+ Vue.component('bookmarkers_good_table_component', require('./components/bookmarker/VueTableBookmarkers.vue').default);
 
  
 /**
@@ -68,3 +70,9 @@ const app = new Vue({
 });
 
 
+import VueGoodTablePlugin from 'vue-good-table';
+
+// import the styles
+import 'vue-good-table/dist/vue-good-table.css'
+
+Vue.use(VueGoodTablePlugin);

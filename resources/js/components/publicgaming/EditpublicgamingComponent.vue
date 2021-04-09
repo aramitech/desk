@@ -1,7 +1,7 @@
 <template>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Edit Public Lottery</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Edit Public Gaming</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
                 <form method="POST" @submit.prevent="submit">
@@ -79,14 +79,7 @@
 						</div>
                         </div>
                         
-
-
-
-
-
-
- 
-                         
+                   
           <div class="form-group row">  
 
  <div class="col-md-4">
@@ -187,15 +180,20 @@ methods: {
         }.bind(this));
          console.log(response, 'kkkkk')
       },
-             sum()
+    sum()
    {
      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-  this.fields.ggr=this.fields.sales - this.fields.total_payout;
-  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggr=this.fields.sales - this.fields.payouts;
+  this.fields.wht=0.2 * this.fields.payouts;
   this.fields.ggrtax=0.15 * this.fields.ggr;  
    
+     this.fields.ggrslot=this.fields.salesslot - this.fields.payoutsslot;
+  this.fields.whtslot=0.2 * this.fields.payoutsslot;
+  this.fields.ggrtaxslot=0.15 * this.fields.ggrslot;  
    },
-    onChange (value) {
+
+   
+ onChange (value) {
       this.value = value
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;

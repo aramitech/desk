@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookMarkers;
+use App\Models\SendSms;
 use App\Models\BookmarkersCompany;
 use App\Models\CategoryTypes;
 use Illuminate\Http\Request;
@@ -11,10 +11,7 @@ use App\Models\AuditLog;
 use App\Imports\BookMarkersImport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class BookMarkersController extends Controller
-
-
-
+class SendSmsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,18 +25,10 @@ class BookMarkersController extends Controller
        // return Auth::user();
       // return   $category_type_id = CategoryTypes::where('categorytypes_id','1')->get();
 
-        $bookmarkers = BookMarkers::all();
-        return view('bookmarkers.index', compact('bookmarkers'));
+        $sendsmsis = SendSms::all();
+        return view('sendsms.index', compact('sendsmsis'));
     }
 
-
-    public function bookmarkersdata()
-    {
-        $bookmarkers = BookMarkers::all();
-        return $bookmarkers;
-    }
-
-    
     public function addbookmarkers()
     {
         $bookmarkers = BookMarkers::all();
@@ -63,47 +52,16 @@ class BookMarkersController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $request->validate([
-        //     'licensee_name' => 'required',
-        //     'return_for_the_period_of' => 'required',
-        //     'return_for_the_period_to' => 'required',
-        //     'branch' => 'required',
-        //     'bets_no' => 'required',
-        
-        // ]);
-        //return  $ff=$request->company_id;
+ 
      
-        $user = new BookMarkers();
-        $user->company_id = $request->company_id['company_id'];
-        $user->licensee_name = $request->licensee_name;
-        $user->license_no = $request->license_no;
-        $user->return_for_the_period_of = $request->return_for_the_period_of;
-        $user->return_for_the_period_to = $request->return_for_the_period_to;
-        $user->branch = $request->branch;
-        $user->date = $request->date;
-        $user->bets_no = $request->bets_no;
-        $user->deposits = $request->deposits;
-        $user->total_sales = $request->total_sales;
-        $user->total_payout = $request->total_payout;
-        $user->wht = $request->wht;
-        $user->winloss = $request->winloss;
-        $user->ggr = $request->ggr;
-        $user->ggrtax = $request->ggrtax;
-        $user->id = Auth::user()->id;
+        $user = new SendSms();
+       // $user->company_id = $request->company_id['company_id'];
+        $user->message = $request->message;
+        $user->company_id = 1;
+     //   $mm= "https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky";
+     
         $user->save();
 
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
-        //log
-        $userLog = new AuditLog();
-        $userLog->audit_module = "User";
-        $userLog->audit_activity = "Added Bookmarkers Entry For Licence Name:".$request->licensee_name;
-       
-        $userLog->user_category = "User";
-       // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
-        $userLog->save();
 
         return back()->with('success','Added succesfully');
     }

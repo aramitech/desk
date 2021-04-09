@@ -19,7 +19,7 @@ class BookMarkers extends Model
         'return_for_the_period_to',
         'branch',
         'date',
-        'bets_no',
+        'bets_no',  
         'deposits',
         'total_sales',
         'total_payout',

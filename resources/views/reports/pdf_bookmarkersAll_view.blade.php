@@ -111,7 +111,7 @@ width: 20%;
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
 <!-- <h3 align="center">COMPANY LETTER HEAD</h3> -->
-<h3 align="center">PUBLIC GAMING RETURNS FORM</h3>
+<h3 align="center">ALL BOOKMARKERS RETURNS FORM</h3>
 <img style="width: 180px;" src="" alt="">
 <div style="width: 100%; clear: both;">
 </div>
@@ -152,41 +152,41 @@ width: 20%;
     </thead>
     <tbody>
     @php $sum=0;
-    $sales=0;
-				$payouts=0;
-				$ggr=0;
+				$deposits=0;
+				$total_sales=0;
+				$total_payout=0;
 				$wht=0;
 				$ggr=0;
-    @endphp
-        @foreach($publicgamings as $publicgaming)
-        @php
-        $sales +=$publicgaming->sales ;
-				 $payouts +=$publicgaming->payouts ;
-				 $ggr +=$publicgaming->ggr ;
-				 $wht +=$publicgaming->wht ;
-				 $ggr +=$publicgaming->ggr ;
-    @endphp
+				@endphp
+        @foreach($bookmarkers as $bookmarker)
+        @php $sum +=$bookmarker->bets_no ;
+				 $deposits +=$bookmarker->deposits ;
+				 $total_sales +=$bookmarker->total_sales ;
+				 $total_payout +=$bookmarker->total_payout ;
+				 $wht +=$bookmarker->wht ;
+				 $ggr +=$bookmarker->ggr ;
+				@endphp
         <tr>
-            <td>{{ $publicgaming->publicgaming_id }}</td>
-            <td>{{ $publicgaming->date }}</td>
-        
-            <td>{{ $publicgaming->sales }}</td>
-            <td>{{ $publicgaming->payouts }}</td>
-            <td>{{ $publicgaming->ggr }}</td>
-            <td>{{ $publicgaming->wht }}</td>
+        <td>{{ $bookmarker->bookmarker_id }}</td>
+                        <td>{{ $bookmarker->date }}</td>
+                        <td>{{ $bookmarker->bets_no }}</td>
+                        <td>{{ $bookmarker->deposits }}</td>
+                        <td>{{ $bookmarker->total_sales }}</td>
+                        <td>{{ $bookmarker->total_payout }}</td>
+                        <td>{{ $bookmarker->wht }}</td>
+                        <td>{{ $bookmarker->ggr }}</td> 
        
         </tr>
     @endforeach
-    </tbody><tbody>
-			<th colspan="2">Total</th>
-         
-            <td >{{ $sales }}</td>
-			<td >{{ $payouts }}</td>
-			<td >{{ $ggr }}</td>
+    </tbody> <tbody>
+			<th>Total</th>
+			<td></td>
+		    <td >{{ $sum }}</td>
+			<td >{{ $deposits }}</td>
+			<td >{{ $total_sales }}</td>
+			<td >{{ $total_payout }}</td>
 			<td >{{ $wht }}</td>
-		
-            
-             </tbody>
+			<td >{{ $ggr }}</td></tbody>
 </table>
   
 @endforeach

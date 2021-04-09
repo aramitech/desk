@@ -54,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="{{ URL::to('/publicgamingsrepo/pdf',$id) }}">Export to PDF</a>
+									<a class="dropdown-item" href="/publiclotteryAllreports_createPDF/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
         </div>
 
 								</div>
@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<!-- <h4 class="text-center mb-30 weight-600">COMPANY LETTER HEAD</h4> -->
-                        <h4 class="text-center mb-30 weight-600">PUBLIC GAMINGS RETURNS FORM</h4>
+                        <h4 class="text-center mb-30 weight-600">PUBLIC LOTTERY RETURN FORM</h4>
 						@foreach($bcompanies as $bcompany)
                         <div class="row pb-30">   
 							<div class="col-md-6"> 
@@ -95,7 +95,7 @@
                         <th class="table-plus">#</th>
                         <th>Date</th>
                         <th>No. of Bets</th>
-                        <th>payouts</th>
+                        <th>Deposits</th>
                         <th>Total Sales</th>
                         <th>TOTAL Payouts</th>
                         <th>WHT</th>
@@ -104,34 +104,34 @@
                 </thead>
                 <tbody>
 				@php $sum=0;
-				$payouts=0;
-				$wht=0;
-				$ggr=0;
+				$deposits=0;
+				$total_sales=0;
+				$total_payout=0;
 				$wht=0;
 				$ggr=0;
 				@endphp
-				 @foreach($publicgamings as $publicgaming)
-				 @php $sum +=$publicgaming->sales ;
-				 $payouts +=$publicgaming->payouts ;
-				 $wht +=$publicgaming->wht ;
-				 $ggr +=$publicgaming->ggr ;
-				 $wht +=$publicgaming->wht ;
-				 $ggr +=$publicgaming->ggr ;
+				 @foreach($publiclotteryAllreports as $bookmarker)
+				 @php $sum +=$bookmarker->total_tickets_sold ;
+				 $deposits +=$bookmarker->sales ;
+				 $total_sales +=$bookmarker->payouts ;
+				 $total_payout +=$bookmarker->ggr ;
+				 $wht +=$bookmarker->wht ;
+				 $ggr +=$bookmarker->ggrtax ;
 				@endphp
 				    <tr>
-                        <td>{{ $publicgaming->publicgaming_id }}</td>
-                        <td>{{ $publicgaming->date }}</td>
-                        <td>{{ $publicgaming->sales }}</td>
-                        <td>{{ $publicgaming->payouts }}</td>
-                        <td>{{ $publicgaming->wht }}</td>
-                        <td>{{ $publicgaming->ggr }}</td>
-                        <td>{{ $publicgaming->wht }}</td>
-                        <td>{{ $publicgaming->ggr }}</td>                      
+                        <td>{{ $bookmarker->bookmarker_id }}</td>
+                        <td>{{ $bookmarker->date }}</td>
+                        <td>{{ $bookmarker->total_tickets_sold }}</td>
+                        <td>{{ $bookmarker->sales }}</td>
+                        <td>{{ $bookmarker->payouts }}</td>
+                        <td>{{ $bookmarker->ggr }}</td>
+                        <td>{{ $bookmarker->wht }}</td>
+                        <td>{{ $bookmarker->ggrtax }}</td>                      
                  <td></td>    
                     </tr>
-                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-publicgaming-component :publicgamingdata="{{ json_encode($publicgaming)}}"/>
+                            <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
                     @endforeach   
@@ -139,9 +139,9 @@
 			<th>Total</th>
 			<td></td>
 		    <td >{{ $sum }}</td>
-			<td >{{ $payouts }}</td>
-			<td >{{ $wht }}</td>
-			<td >{{ $ggr }}</td>
+			<td >{{ $deposits }}</td>
+			<td >{{ $total_sales }}</td>
+			<td >{{ $total_payout }}</td>
 			<td >{{ $wht }}</td>
 			<td >{{ $ggr }}</td></tbody>
             </table>        @endforeach 

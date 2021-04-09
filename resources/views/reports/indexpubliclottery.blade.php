@@ -18,9 +18,10 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-md-6 col-sm-12 text-right">
+            <div class="col-md-6 col-sm-12 text-right">   
                 <div> 
-                
+                <a href="{{route('publiclotteryAllreport', $publiclotteries[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All Public Lottery</a> 
+          
                  </div>
             </div>
         </div>

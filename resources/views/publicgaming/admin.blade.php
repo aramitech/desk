@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
-                        Upload Public Gaming
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button">
+                        Add Public Gaming
                     </a>
                 </div>
             </div>
@@ -35,17 +35,17 @@
     <h2 class="h4 pd-20">Public Gaming List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap data-table-export nowrap">
+        <table class="table table stripe hover nowrap  data-table-export nowrap">
                 <thead>
                     <tr>
-                    <th class="table-plus">#</th>
+                        <th class="table-plus">#</th>
                         <th>Date</th>
                         <th>sales</th>
                         <th>payouts</th>
                         <th>WHT</th>
                         <th>GGR</th>
                         <th>Date</th>
-                        <th>Date</th>
+                  
                         <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
@@ -68,30 +68,39 @@
                                 </a> -->
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                 
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpubliclottery{{$publicgaming->publiclottery_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                  
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publiclotterydelete',{{$publicgaming}})"><i class="dw dw-delete-3"></i> Delete</button>
-                              
+                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewpublicgaming{{$publicgaming->publicgaming_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+
+                                   
+                          
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpublicgaming{{$publicgaming->publicgaming_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+
+                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publicgamingdelete',{{$publicgaming}})"><i class="dw dw-delete-3"></i> Delete</button>
+                       
+                                
                                 
                                 <!-- </div> -->
                             </div>
-                            </td>  <td></td>
+                            </td> 
                     </tr>
-                    <div class="modal fade" id="editpubliclottery{{$publicgaming->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-publiclottery-component :publiclotteryerdata="{{ json_encode($publicgaming)}}"/>
+                            <edit-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
                         </div>
                     </div>
+
+                    <div class="modal fade" id="viewpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <view-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
+                        </div>
+                    </div>
+                    
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <!-- ./main content card -->
-    <!-- <add-publicgaming-component/> --> 
-    
-     <upload-publicgaming-component/>
+    <add-publicgaming-component/>
 </div>
 @endsection
 

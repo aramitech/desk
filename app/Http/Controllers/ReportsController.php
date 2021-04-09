@@ -106,6 +106,38 @@ class ReportsController extends Controller
    }
 
 
+
+   ////////////======//Public Gaming All ggr reposrt////===////////
+   public function publicGamingGGrAll()
+   {
+       $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('publicGamingcompany', function($query){
+           // $query->select('ggr')->where('ggr','!=',0);
+       })->with('publicGamingcompany'), request()->all())->get();
+
+       $labels_arr = [];
+       $data_arr = [];
+       foreach($companies as $company)
+       {
+           array_push($labels_arr,$company->company_name);
+           array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+       }
+       // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+       // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+       // chart
+       $borderColors = [ "#30ba35", "#f25961" ];
+       $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
+       $publicgamingggrchart = new CompanyChart;
+       $publicgamingggrchart->minimalist(false);
+       $publicgamingggrchart->labels($labels_arr);
+       $publicgamingggrchart->dataset('Public Gaming Company GGR Reports', 'bar', $data_arr)
+       // ->color($borderColors)
+       ->backgroundcolor($fillColors);
+       return view('reports.all_publicgaming_ggr_graph',compact('publicgamingggrchart'));
+   }
+
+
+
+
     public function index()
     {
         $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
@@ -135,6 +167,29 @@ class ReportsController extends Controller
         return view('reports.bookmarkers', compact('bookmarkers','bcompanies','id'));
     }
 
+
+    public function publiclotteryAllreport($id)
+    {
+
+         $company_name=BookmarkersCompany::all('company_name');
+       // $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
+    
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('publiclottery_id','!=',NULL), request()->all())->get();
+        return view('reports.publiclotteryAllreport', compact('publiclotteryAllreports','bcompanies','id'));
+    }
+
+
+    public function gamingsAllreport($id)
+    {
+
+         $company_name=BookmarkersCompany::all('company_name');
+       // $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
+    
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        $gamingsAllreports = EloquentBuilder::to(Publicgamings::where('publicgaming_id','!=',NULL), request()->all())->get();
+        return view('reports.gamingsAllreport', compact('gamingsAllreports','bcompanies','id'));
+    }
 
 
 
@@ -206,7 +261,23 @@ class ReportsController extends Controller
 
     }
 
-    
+
+    public function bookmarkersAllreport_createPDF($id) {
+        // retreive all records from db
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        //$bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
+
+        $bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id','!=','ttt888uu'), request()->all())->get();
+  
+        // share data to view
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);    '!=',NULL
+        $pdf = PDF::loadView('reports.pdf_bookmarkersAll_view', compact('bcompanies','bookmarkers','id'));
+  
+        // download PDF file with download method
+        return $pdf->download('pdf_bookmarkersAll_view.pdf');
+
+    }
+ 
     public function indexpubliclottery()
     {
         $publiclotteries = BookmarkersCompany::where('category_type_id',2)->get();

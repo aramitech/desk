@@ -17,8 +17,8 @@ class AuditLogsController extends Controller
     public function index()
     {
         //
-        $auditLogs = AuditLog::with('userlogs')->get();
-        //$auditLogs = EloquentBuilder::to(AuditLog::all())->get();
+        $auditLogs = EloquentBuilder::to(AuditLog::with('userlogs'),request()->all())->get();
+       /// $auditLogs = EloquentBuilder::to(AuditLog::all())->get();
 
       //  $auditLogs = AuditLog::all()->with('userlogs')->get();
       //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();

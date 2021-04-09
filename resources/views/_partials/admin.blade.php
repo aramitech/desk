@@ -156,5 +156,9 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Acctivity Logs</span>
         </a>
     </li>
-
+    <li class="dropdown">
+        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS</span>
+        </a>
+    </li>
 </ul>

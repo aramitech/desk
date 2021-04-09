@@ -72,11 +72,14 @@
 
                                   
                                     
-                               
+                                    @if ( Auth::user()->editstatus == 'Allowed' )
                                      <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarker{{$bookmarker->bookmarker_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                
+                                     @else   
+                                    @endif
+                                    @if ( Auth::user()->deletestatus == 'Allowed' )
                                     <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerdelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
-                              
+                                    @else   
+                                    @endif
                             
                            <!-- </div> -->
                             </div>

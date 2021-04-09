@@ -155,20 +155,33 @@ class PublicgamingsController extends Controller
     }
     public function destroy(Request $request)
     {
+  // return $request;
+
+		if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+    elseif(Auth::guard('web')->check())
+    {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+    }
+
+       //return $request;
         $user = Publicgamings::findOrFail($request->publicgaming_id);
         $user->delete();
 
-
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
-        //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
-        $userLog->audit_activity = "Deleted Public Gamings Record Licence No:".$request->license_no;
+        $userLog->audit_activity = "Deleted Public Gamings Record Licence No::".$request->licensee_name;
        
-        $userLog->user_category = "User";
-       // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
+        $userLog->user_category = $category;
+        //$userLog->audit_log_id = $id;
+        $userLog->id = $id;  
         $userLog->save();
 
         return back()->with('success','Deleted succesfully');

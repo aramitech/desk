@@ -6,10 +6,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\CustomerResetPasswordNotification;
 use Illuminate\Database\Eloquent\Model;
-class AuditLog extends Authenticatable
+class AuditLog extends Model
 {
     use Notifiable;
-    public $timestamps = false;
     protected $table = 'audit_log';
     protected $primaryKey = 'audit_log_id';
     
