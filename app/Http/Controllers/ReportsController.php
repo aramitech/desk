@@ -74,7 +74,36 @@ class ReportsController extends Controller
        ->backgroundcolor($fillColors);
        return view('reports.publiclottery_ggr_graph',compact('publiclotteryggrchart'));
    }
+   
 
+   ////////////======//all Companies Graph reposrt////===////////
+   public function allCompaniesGraph()
+   {
+    $companies =EloquentBuilder::to(BookmarkersCompany::with('publicLotterycompany'), request()->all())->get();
+       
+       $labels_arr = [];
+       $data_arr = [];
+       foreach($companies as $company)
+       {
+           array_push($labels_arr,$company->company_name);
+           array_push($data_arr,$company->publicLotterycompany->sum('ggr'));
+       }
+       // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
+       // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
+       // chart
+       $borderColors = [ "#30ba35", "#f25961" ];
+       $fillColors = ["#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d","#fdaf4b","#59d05d" ];
+       $allCompaniesGraphchart = new CompanyChart;
+       $allCompaniesGraphchart->minimalist(false);
+       $allCompaniesGraphchart->labels($labels_arr);
+       $allCompaniesGraphchart->dataset('All Company Reports', 'bar', $data_arr)
+       // ->color($borderColors)
+       ->backgroundcolor($fillColors);
+       return view('reports.allCompaniesGraph',compact('allCompaniesGraphchart'));
+   }
+
+
+   
    ////////////======//Public Lottery ggr reposrt////===////////
    public function publicGamingGGr()
    {

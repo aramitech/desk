@@ -135,6 +135,7 @@ Route::get('/reports/company-ggr',[App\Http\Controllers\ReportsController::class
 
 Route::get('/reports/publiclotteryGGr',[App\Http\Controllers\ReportsController::class, 'publiclotteryGGr'])->name('reports.publiclotteryGGr');
 Route::get('/reports/publicgamingGGr',[App\Http\Controllers\ReportsController::class, 'publicGamingGGr'])->name('reports.publicgamingGGr');
+Route::get('/reports/allCompaniesGraph',[App\Http\Controllers\ReportsController::class, 'allCompaniesGraph'])->name('reports.allCompaniesGraph');
 
 
 

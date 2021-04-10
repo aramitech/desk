@@ -2793,19 +2793,42 @@ __webpack_require__.r(__webpack_exports__);
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_3___default()),
     Edit: _EditBookmarkerComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default
   },
+  //props: [ 'bookmarkerdata' ],
   data: function data() {
     return {
       'text': 'Contacts Updated succesfully',
       'redirect': '',
       action2: '/fc/contacts/editContacts',
-      group_names: [],
+      company_names: [],
       allgroup_names: [],
       validated: false,
       fields: {
         bookmarker_id: '',
         company_id: '',
         licensee_name: '',
-        license_no: ''
+        trading_name: '',
+        license_no: '',
+        date: '',
+        deposits: '',
+        bets_no: '',
+        total_sales: '',
+        total_payout: '' // bookmarker_id:this.bookmarkerdata.bookmarker_id,
+        // license_no:this.bookmarkerdata.license_no,
+        // return_for_the_period_of:this.bookmarkerdata.return_for_the_period_of,
+        // licensee_name:this.bookmarkerdata.licensee_name,
+        // return_for_the_period_to:this.bookmarkerdata.return_for_the_period_to,
+        // branch:this.bookmarkerdata.branch,
+        // date:this.bookmarkerdata.date,
+        // bets_no:this.bookmarkerdata.bets_no,
+        //  deposits:this.bookmarkerdata.deposits,
+        //   total_sales:this.bookmarkerdata.total_sales,
+        //    total_payout:this.bookmarkerdata.total_payout,
+        //     wht:this.bookmarkerdata.wht,
+        //      winloss:this.bookmarkerdata.winloss,
+        //       ggr:this.bookmarkerdata.ggr,
+        //         trading_name:this.bookmarkerdata.trading_name, 
+        //          company_id:this.bookmarkerdata.bookmarkerscompany,
+
       },
       columns: [{
         label: 'ID',
@@ -2852,6 +2875,12 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
       }.bind(this));
     },
+    getLicenseeName: function getLicenseeName() {
+      axios.get('/license_name/get').then(function (response) {
+        this.company_names = response.data;
+        console.log(this.company_names);
+      }.bind(this));
+    },
     sum: function sum() {
       //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
       this.fields.ggr = this.fields.total_sales - this.fields.total_payout;
@@ -2874,12 +2903,24 @@ __webpack_require__.r(__webpack_exports__);
     editBtn: function editBtn(id) {
       alert(id);
     },
-    showModal: function showModal(bookmarker_id, company_id, licensee_name, license_no) {
+    showModal: function showModal(bookmarker_id, company_id, licensee_name, license_no, trading_name, return_for_the_period_of, return_for_the_period_to, branch, date, bets_no, deposits, total_sales, total_payout, wht, winloss, ggr) {
       //bind the data to the items
       this.fields.bookmarker_id = bookmarker_id;
       this.fields.licensee_name = licensee_name;
+      this.fields.trading_name = trading_name;
       this.fields.licensee_no = license_no;
       this.fields.company_id = company_id;
+      this.fields.return_for_the_period_of = return_for_the_period_of;
+      this.fields.return_for_the_period_to = return_for_the_period_to;
+      this.fields.branch = branch;
+      this.fieilds.bets_no = this.bets_no;
+      this.fields.date = date;
+      this.fields.deposits = this.deposits;
+      this.fieldds.total_sales = total_sales;
+      this.fields.total_payout = total_payout;
+      this.fields.wht = wht;
+      this.fields.winloss = winloss;
+      this.fields.ggr = ggr;
     },
     selectionChanged: function selectionChanged(params) {
       var c = [];
@@ -2915,9 +2956,26 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.fields.bookmarker_id = this.bookmarkerdata.bookmarker_id;
+    this.fields.license_no = this.bookmarkerdata.license_no;
+    this.fields.return_for_the_period_of = this.bookmarkerdata.return_for_the_period_of;
+    this.fields.licensee_name = this.bookmarkerdata.licensee_name;
+    this.fields.return_for_the_period_to = this.bookmarkerdata.return_for_the_period_to;
+    this.fields.branch = this.bookmarkerdata.branch;
+    this.fields.date = this.bookmarkerdata.date;
+    this.fields.bets_no = this.bookmarkerdata.bets_no;
+    this.fields.deposits = this.bookmarkerdata.deposits;
+    this.fields.total_sales = this.bookmarkerdata.total_sales;
+    this.fields.total_payout = this.bookmarkerdata.total_payout;
+    this.fields.wht = this.bookmarkerdata.wht;
+    this.fields.winloss = this.bookmarkerdata.winloss;
+    this.fields.ggr = this.bookmarkerdata.ggr;
+    this.fields.trading_name = this.bookmarkerdata.trading_name;
+  },
   created: function created() {
     this.getBookmarkers();
+    this.getLicenseeName();
   }
 });
 
@@ -51953,7 +52011,21 @@ var render = function() {
                                 props.row.bookmarker_id,
                                 props.row.company_id,
                                 props.row.licensee_name,
-                                props.row.license_no
+                                props.row.trading_name,
+                                props.row.license_no,
+                                props.row.license_no,
+                                props.row.trading_name,
+                                props.row.return_for_the_period_of,
+                                props.row.return_for_the_period_to,
+                                props.row.branch,
+                                props.row.date,
+                                props.row.bets_no,
+                                props.row.deposits,
+                                props.row.total_sales,
+                                props.row.total_payout,
+                                props.row.wht,
+                                props.row.winloss,
+                                props.row.ggr
                               )
                             }
                           }
@@ -51969,7 +52041,7 @@ var render = function() {
                             click: function($event) {
                               $event.preventDefault()
                               return _vm.deleteItem(
-                                "fccontactdelete",
+                                "bookmarkerdelete",
                                 props.row.bookmarker_id
                               )
                             }
@@ -52047,19 +52119,47 @@ var render = function() {
                       [
                         _c("div", { staticClass: "modal-body" }, [
                           _c("div", { staticClass: "form-group row" }, [
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c("label", { attrs: { for: "company_id" } }, [
-                                _vm._v(" Licensee Name")
-                              ]),
-                              _vm._v(" "),
-                              _vm.errors && _vm.errors.company_id
-                                ? _c("div", { staticClass: "text-danger" }, [
-                                    _vm._v(_vm._s(_vm.errors.company_id[0]))
-                                  ])
-                                : _vm._e()
-                            ]),
+                            _c(
+                              "div",
+                              { staticClass: "col-md-6" },
+                              [
+                                _c("label", { attrs: { for: "company_id" } }, [
+                                  _vm._v(" Licensee Name")
+                                ]),
+                                _vm._v(" "),
+                                _c("multiselect", {
+                                  attrs: {
+                                    name: "company_id",
+                                    label: "company_name",
+                                    placeholder: "Select License name",
+                                    options: _vm.company_names,
+                                    "allow-empty": true,
+                                    multiple: false,
+                                    "hide-selected": true,
+                                    "max-height": 150
+                                  },
+                                  on: { input: _vm.onChange },
+                                  model: {
+                                    value: _vm.fields.company_id,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.fields, "company_id", $$v)
+                                    },
+                                    expression: "fields.company_id"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors && _vm.errors.company_id
+                                  ? _c("div", { staticClass: "text-danger" }, [
+                                      _vm._v(_vm._s(_vm.errors.company_id[0]))
+                                    ])
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6" }, [
+                              _c("label", [_vm._v("Licensee Name")]),
+                              _vm._v(" "),
                               _c("input", {
                                 directives: [
                                   {

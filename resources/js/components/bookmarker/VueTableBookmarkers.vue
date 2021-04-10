@@ -24,8 +24,8 @@
     >
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
-       <button @click="showModal(props.row.bookmarker_id,props.row.company_id,props.row.licensee_name,props.row.license_no)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
-       <button  @click.prevent="deleteItem('fccontactdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
+       <button @click="showModal(props.row.bookmarker_id,props.row.company_id,props.row.licensee_name,props.row.trading_name,props.row.license_no,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
        </span>
     <span v-else>
       {{ props.formattedRow[props.column.field] }}
@@ -48,14 +48,14 @@
                     <div class="form-group row">
                       <div class="col-md-6">
                         <label for="company_id"> Licensee Name</label>        
-                        <!-- <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+                         <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
                           
-                        </multiselect> -->
+                        </multiselect> 
                         <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
                   
                     </div> 
                     <div class="col-md-6">
-                        <!-- <label>Licensee Name</label> -->
+                      <label>Licensee Name</label>
                         <input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="text" placeholder="Licensee Name" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
                       </div>
@@ -167,21 +167,44 @@ export default {
     components:{
         VueGoodTable,Multiselect, Edit
     },
-    
+     //props: [ 'bookmarkerdata' ],
   data(){
     return {
       'text': 'Contacts Updated succesfully',
       'redirect': '',
       action2: '/fc/contacts/editContacts',
-      group_names: [],
+      company_names: [],
        allgroup_names:[],
        validated:false,
       fields:{
         bookmarker_id:'',
         company_id:'',
         licensee_name:'',
+        trading_name:'',
         license_no:'',
-     
+          date:'',
+        deposits:'',
+        bets_no:'',
+        total_sales:'',
+        total_payout:'',
+
+            // bookmarker_id:this.bookmarkerdata.bookmarker_id,
+            // license_no:this.bookmarkerdata.license_no,
+            // return_for_the_period_of:this.bookmarkerdata.return_for_the_period_of,
+            // licensee_name:this.bookmarkerdata.licensee_name,
+            // return_for_the_period_to:this.bookmarkerdata.return_for_the_period_to,
+            // branch:this.bookmarkerdata.branch,
+            // date:this.bookmarkerdata.date,
+            // bets_no:this.bookmarkerdata.bets_no,
+            //  deposits:this.bookmarkerdata.deposits,
+            //   total_sales:this.bookmarkerdata.total_sales,
+            //    total_payout:this.bookmarkerdata.total_payout,
+            //     wht:this.bookmarkerdata.wht,
+            //      winloss:this.bookmarkerdata.winloss,
+            //       ggr:this.bookmarkerdata.ggr,
+            //         trading_name:this.bookmarkerdata.trading_name, 
+            //          company_id:this.bookmarkerdata.bookmarkerscompany,
+
       },       
       
       columns: [
@@ -242,7 +265,13 @@ export default {
         }.bind(this));
        
       },
-    
+       getLicenseeName: function(){
+        axios.get('/license_name/get')
+        .then(function(response){
+          this.company_names = response.data;
+           console.log(this.company_names)
+        }.bind(this));
+      },
   sum()
    {
      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
@@ -271,12 +300,24 @@ export default {
       editBtn:function(id){
         alert(id);
       },
-      showModal(bookmarker_id,company_id,licensee_name,license_no){
+      showModal(bookmarker_id,company_id,licensee_name,license_no,trading_name,return_for_the_period_of,return_for_the_period_to,branch,date,bets_no,deposits,total_sales,total_payout,wht,winloss,ggr){
               //bind the data to the items
               this.fields.bookmarker_id=bookmarker_id
               this.fields.licensee_name=licensee_name
+              this.fields.trading_name=trading_name
               this.fields.licensee_no=license_no
               this.fields.company_id=company_id
+              this.fields.return_for_the_period_of=return_for_the_period_of
+              this.fields.return_for_the_period_to=return_for_the_period_to
+              this.fields.branch=branch
+              this.fieilds.bets_no=this.bets_no
+              this.fields.date=date
+              this.fields.deposits=this.deposits
+              this.fieldds.total_sales=total_sales
+              this.fields.total_payout=total_payout
+              this.fields.wht=wht
+              this.fields.winloss=winloss
+              this.fields.ggr=ggr
       },
 
        
@@ -320,11 +361,25 @@ export default {
 
       
   },mounted() {
-      
+              this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
+        this.fields.license_no=this.bookmarkerdata.license_no;
+        this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
+        this.fields.licensee_name=this.bookmarkerdata.licensee_name;
+         this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
+          this.fields.branch=this.bookmarkerdata.branch;
+           this.fields.date=this.bookmarkerdata.date;
+            this.fields.bets_no=this.bookmarkerdata.bets_no;
+             this.fields.deposits=this.bookmarkerdata.deposits;
+              this.fields.total_sales=this.bookmarkerdata.total_sales;
+               this.fields.total_payout=this.bookmarkerdata.total_payout;
+                this.fields.wht=this.bookmarkerdata.wht;
+                 this.fields.winloss=this.bookmarkerdata.winloss;
+                 this.fields.ggr=this.bookmarkerdata.ggr;
+                 this.fields.trading_name=this.bookmarkerdata.trading_name;
         },
   created() {
        this.getBookmarkers() 
-
+    this.getLicenseeName() 
   },
 
 };

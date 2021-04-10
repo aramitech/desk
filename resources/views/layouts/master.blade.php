@@ -289,7 +289,9 @@
 		{!! $publicgamingggrchart->script() !!}
 	@endif
 
-	
+	@if(isset($allCompaniesGraphchart))
+		{!! $allCompaniesGraphchart->script() !!}
+	@endif
 	<!-- js -->
 	<script src="{{ asset('js/app.js')}}"></script>
 	<script src="{{ asset('vendors/scripts/core.js')}}"></script>

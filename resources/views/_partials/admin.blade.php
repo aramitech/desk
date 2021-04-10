@@ -122,9 +122,9 @@
 								</a>
 								<ul class="submenu child">
 								
-                                <li class="dropdown">
-                            <a href="{{ route('reports.publicgamingGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publicgamingGGr*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming GGR</span>
+                                <li class="dropdown"> 
+                            <a href="{{ route('reports.allCompaniesGraph')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.allCompaniesGraph*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">All Companies Graph</span>
                                 </a>
                             </li>
 

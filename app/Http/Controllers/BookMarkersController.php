@@ -179,10 +179,10 @@ class BookMarkersController extends Controller
 
 
     
-    public function destroy(Request $request)
+    public function destroy(Request $request )
     {
 
-
+ 
 		if(Auth::guard('admin')->check())
         {     
             $id= Auth::guard('admin')->user()->admin_id;
@@ -196,7 +196,7 @@ class BookMarkersController extends Controller
         $email= Auth::guard('web')->user()->email;  
         $category= 'User'; 
     }
-       
+    
         $user = BookMarkers::findOrFail($request->bookmarker_id);
         $user->delete();
 
