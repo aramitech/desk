@@ -170,11 +170,11 @@ export default {
      //props: [ 'bookmarkerdata' ],
   data(){
     return {
-      'text': 'Contacts Updated succesfully',
+      'text': 'Records Updated succesfully',
       'redirect': '',
       action2: '/fc/contacts/editContacts',
       company_names: [],
-       allgroup_names:[],
+      
        validated:false,
       fields:{
         bookmarker_id:'',

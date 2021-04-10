@@ -2796,11 +2796,10 @@ __webpack_require__.r(__webpack_exports__);
   //props: [ 'bookmarkerdata' ],
   data: function data() {
     return {
-      'text': 'Contacts Updated succesfully',
+      'text': 'Records Updated succesfully',
       'redirect': '',
       action2: '/fc/contacts/editContacts',
       company_names: [],
-      allgroup_names: [],
       validated: false,
       fields: {
         bookmarker_id: '',
