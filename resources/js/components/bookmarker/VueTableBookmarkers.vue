@@ -24,7 +24,7 @@
     >
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
-       <button @click="showModal(props.row.bookmarker_id,props.row.company_id,props.row.licensee_name,props.row.trading_name,props.row.license_no,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button @click="showModal(props.row.bookmarker_id,props.row.bookmarkerscompany,props.row.licensee_name,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
        <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
        </span>
     <span v-else>
@@ -178,7 +178,7 @@ export default {
        validated:false,
       fields:{
         bookmarker_id:'',
-        company_id:'',
+        company_id:[],
         licensee_name:'',
         trading_name:'',
         license_no:'',
