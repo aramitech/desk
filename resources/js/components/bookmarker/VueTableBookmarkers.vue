@@ -11,7 +11,7 @@
     perPage: 10,
     position: 'bottom',
     dropdownAllowAll: false,
-    setCurrentPage: 2,
+    setCurrentPage: 1,
     nextLabel: 'next',
     prevLabel: 'prev',
     rowsPerPageLabel: 'Rows per page',
@@ -24,94 +24,96 @@
     >
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
-       <a href="#" data-toggle="modal" data-target="#add" @click="showModal(props.row.bookmarker_id,props.row.company_id,props.row.licensee_name,props.row.license_no)" id="show-modal"><i class="far fa-edit"></i></a>
-       <button  @click.prevent="deleteContact('fccontactdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
+       <button @click="showModal(props.row.bookmarker_id,props.row.company_id,props.row.licensee_name,props.row.license_no)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button  @click.prevent="deleteItem('fccontactdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
        </span>
     <span v-else>
       {{ props.formattedRow[props.column.field] }}
     </span>
   </template>
     </vue-good-table>   
+    
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Bookmarker </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body panel-default bg-light">
-                                                <form method="POST" @submit.prevent="submit">
-                    <div class="modal-body">
-                          <div class="form-group row">
- <div class="col-md-6">
-            <label for="company_id"> Licensee Name</label>        
-            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
-              
-            </multiselect>
-            <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
-       
-        </div> 
-           <div class="col-md-6">
-							<!-- <label>Licensee Name</label> -->
-							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
-                            <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
-						</div>
-        
-         </div>
-
-
-  <div class="form-group row">
-					<div class="col-md-6">
-							<label>Trading Name</label>   
-							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="validated ? false : true" required>
-                            <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
-						</div>
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Edit Bookmarker {{ fields.bookmarker_id }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body panel-default bg-light">
+              <form method="POST" @submit.prevent="submit">
+                <div class="modal-body">
+                    <div class="form-group row">
                       <div class="col-md-6">
-							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
-                            <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
-						</div></div>
-    <div class="form-group row">                      
-                        <div class="col-md-6">
-							<label>Return For The Period Of</label>
-							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" required>
-                            <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
-						</div>
-                       <div class="col-md-6">
-							<label>Return For The Period To</label>
-							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" required>
-                            <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
-						</div></div>
-<div class="form-group row">   
+                        <label for="company_id"> Licensee Name</label>        
+                        <!-- <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+                          
+                        </multiselect> -->
+                        <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
+                  
+                    </div> 
+                    <div class="col-md-6">
+                        <!-- <label>Licensee Name</label> -->
+                        <input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="text" placeholder="Licensee Name" required>
+                            <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                      <div class="col-md-6">
+                          <label>Trading Name</label>   
+                          <input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="this.validated ? false : true" required>
+                                        <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
+                        </div>
+                                  <div class="col-md-6">
+                          <label>License No</label>
+                          <input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="this.validated ? false : true" required>
+                                        <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
+                        </div>
+                      </div>
+                      <div class="form-group row">                      
+                          <div class="col-md-6">
+                          <label>Return For The Period Of</label>
+                          <input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" required>
+                                        <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
+                        </div>
+                                  <div class="col-md-6">
+                          <label>Return For The Period To</label>
+                          <input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" required>
+                                        <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
+                        </div>
+                      </div>
+                    <div class="form-group row">   
 
                             <div class="col-md-4">
-							<label>Branch</label>
-							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" required>
-                            <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
-						</div>
-                          <div class="col-md-4">
-							<label>Date</label>
-							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
-                            <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
-						</div>
+                        <label>Branch</label>
+                        <input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" required>
+                                      <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
+                      </div>
+                                    <div class="col-md-4">
+                        <label>Date</label>
+                        <input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+                                      <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
+                      </div>
   
                           <div class="col-md-4">
-							<label>Bets No</label>
-							<input class="form-control"  name="bets_no" v-model="fields.bets_no" value="" type="text" placeholder="bets_no" required>
-                            <div v-if="errors && errors.bets_no" class="text-danger">{{ errors.bets_no[0] }}</div>
-						</div></div>
-<div class="form-group row">  
-                           <div class="col-md-4">
-							<label>Deposits</label>
-							<input class="form-control"  name="deposits" v-model="fields.deposits" value="" type="text" placeholder="Deposits" required>
-                            <div v-if="errors && errors.deposits" class="text-danger">{{ errors.deposits[0] }}</div>
-						</div>
-                     
-                            <div class="col-md-4">
-							<label>Total Sales</label>
-							<input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
+                          <label>Bets No</label>
+                          <input class="form-control"  name="bets_no" v-model="fields.bets_no" value="" type="text" placeholder="bets_no" required>
+                                        <div v-if="errors && errors.bets_no" class="text-danger">{{ errors.bets_no[0] }}</div>
+                        </div></div>
+                        <div class="form-group row">  
+                                      <div class="col-md-4">
+                          <label>Deposits</label>
+                          <input class="form-control"  name="deposits" v-model="fields.deposits" value="" type="text" placeholder="Deposits" required>
+                                        <div v-if="errors && errors.deposits" class="text-danger">{{ errors.deposits[0] }}</div>
+                        </div>
+                                
+                                        <div class="col-md-4">
+                          <label>Total Sales</label>
+                          <input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
                             <div v-if="errors && errors.total_sales" class="text-danger">{{ errors.total_sales[0] }}</div>
 						</div>
                             <div class="col-md-4">
@@ -122,19 +124,19 @@
   <div class="form-group row">                       
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="validated ? false : true" placeholder="winloss" >
+							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="this.validated ? false : true" placeholder="winloss" >
                            
-                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="validated ? false : true" required>
+                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="validated ? false : true" required>
+							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
 						</div>
@@ -158,11 +160,12 @@ import FormMixin from '../shared/FormMixin';
 import DeleteMixin from '../shared/DeleteMixin';
 import Multiselect from 'vue-multiselect';
 import { VueGoodTable } from 'vue-good-table';
+import Edit from './EditBookmarkerComponent.vue';
 
 export default {
     mixins: [ FormMixin,DeleteMixin ],
     components:{
-        VueGoodTable,Multiselect
+        VueGoodTable,Multiselect, Edit
     },
     
   data(){
@@ -172,6 +175,7 @@ export default {
       action2: '/fc/contacts/editContacts',
       group_names: [],
        allgroup_names:[],
+       validated:false,
       fields:{
         bookmarker_id:'',
         company_id:'',
@@ -267,21 +271,12 @@ export default {
       editBtn:function(id){
         alert(id);
       },
-      showModal:function(bookmarker_id,name,phone,group_id){
-             axios.get('/fc/contacts_data/'+bookmarker_id).then(function(response){
+      showModal(bookmarker_id,company_id,licensee_name,license_no){
               //bind the data to the items
-              this.fields.bookmarker_id=response.data[0].bookmarker_id
-              this.fields.name=response.data[0].name
-              this.fields.phone=response.data[0].phone
-              this.fields.group_id=response.data[0].group_id
-                   console.log(response.data[0].phone)
-              for(var i=0;i<response.data[0].group_id.length;i++){
-                 console.log(response.data[0].group_id[i])
-              };             
-              
-              //call the method and pass the groupid for the names
-              this.getContactGroups(this.fields.group_id);
-          }.bind(this));
+              this.fields.bookmarker_id=bookmarker_id
+              this.fields.licensee_name=licensee_name
+              this.fields.licensee_no=license_no
+              this.fields.company_id=company_id
       },
 
        
@@ -323,10 +318,10 @@ export default {
                  
       },
 
-      mounted() {
       
-        }
-  },
+  },mounted() {
+      
+        },
   created() {
        this.getBookmarkers() 
 

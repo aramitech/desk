@@ -56,7 +56,8 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
  Vue.component('bookmarkers_good_table_component', require('./components/bookmarker/VueTableBookmarkers.vue').default);
 
- 
+ Vue.component('edit-bookmarkers-component', require('./components/bookmarker/EditBookmarkerComponent.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -22,12 +22,17 @@ export default {
         var bookmarkerscompanydeletepath='/company/delete_destroybookmarkerscompany';
         var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
         var publiclotterycompanydeletepath='/company/delete';
+        var fccontactdeletepath='/company/delete_destroybookmarkerscompany';
 
         var fpath='';
         var item='';
         if(path=="userdelete"){
           fpath=userdeletepath;
           item="User ";
+        }
+        else if(path=="fccontactdelete"){
+          fpath=fccontactdeletepath;
+          item="Bookmarker ";
         }
            else if(path == "adminuserdelete")
         {
@@ -101,7 +106,7 @@ export default {
               
             })["catch"](function (error) {
                 this.loaded = false;
-            });
+            }.bind(this));
           } else {
                 swal.close();
             }

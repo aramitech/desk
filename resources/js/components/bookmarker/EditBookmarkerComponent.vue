@@ -1,9 +1,4 @@
 <template>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Edit Bookmarkers</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        </div>
       <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                           <div class="form-group row">
@@ -27,12 +22,12 @@
   <div class="form-group row">
 					<div class="col-md-6">
 							<label>Trading Name</label>   
-							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="validated ? false : true" required>
+							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div></div>
     <div class="form-group row">                      
@@ -84,19 +79,19 @@
   <div class="form-group row">                       
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="validated ? false : true" placeholder="winloss" >
+							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="this.validated ? false : true" placeholder="winloss" >
                            
-                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="validated ? false : true" required>
+                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="validated ? false : true" required>
+							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
 						</div>
@@ -107,20 +102,20 @@
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
-    </div>
 </template>
 
 <script>
-import FormMixin from '../shared/FormMixin';
+// import FormMixin from '../shared/FormMixin';
 
 export default {
-  mixins: [ FormMixin ],
+//   mixins: [ FormMixin ],
   props: [ 'bookmarkerdata' ],
 data() {
     return {
         action: '/bookmarkers/update', //edit action
         text: 'Updated Succesfully',
         redirect: '',
+        validated: false,
 
  company_names: [],
 
@@ -183,7 +178,7 @@ onChange (value) {
     },
     },
         created: function(){  
-     this.getLicenseeName()     
+        
     },
     mounted() {
         this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;

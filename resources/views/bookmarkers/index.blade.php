@@ -34,9 +34,24 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">BookMarkers List</h2>
         <div class="pb-20">
-           
-       
-        <bookmarkers_good_table_component></bookmarkers_good_table_component>
+           <!-- check user type logged in -->
+           @php
+                $usertype = '';
+            @endphp
+           @if(Auth::guard('superadmin')->check())
+                @php
+                    $usertype = 'super-admin';
+                @endphp
+            @elseif(Auth::guard('admin')->check())
+                @php
+                    $usertype = 'admin';
+                @endphp
+            @elseif(Auth::guard('web')->check())
+                @php
+                    $usertype = 'user';
+                @endphp
+            @endif
+        <bookmarkers_good_table_component :usertype="{{ $usertype }}"></bookmarkers_good_table_component>
 
 
         </div>

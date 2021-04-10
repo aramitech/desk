@@ -52,16 +52,14 @@ class ReportsController extends Controller
    ////////////======//Public Lottery ggr reposrt////===////////
    public function publiclotteryGGr()
    {
-       $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('publicLotterycompany', function($query){
-           // $query->select('ggr')->where('ggr','!=',0);
-       })->with('publicLotterycompany'), request()->all())->get();
-
+       $companies =EloquentBuilder::to(BookmarkersCompany::with('publicLotterycompany'), request()->all())->where('category_type_id',2)->get();
+        
        $labels_arr = [];
        $data_arr = [];
        foreach($companies as $company)
        {
            array_push($labels_arr,$company->company_name);
-           array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+           array_push($data_arr,$company->publicLotterycompany->sum('ggr'));
        }
        // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
        // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
@@ -89,7 +87,7 @@ class ReportsController extends Controller
        foreach($companies as $company)
        {
            array_push($labels_arr,$company->company_name);
-           array_push($data_arr,$company->bookmarkerscompany->sum('ggr'));
+           array_push($data_arr,$company->publicGamingcompany->sum('ggr'));
        }
        // $labels_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('licensee_name');
        // $data_arr = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'),request()->all())->pluck('ggr');
