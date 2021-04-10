@@ -2803,7 +2803,7 @@ __webpack_require__.r(__webpack_exports__);
       validated: false,
       fields: {
         bookmarker_id: '',
-        company_id: '',
+        company_id: [],
         licensee_name: '',
         trading_name: '',
         license_no: '',
@@ -52008,10 +52008,8 @@ var render = function() {
                             click: function($event) {
                               return _vm.showModal(
                                 props.row.bookmarker_id,
-                                props.row.company_id,
+                                props.row.bookmarkerscompany,
                                 props.row.licensee_name,
-                                props.row.trading_name,
-                                props.row.license_no,
                                 props.row.license_no,
                                 props.row.trading_name,
                                 props.row.return_for_the_period_of,
