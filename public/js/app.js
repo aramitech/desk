@@ -2899,7 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
       //bind the data to the items
       this.fields.bookmarker_id = bookmarker_id;
       this.fields.licensee_name = licensee_name;
-      this.fields.trading_name = trading_name;
+      this.fields.trading_name = company_id ? company_id.trading_name : '';
       this.fields.license_no = license_no;
       this.fields.company_id = company_id;
       this.fields.return_for_the_period_of = return_for_the_period_of.substr(0, 10);
