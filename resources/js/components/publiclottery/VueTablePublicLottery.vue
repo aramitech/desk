@@ -1,0 +1,351 @@
+<template>
+  <div>
+     
+     <vue-good-table
+      :columns="columns"
+      :rows="rows"
+      :search-options="{ enabled: true }"
+      :pagination-options="{
+    enabled: true,
+    mode: 'records',
+    perPage: 10,
+    position: 'bottom',
+    dropdownAllowAll: tue,
+    setCurrentPage: 1,
+    nextLabel: 'next',
+    prevLabel: 'prev',
+    rowsPerPageLabel: 'Rows per page',
+    ofLabel: 'of',
+    pageLabel: 'page', // for 'pages' mode
+    allLabel: 'All',
+  }"
+   @on-selected-rows-change="selectionChanged"
+    :select-options="{ enabled: true }"    
+    >
+    <template slot="table-row" slot-scope="props">
+    <span v-if="props.column.field == 'action'">      
+       <button @click="showModal(props.row.publiclottery_id,props.row.company_id,props.row.company_name,props.row.license_no,props.row.return_for_of,props.row.return_to,props.row.date,props.row.total_tickets_sold,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button  @click.prevent="deleteItem('publiclotterydelete',props.row.publiclottery_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </button>
+       </span>
+    <span v-else>
+      {{ props.formattedRow[props.column.field] }}
+    </span>
+  </template>
+    </vue-good-table>   
+    
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Edit Publlic Lottery {{ fields.publiclottery_id }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body panel-default bg-light">
+                   <form method="POST" @submit.prevent="submit">
+                    <div class="modal-body">
+                            <div class="form-group row">
+                      
+                       <div class="col-md-6">
+            <label for="company_id"> Licensee Name</label>        
+            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+              
+            </multiselect>
+            <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
+       
+        </div> 
+                      
+               
+                      <div class="col-md-6">
+							<label>License No</label>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+                            <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
+						</div>
+                         <div class="col-md-6">
+							<label> </label>
+						</div>   
+                             <div class="col-md-6">
+							<label>Trading As</label>
+							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
+                            <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
+						</div>
+                        </div>   
+                           <div class="form-group row">
+                        <div class="col-md-6">
+							<label>Return For The Period Of</label>
+							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of" value="" type="date" placeholder="Return For The Period Of" required>
+                            <div v-if="errors && errors.return_for_of" class="text-danger">{{ errors.return_for_of[0] }}</div>
+						</div>
+                       <div class="col-md-6">
+							<label>Return For The Period To</label>
+							<input class="form-control"  name="return_to" v-model="fields.return_to" value="" type="date" placeholder="Return For The Period To" required>
+                            <div v-if="errors && errors.return_to" class="text-danger">{{ errors.return_to[0] }}</div>
+						</div></div>
+                       <div class="form-group row">
+                          <div class="col-md-6">
+							<label>Date</label>
+							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+                            <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
+						</div>
+                          <div class="col-md-6">
+							<label>Total Tickets Sold</label>
+							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold" value="" type="text" placeholder="Total Tickets Sold" required>
+                            <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
+						</div></div>    
+                          <div class="form-group row">
+                           <div class="col-md-4">
+							<label>Sales</label>
+							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+                            <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
+						</div>
+                            <div class="col-md-4">
+							<label>Payouts</label>
+							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+                            <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
+						</div>
+                         <div class="col-md-4">
+							<label>Total Payout</label>
+							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+                            <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
+						</div>
+                        
+                        </div>
+                              <div class="form-group row">
+                           
+                           <div class="col-md-4">
+							<label>WHT</label>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" :disabled="validated ? false : true" placeholder="WHT" required>
+                            <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
+						</div>
+                       
+                           <div class="col-md-4">
+							<label>GGR</label>
+							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" :disabled="validated ? false : true" placeholder="GGR" required>
+                            <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
+						</div>
+                        
+                             <div class="col-md-4">
+							<label>GGR TAX</label>
+							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
+                            <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
+						</div>
+                        
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+   </div>
+</template>
+  
+<script>
+import 'vue-good-table/dist/vue-good-table.css';
+import FormMixin from '../shared/FormMixin';
+import DeleteMixin from '../shared/DeleteMixin';
+import Multiselect from 'vue-multiselect';
+import { VueGoodTable } from 'vue-good-table';
+import Edit from './EditPubliclotteryComponent.vue';
+
+export default {
+    mixins: [ FormMixin,DeleteMixin ],
+    components:{
+        VueGoodTable,Multiselect, Edit
+    },
+     //props: [ 'bookmarkerdata' ],
+  data(){
+    return {
+      'text': 'Records Updated succesfully',
+      'redirect': '',
+      action2: '/publiclottery/update',
+      company_names: [],
+      
+       validated:false,
+      fields:{
+        publiclottery_id:'',
+        company_id:[],
+
+      },       
+      
+      columns: [
+        {
+          label: 'ID',
+          field: 'publiclottery_id',
+        },
+        {
+          label: 'Company',
+          field: 'company_id',
+        },
+        {
+          label: 'license_no',
+          field: 'license_no',
+        },
+         {
+          label: 'total_tickets_sold',
+          field: 'total_tickets_sold',
+        },
+         {
+          label: 'Sales',
+          field: 'sales',
+        },
+         {
+          label: 'Payouts',
+          field: 'payouts',
+        },
+          {
+          label: 'GGR',
+          field: 'ggr',
+        },
+          {
+          label: 'wht',
+          field: 'wht',
+        },
+         {
+          label: 'Action',
+          field: 'action',
+        }
+        
+      ],
+      rows: [],
+      rowdata:'',
+      selectedItems:[],
+    };
+  },
+    computed: {
+    isInvalid () {
+      return this.isTouched && this.value.length === 0
+    },
+  },
+  methods: {
+          getPublicLottery: function(){
+        axios.get('/PublicLotterydata/get')
+        .then(function(response){
+          this.rows = response.data;
+           console.log(response)
+        }.bind(this));
+       
+      },
+       getLicenseeName: function(){
+         axios.get('/publiclottery_license_name/get')
+        .then(function(response){
+          this.company_names = response.data;
+           console.log(this.company_names)
+        }.bind(this));
+      },
+   sum()
+   {
+     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+  this.fields.ggr=this.fields.sales - this.fields.total_payout;
+  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggrtax=0.15 * this.fields.ggr;  
+   
+   },
+
+      onChange (value) {
+      this.value = value
+      if (value.indexOf('Reset me!') !== -1) this.value = []
+            this.value = value
+    this.fields.license_no=this.value.license_no;
+       this.fields.trading_name=this.value.trading_name;
+     this.fields.licensee_name=this.value.company_name
+    console.log(value)
+    },
+    onSelect (option) {
+      if (option === 'Disable me!') this.isDisabled = false
+    },
+    onTouch () {
+      this.isTouched = true
+    },     
+     
+      editBtn:function(id){
+        alert(id);
+      },
+      showModal(publiclottery_id,company_id,company_name,license_no,return_for_of,return_to,date,total_tickets_sold,sales,payouts,wht,ggr){
+              //bind the data to the items
+              this.fields.publiclottery_id=publiclottery_id
+              this.fields.company_name=company_name
+              this.fields.trading_name=trading_name
+              this.fields.licensee_no=license_no
+              this.fields.company_id=company_id
+              this.fields.return_for_of=return_for_of
+              this.fields.return_to=return_to
+              this.fields.total_tickets_sold=total_tickets_sold
+              this.fieilds.sales=sales
+              this.fields.date=date
+              this.fields.payouts=payouts
+              this.fields.wht=wht
+              this.fields.ggr=ggr
+              console.log(ggr,'fffffffffffffffdddd')
+      },
+
+       
+      selectionChanged:function(params){
+        let c=[];
+        params.selectedRows.forEach(function(value,index,array){
+        c.push(value.publiclottery_id);      
+           
+        });
+        this.selectedItems=c;      
+       
+      },
+      clickButton:function(){
+        let self=this;
+        self.$swal({
+            title: 'Do you want to Delete contact(s)?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Delete`,
+            denyButtonText: `Cancel`,
+          }).then((result) => {           
+             
+            if (result.isConfirmed) {
+              //do an axios for deleting
+          axios.get('/delete/contact/'+this.selectedItems).then((response) => {  
+                 
+                  self.selectedItems.forEach(function(value,index,array){
+                  self.rows= self.rows.filter(row=>row.publiclottery_id!=value); 
+
+                   self.$swal('Contacts Deleted!', '', 'success')  
+                 });                     
+                });      
+              
+            } else if (result.isDenied) {
+              self.$swal('Operation Canceled', '', 'info')
+            }
+          })
+              
+                 
+      },
+
+      
+  },mounted() {
+              this.fields.publiclottery_id=this.bookmarkerdata.publiclottery_id;
+        this.fields.license_no=this.bookmarkerdata.license_no;
+        this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
+        this.fields.licensee_name=this.bookmarkerdata.licensee_name;
+         this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
+          this.fields.branch=this.bookmarkerdata.branch;
+           this.fields.date=this.bookmarkerdata.date;
+            this.fields.bets_no=this.bookmarkerdata.bets_no;
+             this.fields.deposits=this.bookmarkerdata.deposits;
+              this.fields.total_sales=this.bookmarkerdata.total_sales;
+               this.fields.total_payout=this.bookmarkerdata.total_payout;
+                this.fields.wht=this.bookmarkerdata.wht;
+                 this.fields.winloss=this.bookmarkerdata.winloss;
+                 this.fields.ggr=this.bookmarkerdata.ggr;
+                 this.fields.trading_name=this.bookmarkerdata.trading_name;
+        },
+  created() {
+       this.getPublicLottery() 
+    this.getLicenseeName() 
+  },
+
+};
+</script> 

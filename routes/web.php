@@ -81,6 +81,7 @@ Route::post('/publiclottery/update', [App\Http\Controllers\PublicLotteryControll
 Route::post('/publiclottery/delete', [App\Http\Controllers\PublicLotteryController::class, 'destroy'])->name('publiclottery.delete');
 Route::get('/publiclottery_license_name/get',[App\Http\Controllers\PublicLotteryController::class, 'getLicenseeName']);
 Route::post('/publiclottery/upload', [App\Http\Controllers\PublicLotteryController::class, 'upload'])->name('publiclottery.upload');
+Route::get('/PublicLotterydata/get',[App\Http\Controllers\PublicLotteryController::class, 'publiclotterydata'])->name('publiclottery.ppubliclotterydata');
 
 Route::get('/publicgaming', [App\Http\Controllers\PublicgamingsController::class, 'index'])->name('publicgaming');
 Route::post('/publicgaming/add', [App\Http\Controllers\PublicgamingsController::class, 'store'])->name('publicgaming.add');
@@ -106,6 +107,10 @@ Route::get('/CategoryTypeNam/get',[App\Http\Controllers\CategoryTypesController:
 
 
 Route::get('/useractivitylogs',[App\Http\Controllers\AuditLogsController::class, 'index'])->name('useractivitylogs');   
+Route::get('/AuditLogsdata/get',[App\Http\Controllers\AuditLogsController::class, 'index'])->name('useractivitylogs.AuditLogsdata');
+
+
+
 
 Route::get('/bookmarkersrepo/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'createPDF'])->name('bookmarkersrepo.pdf');
 Route::get('/reports',[App\Http\Controllers\ReportsController::class, 'index'])->name('reports');   

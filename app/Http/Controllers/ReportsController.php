@@ -185,13 +185,9 @@ class ReportsController extends Controller
 
     public function bookmarkersAllreport($id)
     {
-
-         $company_name=BookmarkersCompany::all('company_name');
-        $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
-    
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
         $bookmarkers = EloquentBuilder::to(BookMarkers::where('bookmarker_id','!=',NULL))->get();
-        return view('reports.bookmarkers', compact('bookmarkers','bcompanies','id'));
+        return view('reports.bookmarkersAll', compact('bookmarkers','bcompanies','id'));
     }
 
 
@@ -199,10 +195,10 @@ class ReportsController extends Controller
     {
 
          $company_name=BookmarkersCompany::all('company_name');
-       // $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
+       // $bookmarkers = PublicLottery::where('category_type_id',1)->get();
     
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
-        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('publiclottery_id','!=',NULL), request()->all())->get();
+        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('publiclottery_id','!=',NULL))->get();
         return view('reports.publiclotteryAllreport', compact('publiclotteryAllreports','bcompanies','id'));
     }
 
@@ -288,13 +284,15 @@ class ReportsController extends Controller
 
     }
 
+ 
+    //$bookmarkers = EloquentBuilder::to(BookMarkers::where('bookmarker_id','!=',NULL))->get();
 
     public function bookmarkersAllreport_createPDF($id) {
         // retreive all records from db
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
         //$bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
 
-        $bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id','!=','ttt888uu'), request()->all())->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::where('bookmarker_id','!=','ttt888uu'), request()->all())->get();
   
         // share data to view
         // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);    '!=',NULL

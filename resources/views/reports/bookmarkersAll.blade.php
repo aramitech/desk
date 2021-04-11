@@ -54,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="/bookmarkersrepo/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
+									<a class="dropdown-item" href="/bookmarkersAllreport_createPDF/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
         </div>
 
 								</div>

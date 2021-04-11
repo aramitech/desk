@@ -28,7 +28,7 @@ class BookMarkersController extends Controller
        // return Auth::user();
       // return   $category_type_id = CategoryTypes::where('categorytypes_id','1')->get();
 
-        $bookmarkers = BookMarkers::all();
+      $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
         return view('bookmarkers.index', compact('bookmarkers'));
     }
 

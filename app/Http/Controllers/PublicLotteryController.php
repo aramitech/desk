@@ -35,8 +35,13 @@ class PublicLotteryController extends Controller
             return $license_name;
         }
     }
+    public function publiclotterydata()
+    {
+        $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
+        return $publiclotteries;
+    }
 
-
+    
     /**
      * Show the form for creating a new resource.
      *

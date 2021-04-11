@@ -54,8 +54,12 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="{{ URL::to('/publicLotterysrepo/pdf',$id) }}">Export to PDF</a>
-        </div>
+									<a class="dropdown-item" href="{{ URL::to('/publicLotterysrepo/pdf',$id) }}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
+       
+
+	   
+	   
+	    </div>
 
 								</div>
 							</div>

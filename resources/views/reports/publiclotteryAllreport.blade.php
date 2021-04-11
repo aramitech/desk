@@ -93,9 +93,9 @@
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>Date</th>
-                        <th>No. of Bets</th>
-                        <th>Deposits</th>
+                        <th>license_no</th>
+                        <th>total_tickets_sold</th>
+                        <th>sales</th>
                         <th>Total Sales</th>
                         <th>TOTAL Payouts</th>
                         <th>WHT</th>
@@ -108,30 +108,30 @@
 				$total_sales=0;
 				$total_payout=0;
 				$wht=0;
-				$ggr=0;
+				$ggr=0;     
 				@endphp
-				 @foreach($publiclotteryAllreports as $bookmarker)
-				 @php $sum +=$bookmarker->total_tickets_sold ;
-				 $deposits +=$bookmarker->sales ;
-				 $total_sales +=$bookmarker->payouts ;
-				 $total_payout +=$bookmarker->ggr ;
-				 $wht +=$bookmarker->wht ;
-				 $ggr +=$bookmarker->ggrtax ;
+				 @foreach($publiclotteryAllreports as $publiclottery)
+				 @php $sum +=$publiclottery->total_tickets_sold ;
+				 $deposits +=$publiclottery->sales ;
+				 $total_sales +=$publiclottery->payouts ;
+				 $total_payout +=$publiclottery->ggr ;
+				 $wht +=$publiclottery->wht ;
+				 $ggr +=$publiclottery->ggrtax ;
 				@endphp
 				    <tr>
-                        <td>{{ $bookmarker->bookmarker_id }}</td>
-                        <td>{{ $bookmarker->date }}</td>
-                        <td>{{ $bookmarker->total_tickets_sold }}</td>
-                        <td>{{ $bookmarker->sales }}</td>
-                        <td>{{ $bookmarker->payouts }}</td>
-                        <td>{{ $bookmarker->ggr }}</td>
-                        <td>{{ $bookmarker->wht }}</td>
-                        <td>{{ $bookmarker->ggrtax }}</td>                      
+                        <td>{{ $publiclottery->publiclottery_id }}</td>
+                        <td>{{ $publiclottery->license_no }}</td>
+                        <td>{{ $publiclottery->total_tickets_sold }}</td>
+                        <td>{{ $publiclottery->sales }}</td>
+                        <td>{{ $publiclottery->payouts }}</td>
+                        <td>{{ $publiclottery->ggr }}</td>
+                        <td>{{ $publiclottery->wht }}</td>
+                        <td>{{ $publiclottery->ggrtax }}</td>                      
                  <td></td>    
                     </tr>
-                    <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <edit-publiclottery-component :publiclotterydata="{{ json_encode($publiclottery)}}"/>
                         </div>
                     </div>
                     @endforeach   

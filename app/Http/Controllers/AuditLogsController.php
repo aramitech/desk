@@ -26,6 +26,14 @@ class AuditLogsController extends Controller
         return view('auditLog.index', compact('auditLogs'));
     }
 
+    public function auditlogsdata()
+    {
+      
+        $auditLogs = AuditLog::with('userlogs')->get();
+        return $auditLogs;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

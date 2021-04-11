@@ -10,7 +10,7 @@
     mode: 'records',
     perPage: 10,
     position: 'bottom',
-    dropdownAllowAll: false,
+    dropdownAllowAll: true,
     setCurrentPage: 1,
     nextLabel: 'next',
     prevLabel: 'prev',
@@ -25,7 +25,7 @@
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
        <button @click="showModal(props.row.bookmarker_id,props.row.bookmarkerscompany,props.row.licensee_name,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
-       <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash-alt"></i> </button>
+       <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  </button>
        </span>
     <span v-else>
       {{ props.formattedRow[props.column.field] }}
@@ -188,23 +188,6 @@ export default {
         total_sales:'',
         total_payout:'',
 
-            // bookmarker_id:this.bookmarkerdata.bookmarker_id,
-            // license_no:this.bookmarkerdata.license_no,
-            // return_for_the_period_of:this.bookmarkerdata.return_for_the_period_of,
-            // licensee_name:this.bookmarkerdata.licensee_name,
-            // return_for_the_period_to:this.bookmarkerdata.return_for_the_period_to,
-            // branch:this.bookmarkerdata.branch,
-            // date:this.bookmarkerdata.date,
-            // bets_no:this.bookmarkerdata.bets_no,
-            //  deposits:this.bookmarkerdata.deposits,
-            //   total_sales:this.bookmarkerdata.total_sales,
-            //    total_payout:this.bookmarkerdata.total_payout,
-            //     wht:this.bookmarkerdata.wht,
-            //      winloss:this.bookmarkerdata.winloss,
-            //       ggr:this.bookmarkerdata.ggr,
-            //         trading_name:this.bookmarkerdata.trading_name, 
-            //          company_id:this.bookmarkerdata.bookmarkerscompany,
-
       },       
       
       columns: [
@@ -289,6 +272,11 @@ export default {
        onChange (value) {
       this.value = value
       if (value.indexOf('Reset me!') !== -1) this.value = []
+      this.value = value
+      this.fields.license_no=this.value.license_no;
+      this.fields.trading_name=this.value.trading_name;
+      this.fields.licensee_name=this.value.company_name
+    console.log(value)
     },
     onSelect (option) {
       if (option === 'Disable me!') this.isDisabled = false
@@ -310,14 +298,15 @@ export default {
               this.fields.return_for_the_period_of=return_for_the_period_of
               this.fields.return_for_the_period_to=return_for_the_period_to
               this.fields.branch=branch
-              this.fieilds.bets_no=this.bets_no
+              this.fieilds.bets_no=bets_no
               this.fields.date=date
-              this.fields.deposits=this.deposits
+              this.fields.deposits=deposits
               this.fieldds.total_sales=total_sales
               this.fields.total_payout=total_payout
               this.fields.wht=wht
               this.fields.winloss=winloss
               this.fields.ggr=ggr
+              console.log(ggr,'fffffffffffffffdddd')
       },
 
        
