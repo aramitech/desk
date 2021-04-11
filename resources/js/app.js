@@ -60,7 +60,6 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 
  Vue.component('publiclottery_good_table_component', require('./components/publiclottery/VueTablePublicLottery.vue').default);
 
- Vue.component('auditlogs_good_table_component', require('./components/AuditLog/VueTableAuditLog.vue').default);
 
  
 /**
