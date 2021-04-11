@@ -2787,6 +2787,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['usertype'],
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_1__.default, _shared_DeleteMixin__WEBPACK_IMPORTED_MODULE_2__.default],
   components: {
     VueGoodTable: vue_good_table__WEBPACK_IMPORTED_MODULE_5__.VueGoodTable,
@@ -2811,7 +2812,13 @@ __webpack_require__.r(__webpack_exports__);
         deposits: '',
         bets_no: '',
         total_sales: '',
-        total_payout: ''
+        total_payout: '',
+        return_for_the_period_of: '',
+        return_for_the_period_to: '',
+        wht: '',
+        winloss: '',
+        ggr: '',
+        ggrtax: ''
       },
       columns: [{
         label: 'ID',
@@ -2855,13 +2862,11 @@ __webpack_require__.r(__webpack_exports__);
     getBookmarkers: function getBookmarkers() {
       axios.get('/bookmarkersdata/get').then(function (response) {
         this.rows = response.data;
-        console.log(response);
       }.bind(this));
     },
     getLicenseeName: function getLicenseeName() {
       axios.get('/license_name/get').then(function (response) {
         this.company_names = response.data;
-        console.log(this.company_names);
       }.bind(this));
     },
     sum: function sum() {
@@ -2880,7 +2885,6 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.license_no = this.value.license_no;
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
-      console.log(value);
     },
     onSelect: function onSelect(option) {
       if (option === 'Disable me!') this.isDisabled = false;
@@ -2896,20 +2900,21 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.bookmarker_id = bookmarker_id;
       this.fields.licensee_name = licensee_name;
       this.fields.trading_name = trading_name;
-      this.fields.licensee_no = license_no;
+      this.fields.license_no = license_no;
       this.fields.company_id = company_id;
-      this.fields.return_for_the_period_of = return_for_the_period_of;
-      this.fields.return_for_the_period_to = return_for_the_period_to;
+      this.fields.return_for_the_period_of = return_for_the_period_of.substr(0, 10);
+      this.fields.return_for_the_period_to = return_for_the_period_to.substr(0, 10);
       this.fields.branch = branch;
-      this.fieilds.bets_no = bets_no;
+      this.fields.bets_no = bets_no;
       this.fields.date = date;
       this.fields.deposits = deposits;
-      this.fieldds.total_sales = total_sales;
+      this.fields.total_sales = total_sales;
       this.fields.total_payout = total_payout;
       this.fields.wht = wht;
       this.fields.winloss = winloss;
       this.fields.ggr = ggr;
-      console.log(ggr, 'fffffffffffffffdddd');
+      this.sum();
+      console.log(this.fields);
     },
     selectionChanged: function selectionChanged(params) {
       var c = [];
@@ -2945,22 +2950,21 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
-    this.fields.bookmarker_id = this.bookmarkerdata.bookmarker_id;
-    this.fields.license_no = this.bookmarkerdata.license_no;
-    this.fields.return_for_the_period_of = this.bookmarkerdata.return_for_the_period_of;
-    this.fields.licensee_name = this.bookmarkerdata.licensee_name;
-    this.fields.return_for_the_period_to = this.bookmarkerdata.return_for_the_period_to;
-    this.fields.branch = this.bookmarkerdata.branch;
-    this.fields.date = this.bookmarkerdata.date;
-    this.fields.bets_no = this.bookmarkerdata.bets_no;
-    this.fields.deposits = this.bookmarkerdata.deposits;
-    this.fields.total_sales = this.bookmarkerdata.total_sales;
-    this.fields.total_payout = this.bookmarkerdata.total_payout;
-    this.fields.wht = this.bookmarkerdata.wht;
-    this.fields.winloss = this.bookmarkerdata.winloss;
-    this.fields.ggr = this.bookmarkerdata.ggr;
-    this.fields.trading_name = this.bookmarkerdata.trading_name;
+  mounted: function mounted() {//       this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
+    // this.fields.license_no=this.bookmarkerdata.license_no;
+    // this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
+    // this.fields.licensee_name=this.bookmarkerdata.licensee_name;
+    //  this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
+    //   this.fields.branch=this.bookmarkerdata.branch;
+    //    this.fields.date=this.bookmarkerdata.date;
+    //     this.fields.bets_no=this.bookmarkerdata.bets_no;
+    //      this.fields.deposits=this.bookmarkerdata.deposits;
+    //       this.fields.total_sales=this.bookmarkerdata.total_sales;
+    //        this.fields.total_payout=this.bookmarkerdata.total_payout;
+    //         this.fields.wht=this.bookmarkerdata.wht;
+    //          this.fields.winloss=this.bookmarkerdata.winloss;
+    //          this.fields.ggr=this.bookmarkerdata.ggr;
+    //          this.fields.trading_name=this.bookmarkerdata.trading_name;
   },
   created: function created() {
     this.getBookmarkers();
@@ -52548,7 +52552,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "trading_name",
-                                  value: "",
                                   type: "text",
                                   placeholder: "Trading Name",
                                   disabled: this.validated ? false : true,
@@ -52591,7 +52594,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "license_no",
-                                  value: "",
                                   type: "text",
                                   placeholder: "License No",
                                   disabled: this.validated ? false : true,
@@ -52637,7 +52639,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "return_for_the_period_of",
-                                  value: "",
                                   type: "date",
                                   placeholder: "Return For The Period Of",
                                   required: ""
@@ -52686,7 +52687,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "return_for_the_period_to",
-                                  value: "",
                                   type: "date",
                                   placeholder: "Return For The Period To",
                                   required: ""
@@ -52736,7 +52736,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "branch",
-                                  value: "",
                                   type: "text",
                                   placeholder: "branch",
                                   required: ""
@@ -52778,7 +52777,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "date",
-                                  value: "",
                                   type: "date",
                                   placeholder: "Date",
                                   required: ""
@@ -52820,7 +52818,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "bets_no",
-                                  value: "",
                                   type: "text",
                                   placeholder: "bets_no",
                                   required: ""
@@ -52864,7 +52861,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "deposits",
-                                  value: "",
                                   type: "text",
                                   placeholder: "Deposits",
                                   required: ""
@@ -52906,7 +52902,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "total_sales",
-                                  value: "",
                                   type: "text",
                                   placeholder: "total_sales",
                                   required: ""
@@ -52950,7 +52945,6 @@ var render = function() {
                                 attrs: {
                                   id: "total_payout",
                                   name: "total_payout",
-                                  value: "",
                                   type: "text",
                                   placeholder: "Total Payout",
                                   required: ""
@@ -52995,7 +52989,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "wht",
-                                  value: "",
                                   type: "text",
                                   placeholder: "WHT",
                                   disabled: this.validated ? false : true,
@@ -53038,7 +53031,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "winloss",
-                                  value: "",
                                   type: "hidden",
                                   disabled: this.validated ? false : true,
                                   placeholder: "winloss"
@@ -53070,7 +53062,6 @@ var render = function() {
                                 staticClass: "form-control",
                                 attrs: {
                                   name: "ggrtax",
-                                  value: "",
                                   type: "text",
                                   placeholder: "ggrtax",
                                   disabled: this.validated ? false : true,

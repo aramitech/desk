@@ -65,24 +65,24 @@
                     <div class="form-group row">
                       <div class="col-md-6">
                           <label>Trading Name</label>   
-                          <input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="this.validated ? false : true" required>
+                          <input class="form-control" name="trading_name" v-model="fields.trading_name" type="text" placeholder="Trading Name" :disabled="this.validated ? false : true" required>
                                         <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
                         </div>
                                   <div class="col-md-6">
                           <label>License No</label>
-                          <input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="this.validated ? false : true" required>
+                          <input class="form-control"  name="license_no" v-model="fields.license_no" type="text" placeholder="License No" :disabled="this.validated ? false : true" required>
                                         <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
                         </div>
                       </div>
                       <div class="form-group row">                      
                           <div class="col-md-6">
                           <label>Return For The Period Of</label>
-                          <input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" required>
+                          <input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" type="date" placeholder="Return For The Period Of" required>
                                         <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
                         </div>
                                   <div class="col-md-6">
                           <label>Return For The Period To</label>
-                          <input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" required>
+                          <input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" type="date" placeholder="Return For The Period To" required>
                                         <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
                         </div>
                       </div>
@@ -90,48 +90,48 @@
 
                             <div class="col-md-4">
                         <label>Branch</label>
-                        <input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" required>
+                        <input class="form-control"  name="branch" v-model="fields.branch" type="text" placeholder="branch" required>
                                       <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
                       </div>
                                     <div class="col-md-4">
                         <label>Date</label>
-                        <input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+                        <input class="form-control"  name="date" v-model="fields.date" type="date" placeholder="Date" required>
                                       <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
                       </div>
   
                           <div class="col-md-4">
                           <label>Bets No</label>
-                          <input class="form-control"  name="bets_no" v-model="fields.bets_no" value="" type="text" placeholder="bets_no" required>
+                          <input class="form-control"  name="bets_no" v-model="fields.bets_no" type="text" placeholder="bets_no" required>
                                         <div v-if="errors && errors.bets_no" class="text-danger">{{ errors.bets_no[0] }}</div>
                         </div></div>
                         <div class="form-group row">  
                                       <div class="col-md-4">
                           <label>Deposits</label>
-                          <input class="form-control"  name="deposits" v-model="fields.deposits" value="" type="text" placeholder="Deposits" required>
+                          <input class="form-control"  name="deposits" v-model="fields.deposits" type="text" placeholder="Deposits" required>
                                         <div v-if="errors && errors.deposits" class="text-danger">{{ errors.deposits[0] }}</div>
                         </div>
                                 
                                         <div class="col-md-4">
                           <label>Total Sales</label>
-                          <input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
+                          <input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" type="text" placeholder="total_sales" required>
                             <div v-if="errors && errors.total_sales" class="text-danger">{{ errors.total_sales[0] }}</div>
 						</div>
                             <div class="col-md-4">
 							<label>Total Payout</label>
-							<input class="form-control" @keyup="sum" id="total_payout" name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control" @keyup="sum" id="total_payout" name="total_payout" v-model="fields.total_payout" type="text" placeholder="Total Payout" required>
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div></div>
   <div class="form-group row">                       
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="this.validated ? false : true" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" type="text" placeholder="WHT" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="this.validated ? false : true" placeholder="winloss" >
+							<input class="form-control"  name="winloss" v-model="fields.winloss" type="hidden" :disabled="this.validated ? false : true" placeholder="winloss" >
                            
-                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="this.validated ? false : true" required>
+                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" type="text" placeholder="ggrtax" :disabled="this.validated ? false : true" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                            <div class="col-md-4">
@@ -163,6 +163,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditBookmarkerComponent.vue';
 
 export default {
+  props:['usertype'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -182,12 +183,17 @@ export default {
         licensee_name:'',
         trading_name:'',
         license_no:'',
-          date:'',
+        date:'',
         deposits:'',
         bets_no:'',
         total_sales:'',
         total_payout:'',
-
+        return_for_the_period_of:'',
+        return_for_the_period_to:'',
+        wht:'',
+        winloss:'',
+        ggr:'',
+        ggrtax:'',
       },       
       
       columns: [
@@ -244,7 +250,6 @@ export default {
         axios.get('/bookmarkersdata/get')
         .then(function(response){
           this.rows = response.data;
-           console.log(response)
         }.bind(this));
        
       },
@@ -252,7 +257,6 @@ export default {
         axios.get('/license_name/get')
         .then(function(response){
           this.company_names = response.data;
-           console.log(this.company_names)
         }.bind(this));
       },
   sum()
@@ -276,7 +280,6 @@ export default {
       this.fields.license_no=this.value.license_no;
       this.fields.trading_name=this.value.trading_name;
       this.fields.licensee_name=this.value.company_name
-    console.log(value)
     },
     onSelect (option) {
       if (option === 'Disable me!') this.isDisabled = false
@@ -290,23 +293,24 @@ export default {
       },
       showModal(bookmarker_id,company_id,licensee_name,license_no,trading_name,return_for_the_period_of,return_for_the_period_to,branch,date,bets_no,deposits,total_sales,total_payout,wht,winloss,ggr){
               //bind the data to the items
-              this.fields.bookmarker_id=bookmarker_id
-              this.fields.licensee_name=licensee_name
-              this.fields.trading_name=trading_name
-              this.fields.licensee_no=license_no
-              this.fields.company_id=company_id
-              this.fields.return_for_the_period_of=return_for_the_period_of
-              this.fields.return_for_the_period_to=return_for_the_period_to
-              this.fields.branch=branch
-              this.fieilds.bets_no=bets_no
-              this.fields.date=date
-              this.fields.deposits=deposits
-              this.fieldds.total_sales=total_sales
-              this.fields.total_payout=total_payout
-              this.fields.wht=wht
-              this.fields.winloss=winloss
-              this.fields.ggr=ggr
-              console.log(ggr,'fffffffffffffffdddd')
+              this.fields.bookmarker_id=bookmarker_id;
+              this.fields.licensee_name=licensee_name;
+              this.fields.trading_name=trading_name;
+              this.fields.license_no=license_no;
+              this.fields.company_id=company_id;
+              this.fields.return_for_the_period_of=return_for_the_period_of.substr(0,10);
+              this.fields.return_for_the_period_to=return_for_the_period_to.substr(0,10);
+              this.fields.branch=branch;
+              this.fields.bets_no=bets_no;
+              this.fields.date=date;
+              this.fields.deposits=deposits;
+              this.fields.total_sales=total_sales;
+              this.fields.total_payout=total_payout;
+              this.fields.wht=wht;
+              this.fields.winloss=winloss;
+              this.fields.ggr=ggr;
+              this.sum();
+              console.log(this.fields)
       },
 
        
@@ -350,21 +354,21 @@ export default {
 
       
   },mounted() {
-              this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
-        this.fields.license_no=this.bookmarkerdata.license_no;
-        this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
-        this.fields.licensee_name=this.bookmarkerdata.licensee_name;
-         this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
-          this.fields.branch=this.bookmarkerdata.branch;
-           this.fields.date=this.bookmarkerdata.date;
-            this.fields.bets_no=this.bookmarkerdata.bets_no;
-             this.fields.deposits=this.bookmarkerdata.deposits;
-              this.fields.total_sales=this.bookmarkerdata.total_sales;
-               this.fields.total_payout=this.bookmarkerdata.total_payout;
-                this.fields.wht=this.bookmarkerdata.wht;
-                 this.fields.winloss=this.bookmarkerdata.winloss;
-                 this.fields.ggr=this.bookmarkerdata.ggr;
-                 this.fields.trading_name=this.bookmarkerdata.trading_name;
+        //       this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
+        // this.fields.license_no=this.bookmarkerdata.license_no;
+        // this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
+        // this.fields.licensee_name=this.bookmarkerdata.licensee_name;
+        //  this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
+        //   this.fields.branch=this.bookmarkerdata.branch;
+        //    this.fields.date=this.bookmarkerdata.date;
+        //     this.fields.bets_no=this.bookmarkerdata.bets_no;
+        //      this.fields.deposits=this.bookmarkerdata.deposits;
+        //       this.fields.total_sales=this.bookmarkerdata.total_sales;
+        //        this.fields.total_payout=this.bookmarkerdata.total_payout;
+        //         this.fields.wht=this.bookmarkerdata.wht;
+        //          this.fields.winloss=this.bookmarkerdata.winloss;
+        //          this.fields.ggr=this.bookmarkerdata.ggr;
+        //          this.fields.trading_name=this.bookmarkerdata.trading_name;
         },
   created() {
        this.getBookmarkers() 
