@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\ActiveStatusType;
 use App\Models\CategoryTypes;
 use Illuminate\Http\Request;
 
@@ -31,8 +31,16 @@ class CategoryTypesController extends Controller
             return $categoryTypes;
         }
     }
-
-
+    
+    //return StatusTypeNam
+    public function StatusTypeNam()
+    {
+       // if(Auth::user()->user_type == 'organization_user' || Auth::user()->user_type == 'organization')
+        {
+            $StatusTypeNam = ActiveStatusType::all();
+            return $StatusTypeNam;
+        }
+    }
 
     /**
      * Show the form for creating a new resource.

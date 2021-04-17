@@ -20,7 +20,14 @@ class Publicgamings extends Model
         'sales',
         'payouts',
         'wht',
-        'ggr'
+        'ggr',
+        'ggrtax',
+        'id',
+        'salesslot',
+        'payoutsslot',
+        'whtslot',
+        'ggrslot',
+        'ggrtaxslot'
     ];       
 
  //Contacts<>Org relationship

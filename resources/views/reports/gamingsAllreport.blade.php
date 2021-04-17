@@ -54,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="/publiclotteryAllreports_createPDF/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
+									<a class="dropdown-item" href="/publicgamingAllreports_createPDF/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
         </div>
 
 								</div>
@@ -70,17 +70,17 @@
 							</div>
 						</div>
 						<!-- <h4 class="text-center mb-30 weight-600">COMPANY LETTER HEAD</h4> -->
-                        <h4 class="text-center mb-30 weight-600">PUBLIC LOTTERY RETURN FORM</h4>
+                        <h4 class="text-center mb-30 weight-600">ALL PUBLIC GAMING RETURN FORM</h4>
 						@foreach($bcompanies as $bcompany)
                         <div class="row pb-30">   
 							<div class="col-md-6"> 
-								<h5 class="mb-15">NAME OF LICENSEE: {{ $bcompany->company_name}}</h5>
-								<p class="font-14 mb-5">LICENSEE NO: <strong class="weight-600">{{ $bcompany->license_no}}</strong></p>
+								<h5 class="mb-15">NAME OF LICENSEE: ALL</h5>
+								<p class="font-14 mb-5">LICENSEE NO: <strong class="weight-600">ALL</strong></p>
 								<p class="font-14 mb-5">RETURN FOR THE PERIOD OF: <strong class="weight-600">{{ request()->from ?? '....'}}</strong></p>
 							</div>
 							<div class="col-md-6">
 								<div class="text-right">
-									<p class="font-14 mb-5">BRANCH :  {{ $bcompany->branch}} </strong></p>
+									
 									<p class="font-14 mb-5">DATE :  {{ date('Y-m-d H:i:s') }}</p>
 									<p class="font-14 mb-5">TO : {{ request()->to ?? '....'}}</p>
 									<p class="font-14 mb-5"></p>
@@ -94,12 +94,12 @@
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Date</th>
-                        <th>No. of Bets</th>
-                        <th>Deposits</th>
-                        <th>Total Sales</th>
-                        <th>TOTAL Payouts</th>
+                        <th>Total Tickets</th>
+                        <th>Sales</th>
+                        <th>Payouts</th>
+                        <th>GGR</th>
                         <th>WHT</th>
-                        <th>GGR</th> 
+                        <th>GGR Tax</th> 
                     </tr>
                 </thead>
                 <tbody>

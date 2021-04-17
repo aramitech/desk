@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SendSms extends Model
+class SendSmses extends Model
 {
     protected $primaryKey = 'sendsms_id';
     protected $table = 'sendsms';

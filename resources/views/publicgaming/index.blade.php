@@ -35,74 +35,27 @@
     <h2 class="h4 pd-20">Public Gaming List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap  data-table-export nowrap">
-                <thead>
-                    <tr>
-                        <th class="table-plus">#</th>
-                        <th>Date</th>
-                        <th>sales</th>
-                        <th>payouts</th>
-                        <th>WHT</th>
-                        <th>GGR</th>
-                        <th>Date</th>
-                        <th>Date</th>
-                        <th class="datatable-nosort">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($publicgamings as $publicgaming)
-                    <tr>
-                        <td>{{ $publicgaming->publicgaming_id }}</td>
-                        <td>{{ $publicgaming->date }}</td>
-                        <td>{{ $publicgaming->sales }}</td>
-                        <td>{{ $publicgaming->payouts }}</td>
-                        <td>{{ $publicgaming->wht }}</td>
-                        <td>{{ $publicgaming->ggr }}</td>
-                        <td>{{ $publicgaming->created_at->format("y-M-d") }}</td>
+             <!-- check user type logged in -->
+             @php
+                $usertype = '';
+            @endphp
+           @if(Auth::guard('superadmin')->check())
+                @php
+                    $usertype = 'super-admin';
+                @endphp
+            @elseif(Auth::guard('admin')->check())
+                @php
+                    $usertype = 'admin';
+                @endphp
+            @elseif(Auth::guard('web')->check())
+                @php
+                    $usertype = 'user';
+                @endphp
+            @endif
+        <publicgaming_good_table_component :usertype="{{ $usertype }}"></publicgaming_good_table_component>
 
 
-                        <td>
-                            <div class="dropdown">
-                                <!-- <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a> -->
-                                <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
-                                    <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewpublicgaming{{$publicgaming->publicgaming_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
-                                   
-                                    @if ( Auth::user()->editstatus == 'Allowed' )
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editpublicgaming{{$publicgaming->publicgaming_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-
-                                  
-                                    
-                                    @else   
-                                    @endif
-                                    @if ( Auth::user()->deletestatus == 'Allowed' )  
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('publicgamingdelete',{{$publicgaming}})"><i class="dw dw-delete-3"></i> Delete</button>
-                                    @else   
-                                    @endif
-                                
-                                
-                                <!-- </div> -->
-                            </div>
-                            </td>  <td></td>
-                    </tr>
-                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <edit-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="viewpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <view-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
-                        </div>
-                    </div>
-                    
-                    @endforeach
-                </tbody>
-            </table>
         </div>
     </div>
     <!-- ./main content card -->

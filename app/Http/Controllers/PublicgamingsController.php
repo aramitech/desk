@@ -37,7 +37,11 @@ class PublicgamingsController extends Controller
         }
     }
 
-
+    public function publicgamingsdata()
+    {
+        $publicgamings = Publicgamings::with('publicGamingcompany')->get();
+        return $publicgamings;
+    }
 
 
     /**
@@ -63,7 +67,7 @@ class PublicgamingsController extends Controller
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
         $user->ggrtax = $request->ggrtax;
-        $user->id = Auth::user()->id;
+       // $user->id = Auth::user()->id;
 
         $user->salesslot = $request->salesslot;
         $user->payoutsslot = $request->payoutsslot;
@@ -72,9 +76,12 @@ class PublicgamingsController extends Controller
         $user->ggrtaxslot = $request->ggrtaxslot;
 
         $user->save();
-
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
+    if($id='')
+    {
+        $id='123'; 
+    }
+        //$id=Auth::user()->id;
+      //$email=Auth::user()->email;
         //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
@@ -82,7 +89,7 @@ class PublicgamingsController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
+        //$userLog->id = Auth::user()->id;  
         $userLog->save();
 
         return back()->with('success','Added succesfully');

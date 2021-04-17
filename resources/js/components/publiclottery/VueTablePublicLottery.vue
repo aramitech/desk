@@ -24,7 +24,7 @@
     >
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
-       <button @click="showModal(props.row.publiclottery_id,props.row.company_id,props.row.company_name,props.row.license_no,props.row.return_for_of,props.row.return_to,props.row.date,props.row.total_tickets_sold,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button @click="showModal(props.row.publiclottery_id,props.row.publicLotterycompany,props.row.company_id,props.row.company_name,props.row.license_no,props.row.return_for_of,props.row.return_to,props.row.date,props.row.total_tickets_sold,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
        <button  @click.prevent="deleteItem('publiclotterydelete',props.row.publiclottery_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </button>
        </span>
     <span v-else>
@@ -59,7 +59,7 @@
                
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no"  type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div>
                          <div class="col-md-6">
@@ -67,46 +67,46 @@
 						</div>   
                              <div class="col-md-6">
 							<label>Trading As</label>
-							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="trading_name" v-model="fields.trading_name" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
                         </div>   
                            <div class="form-group row">
                         <div class="col-md-6">
 							<label>Return For The Period Of</label>
-							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of" value="" type="date" placeholder="Return For The Period Of" required>
+							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of" type="date" placeholder="Return For The Period Of" required>
                             <div v-if="errors && errors.return_for_of" class="text-danger">{{ errors.return_for_of[0] }}</div>
 						</div>
                        <div class="col-md-6">
 							<label>Return For The Period To</label>
-							<input class="form-control"  name="return_to" v-model="fields.return_to" value="" type="date" placeholder="Return For The Period To" required>
+							<input class="form-control"  name="return_to" v-model="fields.return_to" type="date" placeholder="Return For The Period To" required>
                             <div v-if="errors && errors.return_to" class="text-danger">{{ errors.return_to[0] }}</div>
 						</div></div>
                        <div class="form-group row">
                           <div class="col-md-6">
 							<label>Date</label>
-							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+							<input class="form-control"  name="date" v-model="fields.date" type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
                           <div class="col-md-6">
 							<label>Total Tickets Sold</label>
-							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold" value="" type="text" placeholder="Total Tickets Sold" required>
+							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold" type="text" placeholder="Total Tickets Sold" required>
                             <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
 						</div></div>    
                           <div class="form-group row">
                            <div class="col-md-4">
 							<label>Sales</label>
-							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
                             <div class="col-md-4">
 							<label>Payouts</label>
-							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" type="text" placeholder="Payouts" required>
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
                          <div class="col-md-4">
 							<label>Total Payout</label>
-							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout"  type="text" placeholder="Total Payout" required>
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div>
                         
@@ -115,19 +115,19 @@
                            
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" :disabled="validated ? false : true" placeholder="WHT" required>
+							<input class="form-control"  name="wht" v-model="fields.wht"  type="text" :disabled="validated ? false : true" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                        
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" :disabled="validated ? false : true" placeholder="GGR" required>
+							<input class="form-control"  name="ggr" v-model="fields.ggr"  type="text" :disabled="validated ? false : true" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
                         
                              <div class="col-md-4">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
+							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                         
@@ -267,22 +267,25 @@ export default {
       editBtn:function(id){
         alert(id);
       },
-      showModal(publiclottery_id,company_id,company_name,license_no,return_for_of,return_to,date,total_tickets_sold,sales,payouts,wht,ggr){
+      showModal(publiclottery_id,company_id,company_name,license_no,return_for_of,return_to,date,total_tickets_sold,sales,payouts,ggr,wht){
               //bind the data to the items
-              this.fields.publiclottery_id=publiclottery_id
-              this.fields.company_name=company_name
-              this.fields.trading_name=trading_name
-              this.fields.licensee_no=license_no
-              this.fields.company_id=company_id
-              this.fields.return_for_of=return_for_of
-              this.fields.return_to=return_to
-              this.fields.total_tickets_sold=total_tickets_sold
-              this.fieilds.sales=sales
-              this.fields.date=date
-              this.fields.payouts=payouts
-              this.fields.wht=wht
-              this.fields.ggr=ggr
-              console.log(ggr,'fffffffffffffffdddd')
+              this.fields.publiclottery_id=publiclottery_id;
+               this.fields.company_id=company_id;
+                this.fields.company_name=company_name;
+              this.fields.company_name=company_id ? company_id.company_name : '';
+             this.fields.trading_name=company_id ? company_id.trading_name : '';
+              this.fields.licensee_no=license_no;
+             
+
+              this.fields.total_tickets_sold=total_tickets_sold;
+              this.fieilds.sales=sales;
+              this.fields.date=date;
+              this.fields.payouts=payouts;
+              this.fields.ggr=ggr;
+              this.fields.wht=wht;
+              this.sum();
+              console.log(this.fields)
+       
       },
 
        

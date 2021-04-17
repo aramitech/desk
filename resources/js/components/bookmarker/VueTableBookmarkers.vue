@@ -173,7 +173,7 @@ export default {
     return {
       'text': 'Records Updated succesfully',
       'redirect': '',
-      action2: '/fc/contacts/editContacts',
+      action: '/bookmarkers/update', //edit action
       company_names: [],
       
        validated:false,
@@ -291,6 +291,7 @@ export default {
       editBtn:function(id){
         alert(id);
       },
+  
       showModal(bookmarker_id,company_id,licensee_name,license_no,trading_name,return_for_the_period_of,return_for_the_period_to,branch,date,bets_no,deposits,total_sales,total_payout,wht,winloss,ggr){
               //bind the data to the items
               this.fields.bookmarker_id=bookmarker_id;

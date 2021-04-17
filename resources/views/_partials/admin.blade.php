@@ -129,8 +129,8 @@
                             </li>
 
                             <li class="dropdown">
-                                <a href="{{ route('reports.publiclotteryGGr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.publiclotteryGGr*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery GGR</span>
+                                <a href="{{ route('reports.activestatuscompanies')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.activestatuscompanies*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Active/Inactive Companies</span>
                                 </a>
                             </li>
 

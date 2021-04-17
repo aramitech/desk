@@ -8,6 +8,16 @@
                 </div>
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
+
+ <div class="col-md-12">
+            <label for="company_id"> Category</label>        
+            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select Company name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+              
+            </multiselect>
+            <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
+       
+        </div> 
+
                         <div class="form-group">
 							<label> SMS</label>
             <textarea class="form-control" name="message" id="message" v-model="fields.message" placeholder="Type SMS..."></textarea>
@@ -28,6 +38,7 @@
 <script>
 import FormMixin from '../shared/FormMixin';
 
+
 export default {
   mixins: [ FormMixin ],
 data() {
@@ -35,11 +46,27 @@ data() {
         action: '/sendsms/add', //save action
         text: 'Sent Succesfully',
         redirect: '',
+
+             company_names: [],
+             fields: {
+  
+      }
         }
+
+     
     },
 
 methods: {
+     getCompanyName: function(){
+        axios.get('/company_name/get')
+        .then(function(response){
+          this.company_names = response.data;        
+        }.bind(this));
+      },
+    },
 
-    }
+       created: function(){  
+     this.getCompanyName()   
+    },
 }
 </script>

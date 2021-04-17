@@ -57,6 +57,11 @@ Route::post('/company/delete_destroybookmarkerscompany', [App\Http\Controllers\C
 Route::post('/company/delete_destroypublicgamingcompany', [App\Http\Controllers\CompanyController::class, 'destroypublicgamingcompany'])->name('company.delete_destroypublicgamingcompany');
 Route::post('/company/delete_destroypubliclottery', [App\Http\Controllers\CompanyController::class, 'destroypubliclottery'])->name('company.delete_destroypubliclottery');
 //company/updateBookmarkersCompany
+Route::post('/company/updateBookmarkersCompany', [App\Http\Controllers\CompanyController::class, 'updateBookmarkersCompany'])->name('company.updateBookmarkersCompany');
+Route::get('/company_name/get',[App\Http\Controllers\CompanyController::class, 'getCompanyName']);
+
+
+
 
 Route::get('/bookmarkers', [App\Http\Controllers\BookMarkersController::class, 'index'])->name('bookmarkers');
 Route::post('/bookmarkers/add', [App\Http\Controllers\BookMarkersController::class, 'store'])->name('bookmarkers.add');
@@ -82,6 +87,9 @@ Route::post('/publiclottery/delete', [App\Http\Controllers\PublicLotteryControll
 Route::get('/publiclottery_license_name/get',[App\Http\Controllers\PublicLotteryController::class, 'getLicenseeName']);
 Route::post('/publiclottery/upload', [App\Http\Controllers\PublicLotteryController::class, 'upload'])->name('publiclottery.upload');
 Route::get('/PublicLotterydata/get',[App\Http\Controllers\PublicLotteryController::class, 'publiclotterydata'])->name('publiclottery.ppubliclotterydata');
+Route::get('/publiclotteryAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publiclotteryAllreports_createPDF'])->name('publiclotteryAllreports_createPDF');   
+Route::get('/publicgamingAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgamingAllreports_createPDF'])->name('publicgamingAllreports_createPDF');   
+
 
 Route::get('/publicgaming', [App\Http\Controllers\PublicgamingsController::class, 'index'])->name('publicgaming');
 Route::post('/publicgaming/add', [App\Http\Controllers\PublicgamingsController::class, 'store'])->name('publicgaming.add');
@@ -89,6 +97,7 @@ Route::post('/publicgaming/update', [App\Http\Controllers\PublicgamingsControlle
 Route::post('/publicgaming/delete', [App\Http\Controllers\PublicgamingsController::class, 'destroy'])->name('publicgaming.delete');
 Route::get('/publicgaming_license_name/get',[App\Http\Controllers\PublicgamingsController::class, 'getLicenseeName']);
 Route::post('/publicgaming/upload', [App\Http\Controllers\PublicgamingsController::class, 'upload'])->name('publicgaming.upload');
+Route::get('/publicgamingsdata/get',[App\Http\Controllers\PublicgamingsController::class, 'publicgamingsdata'])->name('publicgaming.publicgamingsdata');
 
 Route::get('/admin_users', [App\Http\Controllers\AdminuserController::class, 'index'])->name('admin_users');
 Route::post('/admin_users/add', [App\Http\Controllers\AdminuserController::class, 'store'])->name('admin_users.add');
@@ -103,6 +112,7 @@ Route::get('/return_form_rports/bookmarkers', [App\Http\Controllers\ReturnFormRe
 Route::get('/categorytypes',[App\Http\Controllers\CategoryTypesController::class, 'index'])->name('categorytypes');   
 Route::post('/categorytypes/add', [App\Http\Controllers\AdminuserController::class, 'store'])->name('categorytypes.add');
 Route::get('/CategoryTypeNam/get',[App\Http\Controllers\CategoryTypesController::class, 'CategoryTypes']);
+Route::get('/StatusTypeNam/get',[App\Http\Controllers\CategoryTypesController::class, 'StatusTypeNam']);
 
 
 
@@ -141,6 +151,7 @@ Route::get('/reports/company-ggr',[App\Http\Controllers\ReportsController::class
 Route::get('/reports/publiclotteryGGr',[App\Http\Controllers\ReportsController::class, 'publiclotteryGGr'])->name('reports.publiclotteryGGr');
 Route::get('/reports/publicgamingGGr',[App\Http\Controllers\ReportsController::class, 'publicGamingGGr'])->name('reports.publicgamingGGr');
 Route::get('/reports/allCompaniesGraph',[App\Http\Controllers\ReportsController::class, 'allCompaniesGraph'])->name('reports.allCompaniesGraph');
+Route::get('/activestatuscompanies',[App\Http\Controllers\ReportsController::class, 'activestatuscompanies'])->name('reports.activestatuscompanies');
 
 
 

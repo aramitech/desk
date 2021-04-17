@@ -15,7 +15,7 @@ class AdminPublicgamingsController extends Controller
      */
     public function index()
     {
-        $publicgamings = PublicLottery::all();
+        $publicgamings = Publicgamings::all();
         return view('publicgaming.admin', compact('publicgamings'));
     }
 

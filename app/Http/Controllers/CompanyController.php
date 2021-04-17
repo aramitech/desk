@@ -36,6 +36,17 @@ class CompanyController extends Controller
         return view('company.publickgaming', compact('publickgamings'));
     }
     
+
+    //return Company Name
+    public function getCompanyName()
+    {
+        {
+            $company_name = BookmarkersCompany::all();
+            return $company_name;
+        }
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -124,8 +135,10 @@ class CompanyController extends Controller
         $user->trading_name = $request->trading_name;
         $user->license_no = $request->license_no;
         $user->email = $request->email;
-        $user->contact = $request->contact;
+        return   $user->contact = $request->contact;
         $user->physicaladdress = $request->physicaladdress;
+           $user->paybillno = $request->paybillno;
+          return $user->status = $request->status;
         $user->save();
         return back()->with('success','Updated succesfully');
     }
@@ -145,6 +158,7 @@ class CompanyController extends Controller
         $user->branch = $request->branch;
         $user->category_type_id = $request->category_type_id['categorytypes_id'];   
         $user->paybillno = $request->paybillno;
+        $user->status = $request->status;
         $user->save();
         return back()->with('success','Updated succesfully');
     }

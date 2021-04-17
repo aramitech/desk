@@ -10,7 +10,7 @@ class SendSms{
 
     protected $username;
     protected $password;
-    protected $uri='http://www.mobisky.biz/api/sendsms2a.php?';  //sendsms2a for onfon
+    protected $uri='https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky'; //sendsms2a for onfon
     protected $uri2='http://www.mobisky.biz/api/sendsms2.php?';  //sendsms2a for onfon
     protected $client;
     protected $response;

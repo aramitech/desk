@@ -43,7 +43,7 @@
                         <th>License No</th>
                         <th>Email</th>
                         <th>Address</th>
-                        <th>Date</th>       <th>Action</th>
+                        <th>Status</th>       <th>Action</th>
                         <th ></th>
                     </tr>
                 </thead>
@@ -56,7 +56,7 @@
                         <td>{{ $bookmarker->license_no }}</td>
                         <td>{{ $bookmarker->email }}</td>
                         <td>{{ $bookmarker->physicaladdress }}</td>
-                        <td>{{ $bookmarker->created_at->format("y-M-d") }}</td>
+                        <td>{{ $bookmarker->status }}</td>
                      
                         <td>
                             <div class="dropdown">

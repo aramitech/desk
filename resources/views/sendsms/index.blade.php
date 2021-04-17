@@ -39,14 +39,14 @@
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>SendSms No</th>
+                        <th>Sms </th>
             
-                        <th>SendSms</th>
+                        <th>Sms No</th>
                         <th>Company</th>
-                        <th>Date</th>
+                    
          
-                     <th>Action</th>
-                        <th class="datatable-nosort"></th>
+                    
+                
                     </tr>
                 </thead>
                 <tbody>
@@ -58,26 +58,7 @@
                         <td>{{ $bookmarker->company_id }}</td>
                         <td>{{ $bookmarker->created_at }}</td>
 
-                        <td>
-                            <div class="dropdown">
-                                <!-- <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a> -->
-                                <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
-                                    <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewbookmarker{{$bookmarker->sendsms_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
-
-                                  
-                                    
-                               
-                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarker{{$bookmarker->sendsms_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerdelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
-                              
-                            
-                           <!-- </div> -->
-                            </div>
-                            </td>  <td></td>    
+                          
                     </tr>
                     <div class="modal fade" id="editbookmarker{{$bookmarker->sendsms_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

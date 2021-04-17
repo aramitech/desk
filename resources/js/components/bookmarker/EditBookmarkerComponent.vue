@@ -1,33 +1,37 @@
 <template>
-      <form method="POST" @submit.prevent="submit">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myLargeModalLabel">View Bookmarkers</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                           <div class="form-group row">
- <div class="col-md-6">
-            <label for="company_id"> Licensee Name</label>        
-            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
-              
-            </multiselect>
-            <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
-       
-        </div> 
-           <div class="col-md-6">
-							<!-- <label>Licensee Name</label> -->
-							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
+                       <div class="col-md-6">
+							<label>Licensee Name</label>
+							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="text" placeholder="Licensee Name" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
 						</div>
-        
-         </div>
+
+ <div class="col-md-6">
+            <label for="Bookmarkers_company_id"> Licensee Name</label>        
+            <multiselect  name="Bookmarkers_company_id" v-model="fields.Bookmarkers_company_id"  track-by="Bookmarkers_company_id" label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange" >
+              
+            </multiselect>
+            <div v-if="errors && errors.Bookmarkers_company_id" class="text-danger">{{ errors.Bookmarkers_company_id[0] }}</div>
+      
+        </div>  </div>
 
 
   <div class="form-group row">
 					<div class="col-md-6">
-							<label>Trading Name</label>   
-							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="this.validated ? false : true" required>
+							<label>Trading Name</label>
+							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" >
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="this.validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div></div>
     <div class="form-group row">                      
@@ -68,72 +72,63 @@
                      
                             <div class="col-md-4">
 							<label>Total Sales</label>
-							<input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
+							<input class="form-control"  name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
                             <div v-if="errors && errors.total_sales" class="text-danger">{{ errors.total_sales[0] }}</div>
 						</div>
                             <div class="col-md-4">
 							<label>Total Payout</label>
-							<input class="form-control" @keyup="sum" id="total_payout" name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div></div>
   <div class="form-group row">                       
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="this.validated ? false : true" required>
+							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                            <div class="col-md-4">
-							<label>GGR TAX</label>
-							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="this.validated ? false : true" placeholder="winloss" >
-                           
-                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="this.validated ? false : true" required>
-                            <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
+							<label>Win Loss</label>
+							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="text" placeholder="winloss" required>
+                            <div v-if="errors && errors.winloss" class="text-danger">{{ errors.winloss[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="this.validated ? false : true" required>
+							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
 						</div>
                         
                     </div>
-                    <div class="modal-footer">
+                 <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
+    </div>
 </template>
 
 <script>
-// import FormMixin from '../shared/FormMixin';
+import FormMixin from '../shared/FormMixin';
 
 export default {
-//   mixins: [ FormMixin ],
+  mixins: [ FormMixin ],
   props: [ 'bookmarkerdata' ],
 data() {
     return {
         action: '/bookmarkers/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '',
-        validated: false,
+        redirect: '/bookmarkers',
 
  company_names: [],
 
         fields: {
-                    license_no:"",
-        trading_name:'',
-        licensee_name:'',
-
-                ggr : '',
-                total_payout: '',   
-
             bookmarker_id:this.bookmarkerdata.bookmarker_id,
             license_no:this.bookmarkerdata.license_no,
             return_for_the_period_of:this.bookmarkerdata.return_for_the_period_of,
-            licensee_name:this.bookmarkerdata.licensee_name,
-            return_for_the_period_to:this.bookmarkerdata.return_for_the_period_to,
-            branch:this.bookmarkerdata.branch,
-            date:this.bookmarkerdata.date,
+        licensee_name:this.bookmarkerdata.licensee_name,
+         return_for_the_period_to:this.bookmarkerdata.return_for_the_period_to,
+          branch:this.bookmarkerdata.branch,
+           date:this.bookmarkerdata.date,
             bets_no:this.bookmarkerdata.bets_no,
              deposits:this.bookmarkerdata.deposits,
               total_sales:this.bookmarkerdata.total_sales,
@@ -141,44 +136,22 @@ data() {
                 wht:this.bookmarkerdata.wht,
                  winloss:this.bookmarkerdata.winloss,
                   ggr:this.bookmarkerdata.ggr,
-                    trading_name:this.bookmarkerdata.trading_name, 
-                     company_id:this.bookmarkerdata.bookmarkerscompany,
-                        
        }
         }
     },
 
-    methods: {
+methods: {
     getLicenseeName: function(){
         axios.get('/license_name/get')
         .then(function(response){
           this.company_names = response.data;
-           console.log(this.company_names)
+         
         }.bind(this));
+  
       },
-
-  sum()
-   {
-     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-  this.fields.ggr=this.fields.total_sales - this.fields.total_payout;
-  this.fields.wht=0.2 * this.fields.total_payout;
-  this.fields.ggrtax=0.15 * this.fields.ggr;  
-   
-   },
-      ggrtax()
-   {
- this.fields.ggrtax=0.15 * this.fields.ggr;  
-   },
-onChange (value) {
-      this.value = value
-    this.fields.license_no=this.value.license_no;
-       this.fields.trading_name=this.value.trading_name;
-     this.fields.licensee_name=this.value.company_name
-    console.log(value)
-    },
     },
         created: function(){  
-        
+     this.getLicenseeName()   
     },
     mounted() {
         this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
@@ -195,8 +168,15 @@ onChange (value) {
                 this.fields.wht=this.bookmarkerdata.wht;
                  this.fields.winloss=this.bookmarkerdata.winloss;
                  this.fields.ggr=this.bookmarkerdata.ggr;
-                 this.fields.trading_name=this.bookmarkerdata.trading_name;
-                
    }
 }
 </script>
+
+
+
+
+
+
+
+               
+               

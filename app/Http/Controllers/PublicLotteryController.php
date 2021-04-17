@@ -41,6 +41,7 @@ class PublicLotteryController extends Controller
         return $publiclotteries;
     }
 
+
     
     /**
      * Show the form for creating a new resource.
@@ -165,6 +166,11 @@ class PublicLotteryController extends Controller
         $email= Auth::guard('web')->user()->email;  
         $category= 'User'; 
     }
+    // return $id;
+    // $Contact = PublicLottery::where('publiclottery_id',$id)->get();
+    // //set delete
+    // $deleteContact = PublicLottery::find($id);
+    // $deleteContact->delete();
 
 
         $user = PublicLottery::findOrFail($request->publiclottery_id);

@@ -194,11 +194,14 @@ class ReportsController extends Controller
     public function publiclotteryAllreport($id)
     {
 
+
          $company_name=BookmarkersCompany::all('company_name');
-       // $bookmarkers = PublicLottery::where('category_type_id',1)->get();
+         $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
     
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
-        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('publiclottery_id','!=',NULL))->get();
+        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('company_id','1'), request()->all())->get();
+       
+
         return view('reports.publiclotteryAllreport', compact('publiclotteryAllreports','bcompanies','id'));
     }
 
@@ -303,6 +306,42 @@ class ReportsController extends Controller
 
     }
  
+    
+    public function publiclotteryAllreports_createPDF($id) {
+        // retreive all records from db
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        //$bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
+
+        $publiclotteries = EloquentBuilder::to(PublicLottery::where('publiclottery_id','!=','ttt888uu'), request()->all())->get();
+  
+        // share data to view
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);    '!=',NULL
+        $pdf = PDF::loadView('reports.pdf_publiclotteryAll_view', compact('bcompanies','publiclotteries','id'));
+  
+        // download PDF file with download method
+        return $pdf->download('pdf_publiclotteryAll_view.pdf');
+
+    }
+
+
+    public function publicgamingAllreports_createPDF($id) {
+        // retreive all records from db
+        $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
+        //$bookmarkers = EloquentBuilder::to(BookMarkers::where('company_id',$id), request()->all())->get();
+
+        $publicgamings = EloquentBuilder::to(Publicgamings::where('publicgaming_id','!=','ttt888uu'), request()->all())->get();
+  
+        // share data to view
+        // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);    '!=',NULL
+        $pdf = PDF::loadView('reports.pdf_publicgamingAll_view', compact('bcompanies','publicgamings','id'));
+  
+        // download PDF file with download method
+        return $pdf->download('pdf_publicgamingAll_view.pdf');
+
+    }
+
+
+
     public function indexpubliclottery()
     {
         $publiclotteries = BookmarkersCompany::where('category_type_id',2)->get();
@@ -328,6 +367,14 @@ class ReportsController extends Controller
         return view('reports.publicgaming', compact('bookmarkers','bcompanies'));
     }
 
+    public function activestatuscompanies()
+    {
+        $bcompanies="ALL";
+        $activestatuscompanies = BookmarkersCompany::all();
+        return view('reports.activestatuscompanies', compact('activestatuscompanies','bcompanies'));
+    }
+
+    
     public function store(Request $request)
     {
         $request->validate([

@@ -60,8 +60,10 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 
  Vue.component('publiclottery_good_table_component', require('./components/publiclottery/VueTablePublicLottery.vue').default);
 
+ Vue.component('publicgaming_good_table_component', require('./components/publicgaming/VueTableGamings.vue').default);
 
  
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
