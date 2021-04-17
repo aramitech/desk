@@ -173,7 +173,7 @@ class PublicLotteryController extends Controller
     // $deleteContact->delete();
 
 
-        $user = PublicLottery::findOrFail($request->publiclottery_id);
+        $user = PublicLottery::findOrFail($request->id);
         $user->delete();
 
         $userLog = new AuditLog();

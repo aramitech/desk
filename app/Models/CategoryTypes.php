@@ -19,7 +19,7 @@ class CategoryTypes extends Model
      //Category Type<>Company relationship
  public function CompanyCategoryType()
  {
-     return $this->belongsTo(BookmarkersCompany::class,'company_id');
+     return $this->hasMany(BookmarkersCompany::class,'category_type_id');
  }
 
   //Contacts<>Group relationship

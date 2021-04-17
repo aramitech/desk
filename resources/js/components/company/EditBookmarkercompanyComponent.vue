@@ -106,7 +106,7 @@ data() {
          status_names:[],
         fields: {
             company_id:this.bookmarkerdata.company_id,
-            category_type_id:this.bookmarkerdata.category_type_id,
+            category_type_id:this.bookmarkerdata.company_category_type,
             company_name:this.bookmarkerdata.category_type_id,
             trading_name:this.bookmarkerdata.trading_name,
             license_no:this.bookmarkerdata.license_no,
@@ -139,7 +139,7 @@ methods: {
     },
     mounted() {
         this.fields.company_id=this.bookmarkerdata.company_id;
-        this.fields.category_type_id=this.getCategoryTypeName;
+        this.fields.category_type_id=this.bookmarkerdata.company_category_type;
         this.fields.company_name=this.bookmarkerdata.company_name;
         this.fields.trading_name=this.bookmarkerdata.trading_name;
         this.fields.license_no=this.bookmarkerdata.license_no;
@@ -150,6 +150,7 @@ methods: {
         this.fields.paybillno=this.bookmarkerdata.paybillno;
         this.fields.status=this.bookmarkerdata.status;
         this.fields.categorytype=this.bookmarkerdata.categorytype;
+        console.log(this.fields.category_type_id);
     },
           created: function(){  
      this.getCategoryTypeName() 

@@ -2,7 +2,9 @@ export default {
     data() {
       return {
         
-        fields: {},
+        fields: {
+          id: ''
+        },
         errors: {},
         loaded: true,
         action: '', 
@@ -87,10 +89,9 @@ export default {
         }).then((Delete) => {
           if (Delete) {
             console.log("before: " , fpath +id);
-            axios.post(fpath,id).then(function (response) {
+            this.fields.id=id;
+            axios.post(fpath,this.fields).then(function (response) {
                 //this.loaded = true;
-                console.log("while:" , fpath +id);
-                console.log(response);
                 swal({
                   title: 'Deleted!',
                   text: item+' has been deleted.',
@@ -106,6 +107,7 @@ export default {
               
             })["catch"](function (error) {
                 this.loaded = false;
+                console.log(error);
             }.bind(this));
           } else {
                 swal.close();

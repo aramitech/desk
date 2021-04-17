@@ -10,7 +10,7 @@
     mode: 'records',
     perPage: 10,
     position: 'bottom',
-    dropdownAllowAll: tue,
+    dropdownAllowAll: true,
     setCurrentPage: 1,
     nextLabel: 'next',
     prevLabel: 'prev',
@@ -24,7 +24,7 @@
     >
     <template slot="table-row" slot-scope="props">
     <span v-if="props.column.field == 'action'">      
-       <button @click="showModal(props.row.publiclottery_id,props.row.publicLotterycompany,props.row.company_id,props.row.company_name,props.row.license_no,props.row.return_for_of,props.row.return_to,props.row.date,props.row.total_tickets_sold,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button @click="showModal(props.row.publiclottery_id,props.row.public_lotterycompany,props.row.company_id,props.row.company_name,props.row.license_no,props.row.return_for_of,props.row.return_to,props.row.date,props.row.total_tickets_sold,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
        <button  @click.prevent="deleteItem('publiclotterydelete',props.row.publiclottery_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </button>
        </span>
     <span v-else>
@@ -62,10 +62,11 @@
 							<input class="form-control"  name="license_no" v-model="fields.license_no"  type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div>
-                         <div class="col-md-6">
-							<label> </label>
-						</div>   
-                             <div class="col-md-6">
+              <div class="col-md-6">
+                <label></label>
+              </div>
+                         
+              <div class="col-md-6">
 							<label>Trading As</label>
 							<input class="form-control"  name="trading_name" v-model="fields.trading_name" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
@@ -85,7 +86,7 @@
                        <div class="form-group row">
                           <div class="col-md-6">
 							<label>Date</label>
-							<input class="form-control"  name="date" v-model="fields.date" type="date" placeholder="Date" required>
+							<input class="form-control"  name="date" v-model="fields.date" type="date" placeholder="Date">
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
                           <div class="col-md-6">
@@ -228,7 +229,6 @@ export default {
         axios.get('/PublicLotterydata/get')
         .then(function(response){
           this.rows = response.data;
-           console.log(response)
         }.bind(this));
        
       },
@@ -236,26 +236,21 @@ export default {
          axios.get('/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;
-           console.log(this.company_names)
         }.bind(this));
       },
    sum()
    {
      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-  this.fields.ggr=this.fields.sales - this.fields.total_payout;
-  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggr=this.fields.sales - this.fields.payouts;
+  this.fields.wht=0.2 * this.fields.payouts;
   this.fields.ggrtax=0.15 * this.fields.ggr;  
    
    },
 
       onChange (value) {
-      this.value = value
-      if (value.indexOf('Reset me!') !== -1) this.value = []
-            this.value = value
-    this.fields.license_no=this.value.license_no;
-       this.fields.trading_name=this.value.trading_name;
-     this.fields.licensee_name=this.value.company_name
-    console.log(value)
+    this.fields.license_no=value.license_no;
+       this.fields.trading_name=value.trading_name;
+     this.fields.licensee_name=value.company_name
     },
     onSelect (option) {
       if (option === 'Disable me!') this.isDisabled = false
@@ -267,24 +262,23 @@ export default {
       editBtn:function(id){
         alert(id);
       },
-      showModal(publiclottery_id,company_id,company_name,license_no,return_for_of,return_to,date,total_tickets_sold,sales,payouts,ggr,wht){
-              //bind the data to the items
-              this.fields.publiclottery_id=publiclottery_id;
-               this.fields.company_id=company_id;
-                this.fields.company_name=company_name;
-              this.fields.company_name=company_id ? company_id.company_name : '';
-             this.fields.trading_name=company_id ? company_id.trading_name : '';
-              this.fields.licensee_no=license_no;
-             
-
-              this.fields.total_tickets_sold=total_tickets_sold;
-              this.fieilds.sales=sales;
-              this.fields.date=date;
-              this.fields.payouts=payouts;
-              this.fields.ggr=ggr;
-              this.fields.wht=wht;
-              this.sum();
-              console.log(this.fields)
+      showModal(publiclottery_id,public_lotterycompany,company_id,company_name,license_no,return_for_of,return_to,date,total_tickets_sold,sales,payouts,wht,ggr){
+            //bind the data to the items
+            this.fields.publiclottery_id=publiclottery_id;
+            this.fields.company_id=public_lotterycompany ? public_lotterycompany : [];
+            this.fields.company_name=public_lotterycompany ? public_lotterycompany.company_name : '';
+            this.fields.trading_name=public_lotterycompany ? public_lotterycompany.trading_name : '';
+            this.fields.license_no=license_no ? license_no : public_lotterycompany ? public_lotterycompany.license_no : '';
+            this.fields.total_tickets_sold=total_tickets_sold;
+            this.fields.sales=sales;
+            this.fields.return_for_of=return_for_of.substr(0,10);
+            this.fields.return_to=return_to.substr(0,10);
+            this.fields.date=date.substr(0,10);
+            this.fields.payouts=payouts;
+            this.fields.ggr=ggr;
+            this.fields.wht=wht;
+            this.sum();
+            console.log(public_lotterycompany)
        
       },
 

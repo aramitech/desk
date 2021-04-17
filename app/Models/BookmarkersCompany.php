@@ -25,7 +25,7 @@ class BookmarkersCompany extends Model
  //Company<>CategoryType relationship
  public function CompanyCategoryType()
  {
-     return $this->belongsTo(CategoryTypes::class,'categorytypes_id');
+     return $this->belongsTo(CategoryTypes::class,'category_type_id','categorytypes_id');
  }
  //Contacts<>Group relationship
  public function CategoryTypeCompany()

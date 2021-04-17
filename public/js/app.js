@@ -2771,6 +2771,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2778,7 +2784,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['usertype'],
+  props: ['privilege'],
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_1__.default, _shared_DeleteMixin__WEBPACK_IMPORTED_MODULE_2__.default],
   components: {
     VueGoodTable: vue_good_table__WEBPACK_IMPORTED_MODULE_5__.VueGoodTable,
@@ -2795,6 +2801,9 @@ __webpack_require__.r(__webpack_exports__);
       company_names: [],
       validated: false,
       fields: {
+        usertype: this.privilege[0].usertype,
+        edit_status: this.privilege.edit_status,
+        delete_status: this.privilege.delete_status,
         bookmarker_id: '',
         company_id: [],
         licensee_name: '',
@@ -2942,7 +2951,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {//       this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
+  mounted: function mounted() {
+    this.fields.usertype = this.privilege[0].usertype;
+    this.fields.edit_status = this.privilege.edit_status;
+    this.fields.delete_status = this.privilege.delete_status; //       this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
     // this.fields.license_no=this.bookmarkerdata.license_no;
     // this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
     // this.fields.licensee_name=this.bookmarkerdata.licensee_name;
@@ -3423,7 +3435,7 @@ __webpack_require__.r(__webpack_exports__);
       status_names: [],
       fields: {
         company_id: this.bookmarkerdata.company_id,
-        category_type_id: this.bookmarkerdata.category_type_id,
+        category_type_id: this.bookmarkerdata.company_category_type,
         company_name: this.bookmarkerdata.category_type_id,
         trading_name: this.bookmarkerdata.trading_name,
         license_no: this.bookmarkerdata.license_no,
@@ -3451,7 +3463,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.fields.company_id = this.bookmarkerdata.company_id;
-    this.fields.category_type_id = this.getCategoryTypeName;
+    this.fields.category_type_id = this.bookmarkerdata.company_category_type;
     this.fields.company_name = this.bookmarkerdata.company_name;
     this.fields.trading_name = this.bookmarkerdata.trading_name;
     this.fields.license_no = this.bookmarkerdata.license_no;
@@ -5579,6 +5591,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5646,29 +5659,23 @@ __webpack_require__.r(__webpack_exports__);
     getPublicLottery: function getPublicLottery() {
       axios.get('/PublicLotterydata/get').then(function (response) {
         this.rows = response.data;
-        console.log(response);
       }.bind(this));
     },
     getLicenseeName: function getLicenseeName() {
       axios.get('/publiclottery_license_name/get').then(function (response) {
         this.company_names = response.data;
-        console.log(this.company_names);
       }.bind(this));
     },
     sum: function sum() {
       //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-      this.fields.ggr = this.fields.sales - this.fields.total_payout;
-      this.fields.wht = 0.2 * this.fields.total_payout;
+      this.fields.ggr = this.fields.sales - this.fields.payouts;
+      this.fields.wht = 0.2 * this.fields.payouts;
       this.fields.ggrtax = 0.15 * this.fields.ggr;
     },
     onChange: function onChange(value) {
-      this.value = value;
-      if (value.indexOf('Reset me!') !== -1) this.value = [];
-      this.value = value;
-      this.fields.license_no = this.value.license_no;
-      this.fields.trading_name = this.value.trading_name;
-      this.fields.licensee_name = this.value.company_name;
-      console.log(value);
+      this.fields.license_no = value.license_no;
+      this.fields.trading_name = value.trading_name;
+      this.fields.licensee_name = value.company_name;
     },
     onSelect: function onSelect(option) {
       if (option === 'Disable me!') this.isDisabled = false;
@@ -5679,22 +5686,23 @@ __webpack_require__.r(__webpack_exports__);
     editBtn: function editBtn(id) {
       alert(id);
     },
-    showModal: function showModal(publiclottery_id, company_id, company_name, license_no, return_for_of, return_to, date, total_tickets_sold, sales, payouts, ggr, wht) {
+    showModal: function showModal(publiclottery_id, public_lotterycompany, company_id, company_name, license_no, return_for_of, return_to, date, total_tickets_sold, sales, payouts, wht, ggr) {
       //bind the data to the items
       this.fields.publiclottery_id = publiclottery_id;
-      this.fields.company_id = company_id;
-      this.fields.company_name = company_name;
-      this.fields.company_name = company_id ? company_id.company_name : '';
-      this.fields.trading_name = company_id ? company_id.trading_name : '';
-      this.fields.licensee_no = license_no;
+      this.fields.company_id = public_lotterycompany ? public_lotterycompany : [];
+      this.fields.company_name = public_lotterycompany ? public_lotterycompany.company_name : '';
+      this.fields.trading_name = public_lotterycompany ? public_lotterycompany.trading_name : '';
+      this.fields.license_no = license_no ? license_no : public_lotterycompany ? public_lotterycompany.license_no : '';
       this.fields.total_tickets_sold = total_tickets_sold;
-      this.fieilds.sales = sales;
-      this.fields.date = date;
+      this.fields.sales = sales;
+      this.fields.return_for_of = return_for_of.substr(0, 10);
+      this.fields.return_to = return_to.substr(0, 10);
+      this.fields.date = date.substr(0, 10);
       this.fields.payouts = payouts;
       this.fields.ggr = ggr;
       this.fields.wht = wht;
       this.sum();
-      console.log(this.fields);
+      console.log(public_lotterycompany);
     },
     selectionChanged: function selectionChanged(params) {
       var c = [];
@@ -6304,7 +6312,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      fields: {},
+      fields: {
+        id: ''
+      },
       errors: {},
       loaded: true,
       action: '',
@@ -6377,10 +6387,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (Delete) {
         if (Delete) {
           console.log("before: ", fpath + id);
-          axios.post(fpath, id).then(function (response) {
+          _this.fields.id = id;
+          axios.post(fpath, _this.fields).then(function (response) {
             //this.loaded = true;
-            console.log("while:", fpath + id);
-            console.log(response);
             swal({
               title: 'Deleted!',
               text: item + ' has been deleted.',
@@ -6395,6 +6404,7 @@ __webpack_require__.r(__webpack_exports__);
             });
           })["catch"](function (error) {
             this.loaded = false;
+            console.log(error);
           }.bind(_this));
         } else {
           swal.close();
@@ -52876,56 +52886,117 @@ var render = function() {
               return [
                 props.column.field == "action"
                   ? _c("span", [
-                      _c(
-                        "button",
-                        {
-                          attrs: {
-                            "data-toggle": "modal",
-                            "data-target": "#add",
-                            id: "show-modal"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.showModal(
-                                props.row.bookmarker_id,
-                                props.row.bookmarkerscompany,
-                                props.row.licensee_name,
-                                props.row.license_no,
-                                props.row.trading_name,
-                                props.row.return_for_the_period_of,
-                                props.row.return_for_the_period_to,
-                                props.row.branch,
-                                props.row.date,
-                                props.row.bets_no,
-                                props.row.deposits,
-                                props.row.total_sales,
-                                props.row.total_payout,
-                                props.row.wht,
-                                props.row.winloss,
-                                props.row.ggr
-                              )
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-edit" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger btn-sm",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.deleteItem(
-                                "bookmarkerdelete",
-                                props.row.bookmarker_id
-                              )
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-trash" })]
-                      )
+                      _vm.fields.usertype == "admin"
+                        ? _c("span", [
+                            _c(
+                              "button",
+                              {
+                                attrs: {
+                                  "data-toggle": "modal",
+                                  "data-target": "#add",
+                                  id: "show-modal"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.showModal(
+                                      props.row.bookmarker_id,
+                                      props.row.bookmarkerscompany,
+                                      props.row.licensee_name,
+                                      props.row.license_no,
+                                      props.row.trading_name,
+                                      props.row.return_for_the_period_of,
+                                      props.row.return_for_the_period_to,
+                                      props.row.branch,
+                                      props.row.date,
+                                      props.row.bets_no,
+                                      props.row.deposits,
+                                      props.row.total_sales,
+                                      props.row.total_payout,
+                                      props.row.wht,
+                                      props.row.winloss,
+                                      props.row.ggr
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger btn-sm",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.deleteItem(
+                                      "bookmarkerdelete",
+                                      props.row.bookmarker_id
+                                    )
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-trash" })]
+                            )
+                          ])
+                        : _vm.fields.usertype == "user"
+                        ? _c("span", [
+                            _vm.fields.edit_status == "Allowed"
+                              ? _c(
+                                  "button",
+                                  {
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target": "#add",
+                                      id: "show-modal"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.showModal(
+                                          props.row.bookmarker_id,
+                                          props.row.bookmarkerscompany,
+                                          props.row.licensee_name,
+                                          props.row.license_no,
+                                          props.row.trading_name,
+                                          props.row.return_for_the_period_of,
+                                          props.row.return_for_the_period_to,
+                                          props.row.branch,
+                                          props.row.date,
+                                          props.row.bets_no,
+                                          props.row.deposits,
+                                          props.row.total_sales,
+                                          props.row.total_payout,
+                                          props.row.wht,
+                                          props.row.winloss,
+                                          props.row.ggr
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-edit" })]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.fields.delete_status == "Allowed"
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.deleteItem(
+                                          "bookmarkerdelete",
+                                          props.row.bookmarker_id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "fa fa-trash" })]
+                                )
+                              : _vm._e()
+                          ])
+                        : _vm._e()
                     ])
                   : _c("span", [
                       _vm._v(
@@ -61690,7 +61761,7 @@ var render = function() {
             mode: "records",
             perPage: 10,
             position: "bottom",
-            dropdownAllowAll: _vm.tue,
+            dropdownAllowAll: true,
             setCurrentPage: 1,
             nextLabel: "next",
             prevLabel: "prev",
@@ -61721,7 +61792,7 @@ var render = function() {
                             click: function($event) {
                               return _vm.showModal(
                                 props.row.publiclottery_id,
-                                props.row.publicLotterycompany,
+                                props.row.public_lotterycompany,
                                 props.row.company_id,
                                 props.row.company_name,
                                 props.row.license_no,
@@ -62053,8 +62124,7 @@ var render = function() {
                                 attrs: {
                                   name: "date",
                                   type: "date",
-                                  placeholder: "Date",
-                                  required: ""
+                                  placeholder: "Date"
                                 },
                                 domProps: { value: _vm.fields.date },
                                 on: {

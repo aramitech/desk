@@ -23,9 +23,15 @@
     :select-options="{ enabled: true }"    
     >
     <template slot="table-row" slot-scope="props">
-    <span v-if="props.column.field == 'action'">      
-       <button @click="showModal(props.row.bookmarker_id,props.row.bookmarkerscompany,props.row.licensee_name,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
-       <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  </button>
+    <span v-if="props.column.field == 'action'">  
+        <span v-if="fields.usertype == 'admin'">    
+          <button @click="showModal(props.row.bookmarker_id,props.row.bookmarkerscompany,props.row.licensee_name,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+          <button  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  </button>
+        </span>
+        <span v-else-if="fields.usertype == 'user'">    
+          <button v-if="fields.edit_status == 'Allowed'" @click="showModal(props.row.bookmarker_id,props.row.bookmarkerscompany,props.row.licensee_name,props.row.license_no,props.row.trading_name,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.branch,props.row.date,props.row.bets_no,props.row.deposits,props.row.total_sales,props.row.total_payout,props.row.wht,props.row.winloss,props.row.ggr)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+          <button v-if="fields.delete_status == 'Allowed'"  @click.prevent="deleteItem('bookmarkerdelete',props.row.bookmarker_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  </button>
+        </span>
        </span>
     <span v-else>
       {{ props.formattedRow[props.column.field] }}
@@ -163,7 +169,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditBookmarkerComponent.vue';
 
 export default {
-  props:['usertype'],
+  props:['privilege'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -178,6 +184,9 @@ export default {
       
        validated:false,
       fields:{
+        usertype:this.privilege[0].usertype,
+        edit_status:this.privilege.edit_status,
+        delete_status:this.privilege.delete_status,
         bookmarker_id:'',
         company_id:[],
         licensee_name:'',
@@ -355,6 +364,9 @@ export default {
 
       
   },mounted() {
+      this.fields.usertype=this.privilege[0].usertype;
+      this.fields.edit_status=this.privilege.edit_status;
+      this.fields.delete_status=this.privilege.delete_status;
         //       this.fields.bookmarker_id=this.bookmarkerdata.bookmarker_id;
         // this.fields.license_no=this.bookmarkerdata.license_no;
         // this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;

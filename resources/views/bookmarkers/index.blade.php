@@ -37,21 +37,26 @@
            <!-- check user type logged in -->
            @php
                 $usertype = '';
+                $privilege = [];
             @endphp
            @if(Auth::guard('superadmin')->check())
                 @php
-                    $usertype = 'super-admin';
+                    $usertype = ['usertype'=>'super-admin'];
                 @endphp
             @elseif(Auth::guard('admin')->check())
                 @php
-                    $usertype = 'admin';
+                    $usertype = ['usertype'=>'admin'];
                 @endphp
             @elseif(Auth::guard('web')->check())
                 @php
-                    $usertype = 'user';
+                    $usertype = ['usertype'=>'user'];
+                    $privilege = ['edit_status'=>Auth::user()->editstatus,'delete_status'=>Auth::user()->deletestatus]
                 @endphp
             @endif
-        <bookmarkers_good_table_component :usertype="{{ $usertype }}"></bookmarkers_good_table_component>
+            @php 
+                array_push($privilege,$usertype);
+            @endphp
+        <bookmarkers_good_table_component :privilege="{{ json_encode($privilege) }}"></bookmarkers_good_table_component>
 
 
         </div>

@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function userlogs()
     {
-        return $this->hasMany(AuditLog::class,'audit_log_id');
+        return $this->hasMany(AuditLog::class,'id');
     }
 }
