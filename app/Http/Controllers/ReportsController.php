@@ -199,7 +199,7 @@ class ReportsController extends Controller
          $bookmarkers = BookmarkersCompany::where('category_type_id',1)->get();
     
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
-        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('company_id','1'), request()->all())->get();
+        $publiclotteryAllreports = EloquentBuilder::to(PublicLottery::where('company_id','!=',NULL), request()->all())->get();
        
 
         return view('reports.publiclotteryAllreport', compact('publiclotteryAllreports','bcompanies','id'));

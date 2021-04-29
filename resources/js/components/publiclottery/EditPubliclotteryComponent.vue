@@ -106,19 +106,21 @@
 <script>
 import FormMixin from '../shared/FormMixin';
 
+import Multiselect from 'vue-multiselect';
+
 export default {
   mixins: [ FormMixin ],
-  props: [ 'publiclotteryerdata' ],
+  components: { Multiselect },
+   props:['publiclotteryerdata'],
 data() {
     return {
         action: '/publiclottery/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/publiclottery',
+        redirect: '',
 
- company_names: [],
-
+        company_names: [],
         fields: {
-                  license_no:"",
+        license_no:"",
         trading_name:'',
         licensee_name:'',
             publiclottery_id:this.publiclotteryerdata.publiclottery_id,

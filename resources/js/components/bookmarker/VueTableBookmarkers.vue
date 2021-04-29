@@ -62,7 +62,7 @@
                     </div> 
                     <div class="col-md-6">
                       <label>Licensee Name</label>
-                        <input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="text" placeholder="Licensee Name" required>
+                        <input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="text" placeholder="License Name" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
                       </div>
                     </div>
@@ -283,12 +283,11 @@ export default {
 
 
        onChange (value) {
-      this.value = value
-      if (value.indexOf('Reset me!') !== -1) this.value = []
-      this.value = value
-      this.fields.license_no=this.value.license_no;
-      this.fields.trading_name=this.value.trading_name;
-      this.fields.licensee_name=this.value.company_name
+   this.value = value
+    this.fields.license_no=this.value.license_no;
+       this.fields.trading_name=this.value.trading_name;
+     this.fields.licensee_name=this.value.company_name
+    console.log(value)
     },
     onSelect (option) {
       if (option === 'Disable me!') this.isDisabled = false

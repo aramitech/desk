@@ -30,8 +30,10 @@
 @section('content')
     <div class="card-box mb-30">
         <h2 class="h4 pd-20">Public Lottery </h2>
-            <div id="publiclotteryggrchart">
+		<!-- <input type="button" onclick="printDiv('printableArea')" value="Print" /> -->
+                       
+            <div id="publiclotteryggrchart"><div id="printableArea">
                 {!! $publiclotteryggrchart->container() !!}
-            </div>
+				</div> </div>
     </div>
 @endsection

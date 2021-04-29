@@ -9,24 +9,21 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
-                    <h4>Public Gaming</h4>
+                    <h4>Shop</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Public Gaming</li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop</li>
                     </ol>
                 </nav>
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button">
-                        Add Public Gaming
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+                        Add Shop
                     </a>
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
-                        Upload Public Gaming
-                    </a>
                 </div>
             </div>
         </div>
@@ -36,11 +33,10 @@
     <div class="card-box mb-30">
     @include('layouts.messages')
     @include('layouts.errors')
-    <h2 class="h4 pd-20">Public Gaming List</h2>
+    <h2 class="h4 pd-20">Shop List</h2>
         <div class="pb-20">
-           
-          <!-- check user type logged in -->
-          @php
+           <!-- check user type logged in -->
+           @php
                 $usertype = '';
                 $privilege = [];
             @endphp
@@ -61,13 +57,16 @@
             @php 
                 array_push($privilege,$usertype);
             @endphp
-        <publicgaming_good_table_component :privilege="{{ json_encode($privilege) }}"></publicgaming_good_table_component>
+        <shop_good_table_component :privilege="{{ json_encode($privilege) }}"></shop_good_table_component>
 
+ 
         </div>
-        <upload-publicgaming-component/>
+        <view-shop-component/>
     </div>
-    <!-- ./main content card -->
-    <add-publicgaming-component/>
+    <!-- ./main content card -->     
+     
+    <add-shop-component/>
+ 
 </div>
 @endsection
 

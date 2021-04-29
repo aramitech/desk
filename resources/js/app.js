@@ -59,10 +59,23 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('edit-bookmarkers-component', require('./components/bookmarker/EditBookmarkerComponent.vue').default);
 
  Vue.component('publiclottery_good_table_component', require('./components/publiclottery/VueTablePublicLottery.vue').default);
-
  Vue.component('publicgaming_good_table_component', require('./components/publicgaming/VueTableGamings.vue').default);
 
+ Vue.component('shop_good_table_component', require('./components/shop/VueTableShop.vue').default);
+
+ Vue.component('add-shop-component', require('./components/shop/AddShopComponent.vue').default);
+ Vue.component('edit-shop-component', require('./components/shop/EditshopComponent.vue').default);
+ Vue.component('view-shop-component', require('./components/shop/ViewShopComponent.vue').default);
  
+ Vue.component('add-publiclotteryshop-component', require('./components/shoppubliclottery/AddPubliclotteryShopComponent.vue').default);
+ Vue.component('edit-publiclotteryshop-component', require('./components/shoppubliclottery/EditshopComponent.vue').default);
+ Vue.component('view-publiclotteryshop-component', require('./components/shoppubliclottery/ViewShopComponent.vue').default);
+ 
+ Vue.component('add-publicgamingshop-component', require('./components/shoppublicgaming/AddPublicGamingShopComponent.vue').default);
+ Vue.component('edit-publicgamingshop-component', require('./components/shoppublicgaming/EditPublicGamingShopComponent.vue').default);
+ Vue.component('view-publicgamingshop-component', require('./components/shoppublicgaming/ViewPublicGamingShopComponent.vue').default);
+ 
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

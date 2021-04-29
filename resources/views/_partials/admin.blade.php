@@ -42,19 +42,19 @@
         </a>
         <ul class="submenu">
         <li class="dropdown">
-        <a href="{{ route('adminbookmarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('adminbookmarkers*')) ? 'active' : '' }}">
+        <a href="{{ route('bookmarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('bookmarkers*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">BookMarkers</span>
         </a>
     </li>
 
     <li class="dropdown">
-        <a href="{{ route('adminpubliclottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('adminpubliclottery*')) ? 'active' : '' }}">
+        <a href="{{ route('publiclottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclottery*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
         </a>
     </li>
     
     <li class="dropdown">
-        <a href="{{ route('adminpublicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('adminpublicgaming*')) ? 'active' : '' }}">
+        <a href="{{ route('publicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('publicgaming*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
         </a>
     </li>
@@ -153,7 +153,7 @@
 
     <li class="dropdown">
         <a href="{{ route('useractivitylogs')}}" class="dropdown-toggle no-arrow {{ (request()->is('useractivitylogs*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Acctivity Logs</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Activity Logs</span>
         </a>
     </li>
     <li class="dropdown">
@@ -161,4 +161,25 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS</span>
         </a>
     </li>
+
+
+    <li class="dropdown">
+        <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+        </a>
+    </li>
+<!-- 
+   <li class="dropdown">   
+        <a href="{{ route('publiclottery_shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclottery_shop*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery Shop</span> 
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a href="{{ route('publicgaming_shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('publicgaming_shop*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming Shop</span>
+        </a>
+    </li> -->
+
+
 </ul>

@@ -22,16 +22,25 @@
    @on-selected-rows-change="selectionChanged"
     :select-options="{ enabled: true }"    
     >
-    <template slot="table-row" slot-scope="props">
-    <span v-if="props.column.field == 'action'">      
-        
-       <button @click="showModal(props.row.publicgaming_id,props.row.publicGamingcompany,props.row.licensee_name,props.row.license_no,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.date,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr,props.row.ggrtax,props.row.id,props.row.salesslot,props.row.payoutsslot,props.row.whtslot,props.row.ggrslot,props.row.ggrtaxslot)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
-       <button  @click.prevent="deleteItem('publicgamingdelete',props.row.publicgaming_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  </button>
+   <template slot="table-row" slot-scope="props">
+    <span v-if="props.column.field == 'action'"> 
+
+        <span v-if="fields.usertype == 'admin'">    
+               <button @click="showModal(props.row.publicgaming_id,props.row.public_gamingcompany,props.row.licensee_name,props.row.license_no,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.date,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr,props.row.ggrtax,props.row.id,props.row.salesslot,props.row.payoutsslot,props.row.whtslot,props.row.ggrslot,props.row.ggrtaxslot)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button  @click.prevent="deleteItem('publicgamingdelete',props.row.publicgaming_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </button>
+        </span>
+        <span v-else-if="fields.usertype == 'user'">   
+        <button v-if="fields.edit_status == 'Allowed'" @click="showModal(props.row.publicgaming_id,props.row.public_gamingcompany,props.row.licensee_name,props.row.license_no,props.row.return_for_the_period_of,props.row.return_for_the_period_to,props.row.date,props.row.sales,props.row.payouts,props.row.wht,props.row.ggr,props.row.ggrtax,props.row.id,props.row.salesslot,props.row.payoutsslot,props.row.whtslot,props.row.ggrslot,props.row.ggrtaxslot)" data-toggle="modal" data-target="#add" id="show-modal"><i class="fa fa-edit"></i></button>
+       <button v-if="fields.delete_status == 'Allowed'"   @click.prevent="deleteItem('publicgamingdelete',props.row.publicgaming_id)" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </button>
+        </span>
        </span>
     <span v-else>
       {{ props.formattedRow[props.column.field] }}
     </span>
   </template>
+
+
+
     </vue-good-table>   
     
     <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -49,7 +58,8 @@
                         <div class="form-group row">
                       
                                       <div class="col-md-6">
-            <label for="company_id"> Licensee Name</label>        
+            <label for="company_id"> Licensee Name</label> 
+            <input class="form-control"  name="publicgaming_id" v-model="fields.publicgaming_id"  type="hidden"  placeholder="publicgaming_id" required>       
             <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
             </multiselect>
@@ -131,7 +141,7 @@
 
                         <div class="col-md-4">
 							<label>Payouts Slot</label>
-							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot"  type="text" placeholder="Payouts slot" required>
+							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot"  type="text" placeholder="Payouts slot" required>                  
                             <div v-if="errors && errors.payoutsslot" class="text-danger">{{ errors.payoutsslot[0] }}</div>
 						</div>
                            <div class="col-md-4">
@@ -144,11 +154,11 @@
 							<input class="form-control" :disabled="validated ? false : true" name="ggrslot" v-model="fields.ggrslot"  type="text" placeholder="GGR slot" required>
                             <div v-if="errors && errors.ggrslot" class="text-danger">{{ errors.ggrslot[0] }}</div>
 						</div>
-                         <div class="col-md-4">
+                         <div class="col-md-4"> 
 							<label>GGR TAX Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrtaxslot" v-model="fields.ggrtaxslot"  type="text"  placeholder="GGR TAX slot" required>
                             <div v-if="errors && errors.ggrtaxslot" class="text-danger">{{ errors.ggrtaxslot[0] }}</div>
-						</div>
+						</div> 
                         </div>  
 
                     </div>
@@ -173,7 +183,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditpublicgamingComponent.vue';
 
 export default {
-  props:['usertype'],
+   props:['privilege'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -183,11 +193,15 @@ export default {
     return {
       'text': 'Records Updated succesfully',
       'redirect': '',
-      action: '/bookmarkers/update', //edit action
+       action: '/publicgaming/update', //edit action
       company_names: [],
       
        validated:false,
       fields:{
+        usertype:this.privilege[0].usertype,
+        edit_status:this.privilege.edit_status,
+        delete_status:this.privilege.delete_status,
+
         publicgaming_id:'',
         company_id:[],
       
@@ -258,9 +272,9 @@ export default {
       },
   sum()
    {
-     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-  this.fields.ggr=this.fields.total_sales - this.fields.total_payout;
-  this.fields.wht=0.2 * this.fields.total_payout;
+     //  console.log("a" +this.fields.ggr +  " b " +this.fields.payouts);
+  this.fields.ggr=this.fields.sales - this.fields.payouts;
+  this.fields.wht=0.2 * this.fields.payouts;
   this.fields.ggrtax=0.15 * this.fields.ggr;  
    
    },
@@ -271,9 +285,6 @@ export default {
 
 
        onChange (value) {
-      this.value = value
-      if (value.indexOf('Reset me!') !== -1) this.value = []
-      this.value = value
       this.fields.license_no=this.value.license_no;
       this.fields.trading_name=this.value.trading_name;
       this.fields.licensee_name=this.value.company_name
@@ -286,24 +297,20 @@ export default {
     },     
      
       editBtn:function(id){
-        alert(id);
+        alert(id);   
       },
-  
-      showModal(publicgaming_id,licensee_name,license_no,return_for_the_period_of,return_for_the_period_to,date,sales,payouts,wht,ggr,ggrtax,id,salesslot,payoutsslot,whtslot,ggrslot,ggrtaxslot){
-              //bind the data to the items
-              this.fields.publicgaming_id=publicgaming_id;
-              this.fields.licensee_name=licensee_name;
-              this.fields.trading_name=company_id ? company_id.trading_name : '';
-              this.fields.license_no=license_no;
-              this.fields.company_id=company_id;
+      showModal(publicgaming_id,public_gamingcompany,licensee_name,license_no,return_for_the_period_of,return_for_the_period_to,date,sales,payouts,wht,ggr,ggrtax,id,salesslot,payoutsslot,whtslot,ggrslot,ggrtaxslot){
+               this.fields.publicgaming_id=publicgaming_id;
+          this.fields.company_id=public_gamingcompany ? public_gamingcompany : [];
+            this.fields.company_name=public_gamingcompany ? public_gamingcompany.company_name : '';
+            this.fields.trading_name=public_gamingcompany ? public_gamingcompany.trading_name : '';
+            this.fields.license_no=license_no ? license_no : public_gamingcompany ? public_gamingcompany.license_no : '';
               this.fields.return_for_the_period_of=return_for_the_period_of.substr(0,10);
               this.fields.return_for_the_period_to=return_for_the_period_to.substr(0,10);
               this.fields.date=date;
               this.fields.sales=sales;
               this.fields.payouts=payouts;             
               this.fields.wht=wht;
-              this.fields.total_sales=total_sales;
-              this.fields.total_payout=total_payout;
               this.fields.wht=wht;
               this.fields.ggr=ggr;
               this.fields.ggrtax=ggrtax;
@@ -314,7 +321,7 @@ export default {
               this.fields.ggrslot=ggrslot;
               this.fields.ggrtaxslot=ggrtaxslot;
               this.sum();
-              console.log(this.fields)
+             console.log(public_gamingcompany)
       },
 
       selectionChanged:function(params){
@@ -357,21 +364,31 @@ export default {
 
       
   },mounted() {
-        //       this.fields.publicgaming_id=this.bookmarkerdata.publicgaming_id;
-        // this.fields.license_no=this.bookmarkerdata.license_no;
-        // this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
-        // this.fields.licensee_name=this.bookmarkerdata.licensee_name;
-        //  this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
-        //   this.fields.branch=this.bookmarkerdata.branch;
-        //    this.fields.date=this.bookmarkerdata.date;
-        //     this.fields.bets_no=this.bookmarkerdata.bets_no;
-        //      this.fields.deposits=this.bookmarkerdata.deposits;
-        //       this.fields.total_sales=this.bookmarkerdata.total_sales;
-        //        this.fields.total_payout=this.bookmarkerdata.total_payout;
-        //         this.fields.wht=this.bookmarkerdata.wht;
-        //          this.fields.winloss=this.bookmarkerdata.winloss;
-        //          this.fields.ggr=this.bookmarkerdata.ggr;
-        //          this.fields.trading_name=this.bookmarkerdata.trading_name;
+     console.log(public_gamingcompany)
+
+      this.fields.usertype=this.privilege[0].usertype;
+      this.fields.edit_status=this.privilege.edit_status;
+      this.fields.delete_status=this.privilege.delete_status;
+
+        this.fields.publicgaming_id=this.bookmarkerdata.publicgaming_id;
+        this.fields.license_no=this.bookmarkerdata.license_no;
+        this.fields.return_for_the_period_of=this.bookmarkerdata.return_for_the_period_of;
+        this.fields.license_name=this.bookmarkerdata.license_name;
+         this.fields.return_for_the_period_to=this.bookmarkerdata.return_for_the_period_to;
+           this.fields.date=this.bookmarkerdata.date;
+            this.fields.sales=this.bookmarkerdata.sales;
+             this.fields.payouts=this.bookmarkerdata.payouts;
+              this.fields.wht=this.bookmarkerdata.wht;
+               this.fields.ggr=this.bookmarkerdata.ggr;
+                this.fields.ggrtax=this.bookmarkerdata.ggrtax;
+                 this.fields.id=this.bookmarkerdata.id;
+                 this.fields.salesslot=this.bookmarkerdata.salesslot;
+                  this.fields.payoutsslot=this.bookmarkerdata.payoutsslot;
+                   this.fields.whtslot=this.bookmarkerdata.whtslot;
+                    this.fields.ggrslot=this.bookmarkerdata.ggrslot;
+                     this.fields.ggrtaxslot=this.bookmarkerdata.ggrtaxslot;
+           
+
         },
   created() {
        this.getPublicgaaming() 

@@ -58,6 +58,21 @@ class PublicLotteryController extends Controller
             'total_tickets_sold' => 'required',
         
         ]);
+
+        if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+      elseif(Auth::guard('web')->check())
+      {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+      }
+
         $user = new PublicLottery();
         $user->company_id = $request->company_id['company_id'];
         $user->license_no = $request->license_no;
@@ -70,12 +85,10 @@ class PublicLotteryController extends Controller
         $user->wht = $request->wht;
         $user->ggr = $request->ggr;
           $user->ggrtax = $request->ggrtax;
-          $user->id = Auth::user()->id;
+          $user->id = $id;
         $user->save();
 
 
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
         //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
@@ -83,7 +96,7 @@ class PublicLotteryController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
+        $userLog->id = $id;  
         $userLog->save();
 
         return back()->with('success','Added succesfully');
@@ -118,6 +131,21 @@ class PublicLotteryController extends Controller
         $request->validate([
       
         ]);
+
+        if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+      elseif(Auth::guard('web')->check())
+      {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+      }
+
         $user = PublicLottery::findOrFail($request->publiclottery_id);
         $user->company_id = $request->company_id['company_id'];
         $user->license_no = $request->license_no;
@@ -132,8 +160,7 @@ class PublicLotteryController extends Controller
         $user->ggr = $request->ggr;
         $user->save();
 
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
+
         //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
@@ -141,7 +168,7 @@ class PublicLotteryController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
+        $userLog->id = $id;  
         $userLog->save();
 
         return back()->with('success','Updated succesfully');
@@ -166,14 +193,7 @@ class PublicLotteryController extends Controller
         $email= Auth::guard('web')->user()->email;  
         $category= 'User'; 
     }
-    // return $id;
-    // $Contact = PublicLottery::where('publiclottery_id',$id)->get();
-    // //set delete
-    // $deleteContact = PublicLottery::find($id);
-    // $deleteContact->delete();
-
-
-        $user = PublicLottery::findOrFail($request->id);
+         $user = PublicLottery::findOrFail($request->id);
         $user->delete();
 
         $userLog = new AuditLog();

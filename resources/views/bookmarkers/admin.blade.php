@@ -98,6 +98,8 @@
                 </tbody>
             </table>
         </div>
+    <upload-bookmarker-component/>
+
     </div>
     <!-- ./main content card -->
      

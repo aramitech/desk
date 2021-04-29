@@ -44,7 +44,7 @@
 						</div></div>
  <div class="form-group row">
                         <div class="col-md-6">
-							<label>Branch</label>
+							<label>Shop</label>
 							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="Branch" required>
                             <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
 						</div>

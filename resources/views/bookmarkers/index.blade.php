@@ -23,6 +23,10 @@
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
                         Add BookMarkers
                     </a>
+
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
+                        Upload BookMarkers
+                    </a>
                 </div>
             </div>
         </div>
@@ -58,10 +62,11 @@
             @endphp
         <bookmarkers_good_table_component :privilege="{{ json_encode($privilege) }}"></bookmarkers_good_table_component>
 
-
+ 
         </div>
+        <upload-bookmarker-component/>
     </div>
-    <!-- ./main content card -->
+    <!-- ./main content card -->     
      
     <add-bookmarker-component/>
  

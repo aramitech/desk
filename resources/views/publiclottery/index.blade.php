@@ -23,6 +23,9 @@
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button">
                         Add Public Lottery
                     </a>
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button">
+                        Upload Public Lottery
+                    </a>
                 </div>
             </div>
         </div>
@@ -37,25 +40,32 @@
                      <!-- check user type logged in -->
                      @php
                 $usertype = '';
+                $privilege = [];
             @endphp
            @if(Auth::guard('superadmin')->check())
                 @php
-                    $usertype = 'super-admin';
+                    $usertype = ['usertype'=>'super-admin'];
                 @endphp
             @elseif(Auth::guard('admin')->check())
                 @php
-                    $usertype = 'admin';
+                    $usertype = ['usertype'=>'admin'];
                 @endphp
             @elseif(Auth::guard('web')->check())
                 @php
-                    $usertype = 'user';
+                    $usertype = ['usertype'=>'user'];
+                    $privilege = ['edit_status'=>Auth::user()->editstatus,'delete_status'=>Auth::user()->deletestatus]
                 @endphp
             @endif
-        <publiclottery_good_table_component :usertype="{{ $usertype }}"></publiclottery_good_table_component>
+            @php 
+                array_push($privilege,$usertype);
+            @endphp
+        <publiclottery_good_table_component :privilege="{{ json_encode($privilege) }}"></publiclottery_good_table_component>
         </div>
+        <upload-publiclottery-component/>
     </div>
     <!-- ./main content card -->
     <add-publiclottery-component/>
+    
 </div>
 @endsection
 

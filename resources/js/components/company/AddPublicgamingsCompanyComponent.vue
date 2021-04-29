@@ -29,7 +29,7 @@
 							<input class="form-control"  name="email" v-model="fields.email" value="" type="email" placeholder="Email" required>
                             <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
 						</div>
-       <div class="form-group">
+                        <div class="form-group">
 							<label>Contact</label>
 							<input class="form-control"  name="contact" v-model="fields.contact" value="" type="text" placeholder="Contact" required>
                             <div v-if="errors && errors.contact" class="text-danger">{{ errors.contact[0] }}</div>

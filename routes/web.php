@@ -72,6 +72,7 @@ Route::get('/license_name/get',[App\Http\Controllers\BookMarkersController::clas
 
 Route::get('/addbookmarkers',[App\Http\Controllers\BookMarkersController::class, 'addbookmarkers'])->name('bookmarkers.addbookmarkers');
 Route::get('/bookmarkersdata/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarkersdata'])->name('bookmarkers.bookmarkersdata');
+Route::get('/bookmarker_shop_name/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarker_shop_name'])->name('bookmarkers.bookmarker_shop_name');
 
 
 Route::get('/adminbookmarkers', [App\Http\Controllers\AdminBookMarkersController::class, 'index'])->name('adminbookmarkers');
@@ -117,7 +118,7 @@ Route::get('/StatusTypeNam/get',[App\Http\Controllers\CategoryTypesController::c
 
 
 Route::get('/useractivitylogs',[App\Http\Controllers\AuditLogsController::class, 'index'])->name('useractivitylogs');   
-Route::get('/AuditLogsdata/get',[App\Http\Controllers\AuditLogsController::class, 'index'])->name('useractivitylogs.AuditLogsdata');
+Route::get('/AuditLogsdata/get',[App\Http\Controllers\AuditLogsController::class, 'auditlogsdata'])->name('useractivitylogs.AuditLogsdata');
 
 
 
@@ -158,4 +159,15 @@ Route::get('/activestatuscompanies',[App\Http\Controllers\ReportsController::cla
 Route::get('/sendsms',[App\Http\Controllers\SendSmsController::class, 'index'])->name('sendsms');   
 Route::post('/sendsms/add', [App\Http\Controllers\SendSmsController::class, 'store'])->name('sendsms.add');
 Route::get('/sendsms/get',[App\Http\Controllers\SendSmsController::class, 'CategoryTypes']);
+
+
+
+Route::get('/shop',[App\Http\Controllers\ShopController::class, 'index'])->name('shop');   
+Route::get('/shopdata/get',[App\Http\Controllers\ShopController::class, 'shopdata'])->name('shopdata.shopdata');
+Route::post('/shop/add', [App\Http\Controllers\ShopController::class, 'store'])->name('shop.add');
+Route::post('/shop/update', [App\Http\Controllers\ShopController::class, 'update'])->name('shop.update');
+Route::get('/publiclottery_shop', [App\Http\Controllers\ShopController::class, 'publiclottery_shop'])->name('publiclottery_shop');
+Route::get('/publicgaming_shop', [App\Http\Controllers\ShopController::class, 'publicgaming_shop'])->name('publicgaming_shop');
+Route::get('/license_shop_name/get',[App\Http\Controllers\ShopController::class, 'update']);
+Route::post('/shop/delete', [App\Http\Controllers\ShopController::class, 'destroy'])->name('shop.delete');
 

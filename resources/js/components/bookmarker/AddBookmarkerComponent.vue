@@ -18,6 +18,13 @@
        
         </div> 
            <div class="col-md-6">
+
+               <label for="shop_id"> Shop</label>        
+            <multiselect  name="shop_id" v-model="fields.shop_id"   label="shop_name" placeholder="Select Shop name" :options="shop_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" >
+              
+            </multiselect>
+            <div v-if="errors && errors.shop_id" class="text-danger">{{ errors.shop_id[0] }}</div>
+         
 							<!-- <label>Licensee Name</label> -->
 							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
@@ -133,6 +140,7 @@ data() {
         redirect: '/bookmarkers',
 
     company_names: [],
+    shop_names: [],
       fields: {
         license_no:"",
         trading_name:'',
@@ -144,10 +152,6 @@ data() {
             
       }
         }
-
-    
-
-
     },
 
 methods: {
@@ -155,6 +159,12 @@ methods: {
         axios.get('/license_name/get')
         .then(function(response){
           this.company_names = response.data;        
+        }.bind(this));
+      },
+       getShop_Names: function(){
+        axios.get('/bookmarker_shop_name/get')
+        .then(function(response){
+          this.shop_names = response.data;        
         }.bind(this));
       },
    sum()
@@ -187,7 +197,8 @@ methods: {
             },
     created: function(){  
 
-     this.getLicenseeName()   
+     this.getLicenseeName() ;  
+     this.getShop_Names();
     },
      mounted() {
         //this.ggr = this.total_payout * 0.2;

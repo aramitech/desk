@@ -39,7 +39,7 @@ class SendSmsController extends Controller
     public function store(Request $request)
     {
  
-     
+    
         $user = new SendSmses();
        // $user->company_id = $request->company_id['company_id'];
         $user->message = $request->message;
@@ -50,7 +50,7 @@ class SendSmsController extends Controller
         $username = 'bclb&password';
         $password = 'B@910CLB';
         $contact_arr=[];
-        $phone='0702142629';
+        $phone='0712516957';
         $contactsarray=explode(",",$phone);
         $message= $request->message;
         foreach($contactsarray as $phone){

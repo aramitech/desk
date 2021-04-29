@@ -161,7 +161,11 @@
 							document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> 
 							Log Out
 						</a>
-						<form id="logout-form" action="{{ route($logout) }}" method="POST" class="d-none">
+						@if(session()->has('qwick'))
+						
+						@else 
+						@endif
+						<form id="logout-form" action="{{  route($logout) }}" method="POST" class="d-none">
 							@csrf
 						</form>
 					</div>
@@ -321,7 +325,18 @@
 
 	<script src="{{ asset('vendors/scripts/datatable-setting.js')}}"></script>
 
+	<script>
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
 
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
 
 </body>
 </html>

@@ -25,12 +25,17 @@ export default {
         var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
         var publiclotterycompanydeletepath='/company/delete';
         var fccontactdeletepath='/company/delete_destroybookmarkerscompany';
-
+        var shopscompanydeletepath='/shop/delete';
+        
         var fpath='';
         var item='';
         if(path=="userdelete"){
           fpath=userdeletepath;
           item="User ";
+        }
+        else if(path=="shopscompanydelete"){
+          fpath=shopscompanydeletepath;
+          item="Shop ";
         }
         else if(path=="fccontactdelete"){
           fpath=fccontactdeletepath;

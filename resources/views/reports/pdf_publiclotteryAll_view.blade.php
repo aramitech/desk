@@ -143,10 +143,11 @@ width: 20%;
         <tr>
             <th class="table-plus">#</th>
             <th>Date</th>
-           
+             <th>Total Tickets Sold</th>
                         <th>Sales</th>
                         <th>Payouts</th>
                         <th>GGR </th>
+                        <th>GGR TAX</th>
                         <th>WHT</th>
         </tr>
     </thead>
@@ -172,9 +173,10 @@ width: 20%;
                         <td>{{ $publiclottery->total_tickets_sold }}</td>
                         <td>{{ $publiclottery->sales }}</td>
                         <td>{{ $publiclottery->payouts }}</td>
+                        <td>{{ $publiclottery->ggr }}</td> 
                         <td>{{ $publiclottery->ggrtax }}</td>
                         <td>{{ $publiclottery->wht }}</td>
-                        <td>{{ $publiclottery->ggr }}</td> 
+                      
        
         </tr>
     @endforeach

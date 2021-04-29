@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookMarkers;
 use App\Models\BookmarkersCompany;
 use App\Models\CategoryTypes;
+use App\Models\Shops;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\AuditLog;
@@ -39,6 +40,16 @@ class BookMarkersController extends Controller
         return $bookmarkers;
     }
 
+    public function bookmarker_shop_name()
+    {
+        $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+        $shops = Shops::with('Shopcompany')->where('category_type_id',1)->get();
+       
+        return $shops;
+    }
+
+
+    
     
     public function addbookmarkers()
     {
@@ -66,19 +77,27 @@ class BookMarkersController extends Controller
      */
     public function store(Request $request)
     {
+         
         
-        // $request->validate([
-        //     'licensee_name' => 'required',
-        //     'return_for_the_period_of' => 'required',
-        //     'return_for_the_period_to' => 'required',
-        //     'branch' => 'required',
-        //     'bets_no' => 'required',
-        
-        // ]);
-        //return  $ff=$request->company_id;
-     
+		if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+    elseif(Auth::guard('web')->check())
+    {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+    }
+
+
         $user = new BookMarkers();
         $user->company_id = $request->company_id['company_id'];
+
+        $user->shop_id = $request->shop_id['shop_id'];
         $user->licensee_name = $request->licensee_name;
         $user->license_no = $request->license_no;
         $user->return_for_the_period_of = $request->return_for_the_period_of;
@@ -93,11 +112,10 @@ class BookMarkersController extends Controller
         $user->winloss = $request->winloss;
         $user->ggr = $request->ggr;
         $user->ggrtax = $request->ggrtax;
-        $user->id = Auth::user()->id;
+        $user->id = $id;    
         $user->save();
 
-        $id=Auth::user()->id;
-        $email=Auth::user()->email;
+     
         //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
@@ -105,7 +123,7 @@ class BookMarkersController extends Controller
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
-        $userLog->id = Auth::user()->id;  
+        $userLog->id =$id; $id;   
         $userLog->save();
 
         return back()->with('success','Added succesfully');
@@ -156,6 +174,22 @@ class BookMarkersController extends Controller
             'bookmarker_id' => 'required',
            
         ]);
+
+		if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+    elseif(Auth::guard('web')->check())
+    {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+    }
+
+
         $user = BookMarkers::findOrFail($request->bookmarker_id);
         $user->licensee_name = $request->licensee_name;
         $user->license_no = $request->license_no;
@@ -200,7 +234,7 @@ class BookMarkersController extends Controller
         $category= 'User'; 
     }
     
-        $user = BookMarkers::findOrFail($request->bookmarker_id);
+        $user = BookMarkers::findOrFail($request->id);
         $user->delete();
 
         // return $id=Auth::user();

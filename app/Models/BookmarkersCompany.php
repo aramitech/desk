@@ -44,5 +44,9 @@ class BookmarkersCompany extends Model
  {
      return $this->hasMany(Publicgamings::class,'company_id');
  }
- 
+  //Shop<>Comany relationship
+  public function Shopcompany()  
+  {
+      return $this->belongsTo(Shops::class,'company_id');
+  }
 }

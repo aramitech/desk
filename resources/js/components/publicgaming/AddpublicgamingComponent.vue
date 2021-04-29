@@ -143,8 +143,11 @@
 <script>
 import FormMixin from '../shared/FormMixin';
 
+import Multiselect from 'vue-multiselect';
 export default {
   mixins: [ FormMixin ],
+  components: { Multiselect },
+   props:['data'],
 data() {
     return {
         action: '/publicgaming/add', //save action
@@ -156,6 +159,10 @@ data() {
         license_no:"",
         trading_name:'',
         licensee_name:'',
+
+           ggr : '',
+                payouts: '',  
+                ggrslot: '',
       }
 
         }
@@ -170,7 +177,6 @@ methods: {
       },
    sum()
    {
-     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
   this.fields.ggr=this.fields.sales - this.fields.payouts;
   this.fields.wht=0.2 * this.fields.payouts;
   this.fields.ggrtax=0.15 * this.fields.ggr;  

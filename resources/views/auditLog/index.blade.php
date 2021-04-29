@@ -75,7 +75,11 @@
                     <tr>
                         <td>{{ $auditLog->audit_log_id }}</td>
                         <td>{{ $auditLog->audit_module }}</td>
-                        <td>{{ $auditLog->userlogs->name }}</td>
+                        <td > @if($auditLog->userlogs) 
+                        {{  $auditLog->userlogs->name }}
+                        @endif
+                        
+                        </td>
                         <td>{{ $auditLog->audit_activity }}</td>
                         <td>{{ $auditLog->created_at }}</td>
                    

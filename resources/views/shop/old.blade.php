@@ -20,8 +20,8 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Company
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+                        Add  Shop
                     </a>
                 </div>
             </div>
@@ -38,54 +38,47 @@
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>Company Name</th>
+                        <th>Company</th>
                         
-                        <th>Category</th><th>Trading Name</th> 
-                        <th>License No</th>
-                    
-                        <th>Address</th>
-                        <th>Status</th>       <th>Action</th>
+                        <th>Shop Name</th>  
+                         <th>Location</th>   
+                      <th>Action</th>
                         <th ></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($bookmarkers as $bookmarker)
+                    @foreach($shops as $shop)
                     <tr>
-                        <td>{{ $bookmarker->company_id }}</td>
-                        <td>{{ $bookmarker->company_name }}</td>
-                        <td>{{ $bookmarker->CompanyCategoryType->categorytype }}</td>
-                        <td>{{ $bookmarker->trading_name }}</td>
-                        <td>{{ $bookmarker->license_no }}</td>
-                   
-                        <td>{{ $bookmarker->physicaladdress }}</td>
-                        <td>{{ $bookmarker->status }}</td>
-                     
+                        <td>{{ $shop->shop_id }}</td>
+                        <td>{{ $shop->Shopcompany->company_name }}</td>
+                        <td>{{ $shop->shop_name }}</td>    
+                        <td>{{ $shop->location }}</td> 
                         <td>
                             <div class="dropdown">
                                  <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     <i class="dw dw-more"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
-                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-danger" @click="deleteItem('shopscompanydelete',{{$shop}})"><i class="dw dw-delete-3"></i> Delete</button>
                                </div> 
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <edit-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <view-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>
                     </div>
-
+                  
 
                     @endforeach
                 </tbody>
@@ -93,6 +86,6 @@
         </div>
     </div>
     <!-- ./main content card -->
-    <add-bookmarkerscompany-component/>
+    <add-shop-component/>
 </div>
 @endsection

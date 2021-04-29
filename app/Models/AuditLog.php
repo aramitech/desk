@@ -22,7 +22,7 @@ class AuditLog extends Model
     ];
     public function userlogs()
     {
-        return $this->belongsTo(User::class,'id');
+        return $this->belongsTo(User::class,'id','id');
     }
 }
 

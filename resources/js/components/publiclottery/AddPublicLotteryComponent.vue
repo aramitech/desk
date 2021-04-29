@@ -23,7 +23,7 @@
                
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no"  type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div>
                          <div class="col-md-6">
@@ -31,67 +31,64 @@
 						</div>   
                              <div class="col-md-6">
 							<label>Trading As</label>
-							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="trading_name" v-model="fields.trading_name"  type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
                         </div>   
                            <div class="form-group row">
                         <div class="col-md-6">
 							<label>Return For The Period Of</label>
-							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of" value="" type="date" placeholder="Return For The Period Of" required>
+							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of"  type="date" placeholder="Return For The Period Of" required>
                             <div v-if="errors && errors.return_for_of" class="text-danger">{{ errors.return_for_of[0] }}</div>
 						</div>
                        <div class="col-md-6">
 							<label>Return For The Period To</label>
-							<input class="form-control"  name="return_to" v-model="fields.return_to" value="" type="date" placeholder="Return For The Period To" required>
+							<input class="form-control"  name="return_to" v-model="fields.return_to"  type="date" placeholder="Return For The Period To" required>
                             <div v-if="errors && errors.return_to" class="text-danger">{{ errors.return_to[0] }}</div>
 						</div></div>
                        <div class="form-group row">
                           <div class="col-md-6">
 							<label>Date</label>
-							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+							<input class="form-control"  name="date" v-model="fields.date"  type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
                           <div class="col-md-6">
 							<label>Total Tickets Sold</label>
-							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold" value="" type="text" placeholder="Total Tickets Sold" required>
+							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold"  type="text" placeholder="Total Tickets Sold" required>
                             <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
 						</div></div>    
                           <div class="form-group row">
                            <div class="col-md-4">
 							<label>Sales</label>
-							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales"  type="text" placeholder="Sales" required>
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
                             <div class="col-md-4">
 							<label>Payouts</label>
-							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+							<input class="form-control"  @keyup="sum" name="payouts" v-model="fields.payouts"  type="text" placeholder="Payouts" required>
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
                          <div class="col-md-4">
-							<label>Total Payout</label>
-							<input class="form-control" @keyup="sum"  name="total_payout" v-model="fields.total_payout" value="" type="text" placeholder="Total Payout" required>
-                            <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
-						</div>
+									</div>
                         
                         </div>
                               <div class="form-group row">
                            
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" :disabled="validated ? false : true" placeholder="WHT" required>
+							<input class="form-control"  name="wht" v-model="fields.wht"  type="text" :disabled="validated ? false : true" placeholder="WHT" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
                        
                            <div class="col-md-4">
 							<label>GGR</label>
-							<input class="form-control"  name="ggr" v-model="fields.ggr" value="" type="text" :disabled="validated ? false : true" placeholder="GGR" required>
+							<input class="form-control"  name="ggr" v-model="fields.ggr"  type="text" :disabled="validated ? false : true" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
                         
                              <div class="col-md-4">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
+							<input class="form-control"  name="ggrtax" v-model="fields.ggrtax"  type="text" :disabled="validated ? false : true" placeholder="GGR TAX" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                         
@@ -111,8 +108,11 @@
 <script>
 import FormMixin from '../shared/FormMixin';
 
+import Multiselect from 'vue-multiselect';
 export default {
   mixins: [ FormMixin ],
+  components: { Multiselect },
+   props:['data'],
 data() {
     return {
         action: '/publiclottery/add', //save action
@@ -123,6 +123,10 @@ data() {
         license_no:"",
         trading_name:'',
         licensee_name:'',
+        ggr:'',
+        wht:'',
+        payouts:'',
+        ggrtax:'',
       }
         }
     },
@@ -136,16 +140,16 @@ methods: {
       },
    sum()
    {
-     //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
-  this.fields.ggr=this.fields.sales - this.fields.total_payout;
-  this.fields.wht=0.2 * this.fields.total_payout;
+  this.fields.ggr=this.fields.sales - this.fields.payouts;
+  this.fields.wht=0.2 * this.fields.payouts;
   this.fields.ggrtax=0.15 * this.fields.ggr;  
-   
+
    },
 
    
  onChange (value) {
-      this.value = value
+
+  this.value = value
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
