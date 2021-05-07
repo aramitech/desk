@@ -55,7 +55,13 @@
                     <div v-if="errors && errors.publiclotterystatus" class="text-danger">{{ errors.publiclotterystatus[0] }}</div>
                     </div>
 
-
+     <div class="col-md-6">
+                    <label>companies_status</label>
+      ((( Allowed  <input type="radio" name="companies_status" v-model="fields.companies_status" id="companies_status" value="Allowed">
+                  Not Allowed  <input type="radio" name="companies_status" v-model="fields.companies_status" id="companies_status" value="NotAllowed">
+                 )))                    <input class="form-control" :disabled="validated ? false : true" name="companies_status" v-model="fields.companies_status" type="text"    >
+                    <div v-if="errors && errors.companies_status" class="text-danger">{{ errors.companies_status[0] }}</div>
+                    </div> 
                      
                            <div class="col-md-6">
                     <label>Public Gaming</label>
@@ -63,10 +69,35 @@
                   Not Allowed  <input type="radio" name="publicgamingstatus" v-model="fields.publicgamingstatus" id="publicgamingstatus" value="NotAllowed">
                  )))                    <input class="form-control" :disabled="validated ? false : true" name="publicgamingstatus" v-model="fields.publicgamingstatus" type="text"    >
                     <div v-if="errors && errors.publicgamingstatus" class="text-danger">{{ errors.publicgamingstatus[0] }}</div>
-                    </div> </div>
+                    </div> </div></div>
 
                 
-            </div>
+
+  <div class="form-group row">                       
+                           <div class="col-md-6">
+                    <label><strong>Send SMS</strong></label>
+      ((( Allowed  <input type="radio" name="sendsms_status" v-model="fields.sendsms_status" id="sendsms_status" value="Allowed">
+                  Not Allowed  <input type="radio" name="sendsms_status" v-model="fields.sendsms_status" id="sendsms_status" value="NotAllowed">
+                 )))                    <input class="form-control" :disabled="validated ? false : true" name="sendsms_status" v-model="fields.sendsms_status" type="text"    >
+                    <div v-if="errors && errors.sendsms_status" class="text-danger">{{ errors.sendsms_status[0] }}</div>
+                    </div>
+
+
+          <div class="col-md-6">
+                    <label>Bookmarkers Shop</label>
+      ((( Allowed  <input type="radio" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" id="bookmarkersshop_status" value="Allowed">
+                  Not Allowed  <input type="radio" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" id="bookmarkersshop_status" value="NotAllowed">
+                 )))                    <input class="form-control" :disabled="validated ? false : true" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" type="text"    >
+                    <div v-if="errors && errors.bookmarkersshop_status" class="text-danger">{{ errors.bookmarkersshop_status[0] }}</div>
+                    </div> </div>
+     
+     
+    
+  
+
+
+
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -95,9 +126,12 @@ data() {
              deletestatus:this.userdata.deletestatus,
               publiclotterystatus:this.userdata.publiclotterystatus,
                publicgamingstatus:this.userdata.publicgamingstatus,
+               sendsms_status:this.userdata.sendsms_status,
+               bookmarkersshop_status:this.userdata.bookmarkersshop_status,
+               companies_status:this.userdata.companies_status,
               //  deletestatus:this.userdata.deletestatus,
         }
-        }
+        }       
     },
 
 methods: {
@@ -112,6 +146,9 @@ methods: {
         this.fields.bookmarkersstatus=this.userdata.bookmarkersstatus;
         this.fields.publiclotterystatus=this.userdata.publiclotterystatus;
         this.fields.publicgamingstatus=this.userdata.publicgamingstatus;
+        this.fields.sendsms_status=this.userdata.sendsms_status;
+        this.fields.bookmarkersshop_status=this.userdata.bookmarkersshop_status;
+        this.fields.companies_status=this.userdata.companies_status;
         //this.fields.deletestatus=this.userdata.deletestatus;
         
     }

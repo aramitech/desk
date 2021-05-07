@@ -53,17 +53,59 @@ class SendSmsController extends Controller
         $phone='0712516957';
         $contactsarray=explode(",",$phone);
         $message= $request->message;
-        foreach($contactsarray as $phone){
-           
-            $smsobject=new SendSms($username,$password);
-       
-          //  $textstatus=$smsobject->sendMessage($phone,$message);
-           
 
-        }
+          $uri = $request->path();
+          https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky
+      
+      $api_params = $api_element.'?apikey='.$apikey.'&sender='.$sender.'&to='.$destination.'&message='.$message;  
+      $smsGatewayUrl = "https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky";  
+      $smsgatewaydata = $smsGatewayUrl.$api_params;
+      $url = $smsgatewaydata;
+
+      $ch = curl_init();                       // initialize CURL
+      curl_setopt($ch, CURLOPT_POST, false);    // Set CURL Post Data
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $output = curl_exec($ch);
+      curl_close($ch);                         // Close CURL
+
+      // Use file get contents when CURL is not installed on server.
+      if(!$output){
+         $output =  file_get_contents($smsgatewaydata);  
+      }
+          // foreach($contactsarray as $phone){        
+        //   return  $smsobject=new SendSms($username,$password);   
+        //   //  $textstatus=$smsobject->sendMessage($phone,$message);        
+        // }
 
         return back()->with('success','Added succesfully');
     }
 
    
+    function CURLsendsms($destination, $message_body){   
+
+      $api_params = $api_element.'?apikey='.$apikey.'&sender='.$sender.'&to='.$destination.'&message='.$message;  
+      $smsGatewayUrl = "https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky";  
+      $smsgatewaydata = $smsGatewayUrl.$api_params;
+      $url = $smsgatewaydata;
+
+      $ch = curl_init();                       // initialize CURL
+      curl_setopt($ch, CURLOPT_POST, false);    // Set CURL Post Data
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $output = curl_exec($ch);
+      curl_close($ch);                         // Close CURL
+
+      // Use file get contents when CURL is not installed on server.
+      if(!$output){
+         $output =  file_get_contents($smsgatewaydata);  
+      }
+
+  }
+
+
+
+
 }
+
+

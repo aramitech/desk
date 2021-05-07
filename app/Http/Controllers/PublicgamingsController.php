@@ -90,6 +90,8 @@ class PublicgamingsController extends Controller
         $user->whtslot = $request->whtslot;
         $user->ggrslot = $request->ggrslot;
         $user->ggrtaxslot = $request->ggrtaxslot;
+        $user->manual_ggtotal = $request->manual_ggtotal;
+        
 
         $user->save();
   

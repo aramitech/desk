@@ -141,13 +141,14 @@ width: 20%;
 <table>
     <thead>
         <tr>
-            <th class="table-plus">#</th>
-            <th>Date</th>
-           
-                        <th>Sales</th>
-                        <th>Payouts</th>
-                        <th>GGR </th>
-                        <th>WHT</th>
+        <td>#ID</td>
+                        <td>Date</td>
+                        <td>Bets No</td>
+                        <td>Deposits</td>
+                        <td>Total Sales</td>
+                        <td>Total Payout</td>
+                        <td>WHT</td>
+                        <td>GGR</td> 
         </tr>
     </thead>
     <tbody>

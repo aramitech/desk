@@ -193,7 +193,7 @@ width: 20%;
 @endforeach
 <table>
     <tr style="text-align:left">
-        <th align="left"><h4><b><!--ATTENDANT / CLERK.....................--></b> ......</h4>
+        <th align="left"><h4><b><!--ATTENDANT / CLERK.....................--></b> </h4>
         </th>
         <th align="left">
         <h4><!--MANAGER/ SUPERVISOR ........................--></h4>

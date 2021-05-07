@@ -35,7 +35,7 @@
                             <div v-if="errors && errors.contact" class="text-danger">{{ errors.contact[0] }}</div>
 						</div>
                              <div class="form-group">
-							<label>Physical Address</label>
+							<label>Location</label>
 							<input class="form-control"  name="physicaladdress" v-model="fields.physicaladdress" value="" type="text" placeholder="Physical Address" required>
                             <div v-if="errors && errors.physicaladdress" class="text-danger">{{ errors.physicaladdress[0] }}</div>
 						</div>

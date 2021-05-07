@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Admin
+    Admin:  Audit Logs
 @endsection
 @section('filter')
 <form>
@@ -34,12 +34,12 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
-                    <h4>auditLogs</h4>
+                    <h4>Audit Logs</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">auditLogs</li>
+                        <li class="breadcrumb-item active" aria-current="page">Audit Logs</li>
                     </ol>
                 </nav>
             </div>
@@ -57,7 +57,7 @@
     <div class="card-box mb-30">
     @include('layouts.messages')
     @include('layouts.errors')
-    <h2 class="h4 pd-20">auditLogs List</h2>
+    <h2 class="h4 pd-20">Audit Logs List</h2>
         <div class="pb-20">
             <table class="table table stripe hover nowrap data-table-export nowrap">
                 <thead>

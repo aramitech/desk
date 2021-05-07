@@ -1,7 +1,7 @@
 <template>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Edit Bookmarkers Shop</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Edit 667Bookmarkers Shop</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
                   <form method="POST" @submit.prevent="submit">
@@ -82,7 +82,7 @@ data() {
             company_id:this.shopdata.company_id,
             shop_name:this.shopdata.shop_name,    
              location:this.shopdata.location, 
-             Shopcompany:this.shopdata.company_name, 
+             Shop_company:this.shopdata.company_name, 
        }
         }
     },
@@ -92,9 +92,10 @@ methods: {
           axios.get('/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;
-         
+          console.log(Shopcompany,'gggggggggggg') 
         }.bind(this));
          console.log(response, 'kkkkk')
+             console.log(Shop_company,'gggggggggggg')   
       },
 
 
@@ -104,6 +105,7 @@ methods: {
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
+         
     console.log(value)
     },
     },
@@ -115,7 +117,8 @@ methods: {
         this.fields.company_id=this.shopdata.company_id;
        this.fields.shop_name=this.shopdata.shop_name;
          this.fields.location=this.shopdata.location;    
-         this.fields.trading_name=this.shopdata.Shopcompany.trading_name;       
+         this.fields.trading_name=this.shopdata.Shopcompany.trading_name; 
+         console.log(Shop_company,'gggggggggggg')      
    }
 }
 </script>

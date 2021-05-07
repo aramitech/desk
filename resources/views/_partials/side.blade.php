@@ -34,8 +34,29 @@
                                     @endif
 
  
-    
- 
+                                    @if ( Auth::user()->sendsms_status == 'Allowed' )
+                                    <li class="dropdown">
+        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS</span>
+        </a>
+    </li>
+    @else   
+                                    @endif
+    @if ( Auth::user()->bookmarkersshop_status == 'Allowed' )
+    <li class="dropdown">
+        <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+        </a>
+    </li>
+    @else   
+                                    @endif
 
+
+    @if ( Auth::user()->companies_status == 'Allowed' )
+    <li> <a href="{{ route('company.bookmarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.bookmarkers*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext"> Company</span>
+        </a></li>
+        @else   
+                                    @endif
 
 </ul>

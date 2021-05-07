@@ -37,12 +37,12 @@
                         <div class="form-group row">
                         <div class="col-md-6">
 							<label>Return For The Period Of</label>
-							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" required>
+							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" >
                             <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
 						</div>
                        <div class="col-md-6">
 							<label>Return For The Period To</label>
-							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" required>
+							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" >
                             <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
 						</div></div>
             <div class="form-group row">     
@@ -54,12 +54,12 @@
                                     
                            <div class="col-md-4">
 							<label>Sales</label>
-							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" required>
+							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" >
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
                          <div class="col-md-4">
 							<label>Payouts</label>
-							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" required>
+							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" >
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
                            </div>
@@ -67,7 +67,7 @@
                        
                            <div class="col-md-4">
 							<label>WHT</label>
-							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" required>
+							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" >
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>          
                            <div class="col-md-4">
@@ -94,19 +94,19 @@
 
  <div class="col-md-4">
 							<label>Sales Slot</label>
-							<input class="form-control" @keyup="sum"  name="salesslot" v-model="fields.salesslot" value="" type="text" placeholder="Sales slot" required>
+							<input class="form-control" @keyup="sum"  name="salesslot" v-model="fields.salesslot" value="" type="text" placeholder="Sales slot" >
                             <div v-if="errors && errors.salesslot" class="text-danger">{{ errors.salesslot[0] }}</div>
 						</div>
 
 
                         <div class="col-md-4">
 							<label>Payouts Slot</label>
-							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot" value="" type="text" placeholder="Payouts slot" required>
+							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot" value="" type="text" placeholder="Payouts slot" >
                             <div v-if="errors && errors.payoutsslot" class="text-danger">{{ errors.payoutsslot[0] }}</div>
 						</div>
                            <div class="col-md-4">
 							<label>WHT Slot</label>
-							<input class="form-control" :disabled="validated ? false : true" name="whtslot" v-model="fields.whtslot" value="" type="text" placeholder="WHT Slot" required>
+							<input class="form-control" :disabled="validated ? false : true" name="whtslot" v-model="fields.whtslot" value="" type="text" placeholder="WHT Slot" >
                             <div v-if="errors && errors.whtslot" class="text-danger">{{ errors.whtslot[0] }}</div>
 						</div>          
                            <div class="col-md-4">
@@ -120,6 +120,49 @@
                             <div v-if="errors && errors.ggrtaxslot" class="text-danger">{{ errors.ggrtaxslot[0] }}</div>
 						</div>
                         </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="form-group row">  
+
+ <div class="col-md-12">
+						<hr>	<label>Manual</label>  <hr>
+						</div>
+
+
+                  
+                           <div class="col-md-4">
+							<label>Manual GGR </label>
+							<input class="form-control" @keyup="manual" name="manual_ggr" v-model="fields.manual_ggr" value="" type="text" placeholder="GGR" >
+                            <div v-if="errors && errors.manual_ggr" class="text-danger">{{ errors.manual_ggr[0] }}</div>
+						</div>          
+                           <div class="col-md-4">
+							<label>Manual GGR Slot</label>
+							<input class="form-control" @keyup="manual" name="manual_ggrslot" v-model="fields.manual_ggrslot" value="" type="text" placeholder="GGR slot" >
+                            <div v-if="errors && errors.manual_ggrslot" class="text-danger">{{ errors.manual_ggrslot[0] }}</div>
+						</div>
+                         <div class="col-md-4">
+							<label>Manual GGR Total</label>
+							<input class="form-control" :disabled="validated ? false : true" name="manual_ggtotal" v-model="fields.manual_ggtotal" value="" type="text"  placeholder="GGR  Total" >
+                            <div v-if="errors && errors.manual_ggtotal" class="text-danger">{{ errors.manual_ggtotal[0] }}</div>
+						</div>
+                        </div>  
+
+
+
+
+
+
 
 
 
@@ -163,6 +206,8 @@ data() {
            ggr : '',
                 payouts: '',  
                 ggrslot: '',
+                manual_ggtotal: '',
+                manual_ggrslot: '',
       }
 
         }
@@ -184,8 +229,20 @@ methods: {
      this.fields.ggrslot=this.fields.salesslot - this.fields.payoutsslot;
   this.fields.whtslot=0.2 * this.fields.payoutsslot;
   this.fields.ggrtaxslot=0.15 * this.fields.ggrslot;  
+ this.fields.manual_ggtotal=parseInt(this.fields.ggr) + parseInt(this.fields.ggrslot);
+
+
    },
 
+
+manual(){
+   //this.fields.manual_ggtotal= (this.fields.manual_ggr) + (this.fields.manual_ggrslot);
+    this.fields.manual_ggtotal= parseInt(this.fields.manual_ggr) + parseInt(this.fields.manual_ggrslot);
+     this.fields.ggr=this.fields.manual_ggr;
+      this.fields.ggrslot=this.fields.manual_ggrslot;
+        this.fields.ggrtax=0.15 * this.fields.ggr; 
+          this.fields.ggrtaxslot=0.15 * this.fields.ggrslot;  
+},
    
  onChange (value) {
       this.value = value

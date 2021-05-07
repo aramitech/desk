@@ -78,10 +78,11 @@ class ShopController extends Controller
         return back()->with('success','Updated succesfully');
     }
 
-    public function destroy(Request $request, $id )
+    public function destroy(Request $request )
     {
+       // return $request->id['shop_id'];
        // return $request;     return Favourite::find($id)->delete();
-        $user = Shops::findOrFail($request->shop_id);
+        $user = Shops::findOrFail($request->id['shop_id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }

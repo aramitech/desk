@@ -166,19 +166,20 @@ class CompanyController extends Controller
 
     public function destroy(Request $request)
     {
-        $user = Company::findOrFail($request->company_id);
+       
+        $user = Company::findOrFail($request->id['company_id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }
         public function destroybookmarkerscompany(Request $request)
     {
-        $user = BookmarkersCompany::findOrFail($request->company_id);
+        $user = BookmarkersCompany::findOrFail($request->id['company_id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }
         public function destroypublicgamingcompany(Request $request)
     {
-        $user = PublicGamingCompany::findOrFail($request->publicgaming_company_id);
+        $user = PublicGamingCompany::findOrFail($request->id['publicgaming_company_id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }

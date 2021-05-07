@@ -2071,6 +2071,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
     getLicenseeName: function getLicenseeName() {
       axios.get('/license_name/get').then(function (response) {
         this.company_names = response.data;
+        getShop_Names();
       }.bind(this));
     },
     getShop_Names: function getShop_Names() {
@@ -3586,6 +3587,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3597,10 +3607,11 @@ __webpack_require__.r(__webpack_exports__);
       text: 'Updated Succesfully',
       redirect: '/company/bookmarkers',
       company_names: [],
+      status_names: [],
       fields: {
         company_id: this.bookmarkerdata.company_id,
-        category_type_id: this.bookmarkerdata.category_type_id,
-        company_name: this.bookmarkerdata.company_name,
+        category_type_id: this.bookmarkerdata.company_category_type,
+        company_name: this.bookmarkerdata.category_type_id,
         trading_name: this.bookmarkerdata.trading_name,
         license_no: this.bookmarkerdata.license_no,
         email: this.bookmarkerdata.email,
@@ -3608,6 +3619,7 @@ __webpack_require__.r(__webpack_exports__);
         physicaladdress: this.bookmarkerdata.physicaladdress,
         branch: this.bookmarkerdata.branch,
         paybillno: this.bookmarkerdata.paybillno,
+        status: this.bookmarkerdata.status,
         categorytype: this.bookmarkerdata.categorytype
       }
     };
@@ -3617,11 +3629,16 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/CategoryTypeNam/get').then(function (response) {
         this.company_names = response.data;
       }.bind(this));
+    },
+    getStatusType: function getStatusType() {
+      axios.get('/StatusTypeNam/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
     }
   },
   mounted: function mounted() {
     this.fields.company_id = this.bookmarkerdata.company_id;
-    this.fields.category_type_id = this.getCategoryTypeName;
+    this.fields.category_type_id = this.bookmarkerdata.company_category_type;
     this.fields.company_name = this.bookmarkerdata.company_name;
     this.fields.trading_name = this.bookmarkerdata.trading_name;
     this.fields.license_no = this.bookmarkerdata.license_no;
@@ -3630,7 +3647,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fields.physicaladdress = this.bookmarkerdata.physicaladdress;
     this.fields.branch = this.bookmarkerdata.branch;
     this.fields.paybillno = this.bookmarkerdata.paybillno;
+    this.fields.status = this.bookmarkerdata.status;
     this.fields.categorytype = this.bookmarkerdata.categorytype;
+    console.log(this.fields.category_type_id);
   },
   created: function created() {
     this.getCategoryTypeName();
@@ -3795,6 +3814,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3816,7 +3878,9 @@ __webpack_require__.r(__webpack_exports__);
         licensee_name: '',
         ggr: '',
         payouts: '',
-        ggrslot: ''
+        ggrslot: '',
+        manual_ggtotal: '',
+        manual_ggrslot: ''
       }
     };
   },
@@ -3832,6 +3896,15 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.ggrtax = 0.15 * this.fields.ggr;
       this.fields.ggrslot = this.fields.salesslot - this.fields.payoutsslot;
       this.fields.whtslot = 0.2 * this.fields.payoutsslot;
+      this.fields.ggrtaxslot = 0.15 * this.fields.ggrslot;
+      this.fields.manual_ggtotal = parseInt(this.fields.ggr) + parseInt(this.fields.ggrslot);
+    },
+    manual: function manual() {
+      //this.fields.manual_ggtotal= (this.fields.manual_ggr) + (this.fields.manual_ggrslot);
+      this.fields.manual_ggtotal = parseInt(this.fields.manual_ggr) + parseInt(this.fields.manual_ggrslot);
+      this.fields.ggr = this.fields.manual_ggr;
+      this.fields.ggrslot = this.fields.manual_ggrslot;
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
       this.fields.ggrtaxslot = 0.15 * this.fields.ggrslot;
     },
     onChange: function onChange(value) {
@@ -6126,7 +6199,7 @@ __webpack_require__.r(__webpack_exports__);
         company_id: this.shopdata.company_id,
         shop_name: this.shopdata.shop_name,
         location: this.shopdata.location,
-        Shopcompany: this.shopdata.company_name
+        Shop_company: this.shopdata.company_name
       }
     };
   },
@@ -6134,8 +6207,10 @@ __webpack_require__.r(__webpack_exports__);
     getLicenseeName: function getLicenseeName() {
       axios.get('/publicgaming_license_name/get').then(function (response) {
         this.company_names = response.data;
+        console.log(Shopcompany, 'gggggggggggg');
       }.bind(this));
       console.log(response, 'kkkkk');
+      console.log(Shop_company, 'gggggggggggg');
     },
     onChange: function onChange(value) {
       this.value = value;
@@ -6154,6 +6229,7 @@ __webpack_require__.r(__webpack_exports__);
     this.fields.shop_name = this.shopdata.shop_name;
     this.fields.location = this.shopdata.location;
     this.fields.trading_name = this.shopdata.Shopcompany.trading_name;
+    console.log(Shop_company, 'gggggggggggg');
   }
 });
 
@@ -7540,6 +7616,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -7558,7 +7665,10 @@ __webpack_require__.r(__webpack_exports__);
         bookmarkersstatus: this.userdata.bookmarkersstatus,
         deletestatus: this.userdata.deletestatus,
         publiclotterystatus: this.userdata.publiclotterystatus,
-        publicgamingstatus: this.userdata.publicgamingstatus //  deletestatus:this.userdata.deletestatus,
+        publicgamingstatus: this.userdata.publicgamingstatus,
+        sendsms_status: this.userdata.sendsms_status,
+        bookmarkersshop_status: this.userdata.bookmarkersshop_status,
+        companies_status: this.userdata.companies_status //  deletestatus:this.userdata.deletestatus,
 
       }
     };
@@ -7572,7 +7682,10 @@ __webpack_require__.r(__webpack_exports__);
     this.fields.deletestatus = this.userdata.deletestatus;
     this.fields.bookmarkersstatus = this.userdata.bookmarkersstatus;
     this.fields.publiclotterystatus = this.userdata.publiclotterystatus;
-    this.fields.publicgamingstatus = this.userdata.publicgamingstatus; //this.fields.deletestatus=this.userdata.deletestatus;
+    this.fields.publicgamingstatus = this.userdata.publicgamingstatus;
+    this.fields.sendsms_status = this.userdata.sendsms_status;
+    this.fields.bookmarkersshop_status = this.userdata.bookmarkersshop_status;
+    this.fields.companies_status = this.userdata.companies_status; //this.fields.deletestatus=this.userdata.deletestatus;
   }
 });
 
@@ -52917,8 +53030,7 @@ var render = function() {
                         name: "return_for_the_period_of",
                         value: "",
                         type: "date",
-                        placeholder: "Return For The Period Of",
-                        required: ""
+                        placeholder: "Return For The Period Of"
                       },
                       domProps: { value: _vm.fields.return_for_the_period_of },
                       on: {
@@ -52959,8 +53071,7 @@ var render = function() {
                         name: "return_for_the_period_to",
                         value: "",
                         type: "date",
-                        placeholder: "Return For The Period To",
-                        required: ""
+                        placeholder: "Return For The Period To"
                       },
                       domProps: { value: _vm.fields.return_for_the_period_to },
                       on: {
@@ -53645,8 +53756,7 @@ var render = function() {
                   name: "return_for_the_period_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_of },
                 on: {
@@ -53687,8 +53797,7 @@ var render = function() {
                   name: "return_for_the_period_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_to },
                 on: {
@@ -54703,8 +54812,7 @@ var render = function() {
                   name: "return_for_the_period_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_of },
                 on: {
@@ -54745,8 +54853,7 @@ var render = function() {
                   name: "return_for_the_period_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_to },
                 on: {
@@ -55569,8 +55676,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_the_period_of",
                                   type: "date",
-                                  placeholder: "Return For The Period Of",
-                                  required: ""
+                                  placeholder: "Return For The Period Of"
                                 },
                                 domProps: {
                                   value: _vm.fields.return_for_the_period_of
@@ -55617,8 +55723,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_the_period_to",
                                   type: "date",
-                                  placeholder: "Return For The Period To",
-                                  required: ""
+                                  placeholder: "Return For The Period To"
                                 },
                                 domProps: {
                                   value: _vm.fields.return_for_the_period_to
@@ -56529,7 +56634,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Physical Address")]),
+                      _c("label", [_vm._v("Location")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -57000,7 +57105,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Physical Address")]),
+                  _c("label", [_vm._v("Location")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -57348,7 +57453,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Physical Address")]),
+                  _c("label", [_vm._v("Location")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -57680,7 +57785,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6" }, [
-                _c("label", [_vm._v("Physical Address")]),
+                _c("label", [_vm._v("Location")]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -58368,6 +58473,90 @@ var render = function() {
                       _vm._v(_vm._s(_vm.errors.paybillno[0]))
                     ])
                   : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("label", [_vm._v("Active Status")]),
+                _vm._v("\n      ((( Active  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.status,
+                      expression: "fields.status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "status",
+                    id: "status",
+                    value: "Active"
+                  },
+                  domProps: { checked: _vm._q(_vm.fields.status, "Active") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.fields, "status", "Active")
+                    }
+                  }
+                }),
+                _vm._v("\n                  Not Active  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.status,
+                      expression: "fields.status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "status",
+                    id: "status",
+                    value: "Not Active"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.fields.status, "Not Active")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.fields, "status", "Not Active")
+                    }
+                  }
+                }),
+                _vm._v("\n                 )))                    "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.status,
+                      expression: "fields.status"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    disabled: _vm.validated ? false : true,
+                    name: "status",
+                    type: "text"
+                  },
+                  domProps: { value: _vm.fields.status },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.fields, "status", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors.status
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.status[0]))
+                    ])
+                  : _vm._e()
               ])
             ])
           ]),
@@ -58601,8 +58790,7 @@ var render = function() {
                         name: "return_for_the_period_of",
                         value: "",
                         type: "date",
-                        placeholder: "Return For The Period Of",
-                        required: ""
+                        placeholder: "Return For The Period Of"
                       },
                       domProps: { value: _vm.fields.return_for_the_period_of },
                       on: {
@@ -58643,8 +58831,7 @@ var render = function() {
                         name: "return_for_the_period_to",
                         value: "",
                         type: "date",
-                        placeholder: "Return For The Period To",
-                        required: ""
+                        placeholder: "Return For The Period To"
                       },
                       domProps: { value: _vm.fields.return_for_the_period_to },
                       on: {
@@ -58725,8 +58912,7 @@ var render = function() {
                         name: "sales",
                         value: "",
                         type: "text",
-                        placeholder: "Sales",
-                        required: ""
+                        placeholder: "Sales"
                       },
                       domProps: { value: _vm.fields.sales },
                       on: {
@@ -58764,8 +58950,7 @@ var render = function() {
                         name: "payouts",
                         value: "",
                         type: "text",
-                        placeholder: "Payouts",
-                        required: ""
+                        placeholder: "Payouts"
                       },
                       domProps: { value: _vm.fields.payouts },
                       on: {
@@ -58806,8 +58991,7 @@ var render = function() {
                         name: "wht",
                         value: "",
                         type: "text",
-                        placeholder: "WHT",
-                        required: ""
+                        placeholder: "WHT"
                       },
                       domProps: { value: _vm.fields.wht },
                       on: {
@@ -58924,8 +59108,7 @@ var render = function() {
                         name: "salesslot",
                         value: "",
                         type: "text",
-                        placeholder: "Sales slot",
-                        required: ""
+                        placeholder: "Sales slot"
                       },
                       domProps: { value: _vm.fields.salesslot },
                       on: {
@@ -58963,8 +59146,7 @@ var render = function() {
                         name: "payoutsslot",
                         value: "",
                         type: "text",
-                        placeholder: "Payouts slot",
-                        required: ""
+                        placeholder: "Payouts slot"
                       },
                       domProps: { value: _vm.fields.payoutsslot },
                       on: {
@@ -59007,8 +59189,7 @@ var render = function() {
                         name: "whtslot",
                         value: "",
                         type: "text",
-                        placeholder: "WHT Slot",
-                        required: ""
+                        placeholder: "WHT Slot"
                       },
                       domProps: { value: _vm.fields.whtslot },
                       on: {
@@ -59109,10 +59290,140 @@ var render = function() {
                         ])
                       : _vm._e()
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("label", [_vm._v("Manual GGR ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.manual_ggr,
+                          expression: "fields.manual_ggr"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "manual_ggr",
+                        value: "",
+                        type: "text",
+                        placeholder: "GGR"
+                      },
+                      domProps: { value: _vm.fields.manual_ggr },
+                      on: {
+                        keyup: _vm.manual,
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields,
+                            "manual_ggr",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.manual_ggr
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.manual_ggr[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("label", [_vm._v("Manual GGR Slot")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.manual_ggrslot,
+                          expression: "fields.manual_ggrslot"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "manual_ggrslot",
+                        value: "",
+                        type: "text",
+                        placeholder: "GGR slot"
+                      },
+                      domProps: { value: _vm.fields.manual_ggrslot },
+                      on: {
+                        keyup: _vm.manual,
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields,
+                            "manual_ggrslot",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.manual_ggrslot
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.manual_ggrslot[0]))
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("label", [_vm._v("Manual GGR Total")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.manual_ggtotal,
+                          expression: "fields.manual_ggtotal"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        disabled: _vm.validated ? false : true,
+                        name: "manual_ggtotal",
+                        value: "",
+                        type: "text",
+                        placeholder: "GGR  Total"
+                      },
+                      domProps: { value: _vm.fields.manual_ggtotal },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.fields,
+                            "manual_ggtotal",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.manual_ggtotal
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.manual_ggtotal[0]))
+                        ])
+                      : _vm._e()
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _vm._m(2)
             ]
           )
         ])
@@ -59144,6 +59455,18 @@ var staticRenderFns = [
         },
         [_vm._v("×")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("hr"),
+      _vm._v(" "),
+      _c("label", [_vm._v("Manual")]),
+      _vm._v(" "),
+      _c("hr")
     ])
   },
   function() {
@@ -59342,8 +59665,7 @@ var render = function() {
                   name: "return_for_the_period_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_of },
                 on: {
@@ -59384,8 +59706,7 @@ var render = function() {
                   name: "return_for_the_period_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_to },
                 on: {
@@ -60448,8 +60769,7 @@ var render = function() {
                   name: "return_for_the_period_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_of },
                 on: {
@@ -60490,8 +60810,7 @@ var render = function() {
                   name: "return_for_the_period_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_for_the_period_to },
                 on: {
@@ -61397,8 +61716,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_the_period_of",
                                   type: "date",
-                                  placeholder: "Return For The Period Of",
-                                  required: ""
+                                  placeholder: "Return For The Period Of"
                                 },
                                 domProps: {
                                   value: _vm.fields.return_for_the_period_of
@@ -61445,8 +61763,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_the_period_to",
                                   type: "date",
-                                  placeholder: "Return For The Period To",
-                                  required: ""
+                                  placeholder: "Return For The Period To"
                                 },
                                 domProps: {
                                   value: _vm.fields.return_for_the_period_to
@@ -62194,8 +62511,7 @@ var render = function() {
                       attrs: {
                         name: "return_for_of",
                         type: "date",
-                        placeholder: "Return For The Period Of",
-                        required: ""
+                        placeholder: "Return For The Period Of"
                       },
                       domProps: { value: _vm.fields.return_for_of },
                       on: {
@@ -62235,8 +62551,7 @@ var render = function() {
                       attrs: {
                         name: "return_to",
                         type: "date",
-                        placeholder: "Return For The Period To",
-                        required: ""
+                        placeholder: "Return For The Period To"
                       },
                       domProps: { value: _vm.fields.return_to },
                       on: {
@@ -62772,8 +63087,7 @@ var render = function() {
                   name: "return_for_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_of },
                 on: {
@@ -62810,8 +63124,7 @@ var render = function() {
                   name: "return_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_to },
                 on: {
@@ -63721,8 +64034,7 @@ var render = function() {
                   name: "return_for_of",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period Of",
-                  required: ""
+                  placeholder: "Return For The Period Of"
                 },
                 domProps: { value: _vm.fields.return_for_of },
                 on: {
@@ -63759,8 +64071,7 @@ var render = function() {
                   name: "return_to",
                   value: "",
                   type: "date",
-                  placeholder: "Return For The Period To",
-                  required: ""
+                  placeholder: "Return For The Period To"
                 },
                 domProps: { value: _vm.fields.return_to },
                 on: {
@@ -64462,8 +64773,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_of",
                                   type: "date",
-                                  placeholder: "Return For The Period Of",
-                                  required: ""
+                                  placeholder: "Return For The Period Of"
                                 },
                                 domProps: { value: _vm.fields.return_for_of },
                                 on: {
@@ -64503,8 +64813,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_to",
                                   type: "date",
-                                  placeholder: "Return For The Period To",
-                                  required: ""
+                                  placeholder: "Return For The Period To"
                                 },
                                 domProps: { value: _vm.fields.return_to },
                                 on: {
@@ -65748,7 +66057,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
-        [_vm._v("Edit Bookmarkers Shop")]
+        [_vm._v("Edit 667Bookmarkers Shop")]
       ),
       _vm._v(" "),
       _c(
@@ -66462,8 +66771,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_for_of",
                                   type: "date",
-                                  placeholder: "Return For The Period Of",
-                                  required: ""
+                                  placeholder: "Return For The Period Of"
                                 },
                                 domProps: { value: _vm.fields.return_for_of },
                                 on: {
@@ -66503,8 +66811,7 @@ var render = function() {
                                 attrs: {
                                   name: "return_to",
                                   type: "date",
-                                  placeholder: "Return For The Period To",
-                                  required: ""
+                                  placeholder: "Return For The Period To"
                                 },
                                 domProps: { value: _vm.fields.return_to },
                                 on: {
@@ -69741,6 +70048,100 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
+              _c("label", [_vm._v("companies_status")]),
+              _vm._v("\n    ((( Allowed  "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.companies_status,
+                    expression: "fields.companies_status"
+                  }
+                ],
+                attrs: {
+                  type: "radio",
+                  name: "companies_status",
+                  id: "companies_status",
+                  value: "Allowed"
+                },
+                domProps: {
+                  checked: _vm._q(_vm.fields.companies_status, "Allowed")
+                },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.fields, "companies_status", "Allowed")
+                  }
+                }
+              }),
+              _vm._v("\n                Not Allowed  "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.companies_status,
+                    expression: "fields.companies_status"
+                  }
+                ],
+                attrs: {
+                  type: "radio",
+                  name: "companies_status",
+                  id: "companies_status",
+                  value: "NotAllowed"
+                },
+                domProps: {
+                  checked: _vm._q(_vm.fields.companies_status, "NotAllowed")
+                },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(
+                      _vm.fields,
+                      "companies_status",
+                      "NotAllowed"
+                    )
+                  }
+                }
+              }),
+              _vm._v("\n               )))                    "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.fields.companies_status,
+                    expression: "fields.companies_status"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  disabled: _vm.validated ? false : true,
+                  name: "companies_status",
+                  type: "text"
+                },
+                domProps: { value: _vm.fields.companies_status },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.fields,
+                      "companies_status",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.errors && _vm.errors.companies_status
+                ? _c("div", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errors.companies_status[0]))
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
               _c("label", [_vm._v("Public Gaming")]),
               _vm._v("\n    ((( Allowed  "),
               _c("input", {
@@ -69836,7 +70237,193 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "form-group row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _vm._m(1),
+            _vm._v("\n    ((( Allowed  "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.sendsms_status,
+                  expression: "fields.sendsms_status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                name: "sendsms_status",
+                id: "sendsms_status",
+                value: "Allowed"
+              },
+              domProps: {
+                checked: _vm._q(_vm.fields.sendsms_status, "Allowed")
+              },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.fields, "sendsms_status", "Allowed")
+                }
+              }
+            }),
+            _vm._v("\n                Not Allowed  "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.sendsms_status,
+                  expression: "fields.sendsms_status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                name: "sendsms_status",
+                id: "sendsms_status",
+                value: "NotAllowed"
+              },
+              domProps: {
+                checked: _vm._q(_vm.fields.sendsms_status, "NotAllowed")
+              },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.fields, "sendsms_status", "NotAllowed")
+                }
+              }
+            }),
+            _vm._v("\n               )))                    "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.sendsms_status,
+                  expression: "fields.sendsms_status"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                disabled: _vm.validated ? false : true,
+                name: "sendsms_status",
+                type: "text"
+              },
+              domProps: { value: _vm.fields.sendsms_status },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "sendsms_status", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.sendsms_status
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.sendsms_status[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("label", [_vm._v("Bookmarkers Shop")]),
+            _vm._v("\n    ((( Allowed  "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.bookmarkersshop_status,
+                  expression: "fields.bookmarkersshop_status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                name: "bookmarkersshop_status",
+                id: "bookmarkersshop_status",
+                value: "Allowed"
+              },
+              domProps: {
+                checked: _vm._q(_vm.fields.bookmarkersshop_status, "Allowed")
+              },
+              on: {
+                change: function($event) {
+                  return _vm.$set(
+                    _vm.fields,
+                    "bookmarkersshop_status",
+                    "Allowed"
+                  )
+                }
+              }
+            }),
+            _vm._v("\n                Not Allowed  "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.bookmarkersshop_status,
+                  expression: "fields.bookmarkersshop_status"
+                }
+              ],
+              attrs: {
+                type: "radio",
+                name: "bookmarkersshop_status",
+                id: "bookmarkersshop_status",
+                value: "NotAllowed"
+              },
+              domProps: {
+                checked: _vm._q(_vm.fields.bookmarkersshop_status, "NotAllowed")
+              },
+              on: {
+                change: function($event) {
+                  return _vm.$set(
+                    _vm.fields,
+                    "bookmarkersshop_status",
+                    "NotAllowed"
+                  )
+                }
+              }
+            }),
+            _vm._v("\n               )))                    "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.bookmarkersshop_status,
+                  expression: "fields.bookmarkersshop_status"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                disabled: _vm.validated ? false : true,
+                name: "bookmarkersshop_status",
+                type: "text"
+              },
+              domProps: { value: _vm.fields.bookmarkersshop_status },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.fields,
+                    "bookmarkersshop_status",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.bookmarkersshop_status
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.bookmarkersshop_status[0]))
+                ])
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
       ]
     )
   ])
@@ -69866,6 +70453,12 @@ var staticRenderFns = [
         [_vm._v("×")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("strong", [_vm._v("Send SMS")])])
   },
   function() {
     var _vm = this

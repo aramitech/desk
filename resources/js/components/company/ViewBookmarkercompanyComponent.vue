@@ -55,6 +55,10 @@
             <div v-if="errors && errors.category_type_id" class="text-danger">{{ errors.category_type_id[0] }}</div>
        
         </div> 
+
+                       
+                 
+
                         
                         </div>
                          <div class="form-group row">
@@ -62,16 +66,21 @@
 							<label>PAYBILL NO</label>
 							<input class="form-control"  name="paybillno" v-model="fields.paybillno" value="" type="text" placeholder="Paybill No" >
                             <div v-if="errors && errors.paybillno" class="text-danger">{{ errors.paybillno[0] }}</div>
-						</div>	</div>
+						</div>
+                        
+                                  <div class="col-md-6">
+                    <label>Active Status</label>
+      ((( Active  <input type="radio" name="status" v-model="fields.status" id="status" value="Active">
+                  Not Active  <input type="radio" name="status" v-model="fields.status" id="status" value="Not Active">
+                 )))                    <input class="form-control" :disabled="validated ? false : true" name="status" v-model="fields.status" type="text"    >
+                    <div v-if="errors && errors.status" class="text-danger">{{ errors.status[0] }}</div>
                     </div>
+                        
+                        	</div>
+                    </div>
+                   <div class="modal-footer">
 
-
-
-
-
-                    <div class="modal-footer">
-      
-                    </div>  </div>
+                    </div> </div>
                 </form>
     </div>
 </template>
@@ -88,10 +97,11 @@ data() {
         text: 'Updated Succesfully',
         redirect: '/company/bookmarkers',
          company_names:[],
+         status_names:[],
         fields: {
             company_id:this.bookmarkerdata.company_id,
-            category_type_id:this.bookmarkerdata.category_type_id,
-            company_name:this.bookmarkerdata.company_name,
+            category_type_id:this.bookmarkerdata.company_category_type,
+            company_name:this.bookmarkerdata.category_type_id,
             trading_name:this.bookmarkerdata.trading_name,
             license_no:this.bookmarkerdata.license_no,
             email:this.bookmarkerdata.email,
@@ -99,6 +109,7 @@ data() {
             physicaladdress:this.bookmarkerdata.physicaladdress,
             branch:this.bookmarkerdata.branch,
              paybillno:this.bookmarkerdata.paybillno,
+              status:this.bookmarkerdata.status,
             categorytype:this.bookmarkerdata.categorytype,
 
              
@@ -106,9 +117,15 @@ data() {
         }
     },
 
-methods: {
+     methods: {
       getCategoryTypeName: function(){   
         axios.get('/CategoryTypeNam/get')
+        .then(function(response){
+          this.company_names = response.data;        
+        }.bind(this));
+      },
+       getStatusType: function(){   
+        axios.get('/StatusTypeNam/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));
@@ -116,7 +133,7 @@ methods: {
     },
     mounted() {
         this.fields.company_id=this.bookmarkerdata.company_id;
-        this.fields.category_type_id=this.getCategoryTypeName;
+        this.fields.category_type_id=this.bookmarkerdata.company_category_type;
         this.fields.company_name=this.bookmarkerdata.company_name;
         this.fields.trading_name=this.bookmarkerdata.trading_name;
         this.fields.license_no=this.bookmarkerdata.license_no;
@@ -124,11 +141,14 @@ methods: {
         this.fields.contact=this.bookmarkerdata.contact;
         this.fields.physicaladdress=this.bookmarkerdata.physicaladdress;
         this.fields.branch=this.bookmarkerdata.branch;
-         this.fields.paybillno=this.bookmarkerdata.paybillno;
-           this.fields.categorytype=this.bookmarkerdata.categorytype;
+        this.fields.paybillno=this.bookmarkerdata.paybillno;
+        this.fields.status=this.bookmarkerdata.status;
+        this.fields.categorytype=this.bookmarkerdata.categorytype;
+        console.log(this.fields.category_type_id);
     },
           created: function(){  
-     this.getCategoryTypeName()   
+     this.getCategoryTypeName() 
+      
     },
 }
 </script>

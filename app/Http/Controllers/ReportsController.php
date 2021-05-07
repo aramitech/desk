@@ -263,11 +263,20 @@ class ReportsController extends Controller
         // retreive all records from db
         $bcompanies = BookmarkersCompany::where('company_id',$id)->get();
         $publicLotteries = EloquentBuilder::to(PublicLottery::where('company_id',$id), request()->all())->get();
-  
+        $pdf = PDF::loadView('reports.pdf_publiclottery_view',  compact('bcompanies','publicLotteries','id'));
+        $pdf->setPaper('L');
+        $pdf->output();
+        $canvas = $pdf->getDomPDF()->getCanvas();
+        $height = $canvas->get_height();
+        $width = $canvas->get_width();
+        $canvas->set_opacity(.1,"Multiply");
+        $canvas->page_text($width/5, $height/2, 'BCLB ', null,
+         70, array(0,0,0),2,2,-30);
+        return $pdf->stream();
         // share data to view
         // view()->share('BookMarkers',$bcompanies,$bookmarkers,$id);
         $pdf = PDF::loadView('reports.pdf_publiclottery_view', compact('bcompanies','publicLotteries','id'));
-  
+        return $pdf->stream();
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');
 

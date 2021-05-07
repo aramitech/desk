@@ -21,6 +21,6 @@ class Shops extends Model
  //Shop<>Comany relationship
  public function Shopcompany()  
  {
-     return $this->belongsTo(BookmarkersCompany::class,'company_id');
+     return $this->belongsTo(BookmarkersCompany::class,'company_id','company_id');
  }
 }

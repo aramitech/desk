@@ -11,6 +11,7 @@ use Auth;
 use App\Models\AuditLog;
 use App\Imports\BookMarkersImport;
 use Maatwebsite\Excel\Facades\Excel;
+use EloquentBuilder;
 
 class BookMarkersController extends Controller
 
@@ -24,13 +25,14 @@ class BookMarkersController extends Controller
      */
     public function index()
     {
-        // $Authdelete = Auth::user()->deletestatus;
-        // $Authedit = Auth::user()->editstatus;
-       // return Auth::user();
-      // return   $category_type_id = CategoryTypes::where('categorytypes_id','1')->get();
-
+   
       $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+      //  return view('bookmarkers.index', compact('bookmarkers'));
+
+
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
         return view('bookmarkers.index', compact('bookmarkers'));
+
     }
 
 
