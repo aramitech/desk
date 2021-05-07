@@ -17,12 +17,12 @@
 			<input name="to" class="form-control form-control-sm form-control-line" type="date">
 		</div>
 	</div>
-	<!-- <div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Subject</label>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">Not Recorded</label>
 		<div class="col-sm-12 col-md-10">
-			<input class="form-control form-control-sm form-control-line" type="text">
+			<input name="inactive" class="form-control form-control-sm form-control-line" type="checkbox">
 		</div>
-	</div> -->
+	</div>
 	<div class="text-right">
 		<button type="submit" class="btn btn-primary">Search</button>
 	</div>

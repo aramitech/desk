@@ -38,7 +38,7 @@ class BookMarkersController extends Controller
 
     public function bookmarkersdata()
     {
-        $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
         return $bookmarkers;
     }
 

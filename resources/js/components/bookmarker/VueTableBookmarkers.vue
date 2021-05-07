@@ -256,7 +256,21 @@ export default {
   },
   methods: {
           getBookmarkers: function(){
-        axios.get('/bookmarkersdata/get')
+            let url = '/bookmarkersdata/get';
+            if(new URL(location.href).searchParams.get('from') != null)
+            {
+              url = url+'?from='+new URL(location.href).searchParams.get('from');
+            }
+            if(new URL(location.href).searchParams.get('to') != null)
+            {
+              url = url+'&to='+new URL(location.href).searchParams.get('to');
+            }
+            if(new URL(location.href).searchParams.get('inactive') != null)
+            {
+              url = url+'&inactive='+new URL(location.href).searchParams.get('inactive');
+            }
+            //'/bookmarkersdata/get?from='+new URL(location.href).searchParams.get('from')+'&to='+new URL(location.href).searchParams.get('to')+'&inactive='+new URL(location.href).searchParams.get('inactive'));
+        axios.get(url)
         .then(function(response){
           this.rows = response.data;
         }.bind(this));
