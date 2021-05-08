@@ -15,8 +15,6 @@ use EloquentBuilder;
 
 class BookMarkersController extends Controller
 
-
-
 {
     /**
      * Display a listing of the resource.

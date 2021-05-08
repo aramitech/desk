@@ -19,10 +19,10 @@ class FromFilter extends Filter
     {
         if(request()->get('inactive') == 'on')
         {
-            return $builder->whereDate('return_for_the_period_of', "!=", $value);
+            return $builder->whereDate('return_for_the_period_of', "<", $value);
         }
         else{
-            return $builder->whereDate('return_for_the_period_of', "=", $value);
+            return $builder->whereDate('return_for_the_period_of', ">=", $value);
         }
     }
 }
