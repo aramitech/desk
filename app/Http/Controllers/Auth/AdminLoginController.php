@@ -79,6 +79,7 @@ class AdminLoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
+        session(['twofa' => 0]);
         return redirect()->route('admin-login');
     }
 }

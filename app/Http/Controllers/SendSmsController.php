@@ -110,20 +110,19 @@ class SendSmsController extends Controller
     }
 
    
-    function CURLsendsms($destination, $message_body){   
+    public function CURLsendsms($destination, $message_body){   
 
-      $api_params = $api_element.'?apikey='.$apikey.'&sender='.$sender.'&to='.$destination.'&message='.$message;  
-      $smsGatewayUrl = "https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky";  
-      $smsgatewaydata = $smsGatewayUrl.$api_params;
+      // $api_params = '?apikey='.$apikey.'&sender='.$sender.'&to='.$destination.'&message='.$message;  
+      $smsGatewayUrl = "http://mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=".$message_body."&destination=".$destination."&source=Mobisky";  
+      $smsgatewaydata = $smsGatewayUrl;
       $url = $smsgatewaydata;
 
       $ch = curl_init();                       // initialize CURL
-      curl_setopt($ch, CURLOPT_POST, false);    // Set CURL Post Data
-      curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_URL, $url);
       $output = curl_exec($ch);
       curl_close($ch);                         // Close CURL
-
+      \Log::info($output);
       // Use file get contents when CURL is not installed on server.
       if(!$output){
          $output =  file_get_contents($smsgatewaydata);  

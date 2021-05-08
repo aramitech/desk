@@ -1,3 +1,15 @@
+<?php
+	if(Auth::guard('admin')->check())
+	{
+		
+		if((Auth::guard('admin')->user()->twofa) == 0)
+		{
+			//redirect to OTP page
+			echo '<script>window.location.href = "/otp-verify"</script>';
+		}
+		
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>

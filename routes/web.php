@@ -171,3 +171,6 @@ Route::get('/publicgaming_shop', [App\Http\Controllers\ShopController::class, 'p
 Route::get('/license_shop_name/get',[App\Http\Controllers\ShopController::class, 'update']);
 Route::post('/shop/delete', [App\Http\Controllers\ShopController::class, 'destroy'])->name('shop.delete');
 
+//otp  verify
+Route::get('/otp-verify',[App\Http\Controllers\OtpController::class, 'view']);
+Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])->name('verify');
