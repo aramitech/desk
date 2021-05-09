@@ -274,6 +274,7 @@ export default {
            axios.get(url)
         .then(function(response){
           this.rows = response.data;
+          console.log(this.rows);
         }.bind(this));
        
       },

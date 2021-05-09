@@ -2893,6 +2893,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get(url).then(function (response) {
         this.rows = response.data;
+        console.log(this.rows);
       }.bind(this));
     },
     getLicenseeName: function getLicenseeName() {
