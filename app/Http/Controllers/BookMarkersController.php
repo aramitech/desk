@@ -36,8 +36,18 @@ class BookMarkersController extends Controller
 
     public function bookmarkersdata()
     {
-        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
-        return $bookmarkers;
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->orderByDesc('bookmarker_id')->get()->groupBy('company_id');
+        // $bookmarkers = EloquentBuilder::to(BookmarkersCompany::whereHas('bookmarkerscompany', function($query){
+        //     $query->select('bookmarker_id','company_id','shop_id','licensee_name','license_no','return_for_the_period_of',
+        //                 'return_for_the_period_to','branch','date','bets_no','deposits','total_sales','total_payout',
+        //                 'wht','winloss','ggr','ggrtax','id');
+        // })->with('bookmarkerscompany'), request()->all())->get();
+        $bookmarkersdata = [];
+        foreach($bookmarkers as $bookMarker)
+        {
+            array_push($bookmarkersdata,$bookMarker[0]);
+        }
+        return $bookmarkersdata;
     }
 
     public function bookmarker_shop_name()
