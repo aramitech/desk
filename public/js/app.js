@@ -2877,6 +2877,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getBookmarkers: function getBookmarkers() {
       var url = '/bookmarkersdata/get';
+      var url2 = '/bookmarkersdata_inactive';
 
       if (new URL(location.href).searchParams.get('from') != null) {
         url = url + '?from=' + new URL(location.href).searchParams.get('from');

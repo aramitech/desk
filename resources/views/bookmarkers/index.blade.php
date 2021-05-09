@@ -4,9 +4,9 @@
 @endsection
 
 @section('filter')
-<form>
+<form method="GET" action="{{ route('bookmarkers.inactivebookmarkers') }}">
 	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">From</label>
+		<label class="col-sm-12 col-md-2 col-form-label">Fromfffff</label>
 		<div class="col-sm-12 col-md-10">
 			<input name="from" class="form-control form-control-sm form-control-line" type="date">
 		</div>

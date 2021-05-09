@@ -73,6 +73,10 @@ Route::get('/license_name/get',[App\Http\Controllers\BookMarkersController::clas
 Route::get('/addbookmarkers',[App\Http\Controllers\BookMarkersController::class, 'addbookmarkers'])->name('bookmarkers.addbookmarkers');
 Route::get('/bookmarkersdata/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarkersdata'])->name('bookmarkers.bookmarkersdata');
 Route::get('/bookmarker_shop_name/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarker_shop_name'])->name('bookmarkers.bookmarker_shop_name');
+Route::get('/inactivebookmarkers',[App\Http\Controllers\BookMarkersController::class, 'inactivebookmarkers'])->name('bookmarkers.inactivebookmarkers');
+
+
+
 
 
 Route::get('/adminbookmarkers', [App\Http\Controllers\AdminBookMarkersController::class, 'index'])->name('adminbookmarkers');
