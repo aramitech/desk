@@ -2876,19 +2876,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getBookmarkers: function getBookmarkers() {
-      var url = '/bookmarkersdata/get';
+      var url = '/bookmarkersdata/get?';
       var url2 = '/bookmarkersdata_inactive';
 
       if (new URL(location.href).searchParams.get('from') != null) {
-        url = url + '?from=' + new URL(location.href).searchParams.get('from');
+        url = url + 'from=' + new URL(location.href).searchParams.get('from') + '&';
       }
 
       if (new URL(location.href).searchParams.get('to') != null) {
-        url = url + '&to=' + new URL(location.href).searchParams.get('to');
+        url = url + 'to=' + new URL(location.href).searchParams.get('to') + '&';
       }
 
       if (new URL(location.href).searchParams.get('inactive') != null) {
-        url = url + '&inactive=' + new URL(location.href).searchParams.get('inactive');
+        url = url + 'inactive=' + new URL(location.href).searchParams.get('inactive');
       } //'/bookmarkersdata/get?from='+new URL(location.href).searchParams.get('from')+'&to='+new URL(location.href).searchParams.get('to')+'&inactive='+new URL(location.href).searchParams.get('inactive'));
 
 
