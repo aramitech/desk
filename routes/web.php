@@ -192,6 +192,7 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  Route::get('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'view_user']);
  Route::post('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'verify_user'])->name('verify_user');
 
+ ///New
  Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-master');
 
  Route::get('/admin/accountsetting', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
