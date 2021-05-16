@@ -27,7 +27,7 @@ Route::post('/users/delete', [App\Http\Controllers\UsersController::class, 'dest
 Route::post('/users/updaterole', [App\Http\Controllers\UsersController::class, 'updaterole'])->name('users.updaterole');
 Route::get('/users/profile', [App\Http\Controllers\UsersController::class, 'profile'])->name('users.profile');
 Route::post('/users/updatepassword', [App\Http\Controllers\UsersController::class, 'updatepassword'])->name('users.updatepassword');
-Route::get('/users/assignroleuser', [App\Http\Controllers\UsersController::class, 'assignroleuser'])->name('assignroleuser');
+Route::get('/users/assignroleuser/{id}', [App\Http\Controllers\UsersController::class, 'assignroleuser'])->name('assignroleuser');
 
 
 

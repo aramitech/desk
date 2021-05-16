@@ -111,10 +111,9 @@ class UsersController extends Controller
     }
 
 
-    public function assignroleuser(Request $request)
+    public function assignroleuser($id)
     {
-       return  $id = $request;
-         $users = User::where('id','1');
+         $users = User::where('id',$id);
         return view('vuexy.user.user_edit', compact('users'));
     }
 
