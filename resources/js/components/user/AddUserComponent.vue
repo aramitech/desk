@@ -18,6 +18,25 @@
 							<input class="form-control" name="email" v-model="fields.email" value="" type="email" placeholder="me@example.com" required>
                             <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
 						</div>
+
+                        			<div class="form-group">
+							<label>Personal File No</label>
+							<input class="form-control" name="perspnal_file_no" v-model="fields.perspnal_file_no" value="" type="text" placeholder="Personal File No" >
+                            <div v-if="errors && errors.perspnal_file_no" class="text-danger">{{ errors.perspnal_file_no[0] }}</div>
+						</div>
+
+                        		<div class="form-group">
+							<label>Department/Section</label>
+							<input class="form-control" name="section" v-model="fields.section" value="" type="text" placeholder="Section" >
+                            <div v-if="errors && errors.section" class="text-danger">{{ errors.section[0] }}</div>
+						</div>
+
+                        		<div class="form-group">
+							<label>Phone</label>
+							<input class="form-control" name="phone" v-model="fields.phone" value="" type="text" placeholder="0712516957" required>
+                            <div v-if="errors && errors.phone" class="text-danger">{{ errors.phone[0] }}</div>
+						</div>
+
                         <div class="form-group">
 							<label>Password</label>
 							<input class="form-control"  name="password" v-model="fields.password" value="" type="password" placeholder="********" required>

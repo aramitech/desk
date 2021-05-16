@@ -39,6 +39,40 @@ class PublicgamingsController extends Controller
 
     public function publicgamingsdata()
     {
+
+        
+        if(request()->get('inactive') == 'on')
+        {
+            $publicgamings = BookmarkersCompany::where('category_type_id','3')->with('publicGamingcompany')->get()->groupBy('company_id');
+            $constraints = '';
+            if(request()->get('from')){
+                $publicgamings = BookmarkersCompany::where('category_type_id','3')->with(['publicGamingcompany' => function($query){
+                    $query->whereDate('return_for_the_period_of', "<", \Carbon\Carbon::create(request()->get('from')));
+                }])->get()->groupBy('company_id');
+            }
+  
+            $publiclotterydata = [];
+            // $companies = [];
+            foreach($publicgamings as $publiclottery)
+        
+            {
+                // array_push($companies,$publiclottery[0]->company_id);
+                if($publiclottery[0]->publicGamingcompany->count() > 0)
+                {
+                    array_push($publiclotterydata,$publiclottery[0]->publicGamingcompany->first());
+                }
+                else{
+                    $arr = ["publicgaming_id"=>null,"company_id"=>$publiclottery[0]->company_id,"public_gamingcompany"=>$publiclottery[0]->public_gamingcompany.company_name,"license_no"=>$publiclottery[0]->trading_name,"license_no"=>$publiclottery[0]->companlicense_noy_id,"return_for_the_period_of"=>null,"return_for_the_period_to"=>null,"date"=>null,"sales"=>"0","sales"=>"0","payouts"=>0,"wht"=>0,"ggr"=>null,"ggrtax"=>null,"id"=>null];
+                    array_push($publiclotterydata,$arr);
+                }
+            }
+            return $publiclotterydata;
+        }
+        else {
+            $publicgamings = Publicgamings::with('publicGamingcompany')->get();
+            return $publicgamings;
+        }
+
         $publicgamings = Publicgamings::with('publicGamingcompany')->get();
         return $publicgamings;
     }

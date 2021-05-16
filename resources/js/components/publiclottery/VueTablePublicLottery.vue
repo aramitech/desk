@@ -190,7 +190,7 @@ export default {
         },
         {
           label: 'Company',
-          field: 'company_id',
+          field: 'public_lotterycompany.company_name',
         },
         {
           label: 'license_no',
@@ -240,13 +240,33 @@ export default {
    this.fields.ggrtax=0.15 * this.fields.ggr;  
    
    },
-          getPublicLottery: function(){
-        axios.get('/PublicLotterydata/get')
+    getPublicLottery: function(){
+            let url = '/PublicLotterydata/get?';
+             if(new URL(location.href).searchParams.get('from') != null)
+            {
+              url = url+'from='+new URL(location.href).searchParams.get('from')+'&';
+            }
+            if(new URL(location.href).searchParams.get('to') != null)
+            {
+              url = url+'to='+new URL(location.href).searchParams.get('to')+'&';
+            }
+            if(new URL(location.href).searchParams.get('inactive') != null)
+            {
+              url = url+'inactive='+new URL(location.href).searchParams.get('inactive');
+            }
+            //'/bookmarkersdata/get?from='+new URL(location.href).searchParams.get('from')+'&to='+new URL(location.href).searchParams.get('to')+'&inactive='+new URL(location.href).searchParams.get('inactive'));
+           axios.get(url)
         .then(function(response){
           this.rows = response.data;
+          console.log(this.rows);
         }.bind(this));
        
       },
+
+
+
+
+
        getLicenseeName: function(){
          axios.get('/publiclottery_license_name/get')
         .then(function(response){

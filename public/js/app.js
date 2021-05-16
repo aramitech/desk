@@ -2229,10 +2229,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -2839,26 +2835,27 @@ __webpack_require__.r(__webpack_exports__);
       columns: [{
         label: 'ID',
         field: 'bookmarker_id'
-      }, {
-        label: 'Name',
-        field: 'company_id'
-      }, {
+      }, // {
+      //   label: 'Name',
+      //   field: 'company_id',
+      // },
+      {
         label: 'Licensee Name',
         field: 'licensee_name'
       }, {
-        label: 'bets_no',
+        label: 'Bets No',
         field: 'bets_no'
       }, {
-        label: 'deposits',
+        label: 'Deposits',
         field: 'deposits'
       }, {
-        label: 'total_sales',
+        label: 'Total Sales',
         field: 'total_sales'
       }, {
-        label: 'total_payout',
+        label: 'Total Payout',
         field: 'total_payout'
       }, {
-        label: 'wht',
+        label: 'WHT',
         field: 'wht'
       }, {
         label: 'Action',
@@ -3689,6 +3686,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3888,20 +3900,51 @@ __webpack_require__.r(__webpack_exports__);
       //save action
       text: 'Added Succesfully',
       redirect: '/publicgaming',
+      types: ['Online', 'Manual'],
       company_names: [],
-      fields: {
-        license_no: "",
-        trading_name: '',
-        licensee_name: '',
-        ggr: '',
-        payouts: '',
-        ggrslot: '',
-        manual_ggtotal: '',
-        manual_ggrslot: ''
+      choices: [],
+      options: {
+        options: {
+          option: '',
+          response: ''
+        },
+        fields: {
+          license_no: "",
+          trading_name: '',
+          licensee_name: '',
+          ggr: '',
+          payouts: '',
+          ggrslot: '',
+          manual_ggtotal: '',
+          manual_ggrslot: ''
+        },
+        isHidden: true,
+        isHidden1: true,
+        isHidden2: false
       }
     };
   },
   methods: {
+    add: function add() {
+      this.choices.push(_objectSpread({}, this.options));
+      this.fields.thechoices = this.choices;
+      console.log(this.choices);
+      this.options.option = '';
+      this.options.response = '';
+    },
+    remove: function remove(index) {
+      this.options.splice(index, 1);
+    },
+    add1: function add1() {
+      this.branches.push(_objectSpread({}, this.branchs));
+      this.fields.thebranches = this.branches;
+      console.log(this.branches);
+      this.branchs["if"] = '';
+      this.branchs.next = '';
+    },
+    remove1: function remove1(index) {
+      this.branchs.splice(index, 1);
+    },
     getLicenseeName: function getLicenseeName() {
       axios.get('/publicgaming_license_name/get').then(function (response) {
         this.company_names = response.data;
@@ -3930,10 +3973,31 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
       console.log(value);
+      this.type;
+
+      if (value == 'Online') {
+        this.isHidden = false;
+        this.isHidden2 = true;
+      } else if (value == 'Manual') {
+        this.isHidden = true;
+        this.isHidden2 = false;
+      } else {
+        this.isHidden = true;
+        this.isHidden2 = true;
+      }
+    },
+    onSelect: function onSelect(option) {
+      if (option === 'Disable me!') this.isDisabled = false;
+    },
+    onTouch: function onTouch() {
+      this.isTouched = true;
     }
   },
   created: function created() {
     this.getLicenseeName();
+  },
+  mounted: function mounted() {
+    console.log(isHidden2);
   }
 });
 
@@ -4266,7 +4330,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
         trading_name: '',
         licensee_name: '',
         ggr: '',
-        total_payout: ''
+        payouts: ''
       }
     };
   },
@@ -4752,7 +4816,7 @@ __webpack_require__.r(__webpack_exports__);
         field: 'publicgaming_id'
       }, {
         label: 'Name',
-        field: 'company_id'
+        field: 'public_gamingcompany.company_name'
       }, {
         label: 'Licensee No',
         field: 'license_no'
@@ -4787,8 +4851,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getPublicgaaming: function getPublicgaaming() {
-      axios.get('/publicgamingsdata/get').then(function (response) {
+      var url = '/publicgamingsdata/get?';
+
+      if (new URL(location.href).searchParams.get('from') != null) {
+        url = url + 'from=' + new URL(location.href).searchParams.get('from') + '&';
+      }
+
+      if (new URL(location.href).searchParams.get('to') != null) {
+        url = url + 'to=' + new URL(location.href).searchParams.get('to') + '&';
+      }
+
+      if (new URL(location.href).searchParams.get('inactive') != null) {
+        url = url + 'inactive=' + new URL(location.href).searchParams.get('inactive');
+      } //'/bookmarkersdata/get?from='+new URL(location.href).searchParams.get('from')+'&to='+new URL(location.href).searchParams.get('to')+'&inactive='+new URL(location.href).searchParams.get('inactive'));
+
+
+      axios.get(url).then(function (response) {
         this.rows = response.data;
+        console.log(this.rows);
       }.bind(this));
     },
     getLicenseeName: function getLicenseeName() {
@@ -5770,7 +5850,7 @@ __webpack_require__.r(__webpack_exports__);
         field: 'publiclottery_id'
       }, {
         label: 'Company',
-        field: 'company_id'
+        field: 'public_lotterycompany.company_name'
       }, {
         label: 'license_no',
         field: 'license_no'
@@ -5810,8 +5890,24 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.ggrtax = 0.15 * this.fields.ggr;
     },
     getPublicLottery: function getPublicLottery() {
-      axios.get('/PublicLotterydata/get').then(function (response) {
+      var url = '/PublicLotterydata/get?';
+
+      if (new URL(location.href).searchParams.get('from') != null) {
+        url = url + 'from=' + new URL(location.href).searchParams.get('from') + '&';
+      }
+
+      if (new URL(location.href).searchParams.get('to') != null) {
+        url = url + 'to=' + new URL(location.href).searchParams.get('to') + '&';
+      }
+
+      if (new URL(location.href).searchParams.get('inactive') != null) {
+        url = url + 'inactive=' + new URL(location.href).searchParams.get('inactive');
+      } //'/bookmarkersdata/get?from='+new URL(location.href).searchParams.get('from')+'&to='+new URL(location.href).searchParams.get('to')+'&inactive='+new URL(location.href).searchParams.get('inactive'));
+
+
+      axios.get(url).then(function (response) {
         this.rows = response.data;
+        console.log(this.rows);
       }.bind(this));
     },
     getLicenseeName: function getLicenseeName() {
@@ -5898,6 +5994,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
+  data: function data() {
+    return {
+      action: '/send_bulksms/add',
+      //save action
+      text: 'Sent Succesfully',
+      redirect: '',
+      company_names: [],
+      fields: {}
+    };
+  },
+  methods: {
+    getCompanyName: function getCompanyName() {
+      axios.get('/company_name/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
+    }
+  },
+  created: function created() {
+    this.getCompanyName();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=script&lang=js& ***!
@@ -5953,6 +6118,81 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       action: '/sendsms/add',
+      //save action
+      text: 'Sent Succesfully',
+      redirect: '',
+      company_names: [],
+      fields: {}
+    };
+  },
+  methods: {
+    getCompanyName: function getCompanyName() {
+      axios.get('/company_name/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
+    }
+  },
+  created: function created() {
+    this.getCompanyName();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
+  data: function data() {
+    return {
+      action: '/sendsmstocontact/add',
       //save action
       text: 'Sent Succesfully',
       redirect: '',
@@ -7528,6 +7768,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -7556,6 +7815,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7824,6 +8099,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -7837,7 +8128,10 @@ __webpack_require__.r(__webpack_exports__);
       fields: {
         id: this.userdata.id,
         name: this.userdata.name,
-        email: this.userdata.email
+        email: this.userdata.email,
+        perspnal_file_no: this.userdata.perspnal_file_no,
+        section: this.userdata.section,
+        phone: this.userdata.phone
       }
     };
   },
@@ -7846,6 +8140,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fields.id = this.userdata.id;
     this.fields.name = this.userdata.name;
     this.fields.email = this.userdata.email;
+    this.fields.perspnal_file_no = this.userdata.perspnal_file_no;
+    this.fields.section = this.userdata.section;
+    this.fields.phone = this.userdata.phone;
   }
 });
 
@@ -7905,7 +8202,6 @@ Vue.component('add-categorytype-component', __webpack_require__(/*! ./components
 Vue.component('edit-bookmarkercompany-component', __webpack_require__(/*! ./components/company/EditBookmarkercompanyComponent.vue */ "./resources/js/components/company/EditBookmarkercompanyComponent.vue").default);
 Vue.component('view-bookmarkercompany-component', __webpack_require__(/*! ./components/company/ViewBookmarkercompanyComponent.vue */ "./resources/js/components/company/ViewBookmarkercompanyComponent.vue").default);
 Vue.component('change_password-user-component', __webpack_require__(/*! ./components/user/ChangePasswordComponent.vue */ "./resources/js/components/user/ChangePasswordComponent.vue").default);
-Vue.component('add-sendsms-component', __webpack_require__(/*! ./components/sendsms/SendSms.vue */ "./resources/js/components/sendsms/SendSms.vue").default);
 Vue.component('bookmarkers_good_table_component', __webpack_require__(/*! ./components/bookmarker/VueTableBookmarkers.vue */ "./resources/js/components/bookmarker/VueTableBookmarkers.vue").default);
 Vue.component('edit-bookmarkers-component', __webpack_require__(/*! ./components/bookmarker/EditBookmarkerComponent.vue */ "./resources/js/components/bookmarker/EditBookmarkerComponent.vue").default);
 Vue.component('publiclottery_good_table_component', __webpack_require__(/*! ./components/publiclottery/VueTablePublicLottery.vue */ "./resources/js/components/publiclottery/VueTablePublicLottery.vue").default);
@@ -7920,6 +8216,9 @@ Vue.component('view-publiclotteryshop-component', __webpack_require__(/*! ./comp
 Vue.component('add-publicgamingshop-component', __webpack_require__(/*! ./components/shoppublicgaming/AddPublicGamingShopComponent.vue */ "./resources/js/components/shoppublicgaming/AddPublicGamingShopComponent.vue").default);
 Vue.component('edit-publicgamingshop-component', __webpack_require__(/*! ./components/shoppublicgaming/EditPublicGamingShopComponent.vue */ "./resources/js/components/shoppublicgaming/EditPublicGamingShopComponent.vue").default);
 Vue.component('view-publicgamingshop-component', __webpack_require__(/*! ./components/shoppublicgaming/ViewPublicGamingShopComponent.vue */ "./resources/js/components/shoppublicgaming/ViewPublicGamingShopComponent.vue").default);
+Vue.component('add-sendsms-component', __webpack_require__(/*! ./components/sendsms/SendSms.vue */ "./resources/js/components/sendsms/SendSms.vue").default);
+Vue.component('add-sendsms-tocontact-component', __webpack_require__(/*! ./components/sendsms/SendSmsToContact.vue */ "./resources/js/components/sendsms/SendSmsToContact.vue").default);
+Vue.component('add-send-bulk-sms-component', __webpack_require__(/*! ./components/sendsms/SendBulkSms.vue */ "./resources/js/components/sendsms/SendBulkSms.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50692,6 +50991,45 @@ component.options.__file = "resources/js/components/publiclottery/VueTablePublic
 
 /***/ }),
 
+/***/ "./resources/js/components/sendsms/SendBulkSms.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/sendsms/SendBulkSms.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SendBulkSms.vue?vue&type=template&id=484fa366& */ "./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366&");
+/* harmony import */ var _SendBulkSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SendBulkSms.vue?vue&type=script&lang=js& */ "./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _SendBulkSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sendsms/SendBulkSms.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/sendsms/SendSms.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/sendsms/SendSms.vue ***!
@@ -50727,6 +51065,45 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/sendsms/SendSms.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/sendsms/SendSmsToContact.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/sendsms/SendSmsToContact.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SendSmsToContact.vue?vue&type=template&id=0b5b4f5d& */ "./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d&");
+/* harmony import */ var _SendSmsToContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SendSmsToContact.vue?vue&type=script&lang=js& */ "./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _SendSmsToContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/sendsms/SendSmsToContact.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -51635,6 +52012,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendBulkSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendBulkSms.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendBulkSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/sendsms/SendSms.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/sendsms/SendSms.vue?vue&type=script&lang=js& ***!
@@ -51648,6 +52041,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendSms.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSms_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSmsToContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendSmsToContact.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSmsToContact_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -52262,6 +52671,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366& ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendBulkSms_vue_vue_type_template_id_484fa366___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendBulkSms.vue?vue&type=template&id=484fa366& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/sendsms/SendSms.vue?vue&type=template&id=0ae82058&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/sendsms/SendSms.vue?vue&type=template&id=0ae82058& ***!
@@ -52275,6 +52701,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSms_vue_vue_type_template_id_0ae82058___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSms_vue_vue_type_template_id_0ae82058___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendSms.vue?vue&type=template&id=0ae82058& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=template&id=0ae82058&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SendSmsToContact_vue_vue_type_template_id_0b5b4f5d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SendSmsToContact.vue?vue&type=template&id=0b5b4f5d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d&");
 
 
 /***/ }),
@@ -53115,44 +53558,6 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Branch")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.branch,
-                          expression: "fields.branch"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "branch",
-                        value: "",
-                        type: "text",
-                        placeholder: "branch",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.branch },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "branch", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.branch
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.branch[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
                     _c("label", [_vm._v("Date")]),
                     _vm._v(" "),
                     _c("input", {
@@ -53840,45 +54245,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group row" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("label", [_vm._v("Branch")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.branch,
-                    expression: "fields.branch"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  name: "branch",
-                  value: "",
-                  type: "text",
-                  placeholder: "branch",
-                  required: ""
-                },
-                domProps: { value: _vm.fields.branch },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.fields, "branch", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.branch
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.branch[0]))
-                  ])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "col-md-8" }, [
               _c("label", [_vm._v("Date")]),
               _vm._v(" "),
               _c("input", {
@@ -55772,48 +56139,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group row" }, [
-                            _c("div", { staticClass: "col-md-4" }, [
-                              _c("label", [_vm._v("Branch")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.fields.branch,
-                                    expression: "fields.branch"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  name: "branch",
-                                  type: "text",
-                                  placeholder: "branch",
-                                  required: ""
-                                },
-                                domProps: { value: _vm.fields.branch },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.fields,
-                                      "branch",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _vm.errors && _vm.errors.branch
-                                ? _c("div", { staticClass: "text-danger" }, [
-                                    _vm._v(_vm._s(_vm.errors.branch[0]))
-                                  ])
-                                : _vm._e()
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-4" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
                               _c("label", [_vm._v("Date")]),
                               _vm._v(" "),
                               _c("input", {
@@ -55854,7 +56180,7 @@ var render = function() {
                                 : _vm._e()
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "col-md-4" }, [
+                            _c("div", { staticClass: "col-md-6" }, [
                               _c("label", [_vm._v("Bets No")]),
                               _vm._v(" "),
                               _c("input", {
@@ -58786,7 +59112,43 @@ var render = function() {
                           _vm._v(_vm._s(_vm.errors.trading_name[0]))
                         ])
                       : _vm._e()
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-6" },
+                    [
+                      _c("label", { attrs: { for: "name" } }, [_vm._v("Type")]),
+                      _vm._v(" "),
+                      _c("multiselect", {
+                        attrs: {
+                          name: "type",
+                          "track-by": "type",
+                          placeholder: "Select Type",
+                          options: _vm.types,
+                          "allow-empty": true,
+                          multiple: false,
+                          "hide-selected": false,
+                          "max-height": 150
+                        },
+                        on: { input: _vm.onChange },
+                        model: {
+                          value: _vm.fields.type,
+                          callback: function($$v) {
+                            _vm.$set(_vm.fields, "type", $$v)
+                          },
+                          expression: "fields.type"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.type
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.type[0]))
+                          ])
+                        : _vm._e()
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
@@ -58913,7 +59275,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Sales")]),
+                    _c("label", [_vm._v("Sales Tables")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -58951,7 +59313,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Payouts")]),
+                    _c("label", [_vm._v("Payouts Tables")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -58991,7 +59353,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("WHT")]),
+                    _c("label", [_vm._v("WHT Tables")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -59029,7 +59391,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR")]),
+                    _c("label", [_vm._v("GGR Tables")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -59068,7 +59430,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR TAX")]),
+                    _c("label", [_vm._v("GGR TAX Tables")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -59309,135 +59671,144 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Manual GGR ")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.manual_ggr,
-                          expression: "fields.manual_ggr"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "manual_ggr",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR"
-                      },
-                      domProps: { value: _vm.fields.manual_ggr },
-                      on: {
-                        keyup: _vm.manual,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-md-12",
+                    attrs: { hidden: this.isHidden2 }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group row" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("label", [_vm._v("Manual GGR ")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.manual_ggr,
+                              expression: "fields.manual_ggr"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "manual_ggr",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR"
+                          },
+                          domProps: { value: _vm.fields.manual_ggr },
+                          on: {
+                            keyup: _vm.manual,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "manual_ggr",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "manual_ggr",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.manual_ggr
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.manual_ggr[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Manual GGR Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.manual_ggrslot,
-                          expression: "fields.manual_ggrslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "manual_ggrslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR slot"
-                      },
-                      domProps: { value: _vm.fields.manual_ggrslot },
-                      on: {
-                        keyup: _vm.manual,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.manual_ggr
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.manual_ggr[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("label", [_vm._v("Manual GGR Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.manual_ggrslot,
+                              expression: "fields.manual_ggrslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "manual_ggrslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR slot"
+                          },
+                          domProps: { value: _vm.fields.manual_ggrslot },
+                          on: {
+                            keyup: _vm.manual,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "manual_ggrslot",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "manual_ggrslot",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.manual_ggrslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.manual_ggrslot[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Manual GGR Total")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.manual_ggtotal,
-                          expression: "fields.manual_ggtotal"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "manual_ggtotal",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR  Total"
-                      },
-                      domProps: { value: _vm.fields.manual_ggtotal },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.manual_ggrslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.manual_ggrslot[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("label", [_vm._v("Manual GGR Total")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.manual_ggtotal,
+                              expression: "fields.manual_ggtotal"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "manual_ggtotal",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR  Total"
+                          },
+                          domProps: { value: _vm.fields.manual_ggtotal },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "manual_ggtotal",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "manual_ggtotal",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.manual_ggtotal
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.manual_ggtotal[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ])
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.manual_ggtotal
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.manual_ggtotal[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _vm._m(2)
@@ -65228,6 +65599,151 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendBulkSms.vue?vue&type=template&id=484fa366& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "addsms",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myLargeModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: { method: "POST" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v(" SMS")]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.message,
+                        expression: "fields.message"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "message",
+                      id: "message",
+                      placeholder: "Type SMS..."
+                    },
+                    domProps: { value: _vm.fields.message },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "message", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.message
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.message[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(1)
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
+        [_vm._v("Send Bulk  SMS To All Companies")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=template&id=0ae82058&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSms.vue?vue&type=template&id=0ae82058& ***!
@@ -65311,6 +65827,190 @@ var render = function() {
                   ],
                   1
                 ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v(" SMS")]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.message,
+                        expression: "fields.message"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "message",
+                      id: "message",
+                      placeholder: "Type SMS..."
+                    },
+                    domProps: { value: _vm.fields.message },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "message", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.message
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.message[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(1)
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
+        [_vm._v("Add  SMS")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/sendsms/SendSmsToContact.vue?vue&type=template&id=0b5b4f5d& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "addsms",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myLargeModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: { method: "POST" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c("label", { attrs: { for: "contact" } }, [
+                    _vm._v(" Contact")
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.contact,
+                        expression: "fields.contact"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "contact",
+                      type: "text",
+                      placeholder: "contact",
+                      required: ""
+                    },
+                    domProps: { value: _vm.fields.contact },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "contact", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.contact
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.contact[0]))
+                      ])
+                    : _vm._e()
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v(" SMS")]),
@@ -69449,6 +70149,122 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Personal File No")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.perspnal_file_no,
+                        expression: "fields.perspnal_file_no"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "perspnal_file_no",
+                      value: "",
+                      type: "text",
+                      placeholder: "Personal File No"
+                    },
+                    domProps: { value: _vm.fields.perspnal_file_no },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "perspnal_file_no",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.perspnal_file_no
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.perspnal_file_no[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Department/Section")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.section,
+                        expression: "fields.section"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "section",
+                      value: "",
+                      type: "text",
+                      placeholder: "Section"
+                    },
+                    domProps: { value: _vm.fields.section },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "section", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.section
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.section[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", [_vm._v("Phone")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.phone,
+                        expression: "fields.phone"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "phone",
+                      value: "",
+                      type: "text",
+                      placeholder: "0712516957",
+                      required: ""
+                    },
+                    domProps: { value: _vm.fields.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "phone", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.phone
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.phone[0]))
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c("label", [_vm._v("Password")]),
                   _vm._v(" "),
                   _c("input", {
@@ -69701,742 +70517,819 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "form-group row" }, [
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("Edit")]),
-              _vm._v("\n                 \n               ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.editstatus,
-                    expression: "fields.editstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "editstatus",
-                  id: "editstatus",
-                  value: "Allowed"
-                },
-                domProps: { checked: _vm._q(_vm.fields.editstatus, "Allowed") },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "editstatus", "Allowed")
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.editstatus,
-                    expression: "fields.editstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "editstatus",
-                  id: "editstatus",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.editstatus, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "editstatus", "NotAllowed")
-                  }
-                }
-              }),
-              _vm._v("\n               )))\n                  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.editstatus,
-                    expression: "fields.editstatus"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "editstatus",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.editstatus },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("Edit")]),
+                  _vm._v("\n                   \n                 [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.editstatus,
+                        expression: "fields.editstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "editstatus",
+                      id: "editstatus",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.editstatus, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.fields, "editstatus", "Allowed")
+                      }
                     }
-                    _vm.$set(_vm.fields, "editstatus", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.editstatus
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.editstatus[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.editstatus,
+                        expression: "fields.editstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "editstatus",
+                      id: "editstatus",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.editstatus, "NotAllowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.fields, "editstatus", "NotAllowed")
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]\n                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.editstatus,
+                        expression: "fields.editstatus"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "editstatus",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.editstatus },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.fields, "editstatus", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.editstatus
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.editstatus[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("Delete")]),
-              _vm._v("\n    ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.deletestatus,
-                    expression: "fields.deletestatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "deletestatus",
-                  id: "deletestatus",
-                  value: "Allowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.deletestatus, "Allowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "deletestatus", "Allowed")
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.deletestatus,
-                    expression: "fields.deletestatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "deletestatus",
-                  id: "deletestatus",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.deletestatus, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "deletestatus", "NotAllowed")
-                  }
-                }
-              }),
-              _vm._v("\n               )))                    "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.deletestatus,
-                    expression: "fields.deletestatus"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "deletestatus",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.deletestatus },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("Delete")]),
+                  _vm._v("\n      [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.deletestatus,
+                        expression: "fields.deletestatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "deletestatus",
+                      id: "deletestatus",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.deletestatus, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.fields, "deletestatus", "Allowed")
+                      }
                     }
-                    _vm.$set(_vm.fields, "deletestatus", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.deletestatus
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.deletestatus[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.deletestatus,
+                        expression: "fields.deletestatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "deletestatus",
+                      id: "deletestatus",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.deletestatus, "NotAllowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "deletestatus",
+                          "NotAllowed"
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.deletestatus,
+                        expression: "fields.deletestatus"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "deletestatus",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.deletestatus },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "deletestatus",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.deletestatus
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.deletestatus[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group row" }, [
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("Bookmarkers")]),
-              _vm._v("\n    ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.bookmarkersstatus,
-                    expression: "fields.bookmarkersstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "bookmarkersstatus",
-                  id: "bookmarkersstatus",
-                  value: "Allowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.bookmarkersstatus, "Allowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "bookmarkersstatus", "Allowed")
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.bookmarkersstatus,
-                    expression: "fields.bookmarkersstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "bookmarkersstatus",
-                  id: "bookmarkersstatus",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.bookmarkersstatus, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(
-                      _vm.fields,
-                      "bookmarkersstatus",
-                      "NotAllowed"
-                    )
-                  }
-                }
-              }),
-              _vm._v("\n               )))                    "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.bookmarkersstatus,
-                    expression: "fields.bookmarkersstatus"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "bookmarkersstatus",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.bookmarkersstatus },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("Bookmarkers")]),
+                  _vm._v("\n      [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.bookmarkersstatus,
+                        expression: "fields.bookmarkersstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "bookmarkersstatus",
+                      id: "bookmarkersstatus",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.bookmarkersstatus, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "bookmarkersstatus",
+                          "Allowed"
+                        )
+                      }
                     }
-                    _vm.$set(
-                      _vm.fields,
-                      "bookmarkersstatus",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.bookmarkersstatus
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.bookmarkersstatus[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.bookmarkersstatus,
+                        expression: "fields.bookmarkersstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "bookmarkersstatus",
+                      id: "bookmarkersstatus",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(
+                        _vm.fields.bookmarkersstatus,
+                        "NotAllowed"
+                      )
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "bookmarkersstatus",
+                          "NotAllowed"
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.bookmarkersstatus,
+                        expression: "fields.bookmarkersstatus"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "bookmarkersstatus",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.bookmarkersstatus },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "bookmarkersstatus",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.bookmarkersstatus
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.bookmarkersstatus[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("Public Lottery ")]),
-              _vm._v("\n    ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publiclotterystatus,
-                    expression: "fields.publiclotterystatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "publiclotterystatus",
-                  id: "publiclotterystatus",
-                  value: "Allowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.publiclotterystatus, "Allowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(
-                      _vm.fields,
-                      "publiclotterystatus",
-                      "Allowed"
-                    )
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publiclotterystatus,
-                    expression: "fields.publiclotterystatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "publiclotterystatus",
-                  id: "publiclotterystatus",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.publiclotterystatus, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(
-                      _vm.fields,
-                      "publiclotterystatus",
-                      "NotAllowed"
-                    )
-                  }
-                }
-              }),
-              _vm._v("\n               )))                    "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publiclotterystatus,
-                    expression: "fields.publiclotterystatus"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "publiclotterystatus",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.publiclotterystatus },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("Public Lottery ")]),
+                  _vm._v("\n      [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publiclotterystatus,
+                        expression: "fields.publiclotterystatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "publiclotterystatus",
+                      id: "publiclotterystatus",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.publiclotterystatus, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "publiclotterystatus",
+                          "Allowed"
+                        )
+                      }
                     }
-                    _vm.$set(
-                      _vm.fields,
-                      "publiclotterystatus",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.publiclotterystatus
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.publiclotterystatus[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publiclotterystatus,
+                        expression: "fields.publiclotterystatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "publiclotterystatus",
+                      id: "publiclotterystatus",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(
+                        _vm.fields.publiclotterystatus,
+                        "NotAllowed"
+                      )
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "publiclotterystatus",
+                          "NotAllowed"
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publiclotterystatus,
+                        expression: "fields.publiclotterystatus"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "publiclotterystatus",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.publiclotterystatus },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "publiclotterystatus",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.publiclotterystatus
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.publiclotterystatus[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("companies_status")]),
-              _vm._v("\n    ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.companies_status,
-                    expression: "fields.companies_status"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "companies_status",
-                  id: "companies_status",
-                  value: "Allowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.companies_status, "Allowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "companies_status", "Allowed")
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.companies_status,
-                    expression: "fields.companies_status"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "companies_status",
-                  id: "companies_status",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.companies_status, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(
-                      _vm.fields,
-                      "companies_status",
-                      "NotAllowed"
-                    )
-                  }
-                }
-              }),
-              _vm._v("\n               )))                    "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.companies_status,
-                    expression: "fields.companies_status"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "companies_status",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.companies_status },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("companies_status")]),
+                  _vm._v("\n      [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.companies_status,
+                        expression: "fields.companies_status"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "companies_status",
+                      id: "companies_status",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.companies_status, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "companies_status",
+                          "Allowed"
+                        )
+                      }
                     }
-                    _vm.$set(
-                      _vm.fields,
-                      "companies_status",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.companies_status
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.companies_status[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.companies_status,
+                        expression: "fields.companies_status"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "companies_status",
+                      id: "companies_status",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.companies_status, "NotAllowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "companies_status",
+                          "NotAllowed"
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]                    "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.companies_status,
+                        expression: "fields.companies_status"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "companies_status",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.companies_status },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "companies_status",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.companies_status
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.companies_status[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6" }, [
-              _c("label", [_vm._v("Public Gaming")]),
-              _vm._v("\n    ((( Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publicgamingstatus,
-                    expression: "fields.publicgamingstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "publicgamingstatus",
-                  id: "publicgamingstatus",
-                  value: "Allowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.publicgamingstatus, "Allowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(_vm.fields, "publicgamingstatus", "Allowed")
-                  }
-                }
-              }),
-              _vm._v("\n                Not Allowed  "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publicgamingstatus,
-                    expression: "fields.publicgamingstatus"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  name: "publicgamingstatus",
-                  id: "publicgamingstatus",
-                  value: "NotAllowed"
-                },
-                domProps: {
-                  checked: _vm._q(_vm.fields.publicgamingstatus, "NotAllowed")
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.$set(
-                      _vm.fields,
-                      "publicgamingstatus",
-                      "NotAllowed"
-                    )
-                  }
-                }
-              }),
-              _vm._v("\n               )))                    "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fields.publicgamingstatus,
-                    expression: "fields.publicgamingstatus"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  disabled: _vm.validated ? false : true,
-                  name: "publicgamingstatus",
-                  type: "text"
-                },
-                domProps: { value: _vm.fields.publicgamingstatus },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+                _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                  _c("label", [_vm._v("Public Gaming")]),
+                  _vm._v("\n      [ Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publicgamingstatus,
+                        expression: "fields.publicgamingstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "publicgamingstatus",
+                      id: "publicgamingstatus",
+                      value: "Allowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(_vm.fields.publicgamingstatus, "Allowed")
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "publicgamingstatus",
+                          "Allowed"
+                        )
+                      }
                     }
-                    _vm.$set(
-                      _vm.fields,
-                      "publicgamingstatus",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm.errors && _vm.errors.publicgamingstatus
-                ? _c("div", { staticClass: "text-danger" }, [
-                    _vm._v(_vm._s(_vm.errors.publicgamingstatus[0]))
-                  ])
-                : _vm._e()
+                  }),
+                  _vm._v("\n                  Not Allowed  "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publicgamingstatus,
+                        expression: "fields.publicgamingstatus"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "publicgamingstatus",
+                      id: "publicgamingstatus",
+                      value: "NotAllowed"
+                    },
+                    domProps: {
+                      checked: _vm._q(
+                        _vm.fields.publicgamingstatus,
+                        "NotAllowed"
+                      )
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(
+                          _vm.fields,
+                          "publicgamingstatus",
+                          "NotAllowed"
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v("\n                 ]                   "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.fields.publicgamingstatus,
+                        expression: "fields.publicgamingstatus"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      disabled: _vm.validated ? false : true,
+                      name: "publicgamingstatus",
+                      type: "text"
+                    },
+                    domProps: { value: _vm.fields.publicgamingstatus },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.fields,
+                          "publicgamingstatus",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors && _vm.errors.publicgamingstatus
+                    ? _c("div", { staticClass: "text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.publicgamingstatus[0]))
+                      ])
+                    : _vm._e()
+                ])
+              ])
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
           _c("div", { staticClass: "col-md-6" }, [
-            _vm._m(1),
-            _vm._v("\n    ((( Allowed  "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.sendsms_status,
-                  expression: "fields.sendsms_status"
-                }
-              ],
-              attrs: {
-                type: "radio",
-                name: "sendsms_status",
-                id: "sendsms_status",
-                value: "Allowed"
-              },
-              domProps: {
-                checked: _vm._q(_vm.fields.sendsms_status, "Allowed")
-              },
-              on: {
-                change: function($event) {
-                  return _vm.$set(_vm.fields, "sendsms_status", "Allowed")
-                }
-              }
-            }),
-            _vm._v("\n                Not Allowed  "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.sendsms_status,
-                  expression: "fields.sendsms_status"
-                }
-              ],
-              attrs: {
-                type: "radio",
-                name: "sendsms_status",
-                id: "sendsms_status",
-                value: "NotAllowed"
-              },
-              domProps: {
-                checked: _vm._q(_vm.fields.sendsms_status, "NotAllowed")
-              },
-              on: {
-                change: function($event) {
-                  return _vm.$set(_vm.fields, "sendsms_status", "NotAllowed")
-                }
-              }
-            }),
-            _vm._v("\n               )))                    "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.sendsms_status,
-                  expression: "fields.sendsms_status"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                disabled: _vm.validated ? false : true,
-                name: "sendsms_status",
-                type: "text"
-              },
-              domProps: { value: _vm.fields.sendsms_status },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+              _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                _vm._m(1),
+                _vm._v("\n      [ Allowed  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.sendsms_status,
+                      expression: "fields.sendsms_status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "sendsms_status",
+                    id: "sendsms_status",
+                    value: "Allowed"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.fields.sendsms_status, "Allowed")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.fields, "sendsms_status", "Allowed")
+                    }
                   }
-                  _vm.$set(_vm.fields, "sendsms_status", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.sendsms_status
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.sendsms_status[0]))
-                ])
-              : _vm._e()
+                }),
+                _vm._v("\n                  Not Allowed  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.sendsms_status,
+                      expression: "fields.sendsms_status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "sendsms_status",
+                    id: "sendsms_status",
+                    value: "NotAllowed"
+                  },
+                  domProps: {
+                    checked: _vm._q(_vm.fields.sendsms_status, "NotAllowed")
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(
+                        _vm.fields,
+                        "sendsms_status",
+                        "NotAllowed"
+                      )
+                    }
+                  }
+                }),
+                _vm._v("\n                 ]                    "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.sendsms_status,
+                      expression: "fields.sendsms_status"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    disabled: _vm.validated ? false : true,
+                    name: "sendsms_status",
+                    type: "text"
+                  },
+                  domProps: { value: _vm.fields.sendsms_status },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields,
+                        "sendsms_status",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors.sendsms_status
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.sendsms_status[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6" }, [
-            _c("label", [_vm._v("Bookmarkers Shop")]),
-            _vm._v("\n    ((( Allowed  "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.bookmarkersshop_status,
-                  expression: "fields.bookmarkersshop_status"
-                }
-              ],
-              attrs: {
-                type: "radio",
-                name: "bookmarkersshop_status",
-                id: "bookmarkersshop_status",
-                value: "Allowed"
-              },
-              domProps: {
-                checked: _vm._q(_vm.fields.bookmarkersshop_status, "Allowed")
-              },
-              on: {
-                change: function($event) {
-                  return _vm.$set(
-                    _vm.fields,
-                    "bookmarkersshop_status",
-                    "Allowed"
-                  )
-                }
-              }
-            }),
-            _vm._v("\n                Not Allowed  "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.bookmarkersshop_status,
-                  expression: "fields.bookmarkersshop_status"
-                }
-              ],
-              attrs: {
-                type: "radio",
-                name: "bookmarkersshop_status",
-                id: "bookmarkersshop_status",
-                value: "NotAllowed"
-              },
-              domProps: {
-                checked: _vm._q(_vm.fields.bookmarkersshop_status, "NotAllowed")
-              },
-              on: {
-                change: function($event) {
-                  return _vm.$set(
-                    _vm.fields,
-                    "bookmarkersshop_status",
-                    "NotAllowed"
-                  )
-                }
-              }
-            }),
-            _vm._v("\n               )))                    "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.fields.bookmarkersshop_status,
-                  expression: "fields.bookmarkersshop_status"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: {
-                disabled: _vm.validated ? false : true,
-                name: "bookmarkersshop_status",
-                type: "text"
-              },
-              domProps: { value: _vm.fields.bookmarkersshop_status },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "col-md-12 col-sm-12 mb-30" }, [
+              _c("div", { staticClass: "pd-20 card-box height-100-p" }, [
+                _c("label", [_vm._v("Bookmarkers Shop")]),
+                _vm._v("\n      [ Allowed  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.bookmarkersshop_status,
+                      expression: "fields.bookmarkersshop_status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "bookmarkersshop_status",
+                    id: "bookmarkersshop_status",
+                    value: "Allowed"
+                  },
+                  domProps: {
+                    checked: _vm._q(
+                      _vm.fields.bookmarkersshop_status,
+                      "Allowed"
+                    )
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(
+                        _vm.fields,
+                        "bookmarkersshop_status",
+                        "Allowed"
+                      )
+                    }
                   }
-                  _vm.$set(
-                    _vm.fields,
-                    "bookmarkersshop_status",
-                    $event.target.value
-                  )
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.bookmarkersshop_status
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.bookmarkersshop_status[0]))
-                ])
-              : _vm._e()
+                }),
+                _vm._v("\n                  Not Allowed  "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.bookmarkersshop_status,
+                      expression: "fields.bookmarkersshop_status"
+                    }
+                  ],
+                  attrs: {
+                    type: "radio",
+                    name: "bookmarkersshop_status",
+                    id: "bookmarkersshop_status",
+                    value: "NotAllowed"
+                  },
+                  domProps: {
+                    checked: _vm._q(
+                      _vm.fields.bookmarkersshop_status,
+                      "NotAllowed"
+                    )
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(
+                        _vm.fields,
+                        "bookmarkersshop_status",
+                        "NotAllowed"
+                      )
+                    }
+                  }
+                }),
+                _vm._v("\n                 ]                   "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fields.bookmarkersshop_status,
+                      expression: "fields.bookmarkersshop_status"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    disabled: _vm.validated ? false : true,
+                    name: "bookmarkersshop_status",
+                    type: "text"
+                  },
+                  domProps: { value: _vm.fields.bookmarkersshop_status },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.fields,
+                        "bookmarkersshop_status",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors.bookmarkersshop_status
+                  ? _c("div", { staticClass: "text-danger" }, [
+                      _vm._v(_vm._s(_vm.errors.bookmarkersshop_status[0]))
+                    ])
+                  : _vm._e()
+              ])
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -70857,6 +71750,118 @@ var render = function() {
             _vm.errors && _vm.errors.email
               ? _c("div", { staticClass: "text-danger" }, [
                   _vm._v(_vm._s(_vm.errors.email[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Personal File No")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.perspnal_file_no,
+                  expression: "fields.perspnal_file_no"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "perspnal_file_no",
+                value: "",
+                type: "text",
+                placeholder: "Personal File No"
+              },
+              domProps: { value: _vm.fields.perspnal_file_no },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "perspnal_file_no", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.perspnal_file_no
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.perspnal_file_no[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Department/Section")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.section,
+                  expression: "fields.section"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "section",
+                value: "",
+                type: "text",
+                placeholder: "Section"
+              },
+              domProps: { value: _vm.fields.section },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "section", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.section
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.section[0]))
+                ])
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Phone")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.fields.phone,
+                  expression: "fields.phone"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "phone",
+                value: "",
+                type: "text",
+                placeholder: "0712516957",
+                required: ""
+              },
+              domProps: { value: _vm.fields.phone },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.fields, "phone", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.errors && _vm.errors.phone
+              ? _c("div", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.errors.phone[0]))
                 ])
               : _vm._e()
           ])

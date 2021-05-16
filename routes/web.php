@@ -27,6 +27,7 @@ Route::post('/users/delete', [App\Http\Controllers\UsersController::class, 'dest
 Route::post('/users/updaterole', [App\Http\Controllers\UsersController::class, 'updaterole'])->name('users.updaterole');
 Route::get('/users/profile', [App\Http\Controllers\UsersController::class, 'profile'])->name('users.profile');
 Route::post('/users/updatepassword', [App\Http\Controllers\UsersController::class, 'updatepassword'])->name('users.updatepassword');
+Route::get('/users/assignroleuser', [App\Http\Controllers\UsersController::class, 'assignroleuser'])->name('assignroleuser');
 
 
 
@@ -164,6 +165,14 @@ Route::get('/sendsms',[App\Http\Controllers\SendSmsController::class, 'index'])-
 Route::post('/sendsms/add', [App\Http\Controllers\SendSmsController::class, 'store'])->name('sendsms.add');
 Route::get('/sendsms/get',[App\Http\Controllers\SendSmsController::class, 'CategoryTypes']);
 
+Route::get('/sendbulksms',[App\Http\Controllers\SendSmsController::class, 'sendbulksms'])->name('sendbulksms');   
+Route::post('/send_bulksms/add', [App\Http\Controllers\SendSmsController::class, 'send_bulksms'])->name('sendsms.send_bulksms');
+
+Route::get('/sendsmstocontact',[App\Http\Controllers\SendSmsController::class, 'sendsmstocontact'])->name('sendsmstocontact');   
+Route::post('/sendsmstocontact/add', [App\Http\Controllers\SendSmsController::class, 'sendsmstocontact_add'])->name('sendsms.sendsmstocontact_add');
+
+
+
 
 
 Route::get('/shop',[App\Http\Controllers\ShopController::class, 'index'])->name('shop');   
@@ -178,3 +187,14 @@ Route::post('/shop/delete', [App\Http\Controllers\ShopController::class, 'destro
 //otp  verify
 Route::get('/otp-verify',[App\Http\Controllers\OtpController::class, 'view']);
 Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])->name('verify');
+
+//otp  verify User
+ Route::get('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'view_user']);
+ Route::post('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'verify_user'])->name('verify_user');
+
+ Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-master');
+
+ Route::get('/admin/accountsetting', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
+
+
+ 

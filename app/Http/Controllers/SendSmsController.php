@@ -31,9 +31,17 @@ class SendSmsController extends Controller
         return view('sendsms.index', compact('sendsmsis'));
     }
 
+    public function sendsmstocontact()
+    {
+        $sendsmsis = SendSmses::all();
+        return view('sendsms.sendsmstocontact', compact('sendsmsis'));
+    }
 
-
-
+    public function sendbulksms()
+    {
+        $sendsmsis = SendSmses::all();
+        return view('sendsms.sendbulksms', compact('sendsmsis'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -60,27 +68,65 @@ class SendSmsController extends Controller
     }
 
    
-    public function CURLsendsms($destination, $message_body){   
 
-      // $api_params = '?apikey='.$apikey.'&sender='.$sender.'&to='.$destination.'&message='.$message;  
-      $smsGatewayUrl = "http://mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=".$message_body."&destination=".$destination."&source=Mobisky";  
-      $smsgatewaydata = $smsGatewayUrl;
-      $url = $smsgatewaydata;
+    public function sendsmstocontact_add(Request $request)
+    {
+ 
+    
+        $user = new SendSmses();
+       // $user->company_id = $request->company_id['company_id'];
+        $user->message = $request->message;
+        $user->company_id = 1;
+        
+     //   $mm= "https://www.mobisky.biz/api/sendsms2a.php?username=bclb&password=B@910CLB&message=test&destination=0702142629&source=Mobisky";
+     
+        $user->save();
 
-      $ch = curl_init();                       // initialize CURL
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_URL, $url);
-      $output = curl_exec($ch);
-      curl_close($ch);                         // Close CURL
-      \Log::info($output);
-      // Use file get contents when CURL is not installed on server.
-      if(!$output){
-         $output =  file_get_contents($smsgatewaydata);  
-      }
+        $destination=$request->contact;
+        $sms = new SendSms;
+        $sms->sendMessage($destination, ''.$user->message);
 
-  }
+        return back()->with('success','Added succesfully');
+    }
+    
+
+    public function send_bulksms(Request $request)
+    {
+ 
+    
+        $user = new SendSmses();
+       // $user->company_id = $request->company_id['company_id'];
+        $user->message = $request->message;
+        $user->company_id = 1;
+          
+        $user->save();
+        $contact_arr=[];
+        $contacts = '0712516957';
+        // $contacts = $request->contact;
+        return back()->with('success','Added succesfully');
+        foreach($contacts as $phone)
+        {
+            
+            $message = $request->message;
+            $phone='0712516957';
+            $smsobject=new SendSms($username,$password);
+    
+            $textstatus=$smsobject->sendMessage($phone,$message);
+            array_push($contact_arr,$textstatus);
+            
+        }
+        return $textstatus;
 
 
+
+       $destination=$request->company_id['contact'];
+        $sms = new SendSms;
+        $sms->sendMessage($destination, ''.$user->message);
+
+        return back()->with('success','Added succesfully');
+    }
+    
+    
 
 
 }

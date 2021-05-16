@@ -48,6 +48,7 @@ class PublicgamingsImport implements ToModel, WithHeadingRow, WithBatchInserts, 
                 'date' => $row[''],
                 'sales' => $row['sales'] ?? $row['sales'],
                 'payouts' => $row['payouts'] ?? $row['payouts'],
+                    'payoutsslot' => $row['payoutsslot'] ?? $row['payoutsslot'],
                 'wht' => $wht,
                 'return_for_the_period_of' => now(),
                 'return_for_the_period_to' => now(),
@@ -81,7 +82,7 @@ class PublicgamingsImport implements ToModel, WithHeadingRow, WithBatchInserts, 
     }
     public function headingRow(): int
     {
-        return 3;
+        return 4;
     }
     public function batchSize(): int
     {

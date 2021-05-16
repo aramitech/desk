@@ -60,6 +60,34 @@
     </li>
         </ul>
     </li>
+    <li class="dropdown">
+        <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Company</span>
+        </a>
+    </li>
+
+
+    <li class="dropdown">
+        <a href="{{ route('sendsmstocontact')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsmstocontact*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Contact</span>
+        </a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ route('sendbulksms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendbulksms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Bulk SMS</span>
+        </a>
+    </li>
+
+
+
+
+ 
 
 
     <li class="dropdown">
@@ -157,15 +185,8 @@
         </a>
     </li>
     <li class="dropdown">
-        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS</span>
-        </a>
-    </li>
-
-
-    <li class="dropdown">
-        <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+        <a href="{{ route('accountsetting')}}" class="dropdown-toggle no-arrow {{ (request()->is('accountsetting*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Account Setting</span>
         </a>
     </li>
 <!-- 

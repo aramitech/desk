@@ -10,6 +10,20 @@
 		
 	}
 ?>
+
+<?php
+	if(Auth::guard('web')->check())
+	{
+		
+		if((Auth::guard('web')->user()->twofa) == 0)
+		{
+			//redirect to user OTP page
+			echo '<script>window.location.href = "/otp-verify-user"</script>';
+		}
+		
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,8 +143,11 @@
 							document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> 
 							Log Out
 						</a>
+			
+		
+	     
 						@if(session()->has('qwick'))
-						
+						{{ session() }}
 						@else 
 						@endif
 						

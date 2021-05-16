@@ -94,7 +94,7 @@ data() {
             trading_name:'',
             licensee_name:'',
             ggr : '',
-            total_payout: '',               
+            payouts: '',               
         }
     }
 },

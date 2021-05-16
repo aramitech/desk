@@ -38,10 +38,10 @@ class BookMarkersController extends Controller
     {
         if(request()->get('inactive') == 'on')
         {
-            $bookmarkers = BookmarkersCompany::with('bookmarkerscompany')->get()->groupBy('company_id');
+            $bookmarkers = BookmarkersCompany::where('category_type_id','1')->with('bookmarkerscompany')->get()->groupBy('company_id');
             $constraints = '';
             if(request()->get('from')){
-                $bookmarkers = BookmarkersCompany::with(['bookmarkerscompany' => function($query){
+                $bookmarkers = BookmarkersCompany::where('category_type_id','1')->with(['bookmarkerscompany' => function($query){
                     $query->whereDate('return_for_the_period_of', "<", \Carbon\Carbon::create(request()->get('from')));
                 }])->get()->groupBy('company_id');
             }
@@ -239,7 +239,7 @@ class BookMarkersController extends Controller
         $user->license_no = $request->license_no;
         $user->return_for_the_period_of = $request->return_for_the_period_of;
         $user->return_for_the_period_to = $request->return_for_the_period_to;
-        $user->branch = $request->branch;
+ 
         $user->date = $request->date;
         $user->bets_no = $request->bets_no;
         $user->deposits = $request->deposits;

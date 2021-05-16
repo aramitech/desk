@@ -53,7 +53,6 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 
  Vue.component('change_password-user-component', require('./components/user/ChangePasswordComponent.vue').default);
 
- Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
  Vue.component('bookmarkers_good_table_component', require('./components/bookmarker/VueTableBookmarkers.vue').default);
 
  Vue.component('edit-bookmarkers-component', require('./components/bookmarker/EditBookmarkerComponent.vue').default);
@@ -75,6 +74,11 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('edit-publicgamingshop-component', require('./components/shoppublicgaming/EditPublicGamingShopComponent.vue').default);
  Vue.component('view-publicgamingshop-component', require('./components/shoppublicgaming/ViewPublicGamingShopComponent.vue').default);
  
+
+Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
+Vue.component('add-sendsms-tocontact-component', require('./components/sendsms/SendSmsToContact.vue').default);
+Vue.component('add-send-bulk-sms-component', require('./components/sendsms/SendBulkSms.vue').default);
+
 
 
 /**

@@ -2,6 +2,33 @@
 @section('title')
     User
 @endsection
+
+@section('filter')
+<form method="GET" action="{{ route('bookmarkers.inactivebookmarkers') }}">
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">From</label>
+		<div class="col-sm-12 col-md-10">
+			<input name="from" class="form-control form-control-sm form-control-line" type="date">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">To</label>
+		<div class="col-sm-12 col-md-10">
+			<input name="to" class="form-control form-control-sm form-control-line" type="date">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-2 col-form-label">Not Recorded</label>
+		<div class="col-sm-12 col-md-10">
+			<input name="inactive" class="form-control form-control-sm form-control-line" type="checkbox">
+		</div>
+	</div>
+	<div class="text-right">
+		<button type="submit" class="btn btn-primary">Search</button>
+	</div>
+</form>
+@endsection
+
 @section('content')
 <div id="app">
     <!-- ./header and breadcrumbs -->

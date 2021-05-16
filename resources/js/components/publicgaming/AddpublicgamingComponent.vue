@@ -32,8 +32,17 @@
 							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
-                        
+
+            <div class="col-md-6">
+            <label for="name">Type</label>
+            <multiselect  name="type" v-model="fields.type" track-by="type" placeholder="Select Type" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange"> 
+              
+            </multiselect>
+            <div v-if="errors && errors.type" class="text-danger">{{ errors.type[0] }}</div>
+             </div>
                         </div>
+
+
                         <div class="form-group row">
                         <div class="col-md-6">
 							<label>Return For The Period Of</label>
@@ -53,12 +62,12 @@
 						</div>
                                     
                            <div class="col-md-4">
-							<label>Sales</label>
+							<label>Sales Tables</label>
 							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" >
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
                          <div class="col-md-4">
-							<label>Payouts</label>
+							<label>Payouts Tables</label>
 							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" >
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
@@ -66,17 +75,17 @@
           <div class="form-group row">              
                        
                            <div class="col-md-4">
-							<label>WHT</label>
+							<label>WHT Tables</label>
 							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" >
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>          
                            <div class="col-md-4">
-							<label>GGR</label>
+							<label>GGR Tables</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
                          <div class="col-md-4">
-							<label>GGR TAX</label>
+							<label>GGR TAX Tables</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrtax" v-model="fields.ggrtax" value="" type="text"  placeholder="GGR TAX" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
@@ -131,7 +140,7 @@
 
 
 
-
+   <div class="col-md-12" :hidden="this.isHidden2">
 
           <div class="form-group row">  
 
@@ -156,7 +165,7 @@
 							<input class="form-control" :disabled="validated ? false : true" name="manual_ggtotal" v-model="fields.manual_ggtotal" value="" type="text"  placeholder="GGR  Total" >
                             <div v-if="errors && errors.manual_ggtotal" class="text-danger">{{ errors.manual_ggtotal[0] }}</div>
 						</div>
-                        </div>  
+                        </div>   </div>  
 
 
 
@@ -196,8 +205,16 @@ data() {
         action: '/publicgaming/add', //save action
         text: 'Added Succesfully',
         redirect: '/publicgaming',
-
+    types: ['Online','Manual'],
  company_names: [],
+
+      choices:[],
+      options: {
+       options: {
+        option: '',
+        response: '',
+      },
+
       fields: {
         license_no:"",
         trading_name:'',
@@ -208,12 +225,37 @@ data() {
                 ggrslot: '',
                 manual_ggtotal: '',
                 manual_ggrslot: '',
-      }
+      },
+
+      isHidden:true,
+      isHidden1:true,
+      isHidden2:false,
 
         }
-    },
+    }
+},
+  methods: {
+        add() {
+            this.choices.push({...this.options});
+            this.fields.thechoices = this.choices;
+            console.log(this.choices);
+            this.options.option = '';
+            this.options.response = '';
+        },
+        remove(index) {
+            this.options.splice(index, 1);
+        },
+        add1() {
+            this.branches.push({...this.branchs});
+            this.fields.thebranches = this.branches;
+            console.log(this.branches);
+            this.branchs.if = '';
+            this.branchs.next = '';
+        },
+        remove1(index) {
+            this.branchs.splice(index, 1);
+        },
 
-methods: {
        getLicenseeName: function(){
         axios.get('/publicgaming_license_name/get')
         .then(function(response){
@@ -250,13 +292,42 @@ manual(){
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
     console.log(value)
+   this.type
+    if(value == 'Online')
+          {
+            this.isHidden = false;
+            this.isHidden2 = true;
+          }
+          else if(value == 'Manual')
+          {
+           this.isHidden = true;
+            this.isHidden2 = false;
+         
+          }
+          else
+          {
+            this.isHidden = true;
+            this.isHidden2 = true;   
+          }
+
+
     },
+     onSelect (option) {
+    if (option === 'Disable me!') this.isDisabled = false
+    },
+    onTouch () {
+    this.isTouched = true
+    }
     },
         created: function(){  
      this.getLicenseeName()   
     },
+
+        mounted() {
+ console.log(isHidden2)
+        }
 }
 </script>
-
+  
 <!--Add Multiselect CSS. Can be added as a static asset or inside a component. -->
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

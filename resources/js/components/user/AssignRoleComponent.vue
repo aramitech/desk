@@ -7,10 +7,11 @@
         <form method="POST" @submit.prevent="submit">
             <div class="modal-body">
                 <div class="form-group">
+                  
                     <label>Name</label>
                     <input class="form-control" name="name" v-model="fields.name" type="text" :disabled="validated ? false : true" required>
                     <div v-if="errors && errors.name" class="text-danger">{{ errors.name[0] }}</div>
-                </div>
+                </div> 
                 <div class="form-group">
                     <label>Email</label>
                     <input class="form-control"  name="email" v-model="fields.email" value="" type="email" :disabled="validated ? false : true" placeholder="me@example.com" required>
@@ -19,77 +20,92 @@
 
      <div class="form-group row">                       
                            <div class="col-md-6">
-                    <label>Edit</label>
+                 	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p">   <label>Edit</label>
                    
-                 ((( Allowed  <input type="radio" name="editstatus" v-model="fields.editstatus" id="editstatus" value="Allowed">
+                 [ Allowed  <input type="radio" name="editstatus" v-model="fields.editstatus" id="editstatus" value="Allowed">
                   Not Allowed  <input type="radio" name="editstatus" v-model="fields.editstatus" id="editstatus" value="NotAllowed">
-                 )))
+                 ]
                     <input class="form-control" :disabled="validated ? false : true" name="editstatus" v-model="fields.editstatus" type="text"    >
                     <div v-if="errors && errors.editstatus" class="text-danger">{{ errors.editstatus[0] }}</div>
-                </div>
+                </div></div></div>
                 
 
           <div class="col-md-6">
+              	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>Delete</label>
-      ((( Allowed  <input type="radio" name="deletestatus" v-model="fields.deletestatus" id="deletestatus" value="Allowed">
+      [ Allowed  <input type="radio" name="deletestatus" v-model="fields.deletestatus" id="deletestatus" value="Allowed">
                   Not Allowed  <input type="radio" name="deletestatus" v-model="fields.deletestatus" id="deletestatus" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="deletestatus" v-model="fields.deletestatus" type="text"    >
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="deletestatus" v-model="fields.deletestatus" type="text"    >
                     <div v-if="errors && errors.deletestatus" class="text-danger">{{ errors.deletestatus[0] }}</div>
-                    </div>  </div>
+                    </div>  </div> </div> </div>
 
 
   <div class="form-group row">                       
                            <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>Bookmarkers</label>
-      ((( Allowed  <input type="radio" name="bookmarkersstatus" v-model="fields.bookmarkersstatus" id="bookmarkersstatus" value="Allowed">
+      [ Allowed  <input type="radio" name="bookmarkersstatus" v-model="fields.bookmarkersstatus" id="bookmarkersstatus" value="Allowed">
                   Not Allowed  <input type="radio" name="bookmarkersstatus" v-model="fields.bookmarkersstatus" id="bookmarkersstatus" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="bookmarkersstatus" v-model="fields.bookmarkersstatus" type="text"    >
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="bookmarkersstatus" v-model="fields.bookmarkersstatus" type="text"    >
                     <div v-if="errors && errors.bookmarkersstatus" class="text-danger">{{ errors.bookmarkersstatus[0] }}</div>
-                    </div>
+                    </div> </div> </div>
 
      <div class="col-md-6">
+         	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>Public Lottery </label>
-      ((( Allowed  <input type="radio" name="publiclotterystatus" v-model="fields.publiclotterystatus" id="publiclotterystatus" value="Allowed">
+      [ Allowed  <input type="radio" name="publiclotterystatus" v-model="fields.publiclotterystatus" id="publiclotterystatus" value="Allowed">
                   Not Allowed  <input type="radio" name="publiclotterystatus" v-model="fields.publiclotterystatus" id="publiclotterystatus" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="publiclotterystatus" v-model="fields.publiclotterystatus" type="text"    >
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="publiclotterystatus" v-model="fields.publiclotterystatus" type="text"    >
                     <div v-if="errors && errors.publiclotterystatus" class="text-danger">{{ errors.publiclotterystatus[0] }}</div>
-                    </div>
+                    </div> </div> </div>
 
      <div class="col-md-6">
+         	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>companies_status</label>
-      ((( Allowed  <input type="radio" name="companies_status" v-model="fields.companies_status" id="companies_status" value="Allowed">
+      [ Allowed  <input type="radio" name="companies_status" v-model="fields.companies_status" id="companies_status" value="Allowed">
                   Not Allowed  <input type="radio" name="companies_status" v-model="fields.companies_status" id="companies_status" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="companies_status" v-model="fields.companies_status" type="text"    >
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="companies_status" v-model="fields.companies_status" type="text"    >
                     <div v-if="errors && errors.companies_status" class="text-danger">{{ errors.companies_status[0] }}</div>
-                    </div> 
+                    </div>  </div> </div>
                      
                            <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>Public Gaming</label>
-      ((( Allowed  <input type="radio" name="publicgamingstatus" v-model="fields.publicgamingstatus" id="publicgamingstatus" value="Allowed">
+      [ Allowed  <input type="radio" name="publicgamingstatus" v-model="fields.publicgamingstatus" id="publicgamingstatus" value="Allowed">
                   Not Allowed  <input type="radio" name="publicgamingstatus" v-model="fields.publicgamingstatus" id="publicgamingstatus" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="publicgamingstatus" v-model="fields.publicgamingstatus" type="text"    >
+                 ]                   <input class="form-control" :disabled="validated ? false : true" name="publicgamingstatus" v-model="fields.publicgamingstatus" type="text"    >
                     <div v-if="errors && errors.publicgamingstatus" class="text-danger">{{ errors.publicgamingstatus[0] }}</div>
-                    </div> </div></div>
+                    </div> </div></div> </div> </div>
 
                 
 
   <div class="form-group row">                       
                            <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label><strong>Send SMS</strong></label>
-      ((( Allowed  <input type="radio" name="sendsms_status" v-model="fields.sendsms_status" id="sendsms_status" value="Allowed">
+      [ Allowed  <input type="radio" name="sendsms_status" v-model="fields.sendsms_status" id="sendsms_status" value="Allowed">
                   Not Allowed  <input type="radio" name="sendsms_status" v-model="fields.sendsms_status" id="sendsms_status" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="sendsms_status" v-model="fields.sendsms_status" type="text"    >
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="sendsms_status" v-model="fields.sendsms_status" type="text"    >
                     <div v-if="errors && errors.sendsms_status" class="text-danger">{{ errors.sendsms_status[0] }}</div>
-                    </div>
+                    </div> </div> </div>
 
 
           <div class="col-md-6">
+              	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
                     <label>Bookmarkers Shop</label>
-      ((( Allowed  <input type="radio" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" id="bookmarkersshop_status" value="Allowed">
+      [ Allowed  <input type="radio" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" id="bookmarkersshop_status" value="Allowed">
                   Not Allowed  <input type="radio" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" id="bookmarkersshop_status" value="NotAllowed">
-                 )))                    <input class="form-control" :disabled="validated ? false : true" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" type="text"    >
+                 ]                   <input class="form-control" :disabled="validated ? false : true" name="bookmarkersshop_status" v-model="fields.bookmarkersshop_status" type="text"    >
                     <div v-if="errors && errors.bookmarkersshop_status" class="text-danger">{{ errors.bookmarkersshop_status[0] }}</div>
-                    </div> </div>
+                    </div> </div> </div> </div>
      
      
     

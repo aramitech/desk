@@ -38,9 +38,10 @@
                 <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>Company Name</th>
+                        <th>Category</th>
+                          <th>Company Name</th>
                         
-                        <th>Category</th><th>Trading Name</th> 
+                        <th>Trading Name</th> 
                         <th>License No</th>
                     
                         <th>Address</th>
@@ -52,8 +53,8 @@
                     @foreach($bookmarkers as $bookmarker)
                     <tr>
                         <td>{{ $bookmarker->company_id }}</td>
-                        <td>{{ $bookmarker->company_name }}</td>
                         <td>{{ $bookmarker->CompanyCategoryType->categorytype }}</td>
+                        <td>{{ $bookmarker->company_name }}</td>
                         <td>{{ $bookmarker->trading_name }}</td>
                         <td>{{ $bookmarker->license_no }}</td>
                    

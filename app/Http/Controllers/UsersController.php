@@ -32,6 +32,9 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->perspnal_file_no = $request->perspnal_file_no;
+        $user->section = $request->section;
+        $user->phone = $request->phone;
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -48,6 +51,9 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->perspnal_file_no = $request->perspnal_file_no;
+        $user->section = $request->section;
+        $user->phone = $request->phone;
         $user->save();
         return back()->with('success','Updated succesfully');
     }
@@ -104,4 +110,14 @@ class UsersController extends Controller
         return view('profile.index', compact('users'));
     }
 
+
+    public function assignroleuser(Request $request)
+    {
+         $id = $request;
+         $users = User::where('id','1');
+        return view('vuexy.user.user_edit', compact('users'));
+    }
+
+
+    
 }

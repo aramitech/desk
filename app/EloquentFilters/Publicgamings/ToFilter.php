@@ -17,6 +17,13 @@ class ToFilter extends Filter
      */
     public function apply(Builder $builder, $value): Builder
     {
-        return $builder->whereDate('return_for_the_period_to', "<=", $value);
+        if(request()->get('inactive') == 'on')
+        {
+            return $builder->whereDate('return_for_the_period_to', ">", $value);
+        }
+    else{
+           return $builder->whereDate('return_for_the_period_to', "<=", $value);
+       }
+
     }
 }

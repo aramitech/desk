@@ -24,7 +24,7 @@ class CompanyController extends Controller
     {
         //
 
-        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->OrderBy('category_type_id')->get();
         return view('company.bookmarkers', compact('bookmarkers'));
     }
 

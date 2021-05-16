@@ -47,4 +47,41 @@ class User extends Authenticatable
     {
         return $this->hasMany(AuditLog::class,'id');
     }
+
+    //inject to session
+    ///add atgtributes to Auth
+    public function getTwofaAttribute() 
+    {
+        // Check if twofa exists in session
+        if(session()->has('twofa')) {
+            // If so return twofa
+            return session('twofa');
+        }
+    
+        // If session did not have the twofa
+        $twofa = 0;
+    
+        // Save it to session
+        session(['twofa' => $twofa]);
+    
+        // Return first name
+        return $twofa;
+    }
+    public function getOtpCodeAttribute() 
+    {
+        // Check if otpCode exists in session
+        if(session()->has('otpCode')) {
+            // If so return otpCode
+            return session('otpCode');
+        }
+    
+        // If session did not have the otpCode
+        $otpCode = null;
+    
+        // Save it to session
+        session(['otpCode' => $otpCode]);
+    
+        // Return first name
+        return $otpCode;
+    }
 }

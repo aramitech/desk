@@ -93,19 +93,19 @@
                         </div>
                       </div>
                     <div class="form-group row">   
-
+<!-- 
                             <div class="col-md-4">
                         <label>Branch</label>
                         <input class="form-control"  name="branch" v-model="fields.branch" type="text" placeholder="branch" required>
                                       <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
-                      </div>
-                                    <div class="col-md-4">
+                      </div> -->
+                                    <div class="col-md-6">
                         <label>Date</label>
                         <input class="form-control"  name="date" v-model="fields.date" type="date" placeholder="Date" required>
                                       <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
                       </div>
   
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                           <label>Bets No</label>
                           <input class="form-control"  name="bets_no" v-model="fields.bets_no" type="text" placeholder="bets_no" required>
                                         <div v-if="errors && errors.bets_no" class="text-danger">{{ errors.bets_no[0] }}</div>
@@ -210,32 +210,32 @@ export default {
           label: 'ID',
           field: 'bookmarker_id',
         },
-        {
-          label: 'Name',
-          field: 'company_id',
-        },
+        // {
+        //   label: 'Name',
+        //   field: 'company_id',
+        // },
         {
           label: 'Licensee Name',
           field: 'licensee_name',
         },
          {
-          label: 'bets_no',
+          label: 'Bets No',
           field: 'bets_no',
         },
          {
-          label: 'deposits',
+          label: 'Deposits',
           field: 'deposits',
         },
          {
-          label: 'total_sales',
+          label: 'Total Sales',
           field: 'total_sales',
         },
           {
-          label: 'total_payout',
+          label: 'Total Payout',
           field: 'total_payout',
         },
           {
-          label: 'wht',
+          label: 'WHT',
           field: 'wht',
         },
          {

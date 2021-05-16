@@ -47,12 +47,8 @@
 						</div></div>
 <div class="form-group row">   
 
-                            <div class="col-md-4">
-							<label>Branch</label>
-							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" required>
-                            <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
-						</div>
-                          <div class="col-md-4">
+                         
+                          <div class="col-md-8">
 							<label>Date</label>
 							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>

@@ -93,4 +93,20 @@ class AdminController extends Controller
             return view('admin-dashboard',compact('companyggrchart'));
         }
 
+
+            public function master()
+        {
+            //
+            $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
+            return view('vuexy.vuexy-dashboard', compact('publiclotteries'));
+        }
+
+        public function accountsetting()
+        {
+            //
+            $admins = Admin::all();
+            return view('vuexy.admin.account_settings', compact('admins'));
+        }
+
+        
 }

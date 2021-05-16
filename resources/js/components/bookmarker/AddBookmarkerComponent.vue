@@ -57,11 +57,11 @@
 						</div></div>
 <div class="form-group row">   
 
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
 							<label>Branch</label>
-							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" required>
+							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="branch" >
                             <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
-						</div>
+						</div> -->
                           <div class="col-md-4">
 							<label>Date</label>
 							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
