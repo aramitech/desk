@@ -4,6 +4,7 @@ Category Types List:
 @endsection
 @section('content')
 
+<div id="app">
 <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -32,9 +33,9 @@ Category Types List:
                                                 <div class="col-12 col-sm-12">
                                                 <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button"  id="show-modal">
+                <button class="btn btn-primary" data-toggle="modal" id="show-modal" data-target="#addcompany" type="button" >
                         Add  Company
-                    </a>
+                    </button>
 
                     <button type="button" class="btn btn-outline-primary block btn-lg" data-toggle="modal" id="show-modal" data-target="#default">
                                                     Launch Modal
@@ -149,12 +150,16 @@ Category Types List:
                                                         <div class="modal-content">
                                                             <div class="modal-header">Add
             </div>
-        
+            </div> </div> </div>
      
       <!-- ./main content card -->
       <add-bookmarkerscompany-component/>
-    </div> </div> </div>
 
+
+</div>
+</div>
+</div>
+</div>
 
 @endsection
 

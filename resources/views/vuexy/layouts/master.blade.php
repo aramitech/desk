@@ -110,6 +110,7 @@
      @include('vuexy.layouts.footer')   
 </body>
 <!-- END: Body-->
+<script src="{{ asset('js/app.js')}}"></script>
 
 
    <!-- BEGIN: Vendor JS-->
