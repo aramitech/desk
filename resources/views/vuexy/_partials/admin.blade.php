@@ -17,9 +17,9 @@
    
                    
                     <ul class="menu-content">
-                        <li><a href="{{ route('admin-dashboard')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Analytics</span></a>
+                        <li><a href="{{ route('admin-dashboard')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Home</span></a>
                         </li>
-                        <li class="active"><a href="{{ route('admin-master')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">eCommerce</span></a>
+                        <li class="active"><a href="{{ route('admin-master')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Analytics</span></a>
                         </li>
                     </ul>
                 </li>
@@ -35,7 +35,7 @@
                 </li>
               
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Books</span></a>
+                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Books</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ route('bookmarkers')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">BookMarkers</span></a>
                         </li>

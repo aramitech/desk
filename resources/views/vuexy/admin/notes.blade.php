@@ -60,7 +60,6 @@
                                         Notes
                                     </a>
                                 </li>
-                         
                                 <!-- <li class="nav-item">
                                     <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
                                         <i class="feather icon-camera mr-50 font-medium-3"></i>
@@ -214,13 +213,13 @@
                                                         </div>
                                                     </div>
                                                 </form>
-
-                                                <table class="table zero-configuration">
+                                            </div>
+                                            <table class="table zero-configuration">
                                                 <thead>
                                                     <tr>
                                                     <th class="table-plus">#</th>
-              
-                        <th>Note</th>
+                        <th>audit Module</th>
+                        <th>Name</th>
             
                         <th>Date</th>
                                                
@@ -229,7 +228,7 @@
                                                 <tbody>
                                                 @foreach($notes as $note)
                     <tr>
-                        <td>{{ $note->note_id }}</td>
+                        <td>{{ $note->id }}</td>
                         <td>{{ $note->note }}</td>
         
                         <td>{{ $note->created_at }}</td>
@@ -241,7 +240,8 @@
                                                 <tfoot>
                                                     <tr>
                                                     <th class="table-plus">#</th>
-                                                    <th>Note</th>
+                        <th>Module</th>
+                        <th>Name</th>
          
                         <th>Date</th>
                                                    
@@ -250,9 +250,6 @@
                                             </table>
 
 
-                                            </div>
-                            
-                                            
                                             <div class="tab-pane fade " id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
                                                 <form>
                                                     <div class="row">

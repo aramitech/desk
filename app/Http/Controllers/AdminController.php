@@ -8,6 +8,7 @@ use App\Models\PublicLottery;
 use App\Models\Publicgamings;
 use App\Models\BookmarkersCompany;
 use App\Models\Admin;
+use App\Models\Notes;
 use Auth;
 
 use Hash;
@@ -104,9 +105,11 @@ class AdminController extends Controller
         public function accountsetting()
         {
             //
-            $admins = Admin::all();
-            return view('vuexy.admin.account_settings', compact('admins'));
+            $notes = Notes::all();
+            $loggedinuser=Auth::guard('admin')->user()->admin_id;
+            $admins = Admin::where('admin_id',$loggedinuser)->get();
+            return view('vuexy.admin.account_settings', compact('admins','notes'));
         }
 
-        
+           
 }

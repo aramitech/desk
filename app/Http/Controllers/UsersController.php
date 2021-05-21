@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\AuditLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
 
+use EloquentBuilder;
 class UsersController extends Controller
 {
     /**
@@ -113,8 +114,10 @@ class UsersController extends Controller
 
     public function assignroleuser($id)
     {
-         $users = User::where('id',$id);
-        return view('vuexy.user.user_edit', compact('users'));
+        $auditLogs = EloquentBuilder::to(AuditLog::where('id',$id)->with('userlogs'),request()->all())->get();
+
+         $users = User::where('id',$id)->get();
+        return view('vuexy.user.user_edit', compact('users','auditLogs'));
     }
 
 }

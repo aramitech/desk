@@ -23,13 +23,13 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                        <!-- <a class="nav-link d-flex align-items-center" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
                                             <i class="feather icon-info mr-25"></i><span class="d-none d-sm-block">Information</span>
-                                        </a>
+                                        </a> -->
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link d-flex align-items-center" id="social-tab" data-toggle="tab" href="#social" aria-controls="social" role="tab" aria-selected="false">
-                                            <i class="feather icon-share-2 mr-25"></i><span class="d-none d-sm-block">Social</span>
+                                            <i class="feather icon-share-2 mr-25"></i><span class="d-none d-sm-block">Activity Logs</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -38,81 +38,82 @@
                                         <!-- users edit media object start -->
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="../tyu/app-assets/images/portrait/small/avatar-s-18.jpg" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
+                                                <img src="tyu/app-assets/images/portrait/small/avatar-s-18.jpg" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <h4 class="media-heading">Angelo Sashington  {{ 'ggggggff'}}
+                                                <h4 class="media-heading">   
                                                 
                                                 @foreach($users as $user)
-                                                {{ 'ttttttt' }}</h4>
+                                                {{ $user->name }}
                                                 @endforeach
                                                 </h4>
                                                 <div class="col-12 d-flex mt-1 px-0">
-                                                    <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Change</a>
+                                                    <!-- <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Change</a> -->
                                                     <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i class="feather icon-edit-1"></i></a>
-                                                    <a href="#" class="btn btn-outline-danger d-none d-sm-block">Remove</a>
+                                                    <!-- <a href="#" class="btn btn-outline-danger d-none d-sm-block">Remove</a> -->
                                                     <a href="#" class="btn btn-outline-danger d-block d-sm-none"><i class="feather icon-trash-2"></i></a>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- users edit media object ends -->
+                            
                                         <!-- users edit account form start -->
+                                        @foreach($users as $user)
+                                                </h4>
+                                               
                                         <form novalidate>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Username</label>
-                                                            <input type="text" class="form-control" placeholder="Username" value="adoptionism744" required data-validation-required-message="This username field is required">
+                                                            <label><h4>Perspnal File No</h4></label>
+                                                            <input type="text" class="form-control" placeholder="Username" value="{{ $user->perspnal_file_no }}" required data-validation-required-message="This username field is required">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>Name</label>
-                                                            <input type="text" class="form-control" placeholder="Name" value="Angelo Sashington" required data-validation-required-message="This name field is required">
+                                                            <label><h4>Name</h4></label>
+                                                            <input type="text" class="form-control" placeholder="Name" value="{{ $user->name }}" required data-validation-required-message="This name field is required">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="controls">
-                                                            <label>E-mail</label>
-                                                            <input type="email" class="form-control" placeholder="Email" value="angelo@sashington.com" required data-validation-required-message="This email field is required">
+                                                            <label><h4>E-mail</h4></label>
+                                                            <input type="email" class="form-control" placeholder="Email" value="{{ $user->email }}" required data-validation-required-message="This email field is required">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
 
                                                     <div class="form-group">
-                                                        <label>Status</label>
-                                                        <select class="form-control">
-                                                            <option>Active</option>
-                                                            <option>Blocked</option>
-                                                            <option>deactivated</option>
-                                                        </select>
+                                                    <label><h4>Status</h4></label>
+                                                      <input type="text" class="form-control" placeholder="Account Status" value="{{ $user->account_status }}" required data-validation-required-message="This account_status field is required">
+                      
+                                                      
+                                                 
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Role</label>
-                                                        <select class="form-control">
-                                                            <option>Admin</option>
-                                                            <option>User</option>
-                                                            <option>Staff</option>
-                                                        </select>
+                                                    <label><h4>Section</h4></label>
+                                                      <input type="text" class="form-control" placeholder="Section" value="{{ $user->section }}" required data-validation-required-message="This account_status field is required">
+                      
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Company</label>
-                                                        <input type="text" class="form-control" value="WinDon Technologies Pvt Ltd" placeholder="Company name">
+                                                    <label><h4>Phone</h4></label>
+                                                      <input type="text" class="form-control" placeholder="Phone" value="{{ $user->phone }}" required data-validation-required-message="This account_status field is required">
+                      
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="table-responsive border rounded px-1 ">
                                                         <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permission</h6>
-                                                        <table class="table table-borderless">
+                                                        <!-- <table class="table table-borderless">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Module</th>
-                                                                    <th>Read</th>
-                                                                    <th>Write</th>
-                                                                    <th>Create</th>
+                                                                    <th>Edit</th>
                                                                     <th>Delete</th>
+                                                                    <th>Create Bookmarkers</th>
+                                                                    <th>Create Public Lottery</th>
+                                                                    <th>Create Public Gamings</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -180,7 +181,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
-                                                        </table>
+                                                        </table> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
@@ -189,7 +190,7 @@
                                                     <button type="reset" class="btn btn-outline-warning">Reset</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form> @endforeach
                                         <!-- users edit account form ends -->
                                     </div>
                                     <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
@@ -358,60 +359,60 @@
                                         <!-- users edit socail form start -->
                                         <form novalidate>
                                             <div class="row">
-                                                <div class="col-12 col-sm-6">
+                                                <div class="col-12 col-sm-12">
+                                                <h4 class="media-heading">   
+                                                Activity Logs For:
+                                                @foreach($users as $user)
+                                                {{ $user->name }}
+                                                @endforeach
+                                                </h4>
+                                                <div class="card-body card-dashboard">
+                                                <div class="table-responsive">
+                                                <table class="table table-striped table-bordered complex-headers">
+                                                <thead>
+                                                    <tr>
+                                                    <th class="table-plus">#</th>
+                        <th>audit Module</th>
+                        <th>Name</th>
+                        <th>Audit Activity</th>
+                        <th>Date</th>
+                                               
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($auditLogs as $auditLog)
+                    <tr>
+                        <td>{{ $auditLog->audit_log_id }}</td>
+                        <td>{{ $auditLog->audit_module }}</td>
+                        <td > @if($auditLog->userlogs) 
+                        {{  $auditLog->userlogs->name }}
+                        @endif
+                        
+                        </td>
+                        <td>{{ $auditLog->audit_activity }}</td>
+                        <td>{{ $auditLog->created_at }}</td>
+                   
+                    </tr>
+             
+                    @endforeach
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                    <th class="table-plus">#</th>
+                        <th>Module</th>
+                        <th>Name</th>
+                        <th>Audit Activity</th>
+                        <th>Date</th>
+                                                   
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
 
-                                                    <fieldset>
-                                                        <label>Twitter</label>
-                                                        <div class="input-group mb-75">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text feather icon-twitter" id="basic-addon3"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control" value="https://www.twitter.com/adoptionism744" placeholder="https://www.twitter.com/" aria-describedby="basic-addon3">
-                                                        </div>
-
-                                                        <label>Facebook</label>
-                                                        <div class="input-group mb-75">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text feather icon-facebook" id="basic-addon4"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control" value="https://www.facebook.com/adoptionism664" placeholder="https://www.facebook.com/" aria-describedby="basic-addon4">
-                                                        </div>
-                                                        <label>Instagram</label>
-                                                        <div class="input-group mb-75">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text feather icon-instagram" id="basic-addon5"></span>
-                                                            </div>
-                                                            <input type="text" class="form-control" value="https://www.instagram.com/adopt-ionism744" placeholder="https://www.instagram.com/" aria-describedby="basic-addon5">
-                                                        </div>
-                                                    </fieldset>
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                    <label>Github</label>
-                                                    <div class="input-group mb-75">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text feather icon-github" id="basic-addon9"></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" value="https://www.github.com/madop818" placeholder="https://www.github.com/" aria-describedby="basic-addon9">
-                                                    </div>
-                                                    <label>Codepen</label>
-                                                    <div class="input-group mb-75">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text feather icon-codepen" id="basic-addon12"></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" value="https://www.codepen.com/adoptism243" placeholder="https://www.codepen.com/" aria-describedby="basic-addon12">
-                                                    </div>
-                                                    <label>Slack</label>
-                                                    <div class="input-group mb-75">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text feather icon-slack" id="basic-addon11"></span>
-                                                        </div>
-                                                        <input type="text" class="form-control" value="@adoptionism744" placeholder="https://www.slack.com/" aria-describedby="basic-addon11">
-                                                    </div>
-                                                </div>
+                                            </div>  </div></div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
-                                                    <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
-                                                        Changes</button>
-                                                    <button type="reset" class="btn btn-outline-warning">Reset</button>
+                                                    <!-- <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
+                                                        Changes</button> -->
+                                                    <!-- <button type="reset" class="btn btn-outline-warning">Reset</button> -->
                                                 </div>
                                             </div>
                                         </form>

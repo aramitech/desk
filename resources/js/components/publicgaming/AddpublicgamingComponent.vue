@@ -9,7 +9,7 @@
 
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
-                        <div class="form-group row">
+                    <div class="trf">      <div class="form-group row">
                       
                                       <div class="col-md-6">
             <label for="company_id"> Licensee Name</label>        
@@ -35,61 +35,65 @@
 
             <div class="col-md-6">
             <label for="name">Type</label>
-            <multiselect  name="type" v-model="fields.type" track-by="type" placeholder="Select Type" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange"> 
+            <multiselect  name="type" v-model="fields.type"  placeholder="Select Type" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange2"> 
               
             </multiselect>
             <div v-if="errors && errors.type" class="text-danger">{{ errors.type[0] }}</div>
              </div>
-                        </div>
+                        </div>     </div>
 
-
+ <div class="trf"> 
                         <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
 							<label>Return For The Period Of</label>
 							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of" >
                             <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
 						</div>
-                       <div class="col-md-6">
+                       <div class="col-md-4">
 							<label>Return For The Period To</label>
 							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To" >
                             <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
-						</div></div>
-            <div class="form-group row">     
-                          <div class="col-md-4">
+						</div>
+                           <div class="col-md-4">
 							<label>Date</label>
 							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
-                                    
-                           <div class="col-md-4">
-							<label>Sales Tables</label>
+                        </div></div>
+
+                      <div class="trf"> 
+            <div class="form-group row">     
+                       
+         <!-- <div class="col-md-12" :hidden="this.isHidden1">                               -->
+                           <div class="col-md-6" :hidden="this.isHidden1">
+							<label>Sales Tables / Slot</label>
 							<input class="form-control" @keyup="sum"  name="sales" v-model="fields.sales" value="" type="text" placeholder="Sales" >
                             <div v-if="errors && errors.sales" class="text-danger">{{ errors.sales[0] }}</div>
 						</div>
-                         <div class="col-md-4">
-							<label>Payouts Tables</label>
+                         <div class="col-md-6" :hidden="this.isHidden1">
+							<label>Payouts Tables / Slot </label>
 							<input class="form-control" @keyup="sum" name="payouts" v-model="fields.payouts" value="" type="text" placeholder="Payouts" >
                             <div v-if="errors && errors.payouts" class="text-danger">{{ errors.payouts[0] }}</div>
 						</div>
                            </div>
           <div class="form-group row">              
                        
-                           <div class="col-md-4">
-							<label>WHT Tables</label>
+                           <div class="col-md-4" :hidden="this.isHidden1">
+							<label>WHT Tables / Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" >
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>          
-                           <div class="col-md-4">
-							<label>GGR Tables</label>
+                           <div class="col-md-4" :hidden="this.isHidden1">
+							<label>GGR Tables / Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggr" v-model="fields.ggr" value="" type="text" placeholder="GGR" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
-                         <div class="col-md-4">
-							<label>GGR TAX Tables</label>
+                         <div class="col-md-4" :hidden="this.isHidden1">
+							<label>GGR TAX Tables / Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrtax" v-model="fields.ggrtax" value="" type="text"  placeholder="GGR TAX" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
-                        </div>
+                        </div>     </div>
                         
 
 
@@ -98,37 +102,37 @@
 
 
  
-                         
+             <div class="trf">              
           <div class="form-group row">  
 
- <div class="col-md-4">
+ <div class="col-md-4" :hidden="this.isHidden">
 							<label>Sales Slot</label>
 							<input class="form-control" @keyup="sum"  name="salesslot" v-model="fields.salesslot" value="" type="text" placeholder="Sales slot" >
                             <div v-if="errors && errors.salesslot" class="text-danger">{{ errors.salesslot[0] }}</div>
 						</div>
 
 
-                        <div class="col-md-4">
+                        <div class="col-md-4" :hidden="this.isHidden">
 							<label>Payouts Slot</label>
 							<input class="form-control" @keyup="sum" name="payoutsslot" v-model="fields.payoutsslot" value="" type="text" placeholder="Payouts slot" >
                             <div v-if="errors && errors.payoutsslot" class="text-danger">{{ errors.payoutsslot[0] }}</div>
 						</div>
-                           <div class="col-md-4">
+                           <div class="col-md-4" :hidden="this.isHidden">
 							<label>WHT Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="whtslot" v-model="fields.whtslot" value="" type="text" placeholder="WHT Slot" >
                             <div v-if="errors && errors.whtslot" class="text-danger">{{ errors.whtslot[0] }}</div>
 						</div>          
-                           <div class="col-md-4">
+                           <div class="col-md-4" :hidden="this.isHidden">
 							<label>GGR Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrslot" v-model="fields.ggrslot" value="" type="text" placeholder="GGR slot" required>
                             <div v-if="errors && errors.ggrslot" class="text-danger">{{ errors.ggrslot[0] }}</div>
 						</div>
-                         <div class="col-md-4">
+                         <div class="col-md-4" :hidden="this.isHidden">
 							<label>GGR TAX Slot</label>
 							<input class="form-control" :disabled="validated ? false : true" name="ggrtaxslot" v-model="fields.ggrtaxslot" value="" type="text"  placeholder="GGR TAX slot" required>
                             <div v-if="errors && errors.ggrtaxslot" class="text-danger">{{ errors.ggrtaxslot[0] }}</div>
 						</div>
-                        </div>  
+                        </div>     </div>    
 
 
 
@@ -139,7 +143,7 @@
 
 
 
-
+ <div class="trf"> 
    <div class="col-md-12" :hidden="this.isHidden2">
 
           <div class="form-group row">  
@@ -151,7 +155,7 @@
 
                   
                            <div class="col-md-4">
-							<label>Manual GGR </label>
+							<label>Manual GGR Table </label>
 							<input class="form-control" @keyup="manual" name="manual_ggr" v-model="fields.manual_ggr" value="" type="text" placeholder="GGR" >
                             <div v-if="errors && errors.manual_ggr" class="text-danger">{{ errors.manual_ggr[0] }}</div>
 						</div>          
@@ -165,7 +169,7 @@
 							<input class="form-control" :disabled="validated ? false : true" name="manual_ggtotal" v-model="fields.manual_ggtotal" value="" type="text"  placeholder="GGR  Total" >
                             <div v-if="errors && errors.manual_ggtotal" class="text-danger">{{ errors.manual_ggtotal[0] }}</div>
 						</div>
-                        </div>   </div>  
+                        </div>   </div>      </div> 
 
 
 
@@ -182,10 +186,10 @@
 
 
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer"> <div class="trf"> 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                    </div>    </div> 
                 </form>
             </div>
         </div>
@@ -205,7 +209,7 @@ data() {
         action: '/publicgaming/add', //save action
         text: 'Added Succesfully',
         redirect: '/publicgaming',
-    types: ['Online','Manual'],
+    types: ['Online','Manual','Online?Tables+Slots'],
  company_names: [],
 
       choices:[],
@@ -228,7 +232,7 @@ data() {
       },
 
       isHidden:true,
-      isHidden1:true,
+      isHidden1:false,
       isHidden2:false,
 
         }
@@ -292,25 +296,37 @@ manual(){
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
     console.log(value)
-   this.type
-    if(value == 'Online')
+   
+
+
+
+    },
+    onChange2 (value) {
+            if(value == 'Online')
           {
-            this.isHidden = false;
+            this.isHidden1 = false;
             this.isHidden2 = true;
+             this.isHidden = true;
           }
           else if(value == 'Manual')
           {
-           this.isHidden = true;
+           this.isHidden1 = true;
             this.isHidden2 = false;
-         
+             this.isHidden = true;
+      
+          }
+            else if(value == 'Online?Tables+Slots')
+                   {
+            this.isHidden1 = false;
+            this.isHidden2 = true;
+             this.isHidden = false;
           }
           else
           {
             this.isHidden = true;
             this.isHidden2 = true;   
+             this.isHidden = true; 
           }
-
-
     },
      onSelect (option) {
     if (option === 'Disable me!') this.isDisabled = false

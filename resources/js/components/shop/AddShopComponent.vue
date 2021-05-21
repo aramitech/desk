@@ -7,7 +7,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form method="POST" @submit.prevent="submit">
-                    <div class="modal-body">
+                    <div class="modal-body"> <div class="trf"> 
                           <div class="form-group row">
  <div class="col-md-6">
             <label for="company_id"> Licensee Name</label>        
@@ -38,8 +38,8 @@
 							<label>License No</label>
 							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
-						</div></div>
-
+						</div></div></div>
+ <div class="trf"> 
 <div class="form-group row">   
 
                             <div class="col-md-6">
@@ -53,15 +53,15 @@
 							<label>Location</label>
 							<input class="form-control"  name="location" v-model="fields.location" value="" type="text" placeholder="Location" >
                             <div v-if="errors && errors.location" class="text-danger">{{ errors.location[0] }}</div>
-						</div></div>
+						</div></div></div>
 
  
                         
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer"> <div class="trf"> 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                    </div> </div>
                 </form>
             </div>
         </div>

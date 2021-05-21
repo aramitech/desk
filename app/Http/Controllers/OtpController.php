@@ -17,7 +17,7 @@ class OtpController extends Controller
     {
         //generate code
         // $code = rand(1000,9999);
-        $code = '1111';
+       $code = '1111';
         session(['otpCode' => $code]);
         //send sms
         $destination = Auth::guard('admin')->user()->phone;

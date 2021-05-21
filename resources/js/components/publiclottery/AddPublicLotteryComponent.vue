@@ -9,9 +9,10 @@
 
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
-                            <div class="form-group row">
-                      
-                       <div class="col-md-6">
+                         <div class="trf"> 
+                        <div class="form-group row">
+                        
+                       <div class="col-md-12">
             <label for="company_id"> Licensee Name</label>        
             <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
@@ -21,43 +22,44 @@
         </div> 
                       
                
-                      <div class="col-md-6">
+                  
+                    <div class="col-md-6">
 							<label>License No</label>
 							<input class="form-control"  name="license_no" v-model="fields.license_no"  type="text" placeholder="License No" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
-						</div>
-                         <div class="col-md-6">
-							<label> </label>
-						</div>   
+						</div>  
                              <div class="col-md-6">
 							<label>Trading As</label>
 							<input class="form-control"  name="trading_name" v-model="fields.trading_name"  type="text" placeholder="Trading As" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
-                        </div>   
+                        </div>    </div> 
+                          <div class="trf">  
                            <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
 							<label>Return For The Period Of</label>
 							<input class="form-control"  name="return_for_of" v-model="fields.return_for_of"  type="date" placeholder="Return For The Period Of" >
                             <div v-if="errors && errors.return_for_of" class="text-danger">{{ errors.return_for_of[0] }}</div>
 						</div>
-                       <div class="col-md-6">
+                       <div class="col-md-4">
 							<label>Return For The Period To</label>
 							<input class="form-control"  name="return_to" v-model="fields.return_to"  type="date" placeholder="Return For The Period To" >
                             <div v-if="errors && errors.return_to" class="text-danger">{{ errors.return_to[0] }}</div>
-						</div></div>
-                       <div class="form-group row">
-                          <div class="col-md-6">
+						</div>
+                            <div class="col-md-4">
 							<label>Date</label>
 							<input class="form-control"  name="date" v-model="fields.date"  type="date" placeholder="Date" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>
-                          <div class="col-md-6">
+                        </div> </div>
+                        <div class="trf">  
+                          <div class="form-group row">
+                          
+                             <div class="col-md-4">
 							<label>Total Tickets Sold</label>
 							<input class="form-control"  name="total_tickets_sold" v-model="fields.total_tickets_sold"  type="text" placeholder="Total Tickets Sold" required>
                             <div v-if="errors && errors.total_tickets_sold" class="text-danger">{{ errors.total_tickets_sold[0] }}</div>
-						</div></div>    
-                          <div class="form-group row">
+						</div>
                            <div class="col-md-4">
 							<label>Sales</label>
 							<input class="form-control" @keyup="sum" name="sales" v-model="fields.sales"  type="text" placeholder="Sales" required>
@@ -92,13 +94,13 @@
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
                         
-                        </div>
+                        </div>  </div>
                         
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer"> <div class="trf">  
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                    </div>  </div>
                 </form>
             </div>
         </div>

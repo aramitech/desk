@@ -185,7 +185,7 @@
         </a>
     </li>
     <li class="dropdown">
-        <a href="{{ route('accountsetting')}}" class="dropdown-toggle no-arrow {{ (request()->is('accountsetting*')) ? 'active' : '' }}">
+        <a href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}" class="dropdown-toggle no-arrow {{ (request()->is('accountsetting*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Account Setting</span>
         </a>
     </li>

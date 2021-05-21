@@ -2036,10 +2036,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
  // register globally
 
@@ -3156,6 +3152,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3886,6 +3883,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3900,7 +3901,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //save action
       text: 'Added Succesfully',
       redirect: '/publicgaming',
-      types: ['Online', 'Manual'],
+      types: ['Online', 'Manual', 'Online?Tables+Slots'],
       company_names: [],
       choices: [],
       options: {
@@ -3919,7 +3920,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           manual_ggrslot: ''
         },
         isHidden: true,
-        isHidden1: true,
+        isHidden1: false,
         isHidden2: false
       }
     };
@@ -3973,17 +3974,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
       console.log(value);
-      this.type;
-
+    },
+    onChange2: function onChange2(value) {
       if (value == 'Online') {
-        this.isHidden = false;
+        this.isHidden1 = false;
         this.isHidden2 = true;
-      } else if (value == 'Manual') {
         this.isHidden = true;
+      } else if (value == 'Manual') {
+        this.isHidden1 = true;
         this.isHidden2 = false;
+        this.isHidden = true;
+      } else if (value == 'Online?Tables+Slots') {
+        this.isHidden1 = false;
+        this.isHidden2 = true;
+        this.isHidden = false;
       } else {
         this.isHidden = true;
         this.isHidden2 = true;
+        this.isHidden = true;
       }
     },
     onSelect: function onSelect(option) {
@@ -5002,6 +5010,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
 //
 //
 //
@@ -7727,6 +7737,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53270,96 +53289,144 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "company_id" } }, [
-                        _vm._v(" Licensee Name")
-                      ]),
-                      _vm._v(" "),
-                      _c("multiselect", {
-                        attrs: {
-                          name: "company_id",
-                          label: "company_name",
-                          placeholder: "Select License name",
-                          options: _vm.company_names,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": true,
-                          "max-height": 150
-                        },
-                        on: { input: _vm.onChange },
-                        model: {
-                          value: _vm.fields.company_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "company_id", $$v)
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "company_id" } }, [
+                          _vm._v(" Licensee Name")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "company_id",
+                            label: "company_name",
+                            placeholder: "Select License name",
+                            options: _vm.company_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
                           },
-                          expression: "fields.company_id"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.company_id
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.company_id[0]))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          on: { input: _vm.onChange },
+                          model: {
+                            value: _vm.fields.company_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "company_id", $$v)
+                            },
+                            expression: "fields.company_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "shop_id" } }, [
+                          _vm._v(" Shop")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "shop_id",
+                            label: "shop_name",
+                            placeholder: "Select Shop name",
+                            options: _vm.shop_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
+                          },
+                          model: {
+                            value: _vm.fields.shop_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "shop_id", $$v)
+                            },
+                            expression: "fields.shop_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.shop_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.shop_id[0]))
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.licensee_name,
+                              expression: "fields.licensee_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "licensee_name",
+                            type: "hidden",
+                            placeholder: "Licensee Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.licensee_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "licensee_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.licensee_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.licensee_name[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "shop_id" } }, [
-                        _vm._v(" Shop")
-                      ]),
-                      _vm._v(" "),
-                      _c("multiselect", {
-                        attrs: {
-                          name: "shop_id",
-                          label: "shop_name",
-                          placeholder: "Select Shop name",
-                          options: _vm.shop_names,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": true,
-                          "max-height": 150
-                        },
-                        model: {
-                          value: _vm.fields.shop_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "shop_id", $$v)
-                          },
-                          expression: "fields.shop_id"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.shop_id
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.shop_id[0]))
-                          ])
-                        : _vm._e(),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Trading Name")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.fields.licensee_name,
-                            expression: "fields.licensee_name"
+                            value: _vm.fields.trading_name,
+                            expression: "fields.trading_name"
                           }
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          name: "licensee_name",
-                          type: "hidden",
-                          placeholder: "Licensee Name",
+                          name: "trading_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Trading Name",
+                          disabled: _vm.validated ? false : true,
                           required: ""
                         },
-                        domProps: { value: _vm.fields.licensee_name },
+                        domProps: { value: _vm.fields.trading_name },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
@@ -53367,546 +53434,514 @@ var render = function() {
                             }
                             _vm.$set(
                               _vm.fields,
-                              "licensee_name",
+                              "trading_name",
                               $event.target.value
                             )
                           }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.licensee_name
+                      _vm.errors && _vm.errors.trading_name
                         ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.licensee_name[0]))
+                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
                           ])
                         : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Trading Name")]),
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.trading_name,
-                          expression: "fields.trading_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "trading_name",
-                        value: "",
-                        type: "text",
-                        placeholder: "Trading Name",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.trading_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("License No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.license_no,
+                            expression: "fields.license_no"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "trading_name",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.trading_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("License No")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.license_no,
-                          expression: "fields.license_no"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "license_no",
-                        value: "",
-                        type: "text",
-                        placeholder: "License No",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.license_no },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "license_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "License No",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.license_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "license_no",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "license_no",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.license_no
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.license_no[0]))
-                        ])
-                      : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.license_no
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.license_no[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period Of")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_for_the_period_of,
-                          expression: "fields.return_for_the_period_of"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_for_the_period_of",
-                        value: "",
-                        type: "date",
-                        placeholder: "Return For The Period Of"
-                      },
-                      domProps: { value: _vm.fields.return_for_the_period_of },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period Of")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_for_the_period_of,
+                            expression: "fields.return_for_the_period_of"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "return_for_the_period_of",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.return_for_the_period_of
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_for_the_period_of[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period To")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_for_the_period_to,
-                          expression: "fields.return_for_the_period_to"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_for_the_period_to",
-                        value: "",
-                        type: "date",
-                        placeholder: "Return For The Period To"
-                      },
-                      domProps: { value: _vm.fields.return_for_the_period_to },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_for_the_period_of",
+                          value: "",
+                          type: "date",
+                          placeholder: "Return For The Period Of"
+                        },
+                        domProps: {
+                          value: _vm.fields.return_for_the_period_of
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_for_the_period_of",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "return_for_the_period_to",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_for_the_period_of
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(
+                              _vm._s(_vm.errors.return_for_the_period_of[0])
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.return_for_the_period_to
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_for_the_period_to[0]))
-                        ])
-                      : _vm._e()
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period To")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_for_the_period_to,
+                            expression: "fields.return_for_the_period_to"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_for_the_period_to",
+                          value: "",
+                          type: "date",
+                          placeholder: "Return For The Period To"
+                        },
+                        domProps: {
+                          value: _vm.fields.return_for_the_period_to
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_for_the_period_to",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_for_the_period_to
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(
+                              _vm._s(_vm.errors.return_for_the_period_to[0])
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Date")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.date,
+                            expression: "fields.date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "date",
+                          value: "",
+                          type: "date",
+                          placeholder: "Date",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.date },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "date", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.date
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.date[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Date")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.date,
-                          expression: "fields.date"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "date",
-                        value: "",
-                        type: "date",
-                        placeholder: "Date",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.date },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("Bets No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.bets_no,
+                            expression: "fields.bets_no"
                           }
-                          _vm.$set(_vm.fields, "date", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "bets_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "bets_no",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.bets_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "bets_no", $event.target.value)
+                          }
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.bets_no
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.bets_no[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.date
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.date[0]))
-                        ])
-                      : _vm._e()
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("Deposits")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.deposits,
+                            expression: "fields.deposits"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "deposits",
+                          value: "",
+                          type: "text",
+                          placeholder: "Deposits",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.deposits },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "deposits",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.deposits
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.deposits[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("Total Sales")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.total_sales,
+                            expression: "fields.total_sales"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "total_sales",
+                          value: "",
+                          type: "text",
+                          placeholder: "total_sales",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.total_sales },
+                        on: {
+                          keyup: _vm.sum,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "total_sales",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.total_sales
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.total_sales[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("Total Payout")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.total_payout,
+                            expression: "fields.total_payout"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "total_payout",
+                          name: "total_payout",
+                          value: "",
+                          type: "text",
+                          placeholder: "Total Payout",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.total_payout },
+                        on: {
+                          keyup: _vm.sum,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "total_payout",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.total_payout
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.total_payout[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Bets No")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.bets_no,
-                          expression: "fields.bets_no"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "bets_no",
-                        value: "",
-                        type: "text",
-                        placeholder: "bets_no",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.bets_no },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("WHT")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.wht,
+                            expression: "fields.wht"
                           }
-                          _vm.$set(_vm.fields, "bets_no", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.bets_no
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.bets_no[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Deposits")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.deposits,
-                          expression: "fields.deposits"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "deposits",
-                        value: "",
-                        type: "text",
-                        placeholder: "Deposits",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.deposits },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "wht",
+                          value: "",
+                          type: "text",
+                          placeholder: "WHT",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.wht },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "wht", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "deposits", $event.target.value)
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.wht
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.wht[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.deposits
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.deposits[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Total Sales")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.total_sales,
-                          expression: "fields.total_sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "total_sales",
-                        value: "",
-                        type: "text",
-                        placeholder: "total_sales",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.total_sales },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("GGR TAX")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.winloss,
+                            expression: "fields.winloss"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "total_sales",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.total_sales
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.total_sales[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Total Payout")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.total_payout,
-                          expression: "fields.total_payout"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        id: "total_payout",
-                        name: "total_payout",
-                        value: "",
-                        type: "text",
-                        placeholder: "Total Payout",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.total_payout },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "winloss",
+                          value: "",
+                          type: "hidden",
+                          disabled: _vm.validated ? false : true,
+                          placeholder: "winloss"
+                        },
+                        domProps: { value: _vm.fields.winloss },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "winloss", $event.target.value)
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "total_payout",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.total_payout
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.total_payout[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("WHT")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.wht,
-                          expression: "fields.wht"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "wht",
-                        value: "",
-                        type: "text",
-                        placeholder: "WHT",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.wht },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.ggrtax,
+                            expression: "fields.ggrtax"
                           }
-                          _vm.$set(_vm.fields, "wht", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.wht
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.wht[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR TAX")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.winloss,
-                          expression: "fields.winloss"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "winloss",
-                        value: "",
-                        type: "hidden",
-                        disabled: _vm.validated ? false : true,
-                        placeholder: "winloss"
-                      },
-                      domProps: { value: _vm.fields.winloss },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "ggrtax",
+                          value: "",
+                          type: "text",
+                          placeholder: "ggrtax",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.ggrtax },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "ggrtax", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "winloss", $event.target.value)
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.ggrtax
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.ggrtax[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggrtax,
-                          expression: "fields.ggrtax"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "ggrtax",
-                        value: "",
-                        type: "text",
-                        placeholder: "ggrtax",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggrtax },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("GGR")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.ggr,
+                            expression: "fields.ggr"
                           }
-                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggrtax
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggr,
-                          expression: "fields.ggr"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        id: "ggr",
-                        name: "ggr",
-                        value: "ggr",
-                        type: "text",
-                        placeholder: "GGR",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggr },
-                      on: {
-                        keydown: _vm.ggrtax,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "ggr",
+                          name: "ggr",
+                          value: "ggr",
+                          type: "text",
+                          placeholder: "GGR",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.ggr },
+                        on: {
+                          keydown: _vm.ggrtax,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "ggr", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "ggr", $event.target.value)
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggr
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggr[0]))
-                        ])
-                      : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.ggr
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.ggr[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ])
               ]),
@@ -53950,20 +53985,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -56769,374 +56806,384 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Company Name")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.company_name,
-                            expression: "fields.company_name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "company_name",
-                          type: "text",
-                          placeholder: "Company Name",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.company_name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.fields,
-                              "company_name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.company_name
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.company_name[0]))
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Trading Name")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.trading_name,
-                            expression: "fields.trading_name"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "trading_name",
-                          value: "",
-                          type: "text",
-                          placeholder: "Trading Name",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.trading_name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.fields,
-                              "trading_name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.trading_name
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("License No")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.license_no,
-                            expression: "fields.license_no"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "license_no",
-                          value: "",
-                          type: "text",
-                          placeholder: "License No",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.license_no },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.fields,
-                              "license_no",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.license_no
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.license_no[0]))
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Email")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.email,
-                            expression: "fields.email"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "email",
-                          value: "",
-                          type: "email",
-                          placeholder: "Email",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.fields, "email", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.email
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.email[0]))
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Contact")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.contact,
-                            expression: "fields.contact"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "contact",
-                          value: "",
-                          type: "text",
-                          placeholder: "Contact",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.contact },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.fields, "contact", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.contact
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.contact[0]))
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Location")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.physicaladdress,
-                            expression: "fields.physicaladdress"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "physicaladdress",
-                          value: "",
-                          type: "text",
-                          placeholder: "Physical Address",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.physicaladdress },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.fields,
-                              "physicaladdress",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.physicaladdress
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("Shop")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.branch,
-                            expression: "fields.branch"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "branch",
-                          value: "",
-                          type: "text",
-                          placeholder: "Branch",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.branch },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.fields, "branch", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.branch
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.branch[0]))
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-6" },
-                      [
-                        _c("label", { attrs: { for: "category_type_id" } }, [
-                          _vm._v(" Category")
-                        ]),
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Company Name")]),
                         _vm._v(" "),
-                        _c("multiselect", {
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.company_name,
+                              expression: "fields.company_name"
+                            }
+                          ],
+                          staticClass: "form-control",
                           attrs: {
-                            name: "category_type_id",
-                            label: "categorytype",
-                            placeholder: "Select Category name",
-                            options: _vm.company_names,
-                            "allow-empty": true,
-                            multiple: false,
-                            "hide-selected": true,
-                            "max-height": 150
+                            name: "company_name",
+                            type: "text",
+                            placeholder: "Company Name",
+                            required: ""
                           },
-                          on: { input: _vm.onChange },
-                          model: {
-                            value: _vm.fields.category_type_id,
-                            callback: function($$v) {
-                              _vm.$set(_vm.fields, "category_type_id", $$v)
-                            },
-                            expression: "fields.category_type_id"
+                          domProps: { value: _vm.fields.company_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "company_name",
+                                $event.target.value
+                              )
+                            }
                           }
                         }),
                         _vm._v(" "),
-                        _vm.errors && _vm.errors.category_type_id
+                        _vm.errors && _vm.errors.company_name
                           ? _c("div", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.category_type_id[0]))
+                              _vm._v(_vm._s(_vm.errors.company_name[0]))
                             ])
                           : _vm._e()
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c("label", [_vm._v("PAYBILL NO")]),
+                      ]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.paybillno,
-                            expression: "fields.paybillno"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "paybillno",
-                          value: "",
-                          type: "text",
-                          placeholder: "Paybill No"
-                        },
-                        domProps: { value: _vm.fields.paybillno },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Trading Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.trading_name,
+                              expression: "fields.trading_name"
                             }
-                            _vm.$set(
-                              _vm.fields,
-                              "paybillno",
-                              $event.target.value
-                            )
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "trading_name",
+                            value: "",
+                            type: "text",
+                            placeholder: "Trading Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.trading_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "trading_name",
+                                $event.target.value
+                              )
+                            }
                           }
-                        }
-                      }),
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.trading_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("License No")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.license_no,
+                              expression: "fields.license_no"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "license_no",
+                            value: "",
+                            type: "text",
+                            placeholder: "License No",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.license_no },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "license_no",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.license_no
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.license_no[0]))
+                            ])
+                          : _vm._e()
+                      ]),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.paybillno
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.paybillno[0]))
-                          ])
-                        : _vm._e()
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Email")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.email,
+                              expression: "fields.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "email",
+                            value: "",
+                            type: "email",
+                            placeholder: "Email",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "email", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.email
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.email[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Contact")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.contact,
+                              expression: "fields.contact"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "contact",
+                            value: "",
+                            type: "text",
+                            placeholder: "Contact",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.contact },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "contact",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.contact
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.contact[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Location")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.physicaladdress,
+                              expression: "fields.physicaladdress"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "physicaladdress",
+                            value: "",
+                            type: "text",
+                            placeholder: "Physical Address",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.physicaladdress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "physicaladdress",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.physicaladdress
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Shop")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.branch,
+                              expression: "fields.branch"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "branch",
+                            value: "",
+                            type: "text",
+                            placeholder: "Branch",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.branch },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "branch",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.branch
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.branch[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-md-6" },
+                        [
+                          _c("label", { attrs: { for: "category_type_id" } }, [
+                            _vm._v(" Category")
+                          ]),
+                          _vm._v(" "),
+                          _c("multiselect", {
+                            attrs: {
+                              name: "category_type_id",
+                              label: "categorytype",
+                              placeholder: "Select Category name",
+                              options: _vm.company_names,
+                              "allow-empty": true,
+                              multiple: false,
+                              "hide-selected": true,
+                              "max-height": 150
+                            },
+                            on: { input: _vm.onChange },
+                            model: {
+                              value: _vm.fields.category_type_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fields, "category_type_id", $$v)
+                              },
+                              expression: "fields.category_type_id"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors && _vm.errors.category_type_id
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.category_type_id[0]))
+                              ])
+                            : _vm._e()
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("PAYBILL NO")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.paybillno,
+                              expression: "fields.paybillno"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "paybillno",
+                            value: "",
+                            type: "text",
+                            placeholder: "Paybill No"
+                          },
+                          domProps: { value: _vm.fields.paybillno },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "paybillno",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.paybillno
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.paybillno[0]))
+                            ])
+                          : _vm._e()
+                      ])
                     ])
                   ])
                 ]),
@@ -57181,20 +57228,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -58989,803 +59038,520 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "company_id" } }, [
-                        _vm._v(" Licensee Name")
-                      ]),
-                      _vm._v(" "),
-                      _c("multiselect", {
-                        attrs: {
-                          name: "company_id",
-                          label: "company_name",
-                          placeholder: "Select License name",
-                          options: _vm.company_names,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": true,
-                          "max-height": 150
-                        },
-                        on: { input: _vm.onChange },
-                        model: {
-                          value: _vm.fields.company_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "company_id", $$v)
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "company_id" } }, [
+                          _vm._v(" Licensee Name")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "company_id",
+                            label: "company_name",
+                            placeholder: "Select License name",
+                            options: _vm.company_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
                           },
-                          expression: "fields.company_id"
+                          on: { input: _vm.onChange },
+                          model: {
+                            value: _vm.fields.company_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "company_id", $$v)
+                            },
+                            expression: "fields.company_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("License No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.license_no,
+                            expression: "fields.license_no"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "license_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "License No",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.license_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "license_no",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.company_id
+                      _vm.errors && _vm.errors.license_no
                         ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            _vm._v(_vm._s(_vm.errors.license_no[0]))
                           ])
                         : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("License No")]),
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.license_no,
-                          expression: "fields.license_no"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "license_no",
-                        value: "",
-                        type: "text",
-                        placeholder: "License No",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.license_no },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.fields,
-                            "license_no",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.license_no
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.license_no[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Trading As")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.trading_name,
-                          expression: "fields.trading_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "trading_name",
-                        value: "",
-                        type: "text",
-                        placeholder: "Trading As",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.trading_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.fields,
-                            "trading_name",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.trading_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "name" } }, [_vm._v("Type")]),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Trading As")]),
                       _vm._v(" "),
-                      _c("multiselect", {
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.trading_name,
+                            expression: "fields.trading_name"
+                          }
+                        ],
+                        staticClass: "form-control",
                         attrs: {
-                          name: "type",
-                          "track-by": "type",
-                          placeholder: "Select Type",
-                          options: _vm.types,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": false,
-                          "max-height": 150
+                          name: "trading_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Trading As",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
                         },
-                        on: { input: _vm.onChange },
-                        model: {
-                          value: _vm.fields.type,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "type", $$v)
-                          },
-                          expression: "fields.type"
+                        domProps: { value: _vm.fields.trading_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "trading_name",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.type
+                      _vm.errors && _vm.errors.trading_name
                         ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.type[0]))
+                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
                           ])
                         : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period Of")]),
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_for_the_period_of,
-                          expression: "fields.return_for_the_period_of"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_for_the_period_of",
-                        value: "",
-                        type: "date",
-                        placeholder: "Return For The Period Of"
-                      },
-                      domProps: { value: _vm.fields.return_for_the_period_of },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "name" } }, [
+                          _vm._v("Type")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "type",
+                            placeholder: "Select Type",
+                            options: _vm.types,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": false,
+                            "max-height": 150
+                          },
+                          on: { input: _vm.onChange2 },
+                          model: {
+                            value: _vm.fields.type,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "type", $$v)
+                            },
+                            expression: "fields.type"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "return_for_the_period_of",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.return_for_the_period_of
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_for_the_period_of[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period To")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_for_the_period_to,
-                          expression: "fields.return_for_the_period_to"
-                        }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.type
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.type[0]))
+                            ])
+                          : _vm._e()
                       ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_for_the_period_to",
-                        value: "",
-                        type: "date",
-                        placeholder: "Return For The Period To"
-                      },
-                      domProps: { value: _vm.fields.return_for_the_period_to },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.fields,
-                            "return_for_the_period_to",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.return_for_the_period_to
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_for_the_period_to[0]))
-                        ])
-                      : _vm._e()
+                      1
+                    )
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Date")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.date,
-                          expression: "fields.date"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "date",
-                        value: "",
-                        type: "date",
-                        placeholder: "Date",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.date },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "date", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.date
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.date[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Sales Tables")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.sales,
-                          expression: "fields.sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "sales",
-                        value: "",
-                        type: "text",
-                        placeholder: "Sales"
-                      },
-                      domProps: { value: _vm.fields.sales },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "sales", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.sales
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.sales[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Payouts Tables")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.payouts,
-                          expression: "fields.payouts"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "payouts",
-                        value: "",
-                        type: "text",
-                        placeholder: "Payouts"
-                      },
-                      domProps: { value: _vm.fields.payouts },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "payouts", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.payouts
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.payouts[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("WHT Tables")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.wht,
-                          expression: "fields.wht"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "wht",
-                        value: "",
-                        type: "text",
-                        placeholder: "WHT"
-                      },
-                      domProps: { value: _vm.fields.wht },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "wht", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.wht
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.wht[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR Tables")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggr,
-                          expression: "fields.ggr"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "ggr",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggr },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "ggr", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggr
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggr[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR TAX Tables")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggrtax,
-                          expression: "fields.ggrtax"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "ggrtax",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR TAX",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggrtax },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggrtax
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Sales Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.salesslot,
-                          expression: "fields.salesslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "salesslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "Sales slot"
-                      },
-                      domProps: { value: _vm.fields.salesslot },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "salesslot", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.salesslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.salesslot[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Payouts Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.payoutsslot,
-                          expression: "fields.payoutsslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "payoutsslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "Payouts slot"
-                      },
-                      domProps: { value: _vm.fields.payoutsslot },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.fields,
-                            "payoutsslot",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.payoutsslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.payoutsslot[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("WHT Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.whtslot,
-                          expression: "fields.whtslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "whtslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "WHT Slot"
-                      },
-                      domProps: { value: _vm.fields.whtslot },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "whtslot", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.whtslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.whtslot[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggrslot,
-                          expression: "fields.ggrslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "ggrslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR slot",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggrslot },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.fields, "ggrslot", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggrslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggrslot[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR TAX Slot")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggrtaxslot,
-                          expression: "fields.ggrtaxslot"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        disabled: _vm.validated ? false : true,
-                        name: "ggrtaxslot",
-                        value: "",
-                        type: "text",
-                        placeholder: "GGR TAX slot",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggrtaxslot },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.fields,
-                            "ggrtaxslot",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggrtaxslot
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggrtaxslot[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-md-12",
-                    attrs: { hidden: this.isHidden2 }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group row" }, [
-                      _vm._m(1),
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period Of")]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", [_vm._v("Manual GGR ")]),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_for_the_period_of,
+                            expression: "fields.return_for_the_period_of"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_for_the_period_of",
+                          value: "",
+                          type: "date",
+                          placeholder: "Return For The Period Of"
+                        },
+                        domProps: {
+                          value: _vm.fields.return_for_the_period_of
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_for_the_period_of",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_for_the_period_of
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(
+                              _vm._s(_vm.errors.return_for_the_period_of[0])
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period To")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_for_the_period_to,
+                            expression: "fields.return_for_the_period_to"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_for_the_period_to",
+                          value: "",
+                          type: "date",
+                          placeholder: "Return For The Period To"
+                        },
+                        domProps: {
+                          value: _vm.fields.return_for_the_period_to
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_for_the_period_to",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_for_the_period_to
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(
+                              _vm._s(_vm.errors.return_for_the_period_to[0])
+                            )
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Date")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.date,
+                            expression: "fields.date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "date",
+                          value: "",
+                          type: "date",
+                          placeholder: "Date",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.date },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "date", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.date
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.date[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-6",
+                        attrs: { hidden: this.isHidden1 }
+                      },
+                      [
+                        _c("label", [_vm._v("Sales Tables / Slot")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.fields.manual_ggr,
-                              expression: "fields.manual_ggr"
+                              value: _vm.fields.sales,
+                              expression: "fields.sales"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            name: "manual_ggr",
+                            name: "sales",
                             value: "",
                             type: "text",
-                            placeholder: "GGR"
+                            placeholder: "Sales"
                           },
-                          domProps: { value: _vm.fields.manual_ggr },
+                          domProps: { value: _vm.fields.sales },
                           on: {
-                            keyup: _vm.manual,
+                            keyup: _vm.sum,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "sales", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.sales
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.sales[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-6",
+                        attrs: { hidden: this.isHidden1 }
+                      },
+                      [
+                        _c("label", [_vm._v("Payouts Tables / Slot ")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.payouts,
+                              expression: "fields.payouts"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "payouts",
+                            value: "",
+                            type: "text",
+                            placeholder: "Payouts"
+                          },
+                          domProps: { value: _vm.fields.payouts },
+                          on: {
+                            keyup: _vm.sum,
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
                                 _vm.fields,
-                                "manual_ggr",
+                                "payouts",
                                 $event.target.value
                               )
                             }
                           }
                         }),
                         _vm._v(" "),
-                        _vm.errors && _vm.errors.manual_ggr
+                        _vm.errors && _vm.errors.payouts
                           ? _c("div", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.manual_ggr[0]))
+                              _vm._v(_vm._s(_vm.errors.payouts[0]))
                             ])
                           : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", [_vm._v("Manual GGR Slot")]),
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden1 }
+                      },
+                      [
+                        _c("label", [_vm._v("WHT Tables / Slot")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.fields.manual_ggrslot,
-                              expression: "fields.manual_ggrslot"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            name: "manual_ggrslot",
-                            value: "",
-                            type: "text",
-                            placeholder: "GGR slot"
-                          },
-                          domProps: { value: _vm.fields.manual_ggrslot },
-                          on: {
-                            keyup: _vm.manual,
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.fields,
-                                "manual_ggrslot",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.errors && _vm.errors.manual_ggrslot
-                          ? _c("div", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.manual_ggrslot[0]))
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-4" }, [
-                        _c("label", [_vm._v("Manual GGR Total")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.fields.manual_ggtotal,
-                              expression: "fields.manual_ggtotal"
+                              value: _vm.fields.wht,
+                              expression: "fields.wht"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: {
                             disabled: _vm.validated ? false : true,
-                            name: "manual_ggtotal",
+                            name: "wht",
                             value: "",
                             type: "text",
-                            placeholder: "GGR  Total"
+                            placeholder: "WHT"
                           },
-                          domProps: { value: _vm.fields.manual_ggtotal },
+                          domProps: { value: _vm.fields.wht },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "wht", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.wht
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.wht[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden1 }
+                      },
+                      [
+                        _c("label", [_vm._v("GGR Tables / Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.ggr,
+                              expression: "fields.ggr"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "ggr",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.ggr },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "ggr", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.ggr
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.ggr[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden1 }
+                      },
+                      [
+                        _c("label", [_vm._v("GGR TAX Tables / Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.ggrtax,
+                              expression: "fields.ggrtax"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "ggrtax",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR TAX",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.ggrtax },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
@@ -59793,22 +59559,414 @@ var render = function() {
                               }
                               _vm.$set(
                                 _vm.fields,
-                                "manual_ggtotal",
+                                "ggrtax",
                                 $event.target.value
                               )
                             }
                           }
                         }),
                         _vm._v(" "),
-                        _vm.errors && _vm.errors.manual_ggtotal
+                        _vm.errors && _vm.errors.ggrtax
                           ? _c("div", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.manual_ggtotal[0]))
+                              _vm._v(_vm._s(_vm.errors.ggrtax[0]))
                             ])
                           : _vm._e()
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden }
+                      },
+                      [
+                        _c("label", [_vm._v("Sales Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.salesslot,
+                              expression: "fields.salesslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "salesslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "Sales slot"
+                          },
+                          domProps: { value: _vm.fields.salesslot },
+                          on: {
+                            keyup: _vm.sum,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "salesslot",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.salesslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.salesslot[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden }
+                      },
+                      [
+                        _c("label", [_vm._v("Payouts Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.payoutsslot,
+                              expression: "fields.payoutsslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "payoutsslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "Payouts slot"
+                          },
+                          domProps: { value: _vm.fields.payoutsslot },
+                          on: {
+                            keyup: _vm.sum,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "payoutsslot",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.payoutsslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.payoutsslot[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden }
+                      },
+                      [
+                        _c("label", [_vm._v("WHT Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.whtslot,
+                              expression: "fields.whtslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "whtslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "WHT Slot"
+                          },
+                          domProps: { value: _vm.fields.whtslot },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "whtslot",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.whtslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.whtslot[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden }
+                      },
+                      [
+                        _c("label", [_vm._v("GGR Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.ggrslot,
+                              expression: "fields.ggrslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "ggrslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR slot",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.ggrslot },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "ggrslot",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.ggrslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.ggrslot[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-4",
+                        attrs: { hidden: this.isHidden }
+                      },
+                      [
+                        _c("label", [_vm._v("GGR TAX Slot")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.ggrtaxslot,
+                              expression: "fields.ggrtaxslot"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            disabled: _vm.validated ? false : true,
+                            name: "ggrtaxslot",
+                            value: "",
+                            type: "text",
+                            placeholder: "GGR TAX slot",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.ggrtaxslot },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "ggrtaxslot",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.ggrtaxslot
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.ggrtaxslot[0]))
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "trf" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-12",
+                      attrs: { hidden: this.isHidden2 }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group row" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-4" }, [
+                          _c("label", [_vm._v("Manual GGR Table ")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fields.manual_ggr,
+                                expression: "fields.manual_ggr"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "manual_ggr",
+                              value: "",
+                              type: "text",
+                              placeholder: "GGR"
+                            },
+                            domProps: { value: _vm.fields.manual_ggr },
+                            on: {
+                              keyup: _vm.manual,
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fields,
+                                  "manual_ggr",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors && _vm.errors.manual_ggr
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.manual_ggr[0]))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-4" }, [
+                          _c("label", [_vm._v("Manual GGR Slot")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fields.manual_ggrslot,
+                                expression: "fields.manual_ggrslot"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              name: "manual_ggrslot",
+                              value: "",
+                              type: "text",
+                              placeholder: "GGR slot"
+                            },
+                            domProps: { value: _vm.fields.manual_ggrslot },
+                            on: {
+                              keyup: _vm.manual,
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fields,
+                                  "manual_ggrslot",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors && _vm.errors.manual_ggrslot
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.manual_ggrslot[0]))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-4" }, [
+                          _c("label", [_vm._v("Manual GGR Total")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.fields.manual_ggtotal,
+                                expression: "fields.manual_ggtotal"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              disabled: _vm.validated ? false : true,
+                              name: "manual_ggtotal",
+                              value: "",
+                              type: "text",
+                              placeholder: "GGR  Total"
+                            },
+                            domProps: { value: _vm.fields.manual_ggtotal },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.fields,
+                                  "manual_ggtotal",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors && _vm.errors.manual_ggtotal
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.manual_ggtotal[0]))
+                              ])
+                            : _vm._e()
+                        ])
                       ])
-                    ])
-                  ]
-                )
+                    ]
+                  )
+                ])
               ]),
               _vm._v(" "),
               _vm._m(2)
@@ -59862,20 +60020,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -62756,488 +62916,494 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "company_id" } }, [
-                        _vm._v(" Licensee Name")
-                      ]),
-                      _vm._v(" "),
-                      _c("multiselect", {
-                        attrs: {
-                          name: "company_id",
-                          label: "company_name",
-                          placeholder: "Select License name",
-                          options: _vm.company_names,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": true,
-                          "max-height": 150
-                        },
-                        on: { input: _vm.onChange },
-                        model: {
-                          value: _vm.fields.company_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "company_id", $$v)
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-12" },
+                      [
+                        _c("label", { attrs: { for: "company_id" } }, [
+                          _vm._v(" Licensee Name")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "company_id",
+                            label: "company_name",
+                            placeholder: "Select License name",
+                            options: _vm.company_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
                           },
-                          expression: "fields.company_id"
+                          on: { input: _vm.onChange },
+                          model: {
+                            value: _vm.fields.company_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "company_id", $$v)
+                            },
+                            expression: "fields.company_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("License No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.license_no,
+                            expression: "fields.license_no"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "license_no",
+                          type: "text",
+                          placeholder: "License No",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.license_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "license_no",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.company_id
+                      _vm.errors && _vm.errors.license_no
                         ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            _vm._v(_vm._s(_vm.errors.license_no[0]))
                           ])
                         : _vm._e()
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("License No")]),
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.license_no,
-                          expression: "fields.license_no"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "license_no",
-                        type: "text",
-                        placeholder: "License No",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.license_no },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Trading As")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.trading_name,
+                            expression: "fields.trading_name"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "license_no",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.license_no
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.license_no[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Trading As")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.trading_name,
-                          expression: "fields.trading_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "trading_name",
-                        type: "text",
-                        placeholder: "Trading As",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.trading_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "trading_name",
+                          type: "text",
+                          placeholder: "Trading As",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.trading_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "trading_name",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "trading_name",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.trading_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                        ])
-                      : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.trading_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period Of")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_for_of,
-                          expression: "fields.return_for_of"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_for_of",
-                        type: "date",
-                        placeholder: "Return For The Period Of"
-                      },
-                      domProps: { value: _vm.fields.return_for_of },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period Of")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_for_of,
+                            expression: "fields.return_for_of"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "return_for_of",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.return_for_of
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_for_of[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Return For The Period To")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.return_to,
-                          expression: "fields.return_to"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "return_to",
-                        type: "date",
-                        placeholder: "Return For The Period To"
-                      },
-                      domProps: { value: _vm.fields.return_to },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_for_of",
+                          type: "date",
+                          placeholder: "Return For The Period Of"
+                        },
+                        domProps: { value: _vm.fields.return_for_of },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_for_of",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(_vm.fields, "return_to", $event.target.value)
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_for_of
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.return_for_of[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.return_to
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.return_to[0]))
-                        ])
-                      : _vm._e()
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Return For The Period To")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.return_to,
+                            expression: "fields.return_to"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "return_to",
+                          type: "date",
+                          placeholder: "Return For The Period To"
+                        },
+                        domProps: { value: _vm.fields.return_to },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "return_to",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.return_to
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.return_to[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Date")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.date,
+                            expression: "fields.date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "date",
+                          type: "date",
+                          placeholder: "Date",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.date },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "date", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.date
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.date[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Date")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.date,
-                          expression: "fields.date"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "date",
-                        type: "date",
-                        placeholder: "Date",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.date },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Total Tickets Sold")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.total_tickets_sold,
+                            expression: "fields.total_tickets_sold"
                           }
-                          _vm.$set(_vm.fields, "date", $event.target.value)
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "total_tickets_sold",
+                          type: "text",
+                          placeholder: "Total Tickets Sold",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.total_tickets_sold },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "total_tickets_sold",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.total_tickets_sold
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.total_tickets_sold[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.date
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.date[0]))
-                        ])
-                      : _vm._e()
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Sales")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.sales,
+                            expression: "fields.sales"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "sales",
+                          type: "text",
+                          placeholder: "Sales",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.sales },
+                        on: {
+                          keyup: _vm.sum,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "sales", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.sales
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.sales[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("Payouts")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.payouts,
+                            expression: "fields.payouts"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "payouts",
+                          type: "text",
+                          placeholder: "Payouts",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.payouts },
+                        on: {
+                          keyup: _vm.sum,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "payouts", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.payouts
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.payouts[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Total Tickets Sold")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.total_tickets_sold,
-                          expression: "fields.total_tickets_sold"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "total_tickets_sold",
-                        type: "text",
-                        placeholder: "Total Tickets Sold",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.total_tickets_sold },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("WHT")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.wht,
+                            expression: "fields.wht"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "total_tickets_sold",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.total_tickets_sold
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.total_tickets_sold[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Sales")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.sales,
-                          expression: "fields.sales"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "sales",
-                        type: "text",
-                        placeholder: "Sales",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.sales },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "wht",
+                          type: "text",
+                          disabled: _vm.validated ? false : true,
+                          placeholder: "WHT",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.wht },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "wht", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "sales", $event.target.value)
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.wht
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.wht[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.sales
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.sales[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("Payouts")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.payouts,
-                          expression: "fields.payouts"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "payouts",
-                        type: "text",
-                        placeholder: "Payouts",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.payouts },
-                      on: {
-                        keyup: _vm.sum,
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("GGR")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.ggr,
+                            expression: "fields.ggr"
                           }
-                          _vm.$set(_vm.fields, "payouts", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.payouts
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.payouts[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("WHT")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.wht,
-                          expression: "fields.wht"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "wht",
-                        type: "text",
-                        disabled: _vm.validated ? false : true,
-                        placeholder: "WHT",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.wht },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "ggr",
+                          type: "text",
+                          disabled: _vm.validated ? false : true,
+                          placeholder: "GGR",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.ggr },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "ggr", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "wht", $event.target.value)
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.ggr
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.ggr[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.wht
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.wht[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggr,
-                          expression: "fields.ggr"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "ggr",
-                        type: "text",
-                        disabled: _vm.validated ? false : true,
-                        placeholder: "GGR",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggr },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("label", [_vm._v("GGR TAX")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.ggrtax,
+                            expression: "fields.ggrtax"
                           }
-                          _vm.$set(_vm.fields, "ggr", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggr
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggr[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("label", [_vm._v("GGR TAX")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.ggrtax,
-                          expression: "fields.ggrtax"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "ggrtax",
-                        type: "text",
-                        disabled: _vm.validated ? false : true,
-                        placeholder: "GGR TAX",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.ggrtax },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "ggrtax",
+                          type: "text",
+                          disabled: _vm.validated ? false : true,
+                          placeholder: "GGR TAX",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.ggrtax },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "ggrtax", $event.target.value)
                           }
-                          _vm.$set(_vm.fields, "ggrtax", $event.target.value)
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.ggrtax
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.ggrtax[0]))
-                        ])
-                      : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.ggrtax
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.ggrtax[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(2)
+              _vm._m(1)
             ]
           )
         ])
@@ -63275,27 +63441,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [_c("label")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -66157,278 +66319,290 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-6" },
-                    [
-                      _c("label", { attrs: { for: "company_id" } }, [
-                        _vm._v(" Licensee Name")
-                      ]),
-                      _vm._v(" "),
-                      _c("multiselect", {
-                        attrs: {
-                          name: "company_id",
-                          label: "company_name",
-                          placeholder: "Select License name",
-                          options: _vm.company_names,
-                          "allow-empty": true,
-                          multiple: false,
-                          "hide-selected": true,
-                          "max-height": 150
-                        },
-                        on: { input: _vm.onChange },
-                        model: {
-                          value: _vm.fields.company_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.fields, "company_id", $$v)
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "company_id" } }, [
+                          _vm._v(" Licensee Name")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "company_id",
+                            label: "company_name",
+                            placeholder: "Select License name",
+                            options: _vm.company_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
                           },
-                          expression: "fields.company_id"
+                          on: { input: _vm.onChange },
+                          model: {
+                            value: _vm.fields.company_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "company_id", $$v)
+                            },
+                            expression: "fields.company_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.category_type_id,
+                            expression: "fields.category_type_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "category_type_id",
+                          type: "hidden",
+                          placeholder: "category_type_id",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.category_type_id },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "category_type_id",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
-                      _vm.errors && _vm.errors.company_id
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.licensee_name,
+                            expression: "fields.licensee_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "licensee_name",
+                          type: "hidden",
+                          placeholder: "Licensee Name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.licensee_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "licensee_name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.licensee_name
                         ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            _vm._v(_vm._s(_vm.errors.licensee_name[0]))
                           ])
                         : _vm._e()
-                    ],
-                    1
-                  ),
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.category_type_id,
-                          expression: "fields.category_type_id"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "category_type_id",
-                        type: "hidden",
-                        placeholder: "category_type_id",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.category_type_id },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Trading Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.trading_name,
+                            expression: "fields.trading_name"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "category_type_id",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.licensee_name,
-                          expression: "fields.licensee_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "licensee_name",
-                        type: "hidden",
-                        placeholder: "Licensee Name",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.licensee_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "trading_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Trading Name",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.trading_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "trading_name",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "licensee_name",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.trading_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.licensee_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.licensee_name[0]))
-                        ])
-                      : _vm._e()
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("License No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.license_no,
+                            expression: "fields.license_no"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "license_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "License No",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.license_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "license_no",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.license_no
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.license_no[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Trading Name")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.trading_name,
-                          expression: "fields.trading_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "trading_name",
-                        value: "",
-                        type: "text",
-                        placeholder: "Trading Name",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.trading_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("shop Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.shop_name,
+                            expression: "fields.shop_name"
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "trading_name",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.trading_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("License No")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.license_no,
-                          expression: "fields.license_no"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "license_no",
-                        value: "",
-                        type: "text",
-                        placeholder: "License No",
-                        disabled: _vm.validated ? false : true,
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.license_no },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "shop_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Shop Name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.shop_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "shop_name",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(
-                            _vm.fields,
-                            "license_no",
-                            $event.target.value
-                          )
                         }
-                      }
-                    }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.shop_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.shop_name[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _vm.errors && _vm.errors.license_no
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.license_no[0]))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("shop Name")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.shop_name,
-                          expression: "fields.shop_name"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "shop_name",
-                        value: "",
-                        type: "text",
-                        placeholder: "Shop Name",
-                        required: ""
-                      },
-                      domProps: { value: _vm.fields.shop_name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Location")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.location,
+                            expression: "fields.location"
                           }
-                          _vm.$set(_vm.fields, "shop_name", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.shop_name
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.shop_name[0]))
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _c("label", [_vm._v("Location")]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fields.location,
-                          expression: "fields.location"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "location",
-                        value: "",
-                        type: "text",
-                        placeholder: "Location"
-                      },
-                      domProps: { value: _vm.fields.location },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "location",
+                          value: "",
+                          type: "text",
+                          placeholder: "Location"
+                        },
+                        domProps: { value: _vm.fields.location },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "location",
+                              $event.target.value
+                            )
                           }
-                          _vm.$set(_vm.fields, "location", $event.target.value)
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors.location
-                      ? _c("div", { staticClass: "text-danger" }, [
-                          _vm._v(_vm._s(_vm.errors.location[0]))
-                        ])
-                      : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.location
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.location[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 ])
               ]),
@@ -66472,20 +66646,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -70073,275 +70249,290 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.name,
-                        expression: "fields.name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "name",
-                      type: "text",
-                      placeholder: "John Doe",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.name,
+                            expression: "fields.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "name",
+                          type: "text",
+                          placeholder: "John Doe",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "name", $event.target.value)
+                          }
                         }
-                        _vm.$set(_vm.fields, "name", $event.target.value)
-                      }
-                    }
-                  }),
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.name[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Email")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.email,
+                            expression: "fields.email"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "email",
+                          value: "",
+                          type: "email",
+                          placeholder: "me@example.com",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "email", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.email
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.email[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _vm.errors && _vm.errors.name
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.name[0]))
-                      ])
-                    : _vm._e()
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Personal File No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.perspnal_file_no,
+                            expression: "fields.perspnal_file_no"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "perspnal_file_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "Personal File No"
+                        },
+                        domProps: { value: _vm.fields.perspnal_file_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "perspnal_file_no",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.perspnal_file_no
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.perspnal_file_no[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Department/Section")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.section,
+                            expression: "fields.section"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "section",
+                          value: "",
+                          type: "text",
+                          placeholder: "Section"
+                        },
+                        domProps: { value: _vm.fields.section },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.fields, "section", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.section
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.section[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Phone")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fields.phone,
+                          expression: "fields.phone"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "phone",
+                        value: "",
+                        type: "text",
+                        placeholder: "0712516957",
+                        autocomplete: "off",
+                        required: ""
+                      },
+                      domProps: { value: _vm.fields.phone },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.fields, "phone", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors && _vm.errors.phone
+                      ? _c("div", { staticClass: "text-danger" }, [
+                          _vm._v(_vm._s(_vm.errors.phone[0]))
+                        ])
+                      : _vm._e()
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.email,
-                        expression: "fields.email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "email",
-                      value: "",
-                      type: "email",
-                      placeholder: "me@example.com",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Password")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.password,
+                            expression: "fields.password"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "password",
+                          value: "",
+                          type: "password",
+                          placeholder: "********",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "password",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(_vm.fields, "email", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.email
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.email[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Personal File No")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.perspnal_file_no,
-                        expression: "fields.perspnal_file_no"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "perspnal_file_no",
-                      value: "",
-                      type: "text",
-                      placeholder: "Personal File No"
-                    },
-                    domProps: { value: _vm.fields.perspnal_file_no },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.password
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.password[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Confirm Password")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.password_confirmation,
+                            expression: "fields.password_confirmation"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "password_confirmation",
+                          value: "",
+                          type: "password",
+                          placeholder: "********",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.password_confirmation },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "password_confirmation",
+                              $event.target.value
+                            )
+                          }
                         }
-                        _vm.$set(
-                          _vm.fields,
-                          "perspnal_file_no",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.perspnal_file_no
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.perspnal_file_no[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Department/Section")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.section,
-                        expression: "fields.section"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "section",
-                      value: "",
-                      type: "text",
-                      placeholder: "Section"
-                    },
-                    domProps: { value: _vm.fields.section },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "section", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.section
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.section[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Phone")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.phone,
-                        expression: "fields.phone"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "phone",
-                      value: "",
-                      type: "text",
-                      placeholder: "0712516957",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.phone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "phone", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.phone
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.phone[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Password")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.password,
-                        expression: "fields.password"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "password",
-                      value: "",
-                      type: "password",
-                      placeholder: "********",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "password", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.password
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.password[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Confirm Password")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.password_confirmation,
-                        expression: "fields.password_confirmation"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "password_confirmation",
-                      value: "",
-                      type: "password",
-                      placeholder: "********",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.password_confirmation },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "password_confirmation",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.password_confirmation
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.password_confirmation[0]))
-                      ])
-                    : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.password_confirmation
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.password_confirmation[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),

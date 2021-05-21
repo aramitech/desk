@@ -54,6 +54,11 @@ Route::post('/company/addbookmarkers', [App\Http\Controllers\CompanyController::
 Route::get('/company/publickgaming', [App\Http\Controllers\CompanyController::class, 'publickgaming'])->name('company.publickgaming');
 Route::post('/company/addpublicgaming', [App\Http\Controllers\CompanyController::class, 'addpublicgaming'])->name('company.addpublicgaming');
 
+Route::get('/company/bookmarkers2', [App\Http\Controllers\CompanyController::class, 'bookmarkers2'])->name('company.bookmarkers2');
+
+
+
+
 Route::post('/company/delete_destroybookmarkerscompany', [App\Http\Controllers\CompanyController::class, 'destroybookmarkerscompany'])->name('company.delete_destroybookmarkerscompany');
 Route::post('/company/delete_destroypublicgamingcompany', [App\Http\Controllers\CompanyController::class, 'destroypublicgamingcompany'])->name('company.delete_destroypublicgamingcompany');
 Route::post('/company/delete_destroypubliclottery', [App\Http\Controllers\CompanyController::class, 'destroypubliclottery'])->name('company.delete_destroypubliclottery');
@@ -195,7 +200,9 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  ///New
  Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-master');
 
- Route::get('/admin/accountsetting', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
-
-
+ Route::get('/admin/accountsetting/{id}', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
+ Route::post('/admin/adminchangepassword', [App\Http\Controllers\AdminuserController::class, 'adminchangepassword'])->name('adminchangepassword');
+ Route::post('/admin/notes', [App\Http\Controllers\NotesController::class, 'store'])->name('notes');
+ Route::post('/admin/notes/view', [App\Http\Controllers\NotesController::class, 'index'])->name('notes.notes');
+ 
  

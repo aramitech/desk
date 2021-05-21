@@ -16,7 +16,7 @@ class CategoryTypesController extends Controller
     {
         //
         $categorytypes = CategoryTypes::all();
-        return view('categorytype.index', compact('categorytypes'));
+        return view('vuexy.categorytype.index', compact('categorytypes'));
         
     }
 

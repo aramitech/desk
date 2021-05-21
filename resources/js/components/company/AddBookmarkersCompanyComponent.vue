@@ -8,7 +8,8 @@
                 </div>
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
-                        <div class="form-group">
+                    <div class="trf">  
+                             <div class="form-group">
                             <div class="form-group row">
 					<div class="col-md-6">
 							<label>Company Name</label>
@@ -65,16 +66,16 @@
 							<input class="form-control"  name="paybillno" v-model="fields.paybillno" value="" type="text" placeholder="Paybill No" >
                             <div v-if="errors && errors.paybillno" class="text-danger">{{ errors.paybillno[0] }}</div>
 						</div>	</div>
-                    </div>
+                    </div> </div>
 
 
 
+                
 
-
-                    <div class="modal-footer">
+                    <div class="modal-footer">  <div class="trf">  
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
-                    </div>  </div>
+                    </div>  </div> </div>
                 </form>
             </div>
         </div>

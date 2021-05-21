@@ -64,6 +64,33 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
 
+
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/vendors.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/bootstrap-extended.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/components.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/themes/dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/themes/semi-dark-layout.css')}}">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/colors/palette-gradient.css')}}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/assets/css/style.css')}}">
+    <!-- END: Custom CSS-->
+
+
+
+
 </head>
 <!-- END: Head-->
 @include('vuexy.layouts.header') 
@@ -83,5 +110,44 @@
      @include('vuexy.layouts.footer')   
 </body>
 <!-- END: Body-->
+
+
+   <!-- BEGIN: Vendor JS-->
+   <script src="{{ asset('tyu/app-assets/vendors/js/vendors.min.js')}}"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="{{ asset('tyu/app-assets/js/core/app-menu.js')}}"></script>
+    <!-- <script src="{{ asset('tyu/app-assets/js/core/app.js')}}"></script> -->
+    <script src="{{ asset('tyu/app-assets/js/scripts/components.js')}}"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('tyu/app-assets/js/scripts/datatables/datatable.js')}}"></script>
+    <!-- END: Page JS-->
+
+
+
+
+    <!-- BEGIN: Vendor JS-->
+
+    <!-- BEGIN Vendor JS-->
+
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('tyu/app-assets/js/scripts/modal/components-modal.js')}}"></script>
+    <!-- END: Page JS-->
+
 
 </html>

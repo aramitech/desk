@@ -71,4 +71,24 @@ class AdminuserController extends Controller
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }
+
+
+
+    public function adminchangepassword(Request $request)
+    {
+      // return $request;
+    //  dd($request);
+        // $request->validate([
+     
+        //     'password' => 'required|confirmed',
+        //     'password_confirmation' => 'required',
+        // ]);
+        
+        $user = Adminusers::findOrFail($request->admin_id);
+         $user->password = Hash::make($request->password);
+        $user->save();
+        return back()->with('success','Added succesfully');
+        return back()->with('success','Updated succesfully');
+    }
+    
 }

@@ -28,6 +28,15 @@ class CompanyController extends Controller
         return view('company.bookmarkers', compact('bookmarkers'));
     }
 
+    public function bookmarkers2()
+    {
+        //
+
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->OrderBy('category_type_id')->get();
+        return view('vuexy.company.bookmarkers', compact('bookmarkers'));
+    }
+
+    
     public function publickgaming()
     {
         //

@@ -45,7 +45,7 @@
   text-transform: uppercase;
 }
 </style>
-            <h2><p> BCLB (BETTNG CONTROL AND LICENCING BOARD)</p></h2>
+            <h2><p> BCLB (BETTING CONTROL AND LICENCING BOARD)</p></h2>
 
 			</div>
 			<div class="login-menu">
