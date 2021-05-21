@@ -32,11 +32,11 @@ Category Types List:
                                                 <div class="col-12 col-sm-12">
                                                 <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
+                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button"  id="show-modal">
                         Add  Company
                     </a>
 
-                    <button type="button" class="btn btn-outline-primary block btn-lg" data-toggle="modal" data-target="#default">
+                    <button type="button" class="btn btn-outline-primary block btn-lg" data-toggle="modal" id="show-modal" data-target="#default">
                                                     Launch Modal
                                                 </button>
                 </div>
@@ -76,30 +76,30 @@ Category Types List:
                         <td>{{ $bookmarker->status }}</td>
                      
                         <td>
-                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                        <button class="btn btn-sm btn-info"  id="show-modal" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
-<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+<button class="btn btn-sm btn-info" data-toggle="modal"  id="show-modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
 <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
                             <div class="dropdown">
                                  <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     <i class="dw dw-more"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
-                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"  id="show-modal"><i class="dw dw-edit2"></i> View</button>
 
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"  id="show-modal"><i class="dw dw-edit2"></i> Edit</button>
                                     <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
                                </div> 
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
@@ -119,13 +119,13 @@ Category Types List:
                                                         Changes</button> -->
 
 
-                                                        <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
@@ -144,16 +144,16 @@ Category Types List:
                     </div>
                 </section>
                 <!-- users edit ends -->
-                <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                <div class="modal" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                                         <div class="modal-content">
-                                                            <div class="modal-header">
+                                                            <div class="modal-header">Add
             </div>
-        </div>
+        
      
       <!-- ./main content card -->
       <add-bookmarkerscompany-component/>
-    </div> </div> </div> </div>
+    </div> </div> </div>
 
 
 @endsection
