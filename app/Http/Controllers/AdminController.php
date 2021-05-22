@@ -7,6 +7,7 @@ use App\Models\BookMarkers;
 use App\Models\PublicLottery;
 use App\Models\Publicgamings;
 use App\Models\BookmarkersCompany;
+use App\Models\CategoryTypes;
 use App\Models\Admin;
 use App\Models\Notes;
 use Auth;
@@ -126,7 +127,16 @@ class AdminController extends Controller
             $companyactive =BookmarkersCompany::where('status','Active')->count();
             $companyinactive =BookmarkersCompany::where('status','Not Active')->count();
             $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
-            return view('vuexy.vuexy-dashboard', compact('publiclotteries','data_arr','companyactive','companyinactive'));
+            // get company by category count
+            $categories = CategoryTypes::with('CompanyCategoryType')->get();
+            $catcompany = $categories->pluck('categorytype');
+            $catcompanies = [];
+            foreach($categories as $cat)
+            {
+                array_push($catcompanies,$cat->CompanyCategoryType->count());
+            }
+            $categories =['category' => $catcompany, 'companycount' => $catcompanies];
+            return view('vuexy.vuexy-dashboard', compact('categories','publiclotteries','data_arr','companyactive','companyinactive'));
         }
 
         public function accountsetting()

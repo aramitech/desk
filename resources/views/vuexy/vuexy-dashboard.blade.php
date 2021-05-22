@@ -125,7 +125,7 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4 class="mb-0">Goal Overview</h4>
+                                    <h4 class="mb-0">Company Statuses</h4>
                                     <p class="font-medium-5 mb-0"><i class="feather icon-help-circle text-muted cursor-pointer"></i></p>
                                 </div>
                                 <div class="card-content">
@@ -133,12 +133,12 @@
                                         <div id="goal-overview-chart" class="mt-75"></div>
                                         <div class="row text-center mx-0">
                                             <div class="col-6 border-top border-right d-flex align-items-between flex-column py-1">
-                                                <p class="mb-50">Completed</p>
-                                                <p class="font-large-1 text-bold-700">786,617</p>
+                                                <p class="mb-50">Active</p>
+                                                <p class="font-large-1 text-bold-700"> {{ $companyactive }}</p>
                                             </div>
                                             <div class="col-6 border-top d-flex align-items-between flex-column py-1">
-                                                <p class="mb-50">In Progress</p>
-                                                <p class="font-large-1 text-bold-700">13,561</p>
+                                                <p class="mb-50">Not Active</p>
+                                                <p class="font-large-1 text-bold-700">{{ $companyinactive }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -398,17 +398,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between pb-0">
-                                    <h4 class="card-title">Customers</h4>
-                                    <div class="dropdown chart-dropdown">
-                                        <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Last 7 Days
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem3">
-                                            <a class="dropdown-item" href="#">Last 28 Days</a>
-                                            <a class="dropdown-item" href="#">Last Month</a>
-                                            <a class="dropdown-item" href="#">Last Year</a>
-                                        </div>
-                                    </div>
+                                    <h4 class="card-title">Company Categories</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body py-0">
@@ -418,28 +408,28 @@
                                         <li class="list-group-item d-flex justify-content-between ">
                                             <div class="series-info">
                                                 <i class="fa fa-circle font-small-3 text-primary"></i>
-                                                <span class="text-bold-600">New</span>
+                                                <span class="text-bold-600">{{ $categories['category'][0] }}</span>
                                             </div>
                                             <div class="product-result">
-                                                <span>890</span>
+                                                <span>{{ $categories['companycount'][0] }}</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between ">
                                             <div class="series-info">
                                                 <i class="fa fa-circle font-small-3 text-warning"></i>
-                                                <span class="text-bold-600">Returning</span>
+                                                <span class="text-bold-600">{{ $categories['category'][1] }}</span>
                                             </div>
                                             <div class="product-result">
-                                                <span>154</span>
+                                                <span>{{ $categories['companycount'][1] }}</span>
                                             </div>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between ">
                                             <div class="series-info">
                                                 <i class="fa fa-circle font-small-3 text-danger"></i>
-                                                <span class="text-bold-600">Referrals</span>
+                                                <span class="text-bold-600">{{ $categories['category'][2] }}</span>
                                             </div>
                                             <div class="product-result">
-                                                <span>149</span>
+                                                <span>{{ $categories['companycount'][2] }}</span>
                                             </div>
                                         </li>
                                     </ul>
