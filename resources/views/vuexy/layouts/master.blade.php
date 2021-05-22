@@ -91,6 +91,32 @@
 
 
 
+
+
+
+        <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/vendors/css/tables/ag-grid/ag-grid.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/vendors/css/tables/ag-grid/ag-theme-material.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/themes/semi-dark-layout.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/core/colors/palette-gradient.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/pages/app-user.css">
+    <link rel="stylesheet" type="text/css" href="tyu/app-assets/css/pages/aggrid.css">
+    <!-- END: Page CSS-->
+
+
+
 </head>
 <!-- END: Head-->
 @include('vuexy.layouts.header') 
@@ -139,7 +165,9 @@
     <!-- END: Page JS-->
 
 
-
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="tyu/app-assets/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js"></script>
+    <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Vendor JS-->
 

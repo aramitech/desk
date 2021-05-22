@@ -202,7 +202,9 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
 
  Route::get('/admin/accountsetting/{id}', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
  Route::post('/admin/adminchangepassword', [App\Http\Controllers\AdminuserController::class, 'adminchangepassword'])->name('adminchangepassword');
+ Route::post('/admin/adminchangepassword', [App\Http\Controllers\AdminuserController::class, 'adminchangepassword'])->name('admin.adminchangepassword');
  Route::post('/admin/notes', [App\Http\Controllers\NotesController::class, 'store'])->name('notes');
  Route::post('/admin/notes/view', [App\Http\Controllers\NotesController::class, 'index'])->name('notes.notes');
- 
+ Route::get('/admin/accountsettingchangepassword/{id}', [App\Http\Controllers\AdminController::class, 'accountsettingchangepassword'])->name('admin.accountsettingchangepassword');
+
  

@@ -1765,7 +1765,7 @@ pre code {
 .table {
   width : 100%;
   margin-bottom : 1rem;
-  color : #626262;
+  color : #000000;
 }
 .table th, .table td {
   padding : 0.75rem;
@@ -5794,11 +5794,17 @@ a.close.disabled {
           flex-direction : column;
   width : 100%;
   pointer-events : auto;
-  background-color : #FFFFFF;
+  /* background-color : #FFFFFF; */
   background-clip : padding-box;
   border : 1px solid rgba(34, 41, 47, 0.2);
   border-radius : 0.6rem;
   outline : 0;
+
+  background-color: #e9ebee;
+  border: 1px solid green;
+  padding: 11px;
+  margin: 2px;
+
 }
 
 .modal-backdrop {
@@ -5889,7 +5895,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width : 500px;
+    max-width : 880px;
     margin : 1.75rem auto;
   }
   .modal-dialog-scrollable {

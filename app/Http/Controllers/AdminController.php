@@ -111,5 +111,12 @@ class AdminController extends Controller
             return view('vuexy.admin.account_settings', compact('admins','notes'));
         }
 
-           
+        public function accountsettingchangepassword()
+        {
+            //
+            $notes = Notes::all();
+            $loggedinuser=Auth::guard('admin')->user()->admin_id;
+            $admins = Admin::where('admin_id',$loggedinuser)->get();
+            return view('vuexy.admin.changepassword', compact('admins','notes'));
+        } 
 }

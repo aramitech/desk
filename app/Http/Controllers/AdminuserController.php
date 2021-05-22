@@ -77,7 +77,7 @@ class AdminuserController extends Controller
     public function adminchangepassword(Request $request)
     {
       // return $request;
-    //  dd($request);
+     // dd($request);
         // $request->validate([
      
         //     'password' => 'required|confirmed',
@@ -85,9 +85,9 @@ class AdminuserController extends Controller
         // ]);
         
         $user = Adminusers::findOrFail($request->admin_id);
-         $user->password = Hash::make($request->password);
+        $user->password = Hash::make($request->password);
         $user->save();
-        return back()->with('success','Added succesfully');
+        return view('adminusers.index', compact('adminusers'));
         return back()->with('success','Updated succesfully');
     }
     

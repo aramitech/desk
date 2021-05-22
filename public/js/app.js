@@ -56779,7 +56779,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade",
+      staticClass: "modal",
       attrs: {
         id: "addcompany",
         tabindex: "-1",

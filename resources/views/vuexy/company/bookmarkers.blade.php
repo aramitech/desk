@@ -37,9 +37,7 @@ Category Types List:
                         Add  Company
                     </button>
 
-                    <button type="button" class="btn btn-outline-primary block btn-lg" data-toggle="modal" id="show-modal" data-target="#default">
-                                                    Launch Modal
-                                                </button>
+               
                 </div>
             </div>
                                                 <h4 class="media-heading">   
@@ -50,7 +48,7 @@ Category Types List:
                                                 <div class="table-responsive">
                  
                                                 
-                <table class="table zero-configuration">                <thead>
+                                                <table class="table table-striped dataex-html5-selectors">               <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category</th>
@@ -61,7 +59,7 @@ Category Types List:
                     
                         <th>Address</th>
                         <th>Status</th>       <th>Action</th>
-                        <th ></th>
+                   
                     </tr>
                 </thead>
                 <tbody>
@@ -77,22 +75,11 @@ Category Types List:
                         <td>{{ $bookmarker->status }}</td>
                      
                         <td>
-                        <button class="btn btn-sm btn-info"  id="show-modal" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
-
-<button class="btn btn-sm btn-info" data-toggle="modal"  id="show-modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-<button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
-                            <div class="dropdown">
-                                 <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                    <i class="dw dw-more"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
-                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"  id="show-modal"><i class="dw dw-edit2"></i> View</button>
-
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"  id="show-modal"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
-                               </div> 
-                            </div>
-                            </td>  <td></td>
+                        <button class="btn btn-sm btn-info"  id="show-modal" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="feather icon-view"></i> </button>
+<button class="btn btn-sm btn-info" data-toggle="modal"  id="show-modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="feather icon-edit"></i></button>
+<button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="feather icon-trash"></i> </button>
+                      
+                            </td>  
                     </tr>
                     <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
