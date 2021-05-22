@@ -84,11 +84,21 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
                                     <h4 class="card-title">Revenue</h4>
-                                    <p class="font-medium-5 mb-0"><i class="feather icon-settings text-muted cursor-pointer"></i></p>
+                                    <div class="dropdown chart-dropdown">
+                                        <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Last 7 Days
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem1">
+                                            <a class="dropdown-item" href="?">Last 7 Days</a>
+                                            <a class="dropdown-item" href="?date">Last 28 Days</a>
+                                            <a class="dropdown-item" href="?month">Last Month</a>
+                                            <a class="dropdown-item" href="?year">Last Year</a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body pb-0">
-                                        <div class="d-flex justify-content-start">
+                                        <!-- <div class="d-flex justify-content-start">
                                             <div class="mr-2">
                                                 <p class="mb-50 text-bold-600">This Month</p>
                                                 <h2 class="text-bold-400">
@@ -104,8 +114,10 @@
                                                 </h2>
                                             </div>
 
+                                        </div> -->
+                                        <div class="height-300">
+                                            <canvas id="bar-chart"></canvas>
                                         </div>
-                                        <div id="revenue-chart"></div>
                                     </div>
                                 </div>
                             </div>
@@ -441,6 +453,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection
