@@ -97,9 +97,36 @@ class AdminController extends Controller
 
             public function master()
         {
-            //
+            //get barchart data
+            $companies =EloquentBuilder::to(BookmarkersCompany::with(['bookmarkerscompany' => function($query){
+                if(request()->has('date') == 1){
+                    $query->whereDate('created_at','>=',now()->subDays(28));
+                }
+                elseif(request()->has('month') == 1){
+                    $query->whereDate('created_at','>=',now()->subMonth(1));
+                }
+                elseif(request()->has('year') == 1){
+                    $query->whereDate('created_at','>=',now()->subYear(1));
+                }
+                else {
+                    $query->whereDate('created_at','>=',now()->subDays(7));
+                }
+            }]), request()->all())->get();
+            // return $companies;
+            $data_arr['companies'] = [];
+            $data_arr['ggr'] = [];
+            foreach($companies as $company)
+            {
+                if($company->bookmarkerscompany->count() > 0){
+                    array_push($data_arr['companies'],$company->company_name);
+                    array_push($data_arr['ggr'],$company->bookmarkerscompany->sum('ggr'));
+                }
+            }
+            //company status
+            $companyactive =BookmarkersCompany::where('status','Active')->count();
+            $companyinactive =BookmarkersCompany::where('status','Not Active')->count();
             $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
-            return view('vuexy.vuexy-dashboard', compact('publiclotteries'));
+            return view('vuexy.vuexy-dashboard', compact('publiclotteries','data_arr','companyactive','companyinactive'));
         }
 
         public function accountsetting()
