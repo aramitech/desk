@@ -1,4 +1,4 @@
-@extends('vuexy.layouts.master')
+@extends('vuexy.layouts.master2')
 @section('title')
     Admin
 @endsection
