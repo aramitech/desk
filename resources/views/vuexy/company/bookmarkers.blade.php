@@ -31,7 +31,7 @@ Category Types List:
                                         <form novalidate>
                                             <div class="row">
                                                 <div class="col-12 col-sm-12">
-                                                <div class="col-md-6 col-sm-12 text-right">
+                                                <div class="col-md-12 col-sm-12 text-right">
                 <div>
                 <button class="btn btn-primary" data-toggle="modal" id="show-modal" data-target="#addcompany" type="button" >
                         Add  Company

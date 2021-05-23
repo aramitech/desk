@@ -83,14 +83,14 @@
                         <div class="col-lg-8 col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4 class="card-title">Revenue</h4>
+                                    <h4 class="card-title">BookMarkers</h4>
                                     <div class="dropdown chart-dropdown">
                                         <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Last 7 Days
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem1">
                                             <a class="dropdown-item" href="?">Last 7 Days</a>
-                                            <a class="dropdown-item" href="?date">Last 28 Days</a>
+                                            <a class="dropdown-item" href="?date">Last 21 Days</a>
                                             <a class="dropdown-item" href="?month">Last Month</a>
                                             <a class="dropdown-item" href="?year">Last Year</a>
                                         </div>
@@ -234,7 +234,7 @@
                                             Last 7 Days
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem1">
-                                            <a class="dropdown-item" href="#">Last 28 Days</a>
+                                            <a class="dropdown-item" href="#">Last 21 Days</a>
                                             <a class="dropdown-item" href="#">Last Month</a>
                                             <a class="dropdown-item" href="#">Last Year</a>
                                         </div>
