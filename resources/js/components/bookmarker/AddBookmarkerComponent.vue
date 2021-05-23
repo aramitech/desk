@@ -152,12 +152,11 @@ data() {
         getLicenseeName: function(){
         axios.get('/license_name/get')
         .then(function(response){
-          this.company_names = response.data; 
-          getShop_Names();       
+          this.company_names = response.data;   
         }.bind(this));
       },
-       getShop_Names: function(){
-        axios.get('/bookmarker_shop_name/get')
+       getShop_Names: function(company_id){
+        axios.get('/bookmarker_shop_name/get?company_id='+company_id)
         .then(function(response){
           this.shop_names = response.data;        
         }.bind(this));
@@ -175,10 +174,12 @@ data() {
  this.fields.ggrtax=0.15 * this.fields.ggr;  
    },
  onChange (value) {
-      this.value = value
+      this.value = value;
+      this.getShop_Names(value.company_id)
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;
-     this.fields.licensee_name=this.value.company_name
+     this.fields.licensee_name=this.value.company_name;
+     this.fields.shop_id = value.shopcompany;
     console.log(value)
     },
    
@@ -192,8 +193,7 @@ data() {
             },
     created: function(){  
 
-     this.getLicenseeName() ;  
-     this.getShop_Names();
+     this.getLicenseeName() ; 
     },
      mounted() {
         //this.ggr = this.total_payout * 0.2;

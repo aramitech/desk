@@ -2067,11 +2067,10 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
     getLicenseeName: function getLicenseeName() {
       axios.get('/license_name/get').then(function (response) {
         this.company_names = response.data;
-        getShop_Names();
       }.bind(this));
     },
-    getShop_Names: function getShop_Names() {
-      axios.get('/bookmarker_shop_name/get').then(function (response) {
+    getShop_Names: function getShop_Names(company_id) {
+      axios.get('/bookmarker_shop_name/get?company_id=' + company_id).then(function (response) {
         this.shop_names = response.data;
       }.bind(this));
     },
@@ -2086,9 +2085,11 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
     },
     onChange: function onChange(value) {
       this.value = value;
+      this.getShop_Names(value.company_id);
       this.fields.license_no = this.value.license_no;
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
+      this.fields.shop_id = value.shopcompany;
       console.log(value);
     }
   },
@@ -2100,7 +2101,6 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
   },
   created: function created() {
     this.getLicenseeName();
-    this.getShop_Names();
   },
   mounted: function mounted() {//this.ggr = this.total_payout * 0.2;
   }

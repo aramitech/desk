@@ -39,6 +39,7 @@
                 <!-- account setting page start -->
                 <section id="page-account-settings">
                     <div class="row">
+                    
                         <!-- left menu section -->
                         <div class="col-md-3 mb-2 mb-md-0">
                             <ul class="nav nav-pills flex-column mt-md-0 mt-1">
@@ -83,6 +84,8 @@
                         </div>
                         <!-- right content section -->
                         <div class="col-md-9">
+                        @include('layouts.messages')
+                        @include('layouts.errors')
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
@@ -153,7 +156,7 @@
                                                 @endforeach
                                             </div>
                                                     <!-- check if exist -->
-                                        @include('layouts.messages')
+                                        
                                             <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
                                                    <form action="{{ route('adminchangepassword') }}" method="post">
                                                    @csrf
@@ -163,7 +166,7 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="account-old-password">Old Password</label>
-                                                                    <input type="password" class="form-control" id="account-old-password" required placeholder="Old Password" data-validation-required-message="This old password field is required">
+                                                                    <input name="old_password" type="password" class="form-control" id="account-old-password" required placeholder="Old Password" data-validation-required-message="This old password field is required">
                                                                 </div>
                                                             </div>
                                                         </div>

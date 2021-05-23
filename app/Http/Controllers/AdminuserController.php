@@ -76,18 +76,19 @@ class AdminuserController extends Controller
 
     public function adminchangepassword(Request $request)
     {
-      // return $request;
-     // dd($request);
-        // $request->validate([
-     
-        //     'password' => 'required|confirmed',
-        //     'password_confirmation' => 'required',
-        // ]);
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ]);
         
-        $user = Adminusers::findOrFail($request->admin_id);
+        $user = Adminusers::findOrFail(Auth::guard('admin')->user()->admin_id);
+        if(!Hash::check($request->old_password, Auth::guard('admin')->user()->password)){
+            return back()->with('failure','Incorrect old password');
+        }
         $user->password = Hash::make($request->password);
         $user->save();
-        return view('adminusers.index', compact('adminusers'));
+        // return view('adminusers.index', compact('adminusers'));
         return back()->with('success','Updated succesfully');
     }
     

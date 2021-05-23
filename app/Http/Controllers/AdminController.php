@@ -136,7 +136,28 @@ class AdminController extends Controller
                 array_push($catcompanies,$cat->CompanyCategoryType->count());
             }
             $categories =['category' => $catcompany, 'companycount' => $catcompanies];
-            return view('vuexy.vuexy-dashboard', compact('categories','publiclotteries','data_arr','companyactive','companyinactive'));
+            //lottetry
+            $lcompanies =EloquentBuilder::to(BookmarkersCompany::where('category_type_id',2)->whereHas('publicLotterycompany', function($query){
+                // $query->select('ggr')->where('ggr','!=',0);
+            })->with('publicLotterycompany'), request()->all())->get();
+    
+            $llabels_arr = [];
+            $ldata_arr = [];
+            foreach($lcompanies as $lcompany)
+            {
+                array_push($llabels_arr,$lcompany->company_name);
+                array_push($ldata_arr,$lcompany->publicLotterycompany->sum('ggr'));
+            }
+            // chart
+            $borderColors = [ "#30ba35", "#f25961" ];
+            $fillColors = ["#fdaf4b","#59d05d","#7367F0","#28C76F","#EA5455","#FF9F43","#1E1E1E","#dae1e7" ];
+            $companyggrchart = new CompanyChart;
+            $companyggrchart->minimalist(false);
+            $companyggrchart->labels($llabels_arr);
+            $companyggrchart->dataset('Public Lottery GGR Reports', 'bar', $ldata_arr)
+            // ->color($borderColors)
+            ->backgroundcolor($fillColors);
+            return view('vuexy.vuexy-dashboard', compact('companies','companyggrchart','categories','publiclotteries','data_arr','companyactive','companyinactive'));
         }
 
         public function accountsetting()

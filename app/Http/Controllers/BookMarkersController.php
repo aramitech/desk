@@ -86,8 +86,8 @@ class BookMarkersController extends Controller
 
     public function bookmarker_shop_name()
     {
-        $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
-        $shops = Shops::with('Shopcompany')->where('category_type_id',1)->get();
+        // $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+        $shops = Shops::with('Shopcompany')->where('company_id',request()->get('company_id'))->where('category_type_id',1)->get();
        
         return $shops;
     }
@@ -107,7 +107,7 @@ class BookMarkersController extends Controller
        // if(Auth::user()->user_type == 'organization_user' || Auth::user()->user_type == 'organization')
         {
             //$category_type_id = CategoryTypes::where('categorytypes_id','1')->with('CompanyCategoryType')->get();
-            $license_name = BookmarkersCompany::where('category_type_id',1)->get();
+            $license_name = BookmarkersCompany::where('category_type_id',1)->with('Shopcompany')->get();
             return $license_name;
         }
     }

@@ -103,6 +103,12 @@
   
      @include('vuexy.layouts.footer')   
 </body>
+	<!-- chart -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
+	@if(isset($companyggrchart))
+		{!! $companyggrchart->script() !!}
+	@endif
 <!-- END: Body-->
 <script src="{{ asset('js/app.js')}}"></script>
 
@@ -1387,7 +1393,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
         dataLabels: {
           enabled: false
         },
-        series: [58.6, 34.9, 6.5],
+        series: [<?php echo $companies->count();?>],
         legend: { show: false },
         comparedResult: [2, -3, 8],
         labels: ['Desktop', 'Mobile', 'Tablet'],
