@@ -60,6 +60,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/card-analytics.css')}}">
     <!-- END: Page CSS-->
 
+
+    <!-- BEGIN: Page Calender CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/plugins/calendars/fullcalendar.css')}}">
+    <!-- END: Page CSS-->
+
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/vendors.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/calendars/fullcalendar.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/calendars/extensions/daygrid.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/calendars/extensions/timegrid.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
+    <!-- END: Vendor CSS-->
+
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
@@ -71,6 +88,11 @@
     <!-- END: Vendor CSS-->
 
 
+    <!-- BEGIN: Todo Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/app-todo.css')}}">
+    <!-- END: Page CSS-->
 
 
 
@@ -140,9 +162,30 @@
 
     <!-- BEGIN: Vendor JS-->
 
+
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('tyu/app-assets/vendors/js/extensions/moment.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/calendar/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/calendar/extensions/daygrid.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/calendar/extensions/timegrid.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/calendar/extensions/interactions.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+
+
     <!-- BEGIN Vendor JS-->
 
 
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('tyu/app-assets/js/scripts/pages/app-todo.js')}}"></script>
+    <!-- END: Page JS-->
+
+
+  <!-- BEGIN: Page JS-->
+  <script src="{{ asset('tyu/app-assets/js/scripts/extensions/fullcalendar.js')}}"></script>
+    <!-- END: Page JS-->
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('tyu/app-assets/js/scripts/modal/components-modal.js')}}"></script>
     <!-- END: Page JS-->

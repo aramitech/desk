@@ -88,11 +88,14 @@
                         <li><a href="{{ route('reports.company-ggr')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Bookmarkers GGR</span></a>
                         </li>
                     </ul>
-                </li>
+                </li>  
 
    
                 <li><a href="{{ route('useractivitylogs')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Activity Logs</span></a>
 </li>                    
-
+<li><a href="{{ route('calender')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Calender</span></a>
+</li> 
+<li><a href="{{ route('todo')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Todo</span></a>
+</li> 
 </ul></div></div>
         

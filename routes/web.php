@@ -206,4 +206,9 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  Route::post('/admin/notes/view', [App\Http\Controllers\NotesController::class, 'index'])->name('notes.notes');
  Route::get('/admin/accountsettingchangepassword/{id}', [App\Http\Controllers\AdminController::class, 'accountsettingchangepassword'])->name('admin.accountsettingchangepassword');
 
+
+ Route::get('/calender', [App\Http\Controllers\CalenderController::class, 'index'])->name('calender');
+
+ Route::get('/todo', [App\Http\Controllers\TodoController::class, 'index'])->name('todo');
+
  
