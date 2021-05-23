@@ -181,7 +181,7 @@
 
 
 
-        // Bar Chart
+        // Bookmarkers Bar Chart
         // ------------------------------------------
 
         //Get the context of the Chart canvas element we want to select
@@ -226,7 +226,7 @@
         },
         title: {
             display: true,
-            text: 'GGR Reports'
+            text: 'Bookmarkers GGR Reports'
         },
 
         };

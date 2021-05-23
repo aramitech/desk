@@ -67,7 +67,7 @@ class AdminController extends Controller
     }
 
 
-        ////////////======//company ggr reposrt////===////////
+        ////////////======//company ggr report////===////////
         public function companyGGr()
         {
             $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('bookmarkerscompany', function($query){
@@ -101,7 +101,7 @@ class AdminController extends Controller
             //get barchart data
             $companies =EloquentBuilder::to(BookmarkersCompany::with(['bookmarkerscompany' => function($query){
                 if(request()->has('date') == 1){
-                    $query->whereDate('created_at','>=',now()->subDays(28));
+                    $query->whereDate('created_at','>=',now()->subDays(21));
                 }
                 elseif(request()->has('month') == 1){
                     $query->whereDate('created_at','>=',now()->subMonth(1));

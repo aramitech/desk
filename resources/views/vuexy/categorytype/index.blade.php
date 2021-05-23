@@ -4,6 +4,7 @@ Category Types List:
 @endsection
 @section('content')
 
+<div id="app">
 <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -30,23 +31,24 @@ Category Types List:
                                         <form novalidate>
                                             <div class="row">
                                                 <div class="col-12 col-sm-12">
-                                                <div class="col-md-6 col-sm-12 text-right">
+                                                <div class="col-md-12 col-sm-12 text-right">
+                       
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcategorytype" type="button">
+                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcategorytype" type="button">
                         Add Category Type
                     </a>
-
-                    <button type="button" class="btn btn-outline-primary block btn-lg" data-toggle="modal" data-target="#default">
-                                                    Launch Modal
-                                                </button>
+                  
+               
                 </div>
             </div>
                                                 <h4 class="media-heading">   
-                                                Category Types List:
+                                                Company:
                                         
                                                 </h4>
                                                 <div class="card-body card-dashboard">
                                                 <div class="table-responsive">
+                 
+                                                
                                                 <table class="table table-striped dataex-html5-selectors">                                                <thead>
                                                     <tr>
                                                     <th class="table-plus">#</th>
@@ -79,10 +81,18 @@ Category Types List:
                                                 </tfoot>
                                             </table>
 
+
+
+
                                             </div>  </div></div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                                     <!-- <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
                                                         Changes</button> -->
+
+
+                      
+
+
                                                     <!-- <button type="reset" class="btn btn-outline-warning">Reset</button> -->
                                                 </div>
                                             </div>
@@ -95,15 +105,21 @@ Category Types List:
                     </div>
                 </section>
                 <!-- users edit ends -->
-                <div class="modal fade text-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                <div class="modal" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                                         <div class="modal-content">
-                                                            <div class="modal-header">
+                                                            <div class="modal-header">Add
             </div>
-        </div>
+            </div> </div> </div>
      
-    <add-categorytype-component/>
-    </div> </div> </div> </div>
+      <!-- ./main content card -->
+      <add-categorytype-component/>
 
+
+</div>
+</div>
+</div>
+</div>
 
 @endsection
+
