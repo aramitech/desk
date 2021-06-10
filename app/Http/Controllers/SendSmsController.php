@@ -106,8 +106,8 @@ class SendSmsController extends Controller
         {
             
             $message = $request->message;
-            // $phone=  $compay_contacts['phone'];
-            $phone=  '0712516957';
+             $phone=  $compay_contacts['phone'];
+         //   $phone=  '0712516957';
           $destination= $compay_contacts;
           $sms = new SendSms;
           $sms->sendMessage($destination, ''.$user->message);

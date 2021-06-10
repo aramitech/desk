@@ -44,28 +44,27 @@
                             <div v-if="errors && errors.physicaladdress" class="text-danger">{{ errors.physicaladdress[0] }}</div>
 						</div></div>
  <div class="form-group row">
-                        <div class="col-md-6">
-							<label>Shop</label>
-							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="Branch" required>
-                            <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
+                       <div class="col-md-6">
+							<label>PAYBILL NO</label>
+							<input class="form-control"  name="paybillno" v-model="fields.paybillno" value="" type="text" placeholder="Paybill No" >
+                            <div v-if="errors && errors.paybillno" class="text-danger">{{ errors.paybillno[0] }}</div>
+					
+						
+							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="hidden" placeholder="Branch" >
 						</div>
                         
-                                                 <div class="col-md-6">
+                                                 <!-- <div class="col-md-6">
             <label for="category_type_id"> Category</label>        
+          
             <multiselect  name="category_type_id" v-model="fields.category_type_id"   label="categorytype" placeholder="Select Category name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
             </multiselect>
             <div v-if="errors && errors.category_type_id" class="text-danger">{{ errors.category_type_id[0] }}</div>
        
-        </div> 
+        </div>  -->
                         
                         </div>
-                         <div class="form-group row">
-                        <div class="col-md-6">
-							<label>PAYBILL NO</label>
-							<input class="form-control"  name="paybillno" v-model="fields.paybillno" value="" type="text" placeholder="Paybill No" >
-                            <div v-if="errors && errors.paybillno" class="text-danger">{{ errors.paybillno[0] }}</div>
-						</div>	</div>
+                     
                     </div> </div>
 
 
@@ -90,11 +89,13 @@ export default {
 data() {
     return {
         action: '/company/addbookmarkers', //save action
-        text: 'Added Succesfully',
+         text: 'Added Succesfully',
         redirect: '/company/bookmarkers',
 
         company_names:[],
-
+       fields: {
+    
+        }
         }
     },
 

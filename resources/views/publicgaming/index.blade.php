@@ -48,11 +48,11 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button">
-                        Add Public Gaming
+                        Add Record
                     </a>
 
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
-                        Upload Public Gaming
+                        Upload Record
                     </a>
                 </div>
             </div>

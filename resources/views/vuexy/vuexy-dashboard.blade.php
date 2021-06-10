@@ -22,8 +22,13 @@
                                             <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">92.6k</h2>
-                                    <p class="mb-0">Subscribers Gained</p>
+                                    <h2 class="text-bold-700 mt-1">92.6
+                                    
+                                  {{--  @foreach($deposits as $depo) 
+                                      <p>{{ $depo->deposits }}</p>
+                                       @endforeach --}}
+                                    </h2>
+                                    <p class="mb-0">Bookmaarkers</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-1"></div>
@@ -38,8 +43,8 @@
                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5k</h2>
-                                    <p class="mb-0">Revenue Generated</p>
+                                    <h2 class="text-bold-700 mt-1">97.5</h2>
+                                    <p class="mb-0">Public Lottery</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-2"></div>
@@ -51,11 +56,11 @@
                                 <div class="card-header d-flex flex-column align-items-start pb-0">
                                     <div class="avatar bg-rgba-danger p-50 m-0">
                                         <div class="avatar-content">
-                                            <i class="feather icon-shopping-cart text-danger font-medium-5"></i>
+                                            <i class="feather icon-home text-danger font-medium-5"></i>
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1">36%</h2>
-                                    <p class="mb-0">Quarterly Sales</p>
+                                    <p class="mb-0">Public Gaming</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-3"></div>
@@ -70,8 +75,8 @@
                                             <i class="feather icon-package text-warning font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5K</h2>
-                                    <p class="mb-0">Orders Received</p>
+                                    <h2 class="text-bold-700 mt-1">97.5</h2>
+                                    <p class="mb-0"> Received</p>
                                 </div>
                                 <div class="card-content">
                                     <div id="line-area-chart-4"></div>
@@ -150,13 +155,13 @@
                         <div class="col-md-4 col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Browser Statistics</h4>
+                                    <h4 class="card-title">Pending Task </h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-25">
                                             <div class="browser-info">
-                                                <p class="mb-25">Google Chrome</p>
+                                                <p class="mb-25">Bookmarkers</p>
                                                 <h4>73%</h4>
                                             </div>
                                             <div class="stastics-info text-right">
@@ -169,7 +174,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between mb-25">
                                             <div class="browser-info">
-                                                <p class="mb-25">Opera</p>
+                                                <p class="mb-25">Public Lottery</p>
                                                 <h4>8%</h4>
                                             </div>
                                             <div class="stastics-info text-right">
@@ -182,7 +187,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between mb-25">
                                             <div class="browser-info">
-                                                <p class="mb-25">Firefox</p>
+                                                <p class="mb-25">Public Gaming</p>
                                                 <h4>19%</h4>
                                             </div>
                                             <div class="stastics-info text-right">
@@ -195,7 +200,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between mb-25">
                                             <div class="browser-info">
-                                                <p class="mb-25">Internet Explorer</p>
+                                                <p class="mb-25"> Explorer</p>
                                                 <h4>27%</h4>
                                             </div>
                                             <div class="stastics-info text-right">
@@ -213,7 +218,7 @@
                         <div class="col-md-8 col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Client Retention</h4>
+                                    <h4 class="card-title">Publi Lottery</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -229,7 +234,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4>All Comppanies</h4>
+                                    <h4>All Companies</h4>
                                     <!-- <div class="dropdown chart-dropdown">
                                         <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Last 7 Days
@@ -284,7 +289,7 @@
                         <div class="col-lg-4 col-12">
                             <div class="card chat-application">
                                 <div class="card-header">
-                                    <h4 class="card-title">Chat</h4>
+                                    <h4 class="card-title">Recent Task</h4>
                                 </div>
                                 <div class="chat-app-window">
                                     <div class="user-chats">
@@ -292,19 +297,21 @@
                                             <div class="chat">
                                                 <div class="chat-avatar">
                                                     <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" />
+                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" /> -->
                                                     </a>
                                                 </div>
                                                 <div class="chat-body">
                                                     <div class="chat-content">
-                                                        <p>Cake sesame snaps cupcake gingerbread</p>
+                                                    @foreach($tasks as $task) 
+                                                        <p>{{ $task->description }}</p>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="chat chat-left">
                                                 <div class="chat-avatar mt-50">
                                                     <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" />
+                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" /> -->
                                                     </a>
                                                 </div>
                                                 <div class="chat-body">
@@ -316,7 +323,7 @@
                                             <div class="chat">
                                                 <div class="chat-avatar">
                                                     <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" />
+                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" /> -->
                                                     </a>
                                                 </div>
                                                 <div class="chat-body">
@@ -328,7 +335,7 @@
                                             <div class="chat chat-left">
                                                 <div class="chat-avatar mt-50">
                                                     <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" />
+                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" /> -->
                                                     </a>
                                                 </div>
                                                 <div class="chat-body">
@@ -337,54 +344,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="chat">
-                                                <div class="chat-avatar mt-50">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Liquorice chocolate bar jelly beans icing</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar mt-50">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Powder toffee tootsie roll macaroon cupcake.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat">
-                                                <div class="chat-avatar">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Apple pie oat cake brownie cotton candy cupcake chocolate bar dessert.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar mt-50">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" />
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Biscuit cake jujubes carrot cake topping sweet cake.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                      
+                                       
                                         </div>
                                     </div>
                                     <div class="chat-footer">

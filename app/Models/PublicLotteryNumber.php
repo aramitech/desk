@@ -5,25 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PublicLottery extends Model
+class PublicLotteryNumber extends Model
 { 
     
-    protected $primaryKey = 'publiclottery_id';
-    protected $table = 'publiclottery';
+    protected $primaryKey = 'publiclotterynumber_id';
+    protected $table = 'publiclotterynumber';
   
     protected $fillable = [
-        'publiclottery_id',
+        'publiclotterynumber_id',
         'company_id',
-        'company_name',
         'license_no',
-        'return_for_of',
-        'return_to',
-        'date',
-        'total_tickets_sold',
-        'sales',
-        'payouts',
-        'ggr',
-        'wht'
+        'lottery_name',
+        'lottery_number',
+        'status',
+        'periodfrom',
+        'periodto'
          ];       
 
  //Contacts<>Org relationship
@@ -40,7 +36,7 @@ class PublicLottery extends Model
  //Shop<>Comany relationship
  public function Lotteryshopnumber()  
  {
-     return $this->belongsTo(PublicLotteryNumber::class,'company_id','company_id');
+     return $this->belongsTo(PublicLottery::class,'company_id','company_id');
  }
 
 

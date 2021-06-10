@@ -94,7 +94,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/app-todo.css')}}">
     <!-- END: Page CSS-->
 
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
         <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/ag-grid/ag-grid.css')}}">

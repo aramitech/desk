@@ -32,9 +32,10 @@ class OtpController extends Controller
         $request->validate(['otp'=>'required']);
         if($request->otp == Auth::guard('admin')->user()->otpCode)
         {
-            session(['twofa' => 1]);
+            session(['twofa' => 1]);  
             
-            return redirect()->route('admin-dashboard');
+            return redirect()->route('admin-master');
+            // return redirect()->route('admin-dashboard');
         }
         else{
             return back()->with('failure','Invalid code');

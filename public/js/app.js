@@ -3152,7 +3152,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3162,7 +3161,8 @@ __webpack_require__.r(__webpack_exports__);
       //save action
       text: 'Added Succesfully',
       redirect: '/company/bookmarkers',
-      company_names: []
+      company_names: [],
+      fields: {}
     };
   },
   methods: {
@@ -3179,10 +3179,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3243,18 +3243,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
   data: function data() {
     return {
-      action: '/company/add',
+      action: '/company/addpubliclottery',
       //save action
       text: 'Added Succesfully',
-      redirect: '/company'
+      redirect: '/company/publiclottery',
+      company_names: [],
+      fields: {}
     };
   },
-  methods: {}
+  methods: {
+    getCategoryTypeName: function getCategoryTypeName() {
+      axios.get('/CategoryTypeNam/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
+    }
+  },
+  created: function created() {
+    this.getCategoryTypeName();
+  }
 });
 
 /***/ }),
@@ -3325,6 +3367,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
@@ -3333,10 +3404,21 @@ __webpack_require__.r(__webpack_exports__);
       action: '/company/addpublicgaming',
       //save action
       text: 'Added Succesfully',
-      redirect: '/company/publickgaming'
+      redirect: '/company/publicgaming',
+      company_names: [],
+      fields: {}
     };
   },
-  methods: {}
+  methods: {
+    getCategoryTypeName: function getCategoryTypeName() {
+      axios.get('/CategoryTypeNam/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
+    }
+  },
+  created: function created() {
+    this.getCategoryTypeName();
+  }
 });
 
 /***/ }),
@@ -4996,6 +5078,179 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+ // register globally
+
+Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default()));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__.default],
+  components: {
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default())
+  },
+  props: ['data'],
+  data: function data() {
+    return {
+      action: '/lotterynumber/add',
+      //save action
+      text: 'Added Succesfully',
+      redirect: '',
+      types: ['Active', 'Inactive'],
+      company_names: [],
+      fields: {
+        license_no: "",
+        trading_name: '',
+        licensee_name: '',
+        category_type_id: '',
+        ggr: '',
+        total_payout: ''
+      }
+    };
+  },
+  methods: {
+    getLicenseeName: function getLicenseeName() {
+      axios.get('/publiclottery_license_name/get').then(function (response) {
+        this.company_names = response.data;
+      }.bind(this));
+    },
+    sum: function sum() {
+      //  console.log("a" +this.fields.ggr +  " b " +this.fields.total_payout);
+      this.fields.ggr = this.fields.total_sales - this.fields.total_payout;
+      this.fields.wht = 0.2 * this.fields.total_payout;
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
+    },
+    ggrtax: function ggrtax() {
+      this.fields.ggrtax = 0.15 * this.fields.ggr;
+    },
+    onChange: function onChange(value) {
+      this.value = value;
+      this.fields.license_no = this.value.license_no;
+      this.fields.trading_name = this.value.trading_name;
+      this.fields.licensee_name = this.value.company_name;
+      this.fields.category_type_id = this.value.category_type_id;
+      console.log(value);
+    }
+  },
+  computed: {
+    ggr: function ggr() {
+      this.fields.ggr = this.total_payout * 0.2;
+      return this.ggr * this.total_payout;
+    }
+  },
+  created: function created() {
+    this.getLicenseeName();
+  },
+  mounted: function mounted() {//this.ggr = this.total_payout * 0.2;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddPublicLotteryComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddPublicLotteryComponent.vue?vue&type=script&lang=js& ***!
@@ -5010,6 +5265,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_FormMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/FormMixin */ "./resources/js/components/shared/FormMixin.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5134,6 +5397,7 @@ __webpack_require__.r(__webpack_exports__);
       text: 'Added Succesfully',
       redirect: '/publiclottery',
       company_names: [],
+      Lottery_names: [],
       fields: {
         license_no: "",
         trading_name: '',
@@ -5146,6 +5410,12 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getLottery_Names: function getLottery_Names(company_id) {
+      axios.get('/lotery_shop_name/get?company_id=' + company_id) //axios.get('/lotery_shop_name/get')
+      .then(function (response) {
+        this.Lottery_names = response.data;
+      }.bind(this));
+    },
     getLicenseeName: function getLicenseeName() {
       axios.get('/publiclottery_license_name/get').then(function (response) {
         this.company_names = response.data;
@@ -5161,11 +5431,14 @@ __webpack_require__.r(__webpack_exports__);
       this.fields.license_no = this.value.license_no;
       this.fields.trading_name = this.value.trading_name;
       this.fields.licensee_name = this.value.company_name;
+      this.getLottery_Names(value.company_id);
+      this.fields.publiclotterynumber_id = value.Lotteryshopnumber;
       console.log(value);
     }
   },
   created: function created() {
     this.getLicenseeName();
+    this.getLottery_Names();
   }
 });
 
@@ -6308,6 +6581,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  // register globally
 
@@ -6324,6 +6613,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
       //save action
       text: 'Added Succesfully',
       redirect: '',
+      types: ['Active', 'Inactive'],
       company_names: [],
       fields: {
         license_no: "",
@@ -8201,12 +8491,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 Vue.component('add-user-component', __webpack_require__(/*! ./components/user/AddUserComponent.vue */ "./resources/js/components/user/AddUserComponent.vue").default);
 Vue.component('edit-user-component', __webpack_require__(/*! ./components/user/EditUserComponent.vue */ "./resources/js/components/user/EditUserComponent.vue").default);
 Vue.component('assignrole-user-component', __webpack_require__(/*! ./components/user/AssignRoleComponent.vue */ "./resources/js/components/user/AssignRoleComponent.vue").default);
-Vue.component('add-company-component', __webpack_require__(/*! ./components/company/AddCompanyComponent.vue */ "./resources/js/components/company/AddCompanyComponent.vue").default);
+Vue.component('add-publiclottery-component', __webpack_require__(/*! ./components/company/AddLotteryCompanyComponent.vue */ "./resources/js/components/company/AddLotteryCompanyComponent.vue").default);
 Vue.component('add-bookmarkerscompany-component', __webpack_require__(/*! ./components/company/AddBookmarkersCompanyComponent.vue */ "./resources/js/components/company/AddBookmarkersCompanyComponent.vue").default);
 Vue.component('add-publicgamingcompany-component', __webpack_require__(/*! ./components/company/AddPublicgamingsCompanyComponent.vue */ "./resources/js/components/company/AddPublicgamingsCompanyComponent.vue").default);
 Vue.component('add-bookmarker-component', __webpack_require__(/*! ./components/bookmarker/AddBookmarkerComponent.vue */ "./resources/js/components/bookmarker/AddBookmarkerComponent.vue").default);
 Vue.component('upload-bookmarker-component', __webpack_require__(/*! ./components/bookmarker/UploadBookmarkerComponent.vue */ "./resources/js/components/bookmarker/UploadBookmarkerComponent.vue").default);
-Vue.component('add-publiclottery-component', __webpack_require__(/*! ./components/publiclottery/AddPublicLotteryComponent.vue */ "./resources/js/components/publiclottery/AddPublicLotteryComponent.vue").default);
+Vue.component('add-publiclotteryrecord-component', __webpack_require__(/*! ./components/publiclottery/AddPublicLotteryComponent.vue */ "./resources/js/components/publiclottery/AddPublicLotteryComponent.vue").default);
 Vue.component('add-publicgaming-component', __webpack_require__(/*! ./components/publicgaming/AddpublicgamingComponent.vue */ "./resources/js/components/publicgaming/AddpublicgamingComponent.vue").default);
 Vue.component('upload-publicgaming-component', __webpack_require__(/*! ./components/publicgaming/UploadpublicgamingComponent.vue */ "./resources/js/components/publicgaming/UploadpublicgamingComponent.vue").default);
 Vue.component('add-adminuser-component', __webpack_require__(/*! ./components/adminuser/AddAdminuserComponent.vue */ "./resources/js/components/adminuser/AddAdminuserComponent.vue").default);
@@ -8238,6 +8528,7 @@ Vue.component('view-publicgamingshop-component', __webpack_require__(/*! ./compo
 Vue.component('add-sendsms-component', __webpack_require__(/*! ./components/sendsms/SendSms.vue */ "./resources/js/components/sendsms/SendSms.vue").default);
 Vue.component('add-sendsms-tocontact-component', __webpack_require__(/*! ./components/sendsms/SendSmsToContact.vue */ "./resources/js/components/sendsms/SendSmsToContact.vue").default);
 Vue.component('add-send-bulk-sms-component', __webpack_require__(/*! ./components/sendsms/SendBulkSms.vue */ "./resources/js/components/sendsms/SendBulkSms.vue").default);
+Vue.component('add-lotteryshop-component', __webpack_require__(/*! ./components/publiclottery/AddLotteryShopComponent.vue */ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50456,10 +50747,10 @@ component.options.__file = "resources/js/components/company/AddBookmarkersCompan
 
 /***/ }),
 
-/***/ "./resources/js/components/company/AddCompanyComponent.vue":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/company/AddCompanyComponent.vue ***!
-  \*****************************************************************/
+/***/ "./resources/js/components/company/AddLotteryCompanyComponent.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/company/AddLotteryCompanyComponent.vue ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -50467,20 +50758,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddCompanyComponent.vue?vue&type=template&id=5c79fed8& */ "./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8&");
-/* harmony import */ var _AddCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddCompanyComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6& */ "./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6&");
+/* harmony import */ var _AddLotteryCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddLotteryCompanyComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var vue_multiselect_dist_vue_multiselect_min_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _AddCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__.render,
-  _AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _AddLotteryCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -50490,7 +50783,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/company/AddCompanyComponent.vue"
+component.options.__file = "resources/js/components/company/AddLotteryCompanyComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -50508,15 +50801,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddPublicgamingsCompanyComponent_vue_vue_type_template_id_04bf0f52___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPublicgamingsCompanyComponent.vue?vue&type=template&id=04bf0f52& */ "./resources/js/components/company/AddPublicgamingsCompanyComponent.vue?vue&type=template&id=04bf0f52&");
 /* harmony import */ var _AddPublicgamingsCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPublicgamingsCompanyComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/company/AddPublicgamingsCompanyComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var vue_multiselect_dist_vue_multiselect_min_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
   _AddPublicgamingsCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
   _AddPublicgamingsCompanyComponent_vue_vue_type_template_id_04bf0f52___WEBPACK_IMPORTED_MODULE_0__.render,
   _AddPublicgamingsCompanyComponent_vue_vue_type_template_id_04bf0f52___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -50807,6 +51102,47 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/publicgaming/VueTableGamings.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/publiclottery/AddLotteryShopComponent.vue ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddLotteryShopComponent.vue?vue&type=template&id=2769cc75& */ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75&");
+/* harmony import */ var _AddLotteryShopComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddLotteryShopComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var vue_multiselect_dist_vue_multiselect_min_css_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _AddLotteryShopComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/publiclottery/AddLotteryShopComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -51807,10 +52143,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -51818,8 +52154,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddCompanyComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddLotteryCompanyComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryCompanyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -51948,6 +52284,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VueTableGamings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./VueTableGamings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publicgaming/VueTableGamings.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VueTableGamings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryShopComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddLotteryShopComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryShopComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -52452,19 +52804,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6& ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddCompanyComponent_vue_vue_type_template_id_5c79fed8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddCompanyComponent.vue?vue&type=template&id=5c79fed8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryCompanyComponent_vue_vue_type_template_id_1e46cff6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6&");
 
 
 /***/ }),
@@ -52601,6 +52953,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VueTableGamings_vue_vue_type_template_id_223d6610___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VueTableGamings_vue_vue_type_template_id_223d6610___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./VueTableGamings.vue?vue&type=template&id=223d6610& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publicgaming/VueTableGamings.vue?vue&type=template&id=223d6610&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75& ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddLotteryShopComponent_vue_vue_type_template_id_2769cc75___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AddLotteryShopComponent.vue?vue&type=template&id=2769cc75& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75&");
 
 
 /***/ }),
@@ -57063,88 +57432,6 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group row" }, [
                       _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", [_vm._v("Shop")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.fields.branch,
-                              expression: "fields.branch"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            name: "branch",
-                            value: "",
-                            type: "text",
-                            placeholder: "Branch",
-                            required: ""
-                          },
-                          domProps: { value: _vm.fields.branch },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.fields,
-                                "branch",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.errors && _vm.errors.branch
-                          ? _c("div", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errors.branch[0]))
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-md-6" },
-                        [
-                          _c("label", { attrs: { for: "category_type_id" } }, [
-                            _vm._v(" Category")
-                          ]),
-                          _vm._v(" "),
-                          _c("multiselect", {
-                            attrs: {
-                              name: "category_type_id",
-                              label: "categorytype",
-                              placeholder: "Select Category name",
-                              options: _vm.company_names,
-                              "allow-empty": true,
-                              multiple: false,
-                              "hide-selected": true,
-                              "max-height": 150
-                            },
-                            on: { input: _vm.onChange },
-                            model: {
-                              value: _vm.fields.category_type_id,
-                              callback: function($$v) {
-                                _vm.$set(_vm.fields, "category_type_id", $$v)
-                              },
-                              expression: "fields.category_type_id"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors && _vm.errors.category_type_id
-                            ? _c("div", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errors.category_type_id[0]))
-                              ])
-                            : _vm._e()
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group row" }, [
-                      _c("div", { staticClass: "col-md-6" }, [
                         _c("label", [_vm._v("PAYBILL NO")]),
                         _vm._v(" "),
                         _c("input", {
@@ -57182,7 +57469,38 @@ var render = function() {
                           ? _c("div", { staticClass: "text-danger" }, [
                               _vm._v(_vm._s(_vm.errors.paybillno[0]))
                             ])
-                          : _vm._e()
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.branch,
+                              expression: "fields.branch"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "branch",
+                            value: "",
+                            type: "hidden",
+                            placeholder: "Branch"
+                          },
+                          domProps: { value: _vm.fields.branch },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "branch",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
                       ])
                     ])
                   ])
@@ -57253,10 +57571,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddCompanyComponent.vue?vue&type=template&id=5c79fed8& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/company/AddLotteryCompanyComponent.vue?vue&type=template&id=1e46cff6& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -57272,7 +57590,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade",
+      staticClass: "modal",
       attrs: {
         id: "addcompany",
         tabindex: "-1",
@@ -57299,247 +57617,339 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Company Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.company_name,
-                        expression: "fields.company_name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "company_name",
-                      type: "text",
-                      placeholder: "Company Name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.company_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "company_name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.company_name
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.company_name[0]))
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Company Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.company_name,
+                              expression: "fields.company_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "company_name",
+                            type: "text",
+                            placeholder: "Company Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.company_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "company_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_name[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Trading Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.trading_name,
+                              expression: "fields.trading_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "trading_name",
+                            value: "",
+                            type: "text",
+                            placeholder: "Trading Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.trading_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "trading_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.trading_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                            ])
+                          : _vm._e()
                       ])
-                    : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("License No")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.license_no,
+                              expression: "fields.license_no"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "license_no",
+                            value: "",
+                            type: "text",
+                            placeholder: "License No",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.license_no },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "license_no",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.license_no
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.license_no[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Email")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.email,
+                              expression: "fields.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "email",
+                            value: "",
+                            type: "email",
+                            placeholder: "Email",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "email", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.email
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.email[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Contact")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.contact,
+                              expression: "fields.contact"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "contact",
+                            value: "",
+                            type: "text",
+                            placeholder: "Contact",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.contact },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "contact",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.contact
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.contact[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Location")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.physicaladdress,
+                              expression: "fields.physicaladdress"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "physicaladdress",
+                            value: "",
+                            type: "text",
+                            placeholder: "Physical Address",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.physicaladdress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "physicaladdress",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.physicaladdress
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("PAYBILL NO")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.paybillno,
+                              expression: "fields.paybillno"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "paybillno",
+                            value: "",
+                            type: "text",
+                            placeholder: "Paybill No"
+                          },
+                          domProps: { value: _vm.fields.paybillno },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "paybillno",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.paybillno
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.paybillno[0]))
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.branch,
+                              expression: "fields.branch"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "branch",
+                            value: "",
+                            type: "hidden",
+                            placeholder: "Branch"
+                          },
+                          domProps: { value: _vm.fields.branch },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "branch",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Trading Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.trading_name,
-                        expression: "fields.trading_name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "trading_name",
-                      value: "",
-                      type: "text",
-                      placeholder: "Trading Name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.trading_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "trading_name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.trading_name
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("License No")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.license_no,
-                        expression: "fields.license_no"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "license_no",
-                      value: "",
-                      type: "text",
-                      placeholder: "License No",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.license_no },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "license_no", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.license_no
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.license_no[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.email,
-                        expression: "fields.email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "email",
-                      value: "",
-                      type: "email",
-                      placeholder: "Email",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "email", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.email
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.email[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Contact")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.contact,
-                        expression: "fields.contact"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "contact",
-                      value: "",
-                      type: "text",
-                      placeholder: "Contact",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.contact },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "contact", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.contact
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.contact[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Location")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.physicaladdress,
-                        expression: "fields.physicaladdress"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "physicaladdress",
-                      value: "",
-                      type: "text",
-                      placeholder: "Physical Address",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.physicaladdress },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "physicaladdress",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.physicaladdress
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
-                      ])
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1)
+                _vm._m(1)
+              ])
             ]
           )
         ])
@@ -57556,7 +57966,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
-        [_vm._v("Add Company")]
+        [_vm._v("Add  Company")]
       ),
       _vm._v(" "),
       _c(
@@ -57578,20 +57988,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -57620,9 +58032,9 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "modal fade",
+      staticClass: "modal",
       attrs: {
-        id: "addpublicgaming",
+        id: "addcompany",
         tabindex: "-1",
         role: "dialog",
         "aria-labelledby": "myLargeModalLabel",
@@ -57647,247 +58059,339 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Company Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.company_name,
-                        expression: "fields.company_name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "company_name",
-                      type: "text",
-                      placeholder: "Company Name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.company_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "company_name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.company_name
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.company_name[0]))
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Company Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.company_name,
+                              expression: "fields.company_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "company_name",
+                            type: "text",
+                            placeholder: "Company Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.company_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "company_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_name[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Trading Name")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.trading_name,
+                              expression: "fields.trading_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "trading_name",
+                            value: "",
+                            type: "text",
+                            placeholder: "Trading Name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.trading_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "trading_name",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.trading_name
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                            ])
+                          : _vm._e()
                       ])
-                    : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("License No")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.license_no,
+                              expression: "fields.license_no"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "license_no",
+                            value: "",
+                            type: "text",
+                            placeholder: "License No",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.license_no },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "license_no",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.license_no
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.license_no[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Email")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.email,
+                              expression: "fields.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "email",
+                            value: "",
+                            type: "email",
+                            placeholder: "Email",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.fields, "email", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.email
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.email[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Contact")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.contact,
+                              expression: "fields.contact"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "contact",
+                            value: "",
+                            type: "text",
+                            placeholder: "Contact",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.contact },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "contact",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.contact
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.contact[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("Location")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.physicaladdress,
+                              expression: "fields.physicaladdress"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "physicaladdress",
+                            value: "",
+                            type: "text",
+                            placeholder: "Physical Address",
+                            required: ""
+                          },
+                          domProps: { value: _vm.fields.physicaladdress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "physicaladdress",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.physicaladdress
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c("label", [_vm._v("PAYBILL NO")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.paybillno,
+                              expression: "fields.paybillno"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "paybillno",
+                            value: "",
+                            type: "text",
+                            placeholder: "Paybill No"
+                          },
+                          domProps: { value: _vm.fields.paybillno },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "paybillno",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.paybillno
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.paybillno[0]))
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fields.branch,
+                              expression: "fields.branch"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "branch",
+                            value: "",
+                            type: "hidden",
+                            placeholder: "Branch"
+                          },
+                          domProps: { value: _vm.fields.branch },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.fields,
+                                "branch",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Trading Name")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.trading_name,
-                        expression: "fields.trading_name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "trading_name",
-                      value: "",
-                      type: "text",
-                      placeholder: "Trading Name",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.trading_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "trading_name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.trading_name
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.trading_name[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("License No")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.license_no,
-                        expression: "fields.license_no"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "license_no",
-                      value: "",
-                      type: "text",
-                      placeholder: "License No",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.license_no },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "license_no", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.license_no
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.license_no[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Email")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.email,
-                        expression: "fields.email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "email",
-                      value: "",
-                      type: "email",
-                      placeholder: "Email",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "email", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.email
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.email[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Contact")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.contact,
-                        expression: "fields.contact"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "contact",
-                      value: "",
-                      type: "text",
-                      placeholder: "Contact",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.contact },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.fields, "contact", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.contact
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.contact[0]))
-                      ])
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", [_vm._v("Location")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.fields.physicaladdress,
-                        expression: "fields.physicaladdress"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "physicaladdress",
-                      value: "",
-                      type: "text",
-                      placeholder: "Physical Address",
-                      required: ""
-                    },
-                    domProps: { value: _vm.fields.physicaladdress },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.fields,
-                          "physicaladdress",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _vm.errors && _vm.errors.physicaladdress
-                    ? _c("div", { staticClass: "text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.physicaladdress[0]))
-                      ])
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1)
+                _vm._m(1)
+              ])
             ]
           )
         ])
@@ -57904,7 +58408,7 @@ var staticRenderFns = [
       _c(
         "h4",
         { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
-        [_vm._v("Add Public Gaming Company")]
+        [_vm._v("Add  Company")]
       ),
       _vm._v(" "),
       _c(
@@ -57926,20 +58430,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
     ])
   }
 ]
@@ -62870,6 +63376,523 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddLotteryShopComponent.vue?vue&type=template&id=2769cc75& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "addlotteryshop",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myLargeModalLabel",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog modal-dialog-centered" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              attrs: { method: "POST" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", { attrs: { for: "company_id" } }, [
+                          _vm._v(" Operator Name")
+                        ]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "company_id",
+                            label: "company_name",
+                            placeholder: "Select License name",
+                            options: _vm.company_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
+                          },
+                          on: { input: _vm.onChange },
+                          model: {
+                            value: _vm.fields.company_id,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "company_id", $$v)
+                            },
+                            expression: "fields.company_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.company_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.category_type_id,
+                            expression: "fields.category_type_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "category_type_id",
+                          type: "hidden",
+                          placeholder: "category_type_id",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.category_type_id },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "category_type_id",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.licensee_name,
+                            expression: "fields.licensee_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "licensee_name",
+                          type: "hidden",
+                          placeholder: "Licensee Name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.licensee_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "licensee_name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.licensee_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.licensee_name[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Trading Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.trading_name,
+                            expression: "fields.trading_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "trading_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Trading Name",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.trading_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "trading_name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.trading_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.trading_name[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("License No")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.license_no,
+                            expression: "fields.license_no"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "license_no",
+                          value: "",
+                          type: "text",
+                          placeholder: "License No",
+                          disabled: _vm.validated ? false : true,
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.license_no },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "license_no",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.license_no
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.license_no[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "trf" }, [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Lottery Name")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.lottery_name,
+                            expression: "fields.lottery_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "lottery_name",
+                          value: "",
+                          type: "text",
+                          placeholder: "Lottery Name",
+                          required: ""
+                        },
+                        domProps: { value: _vm.fields.lottery_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "lottery_name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.lottery_name
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.lottery_name[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("Lottery Number")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.lottery_number,
+                            expression: "fields.lottery_number"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "lottery_number",
+                          value: "",
+                          type: "text",
+                          placeholder: "Lottery Number"
+                        },
+                        domProps: { value: _vm.fields.lottery_number },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "lottery_number",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.lottery_number
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.lottery_number[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", [_vm._v("Status")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "status",
+                            placeholder: "Select status",
+                            options: _vm.types,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": false,
+                            "max-height": 150
+                          },
+                          on: { input: _vm.onChange2 },
+                          model: {
+                            value: _vm.fields.status,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "status", $$v)
+                            },
+                            expression: "fields.status"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.status
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.status[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("From")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.periodfrom,
+                            expression: "fields.periodfrom"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "periodfrom",
+                          value: "",
+                          type: "date",
+                          placeholder: "period from"
+                        },
+                        domProps: { value: _vm.fields.periodfrom },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "periodfrom",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.periodfrom
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.periodfrom[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-3" }, [
+                      _c("label", [_vm._v("To")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.periodto,
+                            expression: "fields.periodto"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "periodto",
+                          value: "",
+                          type: "date",
+                          placeholder: "period to"
+                        },
+                        domProps: { value: _vm.fields.periodto },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "periodto",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.periodto
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.periodto[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(1)
+            ]
+          )
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h4",
+        { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
+        [_vm._v("Add Lottery ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c("div", { staticClass: "trf" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-secondary",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Save")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddPublicLotteryComponent.vue?vue&type=template&id=4deebf94&":
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publiclottery/AddPublicLotteryComponent.vue?vue&type=template&id=4deebf94& ***!
@@ -62920,10 +63943,10 @@ var render = function() {
                   _c("div", { staticClass: "form-group row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-md-12" },
+                      { staticClass: "col-md-6" },
                       [
                         _c("label", { attrs: { for: "company_id" } }, [
-                          _vm._v(" Licensee Name")
+                          _vm._v(" Operator Name")
                         ]),
                         _vm._v(" "),
                         _c("multiselect", {
@@ -62950,6 +63973,47 @@ var render = function() {
                         _vm.errors && _vm.errors.company_id
                           ? _c("div", { staticClass: "text-danger" }, [
                               _vm._v(_vm._s(_vm.errors.company_id[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", [_vm._v("Lottery Name")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "publiclotterynumber_id",
+                            label: "lottery_name",
+                            placeholder: "Select Lottery name",
+                            options: _vm.Lottery_names,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": true,
+                            "max-height": 150
+                          },
+                          model: {
+                            value: _vm.fields.publiclotterynumber_id,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.fields,
+                                "publiclotterynumber_id",
+                                $$v
+                              )
+                            },
+                            expression: "fields.publiclotterynumber_id"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.publiclotterynumber_id
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(
+                                _vm._s(_vm.errors.publiclotterynumber_id[0])
+                              )
                             ])
                           : _vm._e()
                       ],
@@ -66603,6 +67667,84 @@ var render = function() {
                           ])
                         : _vm._e()
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("label", [_vm._v("shop Number")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.fields.shop_number,
+                            expression: "fields.shop_number"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          name: "shop_number",
+                          value: "",
+                          type: "text",
+                          placeholder: "Shop Number"
+                        },
+                        domProps: { value: _vm.fields.shop_number },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.fields,
+                              "shop_number",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors && _vm.errors.shop_number
+                        ? _c("div", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errors.shop_number[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-6" },
+                      [
+                        _c("label", [_vm._v("Status")]),
+                        _vm._v(" "),
+                        _c("multiselect", {
+                          attrs: {
+                            name: "status",
+                            placeholder: "Select status",
+                            options: _vm.types,
+                            "allow-empty": true,
+                            multiple: false,
+                            "hide-selected": false,
+                            "max-height": 150
+                          },
+                          on: { input: _vm.onChange2 },
+                          model: {
+                            value: _vm.fields.status,
+                            callback: function($$v) {
+                              _vm.$set(_vm.fields, "status", $$v)
+                            },
+                            expression: "fields.status"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errors && _vm.errors.status
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.status[0]))
+                            ])
+                          : _vm._e()
+                      ],
+                      1
+                    )
                   ])
                 ])
               ]),

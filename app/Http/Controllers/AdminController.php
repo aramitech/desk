@@ -9,6 +9,7 @@ use App\Models\Publicgamings;
 use App\Models\BookmarkersCompany;
 use App\Models\CategoryTypes;
 use App\Models\Admin;
+use App\Models\Task;
 use App\Models\Notes;
 use Auth;
 
@@ -101,7 +102,7 @@ class AdminController extends Controller
             //get barchart data
             $companies =EloquentBuilder::to(BookmarkersCompany::with(['bookmarkerscompany' => function($query){
                 if(request()->has('date') == 1){
-                    $query->whereDate('created_at','>=',now()->subDays(21));
+                    $query->whereDate('created_at','>=',now()->subMonth(21));
                 }
                 elseif(request()->has('month') == 1){
                     $query->whereDate('created_at','>=',now()->subMonth(1));
@@ -123,6 +124,11 @@ class AdminController extends Controller
                     array_push($data_arr['ggr'],$company->bookmarkerscompany->sum('ggr'));
                 }
             }
+
+            $deposits = BookMarkers::max('deposits');
+
+
+            $tasks = Task::where('task_id','1')->get();
             //company status
             $companyactive =BookmarkersCompany::where('status','Active')->count();
             $companyinactive =BookmarkersCompany::where('status','Not Active')->count();
@@ -157,7 +163,7 @@ class AdminController extends Controller
             $companyggrchart->dataset('Public Lottery GGR Reports', 'bar', $ldata_arr)
             // ->color($borderColors)
             ->backgroundcolor($fillColors);
-            return view('vuexy.vuexy-dashboard', compact('companies','companyggrchart','categories','publiclotteries','data_arr','companyactive','companyinactive'));
+            return view('vuexy.vuexy-dashboard', compact('deposits','tasks','companies','companyggrchart','categories','publiclotteries','data_arr','companyactive','companyinactive'));
         }
 
         public function accountsetting()

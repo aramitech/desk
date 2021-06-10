@@ -60,6 +60,10 @@ class ShopController extends Controller
         
         $user->shop_name = $request->shop_name;
         $user->location = $request->location;
+        $user->shop_number = $request->shop_number;
+        $user->status = $request->status;
+
+        
         $user->save();  
         return back()->with('success','Added succesfully');
     }

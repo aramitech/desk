@@ -49,11 +49,11 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
-                        Add BookMarkers
+                        Add Record
                     </a>
 
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
-                        Upload BookMarkers
+                        Upload Record
                     </a>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AuditLog;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
@@ -17,12 +18,12 @@ class TodoController extends Controller
     public function index()
     {
         //
-        $auditLogs = EloquentBuilder::to(AuditLog::with('userlogs'),request()->all())->get();
+        $todoes = Task::all();
        /// $auditLogs = AuditLog::with('userlogs')->get();
 
       //  $auditLogs = AuditLog::all()->with('userlogs')->get();
       //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();
-      return view('vuexy.todo.index', compact('auditLogs'));
+      return view('vuexy.todo.index', compact('todoes'));
     }
 
     public function auditlogsdata()
@@ -38,18 +39,16 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addtask(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required',
-        ]);
-        $user = new Adminusers();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+            'title' => 'required', 
+            'description' => 'required',    
+           ]);
+      
+        $user = new Task();
+        $user->title = $request->title;
+        $user->description = $request->description;
         $user->save();
         return back()->with('success','Added succesfully');
     }

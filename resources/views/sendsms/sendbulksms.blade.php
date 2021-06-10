@@ -42,7 +42,7 @@
                         <th>Sms </th>
             
                         <th>Sms No</th>
-                        <th>Company</th>
+                        <th>Date</th>
                     
          
                     

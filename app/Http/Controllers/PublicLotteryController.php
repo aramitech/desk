@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PublicLottery;
 use App\Models\BookmarkersCompany;
+use App\Models\PublicLotteryNumber;
+
 use App\Models\AuditLog;
 use Auth;
 use Illuminate\Http\Request;
@@ -23,6 +25,18 @@ class PublicLotteryController extends Controller
         $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
         return view('publiclottery.index', compact('publiclotteries'));
     }
+
+
+
+    public function lotery_shop_name()
+    {
+        // $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+          $shops = PublicLotteryNumber::with('Lotteryshopnumber')->where('company_id',request()->get('company_id'))->get();
+        //$shops = PublicLotteryNumber::all();
+        return $shops;
+    }
+
+
 
 
     //return getLicensee Name
@@ -108,6 +122,7 @@ class PublicLotteryController extends Controller
         $user = new PublicLottery();
         $user->company_id = $request->company_id['company_id'];
         $user->license_no = $request->license_no;
+        $user->lottery_name= $request->publiclotterynumber_id['publiclotterynumber_id'];
         $user->return_for_of = $request->return_for_of;
         $user->return_to = $request->return_to;
         $user->date = $request->date;
@@ -134,7 +149,66 @@ class PublicLotteryController extends Controller
         return back()->with('success','Added succesfully');
     }
 
-   
+    
+
+   /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function lotterynumber_store(Request $request)
+     {
+         $request->validate([
+             'lottery_number' => 'required',
+             'status' => 'required',
+               
+         ]);
+ 
+         if(Auth::guard('admin')->check())
+         {     
+             $id= Auth::guard('admin')->user()->admin_id;
+             $email= Auth::guard('admin')->user()->email;  
+             $category= 'Admin'; 
+         }
+       elseif(Auth::guard('web')->check())
+       {
+         //$userLog->id = Auth::user()->id;
+         $id= Auth::guard('web')->user()->id;
+         $email= Auth::guard('web')->user()->email;  
+         $category= 'User'; 
+       }
+ 
+         $user = new PublicLotteryNumber();
+         $user->company_id = $request->company_id['company_id'];
+         $user->license_no = $request->license_no;
+         $user->lottery_name= $request->lottery_name;
+
+         $user->lottery_number = $request->lottery_number;
+         $user->status = $request->status;
+         $user->periodfrom = $request->periodfrom;
+         $user->periodto = $request->periodto;
+         
+           $user->id = $id;
+         $user->save();
+ 
+ 
+         //log
+         $userLog = new AuditLog();
+         $userLog->audit_module = "User";
+         $userLog->audit_activity = "Added Public Lottery Entry Licence No:".$request->license_no;
+        
+         $userLog->user_category = "User";
+        // $userLog->audit_log_id = $id;
+         $userLog->id = $id;  
+         $userLog->save();
+ 
+         return back()->with('success','Added succesfully');
+     }
+
+
+
+
+
     public function upload(Request $request)
     {
        // return $request->company_id;

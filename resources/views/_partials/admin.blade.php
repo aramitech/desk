@@ -1,6 +1,6 @@
 <ul id="accordion-menu">
     <li class="dropdown">
-        <a href="{{ route('admin-dashboard')}}" class="dropdown-toggle no-arrow {{ (request()->is('admin/dashboard')) ? 'active' : '' }}">
+        <a href="{{ route('admin-master')}}" class="dropdown-toggle no-arrow {{ (request()->is('admin/master')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-dashboard"></span><span class="mtext">Dashboard</span>
         </a>
     </li>
@@ -10,35 +10,48 @@
         </a>
     </li>
   
-    <li class="dropdown">
-        <a href="{{ route('categorytypes')}}" class="dropdown-toggle no-arrow {{ (request()->is('categorytypes*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Category Types</span>
-        </a>
-    </li>
-    
+
+
     <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Company</span>
         </a>
         <ul class="submenu">
-       <li> <a href="{{ route('company.bookmarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.bookmarkers*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext"> Company</span>
-        </a></li>
-        <!-- <li> <a href="{{ route('company.publickgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.publickgaming*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming Company</span>
-        </a></li>
-        <li> <a href="{{ route('company')}}" class="dropdown-toggle no-arrow {{ (request()->is('company*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery Company</span>
-        </a></li> -->
-            
+        <li class="dropdown">
+        <a href="{{ route('company.bookmarkers','BookMarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('bookmarkerscompany*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">BookMarkers</span>
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a href="{{ route('company.publiclottery','PublicGaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclotterycompany*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
+        </a>
+    </li>
+    
+    <li class="dropdown">
+        <a href="{{ route('company.publicgaming','PublicLoottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('publicgamingcompany*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
+        </a>
+    </li>
         </ul>
     </li>
-   
-   
+
+
+
+
+
+
+
+
+
+
+
+
    
     <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Books</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Records</span>
         </a>
         <ul class="submenu">
         <li class="dropdown">
@@ -60,13 +73,25 @@
     </li>
         </ul>
     </li>
-    <li class="dropdown">
+    <!-- <li class="dropdown">
         <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext"> Shop</span>
         </a>
-    </li>
+    </li> -->
 
+
+
+
+
+
+
+<!-- 
     <li class="dropdown">
+        <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">SMS</span>
+        </a>
+        <ul class="submenu">
+        <li class="dropdown">
         <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Company</span>
         </a>
@@ -83,6 +108,18 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Bulk SMS</span>
         </a>
     </li>
+        </ul>
+    </li> -->
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -189,6 +226,18 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Account Setting</span>
         </a>
     </li>
+    <!-- <li class="dropdown">
+        <a href="{{ route('calender')}}" class="dropdown-toggle no-arrow {{ (request()->is('calender*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Calender</span>
+        </a>
+    </li> -->
+
+    <li class="dropdown">
+        <a href="{{ route('todo')}}" class="dropdown-toggle no-arrow {{ (request()->is('todo*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Task</span>
+        </a>
+    </li>
+
 <!-- 
    <li class="dropdown">   
         <a href="{{ route('publiclottery_shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclottery_shop*')) ? 'active' : '' }}">

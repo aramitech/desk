@@ -23,13 +23,13 @@ Vue.component('add-user-component', require('./components/user/AddUserComponent.
 Vue.component('edit-user-component', require('./components/user/EditUserComponent.vue').default);
 Vue.component('assignrole-user-component', require('./components/user/AssignRoleComponent.vue').default);
 
-Vue.component('add-company-component', require('./components/company/AddCompanyComponent.vue').default);
+Vue.component('add-publiclottery-component', require('./components/company/AddLotteryCompanyComponent.vue').default);
 Vue.component('add-bookmarkerscompany-component', require('./components/company/AddBookmarkersCompanyComponent.vue').default);
 Vue.component('add-publicgamingcompany-component', require('./components/company/AddPublicgamingsCompanyComponent.vue').default);
 
 Vue.component('add-bookmarker-component', require('./components/bookmarker/AddBookmarkerComponent.vue').default);
 Vue.component('upload-bookmarker-component', require('./components/bookmarker/UploadBookmarkerComponent.vue').default);
-Vue.component('add-publiclottery-component', require('./components/publiclottery/AddPublicLotteryComponent.vue').default);
+ Vue.component('add-publiclotteryrecord-component', require('./components/publiclottery/AddPublicLotteryComponent.vue').default);
 Vue.component('add-publicgaming-component', require('./components/publicgaming/AddpublicgamingComponent.vue').default);
 Vue.component('upload-publicgaming-component', require('./components/publicgaming/UploadpublicgamingComponent.vue').default);
 
@@ -78,6 +78,8 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
 Vue.component('add-sendsms-tocontact-component', require('./components/sendsms/SendSmsToContact.vue').default);
 Vue.component('add-send-bulk-sms-component', require('./components/sendsms/SendBulkSms.vue').default);
+
+Vue.component('add-lotteryshop-component', require('./components/publiclottery/AddLotteryShopComponent.vue').default);
 
 
 

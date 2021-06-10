@@ -7,7 +7,7 @@ use App\Models\BookmarkersCompany;
 use App\Models\PublicGamingCompany;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class CompanyPublicLotteryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,22 +17,22 @@ class CompanyController extends Controller
     public function index()
     {
         //
-        $companies = Company::where('category_type_id','1')->get();
+        $companies = Company::where('category_type_id','2')->get();
         return view('company.publiclottery', compact('companies'));
     }
-    public function bookmarkers()
+    public function publiclottery()
     {
         //
 
-        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
-        return view('company.bookmarkers', compact('bookmarkers'));
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','2')->OrderBy('category_type_id')->get();
+        return view('company.publiclottery', compact('bookmarkers'));
     }
 
     public function bookmarkers2()
     {
         //
 
-        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->OrderBy('category_type_id')->get();
         return view('vuexy.company.bookmarkers', compact('bookmarkers'));
     }
 
@@ -61,9 +61,8 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addpubliclottery(Request $request)
+    public function store(Request $request)
     {
-        
         $request->validate([
             'company_name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -73,21 +72,16 @@ class CompanyController extends Controller
             'physicaladdress' => 'required',
         
         ]);
-        $user = new BookmarkersCompany();
+        $user = new Company();
         $user->company_name = $request->company_name;
         $user->trading_name = $request->trading_name;
         $user->license_no = $request->license_no;
         $user->email = $request->email;
         $user->contact = $request->contact;
         $user->physicaladdress = $request->physicaladdress;
-        $user->branch = $request->branch;
-        $user->category_type_id = '2'; 
-        $user->paybillno = $request->paybillno;
-        
         $user->save();
         return back()->with('success','Added succesfully');
     }
-    
 
     public function addbookmarkers(Request $request)
     {
@@ -109,8 +103,7 @@ class CompanyController extends Controller
         $user->contact = $request->contact;
         $user->physicaladdress = $request->physicaladdress;
         $user->branch = $request->branch;
-        // $user->category_type_id = $request->category_type_id['categorytypes_id'];   
-        $user->category_type_id = '1'; 
+        $user->category_type_id = $request->category_type_id['categorytypes_id'];   
         $user->paybillno = $request->paybillno;
         
         $user->save();
@@ -119,7 +112,6 @@ class CompanyController extends Controller
     
     public function addpublicgaming(Request $request)
     {
-        
         $request->validate([
             'company_name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -129,18 +121,14 @@ class CompanyController extends Controller
             'physicaladdress' => 'required',
         
         ]);
-        $user = new BookmarkersCompany();
+        $user = new PublicGamingCompany();
         $user->company_name = $request->company_name;
         $user->trading_name = $request->trading_name;
         $user->license_no = $request->license_no;
         $user->email = $request->email;
         $user->contact = $request->contact;
         $user->physicaladdress = $request->physicaladdress;
-        $user->branch = $request->branch;
-        // $user->category_type_id = $request->category_type_id['categorytypes_id'];   
-        $user->category_type_id = '3'; 
-        $user->paybillno = $request->paybillno;
-        
+   
         $user->save();
         return back()->with('success','Added succesfully');
     }

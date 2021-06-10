@@ -202,7 +202,7 @@
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="accountTextarea">Notes</label>
-                                                                <textarea class="form-control" name="note" id="accountTextarea" rows="3" placeholder="Notes..."></textarea>
+                                                                <textarea class="form-control" name="note" id="accountTextarea" rows="3" placeholder="Notes..." required></textarea>
                                                             </div>
                                                         </div>
 
@@ -225,7 +225,7 @@
               
                         <th>Note</th>
             
-                        <th>Date</th>
+                        <th>Date</th>     <th>Action</th>
                                                
                                                     </tr>
                                                 </thead>
@@ -236,7 +236,9 @@
                         <td>{{ $note->note }}</td>
         
                         <td>{{ $note->created_at }}</td>
-                   
+                   <td>   <a id="edit-county" href="{{ route('notes.delete', $note->note_id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete" data-original-title="Delete" data-id="{{ $note->note_id }}">
+             <i class="fa fa-trash"></i> Delete
+                  </a></td>
                     </tr>
              
                     @endforeach
@@ -246,7 +248,7 @@
                                                     <th class="table-plus">#</th>
                                                     <th>Note</th>
          
-                        <th>Date</th>
+                        <th>Date</th> <th>Action</th>
                                                    
                                                     </tr>
                                                 </tfoot>

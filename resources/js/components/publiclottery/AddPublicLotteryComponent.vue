@@ -12,15 +12,23 @@
                          <div class="trf"> 
                         <div class="form-group row">
                         
-                       <div class="col-md-12">
-            <label for="company_id"> Licensee Name</label>        
+                       <div class="col-md-6">
+            <label for="company_id"> Operator Name</label>        
             <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
             </multiselect>
             <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
        
+           
         </div> 
-                      
+                      <div class="col-md-6">
+							<label>Lottery Name</label>
+					      
+            <multiselect  name="publiclotterynumber_id" v-model="fields.publiclotterynumber_id"   label="lottery_name" placeholder="Select Lottery name" :options="Lottery_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" >
+              
+            </multiselect>
+            <div v-if="errors && errors.publiclotterynumber_id" class="text-danger">{{ errors.publiclotterynumber_id[0] }}</div>
+       	</div>  
                
                   
                     <div class="col-md-6">
@@ -121,6 +129,7 @@ data() {
         text: 'Added Succesfully',
         redirect: '/publiclottery',
            company_names: [],
+            Lottery_names: [],
       fields: {
         license_no:"",
         trading_name:'',
@@ -134,6 +143,13 @@ data() {
     },
 
 methods: {
+       getLottery_Names: function(company_id){
+         axios.get('/lotery_shop_name/get?company_id='+company_id)
+        //axios.get('/lotery_shop_name/get')
+        .then(function(response){
+          this.Lottery_names = response.data;        
+        }.bind(this));
+      },
        getLicenseeName: function(){
         axios.get('/publiclottery_license_name/get')
         .then(function(response){
@@ -155,11 +171,19 @@ methods: {
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
+
+
+      this.getLottery_Names(value.company_id)
+     this.fields.publiclotterynumber_id = value.Lotteryshopnumber;
+
+
+
     console.log(value)
     },
     },
         created: function(){  
-     this.getLicenseeName()   
+     this.getLicenseeName()  
+     this.getLottery_Names() 
     },
 }
 </script>

@@ -48,10 +48,10 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button">
-                        Add Public Lottery
+                        Add Record
                     </a>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button">
-                        Upload Public Lottery
+                        Upload Record
                     </a>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         <upload-publiclottery-component/>
     </div>
     <!-- ./main content card -->
-    <add-publiclottery-component/>
+    <add-publiclotteryrecord-component/>
     
 </div>
 @endsection

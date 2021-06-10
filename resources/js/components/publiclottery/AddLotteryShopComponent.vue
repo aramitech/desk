@@ -1,16 +1,16 @@
  <template>
-    <div class="modal fade" id="addshop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addlotteryshop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Add Bookmarkers Shop</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Add Lottery </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body"> <div class="trf"> 
                           <div class="form-group row">
  <div class="col-md-6">
-            <label for="company_id"> Licensee Name</label>        
+            <label for="company_id"> Operator Name</label>        
             <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
               
             </multiselect>
@@ -43,35 +43,41 @@
 <div class="form-group row">   
 
                             <div class="col-md-6">
-							<label>shop Name</label>
-							<input class="form-control"  name="shop_name" v-model="fields.shop_name" value="" type="text" placeholder="Shop Name" required>
-                            <div v-if="errors && errors.shop_name" class="text-danger">{{ errors.shop_name[0] }}</div>
+							<label>Lottery Name</label>
+							<input class="form-control"  name="lottery_name" v-model="fields.lottery_name" value="" type="text" placeholder="Lottery Name" required>
+                            <div v-if="errors && errors.lottery_name" class="text-danger">{{ errors.lottery_name[0] }}</div>
 						</div>
                         
   
                           <div class="col-md-6">
-							<label>Location</label>
-							<input class="form-control"  name="location" v-model="fields.location" value="" type="text" placeholder="Location" >
-                            <div v-if="errors && errors.location" class="text-danger">{{ errors.location[0] }}</div>
+							<label>Lottery Number</label>
+							<input class="form-control"  name="lottery_number" v-model="fields.lottery_number" value="" type="text" placeholder="Lottery Number" >
+                            <div v-if="errors && errors.lottery_number" class="text-danger">{{ errors.lottery_number[0] }}</div>
 						</div></div>
 
  <div class="form-group row">   
 
                             <div class="col-md-6">
-							<label>shop Number</label>
-							<input class="form-control"  name="shop_number" v-model="fields.shop_number" value="" type="text" placeholder="Shop Number" >
-                            <div v-if="errors && errors.shop_number" class="text-danger">{{ errors.shop_number[0] }}</div>
-						</div>
-                        
-  
-                          <div class="col-md-6">
 							<label>Status</label>
-				
-            <multiselect  name="status" v-model="fields.status"  placeholder="Select status" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange2"> 
+					       <multiselect  name="status" v-model="fields.status"  placeholder="Select status" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange2"> 
               
             </multiselect>
     <div v-if="errors && errors.status" class="text-danger">{{ errors.status[0] }}</div>
-						</div></div></div>
+						</div>
+                        
+  
+              <div class="col-md-3">
+							<label>From</label>
+							<input class="form-control"  name="periodfrom" v-model="fields.periodfrom" value="" type="date" placeholder="period from" >
+                            <div v-if="errors && errors.periodfrom" class="text-danger">{{ errors.periodfrom[0] }}</div>
+						</div>
+                     <div class="col-md-3">
+							<label>To</label>
+							<input class="form-control"  name="periodto" v-model="fields.periodto" value="" type="date" placeholder="period to" >
+                            <div v-if="errors && errors.periodto" class="text-danger">{{ errors.periodto[0] }}</div>
+						</div>
+            
+            </div></div>
                         
                     </div>
                     <div class="modal-footer"> <div class="trf"> 
@@ -98,7 +104,7 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/shop/add', //save action
+        action: '/lotterynumber/add', //save action
         text: 'Added Succesfully',
         redirect: '',
     types: ['Active','Inactive'],
@@ -120,7 +126,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

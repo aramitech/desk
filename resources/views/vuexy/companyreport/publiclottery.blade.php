@@ -33,19 +33,91 @@ Category Types List:
                                                 <div class="col-12 col-sm-12">
                                                 <div class="col-md-12 col-sm-12 text-right">
                 <div>
-                <button class="btn btn-primary" data-toggle="modal" id="show-modal" data-target="#addcompany" type="button" >
-                        Add  Company
-                    </button>
+           
 
                
                 </div>
             </div>
                                                 <h4 class="media-heading">   
-                                                Company:
+                                              Public Lottery  Company:
                                         
                                                 </h4>
                                                 <div class="card-body card-dashboard">
                                                 <div class="table-responsive">
+                 
+
+
+
+                  <!-- users filter start -->
+                  <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Filters</h4>
+                            <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="feather icon-chevron-down"></i></a></li>
+                                    <li><a data-action=""><i class="feather icon-rotate-cw users-data-filter"></i></a></li>
+                                    <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <div class="users-list-filter">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-role">PayBill</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-control" onchange="goToPayBill(this.value)" id="users-list-role">
+                                                        <option value="">All</option>
+                                                        <option value="HavePayBill">Have PayBill</option>
+                                                        <option value="NoPayBill">No PayBill</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                  
+
+<script>
+function goToPayBill(id) {
+  window.location.href = "{{ route('publiclotterycompanystatus') }}"+id;
+}
+function goToTestPage(id) {
+  window.location.href = "{{ route('publiclotterycompanystatus') }}"+id;
+}
+</script>
+
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-status">Status</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-control" onchange="goToTestPage(this.value)" id="users-list-status">
+                                                        <option value="">All</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Blocked">Blocked</option>
+                                                        <option value="deactivated">Deactivated</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-verified">Verified</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-control" id="users-list-verified">
+                                                        <option value="">All</option>
+                                                        <option value="true">Yes</option>
+                                                        <option value="false">No</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                      
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- users filter end -->
+
+
                  
                                                 
                                                 <table class="table table-striped dataex-html5-selectors">               <thead>
@@ -58,7 +130,7 @@ Category Types List:
                         <th>License No</th>
                     
                         <th>Address</th>
-                        <th>Status</th>       <th>Action</th>
+                        <th>Status</th>     
                    
                     </tr>
                 </thead>
@@ -74,12 +146,7 @@ Category Types List:
                         <td>{{ $bookmarker->physicaladdress }}</td>
                         <td>{{ $bookmarker->status }}</td>
                      
-                        <td>
-                        <button class="btn btn-sm btn-info"  id="show-modal" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="feather icon-view"></i> </button>
-<button class="btn btn-sm btn-info" data-toggle="modal"  id="show-modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="feather icon-edit"></i></button>
-<button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="feather icon-trash"></i> </button>
-                      
-                            </td>  
+                
                     </tr>
                     <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -107,18 +174,7 @@ Category Types List:
                                                         Changes</button> -->
 
 
-                                                        <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
-                        </div>
-                    </div>
-
-                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
-                        </div>
-                    </div>
-
+                                                      
 
                                                     <!-- <button type="reset" class="btn btn-outline-warning">Reset</button> -->
                                                 </div>

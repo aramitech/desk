@@ -56,6 +56,44 @@ Route::post('/company/addpublicgaming', [App\Http\Controllers\CompanyController:
 
 Route::get('/company/bookmarkers2', [App\Http\Controllers\CompanyController::class, 'bookmarkers2'])->name('company.bookmarkers2');
 
+Route::get('/company/publiclottery', [App\Http\Controllers\CompanyPublicLotteryController::class, 'publiclottery'])->name('company.publiclottery');
+Route::post('/company/addpubliclottery', [App\Http\Controllers\CompanyController::class, 'addpubliclottery']);
+
+Route::get('/company/publicgaming', [App\Http\Controllers\CompanyPublicGamingController::class, 'publicgaming'])->name('company.publicgaming');
+
+
+
+
+//all company 
+Route::get('/company/bookmarkers_company_report', [App\Http\Controllers\CompanyReportController::class, 'bookmarkers_company_report'])->name('company.bookmarkers_company_report');
+// Bookmarkers Company Report
+Route::get('/companystatus', [App\Http\Controllers\CompanyReportController::class, 'bookmarkers_company_report'])->name('companystatus');
+Route::get('/companystatusActive', [App\Http\Controllers\CompanyReportController::class, 'companystatusActive'])->name('companystatusActive');
+Route::get('/companystatusBlocked', [App\Http\Controllers\CompanyReportController::class, 'companystatusBlocked'])->name('companystatusBlocked');
+Route::get('/companystatusdeactivated', [App\Http\Controllers\CompanyReportController::class, 'companystatusdeactivated'])->name('companystatusdeactivated');
+Route::get('/companystatusHavePayBill', [App\Http\Controllers\CompanyReportController::class, 'companystatusHavePayBill'])->name('companystatusHavePayBill');
+Route::get('/companystatusNoPayBill', [App\Http\Controllers\CompanyReportController::class, 'companystatusNoPayBill'])->name('companystatusNoPayBill');
+
+
+
+// publiclottery Company Report
+Route::get('/company/publiclottery_company_report', [App\Http\Controllers\CompanyReportController::class, 'publiclottery_company_report'])->name('company.publiclottery_company_report');
+Route::get('/publiclotterycompanystatus', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatus'])->name('publiclotterycompanystatus');
+Route::get('/publiclotterycompanystatusActive', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatusActive'])->name('publiclotterycompanystatusActive');
+Route::get('/publiclotterycompanystatusBlocked', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatusBlocked'])->name('publiclotterycompanystatusBlocked');
+Route::get('/publiclotterycompanystatusdeactivated', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatusdeactivated'])->name('publiclotterycompanystatusdeactivated');
+Route::get('/publiclotterycompanystatusHavePayBill', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatusHavePayBill'])->name('publiclotterycompanystatusHavePayBill');
+Route::get('/publiclotterycompanystatusNoPayBill', [App\Http\Controllers\CompanyReportController::class, 'publiclotterycompanystatusNoPayBill'])->name('publiclotterycompanystatusNoPayBill');
+
+
+//publicgaming   Company Report 
+Route::get('/company/publicgaming_company_report', [App\Http\Controllers\CompanyReportController::class, 'publicgaming_company_report'])->name('company.publicgaming_company_report');
+Route::get('/publicgamingcompanystatus', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatus'])->name('publicgamingcompanystatus');
+Route::get('/publicgamingcompanystatusActive', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatusActive'])->name('publicgamingcompanystatusActive');
+Route::get('/publicgamingcompanystatusBlocked', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatusBlocked'])->name('publicgamingcompanystatusBlocked');
+Route::get('/publicgamingcompanystatusdeactivated', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatusdeactivated'])->name('publicgamingcompanystatusdeactivated');
+Route::get('/publicgamingcompanystatusHavePayBill', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatusHavePayBill'])->name('publicgamingcompanystatusHavePayBill');
+Route::get('/publicgamingcompanystatusNoPayBill', [App\Http\Controllers\CompanyReportController::class, 'publicgamingcompanystatusNoPayBill'])->name('publicgamingcompanystatusNoPayBill');
 
 
 
@@ -100,6 +138,12 @@ Route::post('/publiclottery/upload', [App\Http\Controllers\PublicLotteryControll
 Route::get('/PublicLotterydata/get',[App\Http\Controllers\PublicLotteryController::class, 'publiclotterydata'])->name('publiclottery.ppubliclotterydata');
 Route::get('/publiclotteryAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publiclotteryAllreports_createPDF'])->name('publiclotteryAllreports_createPDF');   
 Route::get('/publicgamingAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgamingAllreports_createPDF'])->name('publicgamingAllreports_createPDF');   
+
+
+//Public Lotery number
+Route::post('/lotterynumber/add', [App\Http\Controllers\PublicLotteryController::class, 'lotterynumber_store'])->name('lotterynumber.add');
+
+Route::get('/lotery_shop_name/get',[App\Http\Controllers\PublicLotteryController::class, 'lotery_shop_name'])->name('lotterynumber.lotery_shop_name');
 
 
 Route::get('/publicgaming', [App\Http\Controllers\PublicgamingsController::class, 'index'])->name('publicgaming');
@@ -198,17 +242,23 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  Route::post('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'verify_user'])->name('verify_user');
 
  ///New
- Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-master');
+ Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin-master');
 
  Route::get('/admin/accountsetting/{id}', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
  Route::post('/admin/adminchangepassword', [App\Http\Controllers\AdminuserController::class, 'adminchangepassword'])->name('adminchangepassword');
  Route::post('/admin/notes', [App\Http\Controllers\NotesController::class, 'store'])->name('notes');
  Route::post('/admin/notes/view', [App\Http\Controllers\NotesController::class, 'index'])->name('notes.notes');
  Route::get('/admin/accountsettingchangepassword/{id}', [App\Http\Controllers\AdminController::class, 'accountsettingchangepassword'])->name('admin.accountsettingchangepassword');
+ Route::get('/notes/delete/{id}', [App\Http\Controllers\NotesController::class, 'delete'])->name('notes.delete');
 
 
  Route::get('/calender', [App\Http\Controllers\CalenderController::class, 'index'])->name('calender');
 
  Route::get('/todo', [App\Http\Controllers\TodoController::class, 'index'])->name('todo');
+ Route::post('/todo/addtask', [App\Http\Controllers\TodoController::class, 'addtask'])->name('todo.addtask');
+
+ 
+
+
 
  
