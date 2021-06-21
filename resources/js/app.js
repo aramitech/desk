@@ -82,6 +82,11 @@ Vue.component('add-send-bulk-sms-component', require('./components/sendsms/SendB
 Vue.component('add-lotteryshop-component', require('./components/publiclottery/AddLotteryShopComponent.vue').default);
 
 
+Vue.component('accounts_good_table_component', require('./components/accounts/Accounts_Good_Table_Component.vue').default);
+Vue.component('add-accounts-component', require('./components/accounts/AddAccountsComponent.vue').default);
+
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

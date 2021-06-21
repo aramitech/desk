@@ -22,7 +22,12 @@ export default {
         var publiclotterydeletepath='/publiclottery/delete';
          var publicgamingdeletepath='/publicgaming/delete';
         var bookmarkerscompanydeletepath='/company/delete_destroybookmarkerscompany';
-        var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
+        var accountscompanydeletepath='/accounts/delete_accounts';
+
+      
+      
+        
+          var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
         var publiclotterycompanydeletepath='/company/delete';
         var fccontactdeletepath='/company/delete_destroybookmarkerscompany';
         var shopscompanydeletepath='/shop/delete';
@@ -70,6 +75,12 @@ export default {
         {
           fpath=bookmarkerscompanydeletepath;
           item="Bookmarkers Company";
+        }
+        
+        else if(path == "accountscompanydelete")
+        {
+          fpath=accountscompanydeletepath;
+          item="Accounts Company";
         }
         else if(path == "publiclotterycompanydelete")
         {

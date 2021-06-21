@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\BookmarkersCompany;
+use App\Models\PublicLotteryNumber;
+use App\Models\Shops;
 use App\Models\PublicGamingCompany;
 use Illuminate\Http\Request;
 
@@ -25,6 +27,7 @@ class CompanyReportController extends Controller
         return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
     }
 
+    
     public function companystatusActive()
     {
         //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
@@ -156,13 +159,66 @@ public function publicgamingcompanystatusNoPayBill()
 {
     //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
     $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','3')->where('paybillno',NULL)->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+
     return view('vuexy.companyreport.publicgaming', compact('bookmarkers'));
 }
 
 
+///=================================================================================
+///=================================================================================
+///=================================================================================
+
+
+public function bookmarkers_shop_report()
+{
+    $bookmarkers = Shops::with('Shopcompany')->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+    return view('vuexy.companyreport.shopbookmarkers', compact('bookmarkers','bookmarkerscompanynames'));
+}
 
 
 
+public function shopcompanystatus()
+{
+    $bookmarkers = Shops::with('Shopcompany')->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+
+    return view('vuexy.companyreport.shopbookmarkers', compact('bookmarkers','bookmarkerscompanynames'));
+}
+
+public function shopcompanystatusActive()
+{
+    $bookmarkers = Shops::with('Shopcompany')->where('status','Active')->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+    return view('vuexy.companyreport.shopbookmarkers', compact('bookmarkers','bookmarkerscompanynames'));
+}
+
+public function shopcompanystatusBlocked()
+{
+    $bookmarkers = Shops::with('Shopcompany')->where('status','Blocked')->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+    return view('vuexy.companyreport.shopbookmarkers', compact('bookmarkers','bookmarkerscompanynames'));
+}
+
+public function shopcompanystatusdeactivated()
+{
+    $bookmarkers = Shops::with('Shopcompany')->where('status','Deactivated')->OrderBy('category_type_id')->get();
+    $bookmarkerscompanynames = BookmarkersCompany::where('category_type_id','1')->get();
+    return view('vuexy.companyreport.shopbookmarkers', compact('bookmarkers','bookmarkerscompanynames'));
+}
+
+
+///=================================================================================
+///=================================================================================
+///=================================================================================
+
+
+public function lotterynumbershop()
+{
+    $bookmarkers = PublicLotteryNumber::with('Lotteryshopnumber')->get();
+    return view('vuexy.companyreport.lotterynumbershop', compact('bookmarkers'));
+}
 
 
 }

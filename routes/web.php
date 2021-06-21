@@ -62,6 +62,12 @@ Route::post('/company/addpubliclottery', [App\Http\Controllers\CompanyController
 Route::get('/company/publicgaming', [App\Http\Controllers\CompanyPublicGamingController::class, 'publicgaming'])->name('company.publicgaming');
 
 
+//all company 
+Route::get('/company/bookmarkers_shop_report', [App\Http\Controllers\CompanyReportController::class, 'bookmarkers_shop_report'])->name('company.bookmarkers_shop_report');
+Route::get('/shopcompanystatus', [App\Http\Controllers\CompanyReportController::class, 'shopcompanystatus'])->name('shopcompanystatus');
+Route::get('/shopcompanystatusActive', [App\Http\Controllers\CompanyReportController::class, 'shopcompanystatusActive'])->name('shopcompanystatusActive');
+Route::get('/shopcompanystatusBlocked', [App\Http\Controllers\CompanyReportController::class, 'shopcompanystatusBlocked'])->name('shopcompanystatusBlocked');
+Route::get('/shopcompanystatusdeactivated', [App\Http\Controllers\CompanyReportController::class, 'shopcompanystatusdeactivated'])->name('shopcompanystatusdeactivated');
 
 
 //all company 
@@ -259,6 +265,12 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
 
  
 
+ Route::get('/lotterynumbershop', [App\Http\Controllers\CompanyReportController::class, 'lotterynumbershop'])->name('lotterynumbershop');
 
 
- 
+
+Route::get('/accounts', [App\Http\Controllers\AccountsController::class, 'index'])->name('accounts');
+Route::post('/accounts/add', [App\Http\Controllers\AccountsController::class, 'store'])->name('accounts.add');
+Route::get('/accounts/delete_accounts/{id}', [App\Http\Controllers\AccountsController::class, 'destroy'])->name('accounts.delete_accounts');
+
+

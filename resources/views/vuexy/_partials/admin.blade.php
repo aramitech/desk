@@ -75,8 +75,12 @@
                         </li>
                         </ul>
 
+                        <li><a href="{{ route('company.bookmarkers_shop_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Shop </span></a>
+                        </li>
+                        <li><a href="{{ route('lotterynumbershop')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Lottery Number </span></a>
+                        </li>
 
-                    
+                            
                 <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Records</span></a>
               
 
