@@ -50,7 +50,9 @@
                     @foreach($shops as $shop)
                     <tr>
                         <td>{{ $shop->shop_id }}</td>
-                        <td>{{ $shop->Shopcompany->company_name }}</td>
+                        <td> @if($shop->Shopcompany) 
+                        {{  $shop->Shopcompany->company_name }}
+                        @endif</td>
                         <td>{{ $shop->shop_name }}</td>    
                         <td>{{ $shop->location }}</td> 
                         <td>

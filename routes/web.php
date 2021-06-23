@@ -81,6 +81,15 @@ Route::get('/companystatusHavePayBill', [App\Http\Controllers\CompanyReportContr
 Route::get('/companystatusNoPayBill', [App\Http\Controllers\CompanyReportController::class, 'companystatusNoPayBill'])->name('companystatusNoPayBill');
 
 
+Route::get('/companystatusPublicLoottery', [App\Http\Controllers\CompanyReportController::class, 'companystatusPublicLoottery'])->name('companystatusPublicLoottery');
+Route::get('/companystatusPublicGaming', [App\Http\Controllers\CompanyReportController::class, 'companystatusPublicGaming'])->name('companystatusPublicGaming');
+Route::get('/companystatusBookMarkers', [App\Http\Controllers\CompanyReportController::class, 'companystatusBookMarkers'])->name('companystatusBookMarkers');
+Route::get('/companystatusAll', [App\Http\Controllers\CompanyReportController::class, 'companystatusAll'])->name('companystatusAll');
+
+
+// Accounts
+
+
 
 // publiclottery Company Report
 Route::get('/company/publiclottery_company_report', [App\Http\Controllers\CompanyReportController::class, 'publiclottery_company_report'])->name('company.publiclottery_company_report');
@@ -273,4 +282,5 @@ Route::get('/accounts', [App\Http\Controllers\AccountsController::class, 'index'
 Route::post('/accounts/add', [App\Http\Controllers\AccountsController::class, 'store'])->name('accounts.add');
 Route::get('/accounts/delete_accounts/{id}', [App\Http\Controllers\AccountsController::class, 'destroy'])->name('accounts.delete_accounts');
 
+Route::get('/company/accounts', [App\Http\Controllers\AccountsController::class, 'records'])->name('company.accounts');
 

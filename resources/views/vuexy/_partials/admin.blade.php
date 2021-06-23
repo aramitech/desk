@@ -64,21 +64,27 @@
 
                 <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Reports</span></a>
                 <ul class="menu-content"> 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Companies</span></a>
+                <!-- <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Companies</span></a> -->
               
-                <ul class="menu-content"> 
+
+                <li><a href="{{ route('company.bookmarkers_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Companies</span></a>
+                        </li>
+
+                        <li><a href="{{ route('company.accounts')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Accounts</span></a>
+                        </li>
+                <!-- <ul class="menu-content"> 
                 <li><a href="{{ route('company.bookmarkers_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bookmarkers </span></a>
                         </li>
                         <li><a href="{{ route('company.publiclottery_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Public Lottery</span></a>
                         </li>
                         <li><a href="{{ route('company.publicgaming_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Public Gaming </span></a>
                         </li>
-                        </ul>
+                        </ul> -->
 
-                        <li><a href="{{ route('company.bookmarkers_shop_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Shop </span></a>
+                        <!-- <li><a href="{{ route('company.bookmarkers_shop_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Shop </span></a>
                         </li>
                         <li><a href="{{ route('lotterynumbershop')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Lottery Number </span></a>
-                        </li>
+                        </li> -->
 
                             
                 <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Records</span></a>

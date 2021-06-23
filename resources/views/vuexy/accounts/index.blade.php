@@ -93,12 +93,16 @@ function goToCompany(id) {
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-status">Status</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToTestPage(this.value)" id="users-list-status">
-                                                        <option value="">All</option>
-                                                        <option value="Active">Active</option>
-                                                        <option value="Blocked">Blocked</option>
-                                                        <option value="deactivated">Deactivated</option>
-                                                    </select>
+                                                <select id="input-order-item-farmer-id" name="trader_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
+                                    <option value="">- Select -</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company->company_id }}" data-credit="@if($company->company_name) 
+                        {{  $company->accountscompany }}
+                        @endif">   @if($company->company_name) 
+                        {{  $company->company_name }}
+                        @endif  </option>
+                                    @endforeach
+                                    </select>
                                                 </fieldset>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-3">
@@ -129,43 +133,39 @@ function goToCompany(id) {
                                                 <table class="table table-striped dataex-html5-selectors">               <thead>
                     <tr>
                         <th class="table-plus">#</th>
-                        <th>Category</th>
-                          <th>Company Name</th>
+                        <th>Company</th>
+                          <th>MR NO</th>
                         
-                        <th>Trading Name</th> 
-                        <th>License No</th>
+                        <th>Application Fee</th> 
+                        <th>Transfer Fee</th>
                     
-                        <th>Address</th>
-                        <th>Status</th>     
-                   
+                        <th>Annual License Fee</th>
+                        <th>Investigation Fee Local</th>     
+                        <th>Investigation Fee Foreign</th>  
+                        <th>Premise Fee</th>  
+                        <th>Renewal Fee</th>
+                        <th>Operating Fee</th>  
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($bookmarkers as $bookmarker)
+                    @foreach($accounts as $bookmarker)
                     <tr>
-                        <td>{{ $bookmarker->company_id }}</td>
-                        <td>{{ $bookmarker->CompanyCategoryType->categorytype }}</td>
-                        <td>{{ $bookmarker->company_name }}</td>
-                        <td>{{ $bookmarker->trading_name }}</td>
-                        <td>{{ $bookmarker->license_no }}</td>
+                        <td>{{ $bookmarker->accounts_id }}</td>
+                        <td>{{ $bookmarker->accountscompany->company_name }}</td>
+                        <td>{{ $bookmarker->mrno }}</td>
+                        <td>{{ $bookmarker->application_fee }}</td>
+                        <td>{{ $bookmarker->transfer_fee }}</td>
                    
-                        <td>{{ $bookmarker->physicaladdress }}</td>
-                        <td>{{ $bookmarker->status }}</td>
-                     
+                        <td>{{ $bookmarker->annual_license_fee }}</td>
+                        <td>{{ $bookmarker->investigation_fee_local }}</td>
+                        <td>{{ $bookmarker->investigation_fee_foreign }}</td>
+
+                        <td>{{ $bookmarker->premise_fee }}</td>
+
+                        <td>{{ $bookmarker->renewal_fee }}</td>
+                        <td>{{ $bookmarker->operating_fee }}</td>
                 
                     </tr>
-                    <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
-                        </div>
-                    </div>
-
-                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
-                        </div>
-                    </div>
-
 
                     @endforeach
                 </tbody>
@@ -178,10 +178,6 @@ function goToCompany(id) {
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                                     <!-- <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
                                                         Changes</button> -->
-
-
-                                                      
-
                                                     <!-- <button type="reset" class="btn btn-outline-warning">Reset</button> -->
                                                 </div>
                                             </div>
@@ -203,12 +199,9 @@ function goToCompany(id) {
      
       <!-- ./main content card -->
       <add-bookmarkerscompany-component/>
-
-
 </div>
 </div>
 </div>
 </div>
 
 @endsection
-

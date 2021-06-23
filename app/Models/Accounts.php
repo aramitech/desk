@@ -26,7 +26,7 @@ class Accounts extends Model
         'status'
     ];       
 
- //Contacts<>Org relationship
+ //Accounts<>Companies relationship
  public function accountscompany()
  {
      return $this->belongsTo(BookmarkersCompany::class,'company_id');

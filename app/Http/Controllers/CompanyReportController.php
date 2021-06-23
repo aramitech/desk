@@ -22,8 +22,12 @@ class CompanyReportController extends Controller
 ///=================================================================================
     public function bookmarkers_company_report()
     {
-        //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
-        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        //$bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+       // $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+      
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->OrderBy('category_type_id')->get();
+
+      
         return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
     }
 
@@ -42,6 +46,9 @@ class CompanyReportController extends Controller
         return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
     }
 
+
+
+
     public function companystatusdeactivated()
     {
         //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
@@ -50,6 +57,35 @@ class CompanyReportController extends Controller
     }
     
     
+    public function companystatusPublicLoottery()
+    {
+        //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','2')->OrderBy('category_type_id')->get();
+        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
+    }
+    
+    public function companystatusPublicGaming()
+    {
+        //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','3')->OrderBy('category_type_id')->get();
+        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
+    }
+
+    public function companystatusBookMarkers()
+    {
+        //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
+    }
+    
+    public function companystatusAll()
+    {
+        //        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->OrderBy('category_type_id')->get();
+        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
+    }
+    
+
 
     public function companystatusHavePayBill()
     {

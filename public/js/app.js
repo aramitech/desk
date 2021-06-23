@@ -1996,8 +1996,7 @@ Vue.component('multiselect', (vue_multiselect__WEBPACK_IMPORTED_MODULE_1___defau
         this.company_names = response.data;
       }.bind(this));
     },
-    sum: function sum() {
-      this.fields.totals = this.fields.application_fee + this.fields.transfer_fee + this.fields.annual_license_fee + this.fields.investigation_fee_local + this.fields.investigation_fee_foreign + this.fields.premise_fee + this.fields.renewal_fee + this.fields.operating_fee;
+    sum: function sum() {//   this.fields.totals=parseInt(this.fields.application_fee) + parseInt(this.fields.transfer_fee) + parseInt(this.fields.annual_license_fee) + parseInt(this.fields.investigation_fee_local) + parseInt(this.fields.investigation_fee_foreign) + parseInt(this.fields.premise_fee) + parseInt(this.fields.renewal_fee) + parseInt(this.fields. operating_fee);
     },
     onChange: function onChange(value) {
       this.value = value;
@@ -54258,45 +54257,6 @@ var render = function() {
                       _vm.errors && _vm.errors.operating_fee
                         ? _c("div", { staticClass: "text-danger" }, [
                             _vm._v(_vm._s(_vm.errors.operating_fee[0]))
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-4" }, [
-                      _c("label", [_vm._v("total")]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.fields.totals,
-                            expression: "fields.totals"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "totals",
-                          name: "totals",
-                          value: "total",
-                          type: "text",
-                          placeholder: "total",
-                          required: ""
-                        },
-                        domProps: { value: _vm.fields.totals },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.fields, "totals", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors && _vm.errors.totals
-                        ? _c("div", { staticClass: "text-danger" }, [
-                            _vm._v(_vm._s(_vm.errors.totals[0]))
                           ])
                         : _vm._e()
                     ])

@@ -49,4 +49,11 @@ class BookmarkersCompany extends Model
   {
       return $this->hasMany(Shops::class,'company_id','shop_id');
   }
+
+   //Accounts<>Companies relationship
+ public function accountscompany()
+ {
+     return $this->hasMany(Accounts::class,'company_id');
+ }
+
 }

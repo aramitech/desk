@@ -95,11 +95,11 @@
                            	<input class="form-control" @keydown="sum" name="operating_fee" v-model="fields.operating_fee" value="" type="text" placeholder="operating_fee" required>
                             <div v-if="errors && errors.operating_fee" class="text-danger">{{ errors.operating_fee[0] }}</div>
 						</div>
-                           <div class="col-md-4">
+                           <!-- <div class="col-md-4">
 							<label>total</label>
 							<input class="form-control" id="totals" name="totals" v-model="fields.totals" value="total" type="text" placeholder="total" required>
                             <div v-if="errors && errors.totals" class="text-danger">{{ errors.totals[0] }}</div>
-						</div>
+						</div> -->
 						</div></div>
                         
                     </div>
@@ -154,7 +154,7 @@ data() {
   
    sum()
    {
-  this.fields.totals=this.fields.application_fee + this.fields.transfer_fee + this.fields.annual_license_fee + this.fields.investigation_fee_local + this.fields.investigation_fee_foreign + this.fields.premise_fee + this.fields.renewal_fee + this.fields. operating_fee;
+//   this.fields.totals=parseInt(this.fields.application_fee) + parseInt(this.fields.transfer_fee) + parseInt(this.fields.annual_license_fee) + parseInt(this.fields.investigation_fee_local) + parseInt(this.fields.investigation_fee_foreign) + parseInt(this.fields.premise_fee) + parseInt(this.fields.renewal_fee) + parseInt(this.fields. operating_fee);
  
    
    },

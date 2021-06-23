@@ -26,7 +26,7 @@ class AccountsController extends Controller
    
       $accounts = Accounts::with('accountscompany')->get();
         $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
-        return view('accounts.index', compact('accounts'));
+        return view('accounts.ac', compact('accounts'));
 
     }
 
@@ -270,9 +270,9 @@ class AccountsController extends Controller
         $category= 'User'; 
     }
     
-        $user = Accounts::findOrFail($request->id);
-        $user->delete();
 
+        $user = Accounts::findOrFail($request->id['accounts_id']);
+        $user->delete();
         // return $id=Auth::user();
         // $email=Auth::user()->email;
         //log
@@ -287,4 +287,17 @@ class AccountsController extends Controller
 
         return back()->with('success','Deleted succesfully');
     }
+
+
+    public function records()
+    {
+      $companies= BookmarkersCompany::all();
+      $accounts = Accounts::with('accountscompany')->get();
+        $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+        return view('vuexy.accounts.index', compact('accounts','companies'));
+
+    }
+
+
 }
+
