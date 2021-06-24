@@ -284,3 +284,8 @@ Route::get('/accounts/delete_accounts/{id}', [App\Http\Controllers\AccountsContr
 
 Route::get('/company/accounts', [App\Http\Controllers\AccountsController::class, 'records'])->name('company.accounts');
 
+
+
+Route::get('/AllBookMarkersrecordsreport', [App\Http\Controllers\ReportsController::class, 'AllBookMarkersrecordsreport'])->name('AllBookMarkersrecordsreport');
+
+

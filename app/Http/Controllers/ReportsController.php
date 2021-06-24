@@ -445,4 +445,18 @@ class ReportsController extends Controller
         return view('profile.index', compact('users'));
     }
 
+
+
+    public function AllBookMarkersrecordsreport()
+    {
+        $companies= BookmarkersCompany::where('category_type_id',1)->get();
+
+        $bcompanies = BookmarkersCompany::all();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany')->where('bookmarker_id','!=',NULL))->get();
+        return view('vuexy.allrecords.bookmarkersAll', compact('bookmarkers','bcompanies','companies'));
+    }
+
+
+
+
 }

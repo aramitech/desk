@@ -39,7 +39,7 @@ Category Types List:
                 </div>
             </div>
                                                 <h4 class="media-heading">   
-                                                Company:
+                                              Bookmarkers  Records:
                                         
                                                 </h4>
                                                 <div class="card-body card-dashboard">
@@ -66,27 +66,16 @@ Category Types List:
                                 <div class="users-list-filter">
                                     <form>
                                         <div class="row">
-                                     
-                                        <form>
-
-<div class="col-12 col-sm-6 col-lg-3">
-    <label for="users-list-role">Date From</label>
-    <fieldset class="form-group">
-    <input name="from" class="form-control form-control-sm form-control-line" type="date">
-    </fieldset>
-</div>
-<div class="col-12 col-sm-6 col-lg-3">
-    <label for="users-list-role">Date To</label>
-    <fieldset class="form-group">
-    <input name="to" class="form-control form-control-sm form-control-line" type="date">
-    </fieldset>
-</div>
-
-<div class="col-12 col-sm-6 col-lg-3">
-<button type="submit" class="btn btn-primary">Search</button>
-
-</div>
-</form>
+                                            <!-- <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-role">PayBill</label>
+                                                <fieldset class="form-group">
+                                                    <select class="form-control" onchange="goToPayBill(this.value)" id="users-list-role">
+                                                        <option value="">All</option>
+                                                        <option value="HavePayBill">Have PayBill</option>
+                                                        <option value="NoPayBill">No PayBill</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div> -->
                                   
 
 <script>
@@ -96,15 +85,13 @@ function goToPayBill(id) {
 function goToTestPage(id) {
   window.location.href = "{{ route('companystatus') }}"+id;
 }
-function goToCompany(id) {
-  window.location.href = "{{ route('companystatus') }}"+id;
-}
+
 </script>
 
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-status">Status</label>
                                                 <fieldset class="form-group">
-                                                <select id="input-order-item-farmer-id" name="trader_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
+                                                <select id="input-order-item-farmer-id" name="company_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
                                     <option value="">- Select -</option>
                                     @foreach($companies as $company)
                                         <option value="{{ $company->company_id }}" data-credit="@if($company->company_name) 
@@ -116,20 +103,32 @@ function goToCompany(id) {
                                     </select>
                                                 </fieldset>
                                             </div>
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <label for="users-list-verified">Companies</label>
-                                                <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToCompany(this.value)" id="users-list-verified">
-                                                    <option value=""></option>
-                                                    <option value="All">All</option>
-                                                        <option value="BookMarkers">Bookmarkers</option>
-                                                        <option value="PublicLoottery">Public Lottery</option>
-                                                        <option value="PublicGaming">Public Gaming</option>
+                      
+                                      
 
-                                                   </select>
+                                            <form>
+
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-role">Date From</label>
+                                                <fieldset class="form-group">
+                                                <input name="from" class="form-control form-control-sm form-control-line" type="date">
                                                 </fieldset>
                                             </div>
-                                      
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-role">Date To</label>
+                                                <fieldset class="form-group">
+                                                <input name="to" class="form-control form-control-sm form-control-line" type="date">
+                                                </fieldset>
+                                            </div>
+
+                                            <div class="col-12 col-sm-6 col-lg-3">
+	                                    	<button type="submit" class="btn btn-primary">Search</button>
+	
+                                            </div>
+                                            </form>
+
+
+
                                         </div>
                                     </form>
                                 </div>
@@ -145,36 +144,39 @@ function goToCompany(id) {
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company</th>
-                          <th>MR NO</th>
+                       
                         
-                        <th>Application Fee</th> 
-                        <th>Transfer Fee</th>
+                        <th>Licensee Name</th> 
+                        <th>Bets No</th>
                     
-                        <th>Annual License Fee</th>
-                        <th>Investigation Fee Local</th>     
-                        <th>Investigation Fee Foreign</th>  
-                        <th>Premise Fee</th>  
-                        <th>Renewal Fee</th>
-                        <th>Operating Fee</th>  
+                        <th>Deposits</th>
+                        <th>Total Sales</th>     
+                        <th>Total Payout</th>  
+                        <th>WHT</th>  
+                        <th>GGR</th>
+                        <th>GGR TAX</th>  
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($accounts as $bookmarker)
+                    @foreach($bookmarkers as $bookmarker)
                     <tr>
-                        <td>{{ $bookmarker->accounts_id }}</td>
-                        <td>{{ $bookmarker->accountscompany->company_name }}</td>
-                        <td>{{ $bookmarker->mrno }}</td>
-                        <td>{{ $bookmarker->application_fee }}</td>
-                        <td>{{ $bookmarker->transfer_fee }}</td>
+                        <td>{{ $bookmarker->bookmarker_id }}</td>
+                        <td>                       
+                        @if($bookmarker->bookmarkerscompany) 
+                        {{  $bookmarker->bookmarkerscompany->company_name }}
+                        @endif
+                        </td>
+                        <td>{{ $bookmarker->licensee_name }}</td>
+                        <td>{{ $bookmarker->bets_no }}</td>
                    
-                        <td>{{ $bookmarker->annual_license_fee }}</td>
-                        <td>{{ $bookmarker->investigation_fee_local }}</td>
-                        <td>{{ $bookmarker->investigation_fee_foreign }}</td>
+                        <td>{{ $bookmarker->deposits }}</td>
+                        <td>{{ $bookmarker->total_sales }}</td>
+                        <td>{{ $bookmarker->total_payout }}</td>
 
-                        <td>{{ $bookmarker->premise_fee }}</td>
+                        <td>{{ $bookmarker->wht }}</td>
 
-                        <td>{{ $bookmarker->renewal_fee }}</td>
-                        <td>{{ $bookmarker->operating_fee }}</td>
+                        <td>{{ $bookmarker->ggr }}</td>
+                        <td>{{ $bookmarker->ggrtax }}</td>
                 
                     </tr>
 

@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>   
-                <a href="{{route('bookmarkersAllreport', $bookmarkers[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All</a> 
+                <a href="{{route('AllBookMarkersrecordsreport', $bookmarkers[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All</a> 
      </div>
             </div>
         </div>
