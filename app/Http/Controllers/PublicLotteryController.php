@@ -26,8 +26,16 @@ class PublicLotteryController extends Controller
         return view('publiclottery.index', compact('publiclotteries'));
     }
 
+    public function userpubliclottery()
+    {
+        //
+        $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
+        return view('publiclottery.user', compact('publiclotteries'));
+    }
 
 
+
+    
     public function lotery_shop_name()
     {
         // $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');

@@ -43,9 +43,9 @@ export default {
   props: [ 'userdata' ],
 data() {
     return {
-        action: '/users/updatepassword', //edit action
+        action: '/desk/public/users/updatepassword', //edit action
         text: 'Updated Succesfully',
-        redirect: '/users/profile',
+        redirect: '/desk/public/users/profile',
         fields: {
             id:this.userdata.id,
             name:this.userdata.name,

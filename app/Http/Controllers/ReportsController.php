@@ -452,11 +452,26 @@ class ReportsController extends Controller
         $companies= BookmarkersCompany::where('category_type_id',1)->get();
 
         $bcompanies = BookmarkersCompany::all();
-        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany')->where('bookmarker_id','!=',NULL))->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany')->where('bookmarker_id','!=',NULL), request()->all())->get();
         return view('vuexy.allrecords.bookmarkersAll', compact('bookmarkers','bcompanies','companies'));
     }
 
+    public function Allpubliclotteryrecordsreport()
+    {
+        $companies= BookmarkersCompany::where('category_type_id',2)->get();
 
+        $bcompanies = BookmarkersCompany::all();
+        $publiclotteries = EloquentBuilder::to(PublicLottery::with('publicLotterycompany')->where('publiclottery_id','!=',NULL), request()->all())->get();
+        return view('vuexy.allrecords.publiclotteryAll', compact('publiclotteries','bcompanies','companies'));
+    }
 
+    public function Allgamingrecordsreport()
+    {
+        $companies= BookmarkersCompany::where('category_type_id',3)->get();
 
+        $bcompanies = BookmarkersCompany::all();
+        $publicgamings = EloquentBuilder::to(Publicgamings::with('publicGamingcompany')->where('publicgaming_id','!=',NULL), request()->all())->get();
+        return view('vuexy.allrecords.publicgamingAll', compact('publicgamings','bcompanies','companies'));
+    }
+    
 }

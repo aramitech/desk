@@ -36,7 +36,7 @@ export default {
   mixins: [ FormMixin ],
 data() {
     return {
-        action: '/send_bulksms/add', //save action
+        action: '/desk/public/send_bulksms/add', //save action
         text: 'Sent Succesfully',
         redirect: '',
 
@@ -51,7 +51,7 @@ data() {
 
 methods: {
      getCompanyName: function(){
-        axios.get('/company_name/get')
+        axios.get('/desk/public/company_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

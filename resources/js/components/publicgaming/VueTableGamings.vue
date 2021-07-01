@@ -2,6 +2,7 @@
   <div>
      
      <vue-good-table
+      v-if="this.allowed=='Allowed'"
       :columns="columns"
       :rows="rows"
       :search-options="{ enabled: true }"
@@ -183,7 +184,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditpublicgamingComponent.vue';
 
 export default {
-   props:['privilege'],
+   props:['privilege','allowed'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -193,7 +194,7 @@ export default {
     return {
       'text': 'Records Updated succesfully',
       'redirect': '',
-       action: '/publicgaming/update', //edit action
+       action: '/desk/public/publicgaming/update', //edit action
       company_names: [],
       
        validated:false,
@@ -201,6 +202,7 @@ export default {
         usertype:this.privilege[0].usertype,
         edit_status:this.privilege.edit_status,
         delete_status:this.privilege.delete_status,
+
 
         publicgaming_id:'',
         company_id:[],
@@ -258,7 +260,7 @@ export default {
   },
   methods: {
   getPublicgaaming: function(){
-            let url = '/publicgamingsdata/get?';
+            let url = '/desk/public/publicgamingsdata/get?';
              if(new URL(location.href).searchParams.get('from') != null)
             {
               url = url+'from='+new URL(location.href).searchParams.get('from')+'&';
@@ -285,7 +287,7 @@ export default {
 
 
        getLicenseeName: function(){
-           axios.get('/publicgaming_license_name/get')
+           axios.get('/desk/public/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;
         }.bind(this));
@@ -365,7 +367,7 @@ export default {
              
             if (result.isConfirmed) {
               //do an axios for deleting
-          axios.get('/delete/contact/'+this.selectedItems).then((response) => {  
+          axios.get('/desk/public/delete/contact/'+this.selectedItems).then((response) => {  
                  
                   self.selectedItems.forEach(function(value,index,array){
                   self.rows= self.rows.filter(row=>row.publicgaming_id!=value); 

@@ -125,9 +125,9 @@ export default {
    props:['data'],
 data() {
     return {
-        action: '/publiclottery/add', //save action
+        action: '/desk/public/publiclottery/add', //save action
         text: 'Added Succesfully',
-        redirect: '/publiclottery',
+        redirect: '/desk/public/publiclottery',
            company_names: [],
             Lottery_names: [],
       fields: {
@@ -144,14 +144,14 @@ data() {
 
 methods: {
        getLottery_Names: function(company_id){
-         axios.get('/lotery_shop_name/get?company_id='+company_id)
+         axios.get('/desk/public/lotery_shop_name/get?company_id='+company_id)
         //axios.get('/lotery_shop_name/get')
         .then(function(response){
           this.Lottery_names = response.data;        
         }.bind(this));
       },
        getLicenseeName: function(){
-        axios.get('/publiclottery_license_name/get')
+        axios.get('/desk/public/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

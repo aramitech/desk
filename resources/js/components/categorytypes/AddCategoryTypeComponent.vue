@@ -32,9 +32,9 @@ export default {
   mixins: [ FormMixin ],
 data() {
     return {
-        action: '/categorytypes/add', //save action
+        action: '/desk/public/categorytypes/add', //save action
         text: 'Added Succesfully',
-        redirect: '/categorytypes',
+        redirect: '/desk/public/categorytypes',
         }
     },
 

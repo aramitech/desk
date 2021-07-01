@@ -26,6 +26,11 @@ class PublicgamingsController extends Controller
     }
 
 
+    public function publicgaminguserindex()
+    {
+        $publicgamings = Publicgamings::all();
+        return view('publicgaming.user', compact('publicgamings'));
+    }
     //return getLicensee Name
     public function getLicenseeName()
     {

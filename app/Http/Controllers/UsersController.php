@@ -88,8 +88,14 @@ class UsersController extends Controller
         $user->publicgamingstatus = $request->publicgamingstatus;
         $user->sendsms_status = $request->sendsms_status;
         $user->bookmarkersshop_status = $request->bookmarkersshop_status;
-        $user->companies_status = $request->companies_status;
- 
+        $user->companies_status = $request->companies_status;        
+        $user->user_accounts_status = $request->user_accounts_status;
+        $user->records_bookmarkers = $request->records_bookmarkers;
+
+        $user->records_public_lotery = $request->records_public_lotery;
+
+        $user->records_public_gaming = $request->records_public_gaming;
+
         $user->save();
         return back()->with('success','Role Updated succesfully');
     }
@@ -98,7 +104,7 @@ class UsersController extends Controller
     
     public function destroy(Request $request)
     {
-        $user = User::findOrFail($request->id['id']);
+       return $user = User::findOrFail($request->id['id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }

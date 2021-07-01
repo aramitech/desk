@@ -139,9 +139,31 @@
 							<span class="micon dw dw-list3"></span><span class="mtext">Reports</span>
 						</a>
 						<ul class="submenu">
+                     
+                  
+                     
+                        <li class="dropdown">
+                            <a href="{{ route('company.bookmarkers_company_report')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.bookmarkers_company_report*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Companies </span>
+                             </a>
+                            </li>
+
+                            <li class="dropdown">
+                            <a href="{{ route('company.accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.accounts*')) ? 'active' : '' }}">
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Accounts </span>
+                             </a>
+                            </li>
+                            </ul>
+
+                            <li class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle">
+									<span class="micon fa fa-plug"></span><span class="mtext">Records</span>
+								</a>
+								<ul class="submenu child">
+                     
                         <li class="dropdown">
                             <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Companies</span>
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers </span>
                              </a>
                             </li>
 					

@@ -83,7 +83,7 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/publiclottery/upload', //save action
+        action: '/desk/public/publiclottery/upload', //save action
         text: 'Uploaded Succesfully',
         redirect: '',
 
@@ -101,7 +101,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/publiclottery_license_name/get')
+        axios.get('/desk/public/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

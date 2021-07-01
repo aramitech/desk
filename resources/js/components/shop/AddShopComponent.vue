@@ -98,7 +98,7 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/shop/add', //save action
+        action: '/desk/public/shop/add', //save action
         text: 'Added Succesfully',
         redirect: '',
     types: ['Active','Inactive'],
@@ -120,7 +120,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/desk/public/license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

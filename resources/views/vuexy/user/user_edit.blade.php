@@ -61,25 +61,28 @@
                                         @foreach($users as $user)
                                                 </h4>
                                                
-                                        <form novalidate>
+                                         <form action="{{ route('updaterole') }}" method="post">
+                                         @csrf
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
+                                                        <input type="text" class="form-control" name="id" placeholder="ID " value="{{ $user->id }}">
+
                                                             <label><h4>Perspnal File No</h4></label>
-                                                            <input type="text" class="form-control" placeholder="Username" value="{{ $user->perspnal_file_no }}" required data-validation-required-message="This username field is required">
+                                                            <input type="text" class="form-control" placeholder="Username" value="{{ $user->perspnal_file_no }}" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label><h4>Name</h4></label>
-                                                            <input type="text" class="form-control" placeholder="Name" value="{{ $user->name }}" required data-validation-required-message="This name field is required">
+                                                            <input type="text" class="form-control" placeholder="Name" value="{{ $user->name }}" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="controls">
                                                             <label><h4>E-mail</h4></label>
-                                                            <input type="email" class="form-control" placeholder="Email" value="{{ $user->email }}" required data-validation-required-message="This email field is required">
+                                                            <input type="email" class="form-control" placeholder="Email" value="{{ $user->email }}" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,101 +90,147 @@
 
                                                     <div class="form-group">
                                                     <label><h4>Status</h4></label>
-                                                      <input type="text" class="form-control" placeholder="Account Status" value="{{ $user->account_status }}" required data-validation-required-message="This account_status field is required">
+                                                      <input type="text" class="form-control" placeholder="Account Status" value="{{ $user->account_status }}" >
                       
                                                       
                                                  
                                                     </div>
                                                     <div class="form-group">
                                                     <label><h4>Section</h4></label>
-                                                      <input type="text" class="form-control" placeholder="Section" value="{{ $user->section }}" required data-validation-required-message="This account_status field is required">
+                                                      <input type="text" class="form-control" placeholder="Section" value="{{ $user->section }}" >
                       
                                                     </div>
                                                     <div class="form-group">
                                                     <label><h4>Phone</h4></label>
-                                                      <input type="text" class="form-control" placeholder="Phone" value="{{ $user->phone }}" required data-validation-required-message="This account_status field is required">
+                                                      <input type="text" class="form-control" placeholder="Phone" value="{{ $user->phone }}" >
                       
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="table-responsive border rounded px-1 ">
                                                         <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permission</h6>
-                                                        <!-- <table class="table table-borderless">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Edit</th>
-                                                                    <th>Delete</th>
-                                                                    <th>Create Bookmarkers</th>
-                                                                    <th>Create Public Lottery</th>
-                                                                    <th>Create Public Gamings</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Users</td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox1" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox1"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox2" class="custom-control-input"><label class="custom-control-label" for="users-checkbox2"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox3" class="custom-control-input"><label class="custom-control-label" for="users-checkbox3"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox4" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox4"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Articles</td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox5" class="custom-control-input"><label class="custom-control-label" for="users-checkbox5"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox6" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox6"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox7" class="custom-control-input"><label class="custom-control-label" for="users-checkbox7"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox8" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox8"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Staff</td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox9" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox9"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox10" class="custom-control-input" checked>
-                                                                            <label class="custom-control-label" for="users-checkbox10"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox11" class="custom-control-input"><label class="custom-control-label" for="users-checkbox11"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="custom-control custom-checkbox"><input type="checkbox" id="users-checkbox12" class="custom-control-input"><label class="custom-control-label" for="users-checkbox12"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table> -->
+                                        <table class="table table-borderless">
+                                        <thead>
+                                    <tr>
+                                    <th></th>
+                                    <th>Allowed</th>
+                                    <th>Not Allowed</th>
+                                    <th></th>
+                                    <th>Allowed</th>
+                                    <th>Not Allowed</th>
+                                    <th></th>
+                                    <th>Allowed</th>
+                                    <th>Not Allowed</th>
+                                    <th></th>
+                                    <th>Allowed</th>
+                                    <th>Not Allowed</th>
+                
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Edit</td>
+                                                <td>
+                                                    <input type="radio" name="editstatus" {{ $user->editstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                              </td><td>             <input type="radio" name="editstatus" {{ $user->editstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+                                                                              </td>
+                                                <td>Delete</td>
+                                                <td>
+                                                    <input type="radio" name="deletestatus" {{ $user->deletestatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                    </td><td>       <input type="radio" name="deletestatus" {{ $user->deletestatus == 'NotAllowed' ? 'checked' : '' }}  value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Bookmarkers</td>
+                                                <td>
+                                                    <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                   </td><td>        <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                              
+                                                </td>
+                                                <td>Public Lottery </td>
+                                                <td>
+                                                    <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                </td><td>          <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Public Gaming</td>
+                                                <td>
+                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                   </td><td>    <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+                                                    </td>
+                                                <td>Snd SMS</td>
+                                                <td>
+                                                    <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                        </td><td>   <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Bookmarkers Shop </td>
+                                                <td>
+                                                    <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                         </td><td>  <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Companies</td>
+                                                <td>
+                                                    <input type="radio" name="companies_status" {{ $user->companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                    </td><td>       <input type="radio" name="companies_status" {{ $user->companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Account</td>
+                                                <td>
+                                                    <input type="radio" name="account_status" {{ $user->account_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                    </td><td>  <input type="radio" name="account_status" {{ $user->account_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>User Accounts</td>
+                                                <td>
+                                                    <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                      </td><td>    <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Records Public Lotery</td>
+                                                <td>
+                                                    <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                     </td><td>       <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Records Bookmarkers</td>
+                                                <td>
+                                                     <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                          </td><td>  <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                              
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Records Public Gaming</td>
+                                                <td>
+                                                    <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                    </td><td>  <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Records Company</td>
+                                                <td>
+                                                    <input type="radio" name="records_company" {{ $user->records_company == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                      </td><td>    <input type="radio" name="records_company" {{ $user->records_company == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                                <td>Records Accounts</td>
+                                                <td>
+                                                    <input type="radio" name="records_accounts" {{ $user->records_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
+                                     </td><td>       <input type="radio" name="records_accounts" {{ $user->records_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
+
+                                                </td>
+                                             
+                                            </tr>
+
+
+
+                                        </tbody>
+                                    </table> 
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">

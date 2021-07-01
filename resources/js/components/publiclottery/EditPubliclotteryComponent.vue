@@ -114,9 +114,9 @@ export default {
    props:['publiclotteryerdata'],
 data() {
     return {
-        action: '/publiclottery/update', //edit action
+        action: '/desk/public/publiclottery/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '',
+        redirect: '/desk/public/',
 
         company_names: [],
         fields: {
@@ -144,7 +144,7 @@ data() {
 
 methods: {
     getLicenseeName: function(){
-           axios.get('/publiclottery_license_name/get')
+           axios.get('/desk/public/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;
           console.log(this.company_names)

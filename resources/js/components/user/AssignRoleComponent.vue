@@ -6,7 +6,8 @@
         </div>
         <form method="POST" @submit.prevent="submit">
             <div class="modal-body">
-                <div class="form-group">
+               <div class="form-group row">                       
+                           <div class="col-md-6">
                   
                     <label>Name</label>
                     <input class="form-control" name="name" v-model="fields.name" type="text" :disabled="validated ? false : true" required>
@@ -16,7 +17,7 @@
                     <label>Email</label>
                     <input class="form-control"  name="email" v-model="fields.email" value="" type="email" :disabled="validated ? false : true" placeholder="me@example.com" required>
                     <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
-                </div>
+                </div></div>
 
      <div class="form-group row">                       
                            <div class="col-md-6">
@@ -111,6 +112,56 @@
     
   
 
+  <div class="form-group row">                       
+                           <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
+                    <label><strong>Accounts</strong></label>
+      [ Allowed  <input type="radio" name="user_accounts_status" v-model="fields.user_accounts_status" id="user_accounts_status" value="Allowed">
+                  Not Allowed  <input type="radio" name="user_accounts_status" v-model="fields.user_accounts_status" id="user_accounts_status" value="NotAllowed">
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="user_accounts_status" v-model="fields.user_accounts_status" type="text"    >
+                    <div v-if="errors && errors.user_accounts_status" class="text-danger">{{ errors.user_accounts_status[0] }}</div>
+                    </div> </div> </div>
+
+
+ <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
+                    <label><strong>Bookmarkers Records</strong></label>
+      [ Allowed  <input type="radio" name="records_bookmarkers" v-model="fields.records_bookmarkers" id="records_bookmarkers" value="Allowed">
+                  Not Allowed  <input type="radio" name="records_bookmarkers" v-model="fields.records_bookmarkers" id="records_bookmarkers" value="NotAllowed">
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="records_bookmarkers" v-model="fields.records_bookmarkers" type="text"    >
+                    <div v-if="errors && errors.records_bookmarkers" class="text-danger">{{ errors.records_bookmarkers[0] }}</div>
+                    </div> </div> </div>
+
+          </div>
+
+
+<div class="form-group row">                       
+                           <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
+                    <label><strong>Public Lottery Records</strong></label>
+      [ Allowed  <input type="radio" name="records_public_lotery" v-model="fields.records_public_lotery" id="records_public_lotery" value="Allowed">
+                  Not Allowed  <input type="radio" name="records_public_lotery" v-model="fields.records_public_lotery" id="records_public_lotery" value="NotAllowed">
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="records_public_lotery" v-model="fields.records_public_lotery" type="text"    >
+                    <div v-if="errors && errors.records_public_lotery" class="text-danger">{{ errors.records_public_lotery[0] }}</div>
+                    </div> </div> </div>
+
+
+ <div class="col-md-6">
+                               	<div class="col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p"> 
+                    <label><strong>Public Gaming Records</strong></label>
+      [ Allowed  <input type="radio" name="records_public_gaming" v-model="fields.records_public_gaming" id="records_public_gaming" value="Allowed">
+                  Not Allowed  <input type="radio" name="records_public_gaming" v-model="fields.records_public_gaming" id="records_public_gaming" value="NotAllowed">
+                 ]                    <input class="form-control" :disabled="validated ? false : true" name="records_public_gaming" v-model="fields.records_public_gaming" type="text"    >
+                    <div v-if="errors && errors.records_public_gaming" class="text-danger">{{ errors.records_public_gaming[0] }}</div>
+                    </div> </div> </div>
+
+          </div>
+
+
 
 
             
@@ -130,9 +181,9 @@ export default {
   props: [ 'userdata' ],
 data() {
     return {
-        action: '/users/updaterole', //edit action
+        action: '/desk/public/users/updaterole', //edit action
         text: 'Updated Succesfully',
-        redirect: '/users',
+        redirect: '/desk/public/users',
         fields: {
             id:this.userdata.id,  
             name:this.userdata.name,
@@ -145,7 +196,12 @@ data() {
                sendsms_status:this.userdata.sendsms_status,
                bookmarkersshop_status:this.userdata.bookmarkersshop_status,
                companies_status:this.userdata.companies_status,
+               user_accounts_status:this.userdata.user_accounts_status,
               //  deletestatus:this.userdata.deletestatus,
+               records_bookmarkers:this.userdata.records_bookmarkers,
+               records_public_lotery:this.userdata.records_public_lotery,
+               records_public_gaming:this.userdata.records_public_gaming,
+
         }
         }       
     },
@@ -165,8 +221,11 @@ methods: {
         this.fields.sendsms_status=this.userdata.sendsms_status;
         this.fields.bookmarkersshop_status=this.userdata.bookmarkersshop_status;
         this.fields.companies_status=this.userdata.companies_status;
-        //this.fields.deletestatus=this.userdata.deletestatus;
-        
+        this.fields.user_accounts_status=this.userdata.user_accounts_status;
+               this.fields.records_bookmarkers=this.userdata.records_bookmarkers;
+        this.fields.records_public_lotery=this.userdata.records_public_lotery;
+        this.fields.records_public_gaming=this.userdata.records_public_gaming;
+
     }
 }
 </script>

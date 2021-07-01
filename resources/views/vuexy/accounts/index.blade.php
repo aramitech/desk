@@ -82,6 +82,23 @@ Category Types List:
     </fieldset>
 </div>
 
+
+<div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-status">Company</label>
+                                                <fieldset class="form-group">
+                                                <select id="input-order-item-farmer-id" name="company_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
+                                    <option value="">- Select -</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company->company_id }}" data-credit="@if($company->company_name) 
+                        {{  $company->accountscompany }}
+                        @endif">   @if($company->company_name) 
+                        {{  $company->company_name }}
+                        @endif  </option>
+                                    @endforeach
+                                    </select>
+                                                </fieldset>
+                                            </div>
+
 <div class="col-12 col-sm-6 col-lg-3">
 <button type="submit" class="btn btn-primary">Search</button>
 
@@ -101,32 +118,18 @@ function goToCompany(id) {
 }
 </script>
 
-                                            <div class="col-12 col-sm-6 col-lg-3">
-                                                <label for="users-list-status">Status</label>
-                                                <fieldset class="form-group">
-                                                <select id="input-order-item-farmer-id" name="trader_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
-                                    <option value="">- Select -</option>
-                                    @foreach($companies as $company)
-                                        <option value="{{ $company->company_id }}" data-credit="@if($company->company_name) 
-                        {{  $company->accountscompany }}
-                        @endif">   @if($company->company_name) 
-                        {{  $company->company_name }}
-                        @endif  </option>
-                                    @endforeach
-                                    </select>
-                                                </fieldset>
-                                            </div>
+                             
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-verified">Companies</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToCompany(this.value)" id="users-list-verified">
+                                                    <!-- <select class="form-control" onchange="goToCompany(this.value)" id="users-list-verified">
                                                     <option value=""></option>
                                                     <option value="All">All</option>
                                                         <option value="BookMarkers">Bookmarkers</option>
                                                         <option value="PublicLoottery">Public Lottery</option>
                                                         <option value="PublicGaming">Public Gaming</option>
 
-                                                   </select>
+                                                   </select> -->
                                                 </fieldset>
                                             </div>
                                       

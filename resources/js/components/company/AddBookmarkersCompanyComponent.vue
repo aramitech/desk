@@ -88,9 +88,9 @@ export default {
   mixins: [ FormMixin ],
 data() {
     return {
-        action: '/company/addbookmarkers', //save action
+        action: '/desk/public/company/addbookmarkers', //save action
          text: 'Added Succesfully',
-        redirect: '/company/bookmarkers',
+        redirect: '/desk/public/company/bookmarkers',
 
         company_names:[],
        fields: {
@@ -101,7 +101,7 @@ data() {
 
 methods: {
       getCategoryTypeName: function(){   
-        axios.get('/CategoryTypeNam/get')
+        axios.get('/desk/public/CategoryTypeNam/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

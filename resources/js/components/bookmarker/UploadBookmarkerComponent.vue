@@ -83,9 +83,9 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/bookmarkers/upload', //save action
+        action: '/desk/public/bookmarkers/upload', //save action
         text: 'Uploaded Succesfully',
-        redirect: '',
+        redirect: '/desk/public/',
 
         company_names: [],
         fields: {
@@ -101,7 +101,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/desk/public/license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

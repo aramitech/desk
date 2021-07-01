@@ -173,7 +173,7 @@ export default {
     return {
       'text': 'Records Updated succesfully',
       'redirect': '',
-              action: '/shops/update', //edit action
+              action: '/desk/public/shops/update', //edit action
       company_names: [],
       
        validated:true,
@@ -214,7 +214,7 @@ export default {
   },
   methods: {
           getShop: function(){
-        axios.get('/shopdata/get')
+        axios.get('/desk/public/shopdata/get')
         .then(function(response){
           this.rows = response.data;
           console.log(response,'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
@@ -277,7 +277,7 @@ export default {
              
             if (result.isConfirmed) {
               //do an axios for deleting
-          axios.get('/delete/contact/'+this.selectedItems).then((response) => {  
+          axios.get('/desk/public/delete/contact/'+this.selectedItems).then((response) => {  
                  
                   self.selectedItems.forEach(function(value,index,array){
                   self.rows= self.rows.filter(row=>row.shop_id!=value); 

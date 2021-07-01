@@ -56,6 +56,7 @@
                 </thead>
                 <tbody>
                     @foreach($bookmarkers as $bookmarker)
+
                     <tr>
                         <td>{{ $bookmarker->company_id }}</td>
                         <td>{{ $bookmarker->CompanyCategoryType->categorytype }}</td>
@@ -92,7 +93,7 @@
                         </div>
                     </div>
 
-
+        
                     @endforeach
                 </tbody>
             </table>

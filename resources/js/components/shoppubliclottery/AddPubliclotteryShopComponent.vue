@@ -82,9 +82,9 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/shop/add', //save action
+        action: '/desk/public/shop/add', //save action
         text: 'Added Succesfully',
-        redirect: '',
+        redirect: '/desk/public/',
 
     company_names: [],
       fields: {
@@ -104,7 +104,7 @@ data() {
 
 methods: {
         getLicenseeName: function(){
-        axios.get('/publiclottery_license_name/get')
+        axios.get('/desk/public/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

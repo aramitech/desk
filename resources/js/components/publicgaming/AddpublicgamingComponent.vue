@@ -206,9 +206,9 @@ export default {
    props:['data'],
 data() {
     return {
-        action: '/publicgaming/add', //save action
+        action: '/desk/public/publicgaming/add', //save action
         text: 'Added Succesfully',
-        redirect: '/publicgaming',
+        redirect: '/desk/public/publicgaming',
     types: ['Online','Manual','Online?Tables+Slots'],
  company_names: [],
 
@@ -261,7 +261,7 @@ data() {
         },
 
        getLicenseeName: function(){
-        axios.get('/publicgaming_license_name/get')
+        axios.get('/desk/public/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

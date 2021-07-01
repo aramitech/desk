@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //USER
+//  Route::group(['prefix' => '/desk/public'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,6 +29,7 @@ Route::post('/users/updaterole', [App\Http\Controllers\UsersController::class, '
 Route::get('/users/profile', [App\Http\Controllers\UsersController::class, 'profile'])->name('users.profile');
 Route::post('/users/updatepassword', [App\Http\Controllers\UsersController::class, 'updatepassword'])->name('users.updatepassword');
 Route::get('/users/assignroleuser/{id}', [App\Http\Controllers\UsersController::class, 'assignroleuser'])->name('assignroleuser');
+Route::post('/updaterole', [App\Http\Controllers\UsersController::class, 'updaterole'])->name('updaterole');
 
 
 
@@ -41,6 +43,9 @@ Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'da
 Route::get('/super-admin-login', [App\Http\Controllers\Auth\SuperAdminLoginController::class, 'loginView'])->name('super-admin-login');
 Route::post('/super-admin-login', [App\Http\Controllers\Auth\SuperAdminLoginController::class, 'login'])->name('super-admin-login');
 Route::any('/super-admin-logout', [App\Http\Controllers\Auth\SuperAdminLoginController::class, 'logout'])->name('super-admin-logout');
+
+
+// Route::group(['middleware'=>['auth.admin'] OR ['auth.superadmin'] OR ['auth']],function(){
 
 Route::get('/super-admin/dashboard', [App\Http\Controllers\SuperAdminController::class, 'dashboard'])->name('super-admin-dashboard');
 
@@ -134,6 +139,7 @@ Route::get('/bookmarkersdata/get',[App\Http\Controllers\BookMarkersController::c
 Route::get('/bookmarker_shop_name/get',[App\Http\Controllers\BookMarkersController::class, 'bookmarker_shop_name'])->name('bookmarkers.bookmarker_shop_name');
 Route::get('/inactivebookmarkers',[App\Http\Controllers\BookMarkersController::class, 'inactivebookmarkers'])->name('bookmarkers.inactivebookmarkers');
 
+Route::get('/userindex',[App\Http\Controllers\BookMarkersController::class, 'userindex'])->name('bookmarkers.userindex');
 
 
 
@@ -151,6 +157,10 @@ Route::post('/publiclottery/delete', [App\Http\Controllers\PublicLotteryControll
 Route::get('/publiclottery_license_name/get',[App\Http\Controllers\PublicLotteryController::class, 'getLicenseeName']);
 Route::post('/publiclottery/upload', [App\Http\Controllers\PublicLotteryController::class, 'upload'])->name('publiclottery.upload');
 Route::get('/PublicLotterydata/get',[App\Http\Controllers\PublicLotteryController::class, 'publiclotterydata'])->name('publiclottery.ppubliclotterydata');
+Route::get('/userpubliclottery',[App\Http\Controllers\PublicLotteryController::class, 'userpubliclottery'])->name('userpubliclottery');   
+
+
+
 Route::get('/publiclotteryAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publiclotteryAllreports_createPDF'])->name('publiclotteryAllreports_createPDF');   
 Route::get('/publicgamingAllreports_createPDF/pdf/{id}',[App\Http\Controllers\ReportsController::class, 'publicgamingAllreports_createPDF'])->name('publicgamingAllreports_createPDF');   
 
@@ -168,6 +178,9 @@ Route::post('/publicgaming/delete', [App\Http\Controllers\PublicgamingsControlle
 Route::get('/publicgaming_license_name/get',[App\Http\Controllers\PublicgamingsController::class, 'getLicenseeName']);
 Route::post('/publicgaming/upload', [App\Http\Controllers\PublicgamingsController::class, 'upload'])->name('publicgaming.upload');
 Route::get('/publicgamingsdata/get',[App\Http\Controllers\PublicgamingsController::class, 'publicgamingsdata'])->name('publicgaming.publicgamingsdata');
+
+Route::get('/publicgaminguserindex', [App\Http\Controllers\PublicgamingsController::class, 'publicgaminguserindex'])->name('publicgaminguserindex');
+
 
 Route::get('/admin_users', [App\Http\Controllers\AdminuserController::class, 'index'])->name('admin_users');
 Route::post('/admin_users/add', [App\Http\Controllers\AdminuserController::class, 'store'])->name('admin_users.add');
@@ -249,7 +262,7 @@ Route::get('/license_shop_name/get',[App\Http\Controllers\ShopController::class,
 Route::post('/shop/delete', [App\Http\Controllers\ShopController::class, 'destroy'])->name('shop.delete');
 
 //otp  verify
-Route::get('/otp-verify',[App\Http\Controllers\OtpController::class, 'view']);
+Route::get('/otp-verify',[App\Http\Controllers\OtpController::class, 'view'])->name('otp-verify');
 Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])->name('verify');
 
 //otp  verify User
@@ -271,9 +284,11 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
 
  Route::get('/todo', [App\Http\Controllers\TodoController::class, 'index'])->name('todo');
  Route::post('/todo/addtask', [App\Http\Controllers\TodoController::class, 'addtask'])->name('todo.addtask');
+ Route::get('/todo/user', [App\Http\Controllers\TodoController::class, 'user'])->name('todo.user');
+ Route::get('/taskindex', [App\Http\Controllers\TodoController::class, 'taskindex'])->name('taskindex');
 
  
-
+ 
  Route::get('/lotterynumbershop', [App\Http\Controllers\CompanyReportController::class, 'lotterynumbershop'])->name('lotterynumbershop');
 
 
@@ -287,5 +302,10 @@ Route::get('/company/accounts', [App\Http\Controllers\AccountsController::class,
 
 
 Route::get('/AllBookMarkersrecordsreport', [App\Http\Controllers\ReportsController::class, 'AllBookMarkersrecordsreport'])->name('AllBookMarkersrecordsreport');
+Route::get('/Allpubliclotteryrecordsreport', [App\Http\Controllers\ReportsController::class, 'Allpubliclotteryrecordsreport'])->name('Allpubliclotteryrecordsreport');
+Route::get('/Allgamingrecordsreport', [App\Http\Controllers\ReportsController::class, 'Allgamingrecordsreport'])->name('Allgamingrecordsreport');
 
 
+
+//  });
+// });

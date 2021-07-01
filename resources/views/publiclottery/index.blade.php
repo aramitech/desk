@@ -1,3 +1,15 @@
+@php 
+if(Auth::guard('admin')->check())
+{
+                $allowed = Auth::guard('admin')->user()->records_public_lotery;
+}
+                elseif(Auth::guard('web')->check())
+                {
+                    $allowed = Auth::guard('web')->user()->records_public_lotery;
+                }
+            
+                @endphp
+
 @extends('layouts.master')
 @section('title')
     User
@@ -86,7 +98,7 @@
             @php 
                 array_push($privilege,$usertype);
             @endphp
-        <publiclottery_good_table_component :privilege="{{ json_encode($privilege) }}"></publiclottery_good_table_component>
+        <publiclottery_good_table_component :privilege="{{ json_encode($privilege) }}" :allowed="{{ json_encode($allowed) }}"></publiclottery_good_table_component>
         </div>
         <upload-publiclottery-component/>
     </div>

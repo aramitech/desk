@@ -46,9 +46,9 @@ export default {
   mixins: [ FormMixin ],
 data() {
     return {
-        action: '/admin_users/add', //save action
+        action: '/desk/public/admin_users/add', //save action
         text: 'Added Succesfully',
-        redirect: '/admin_users',
+        redirect: '/desk/public/admin_users',
         }
     },
 

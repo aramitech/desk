@@ -142,9 +142,9 @@ export default {
   props: [ 'publicgamingerdata' ],
 data() {
     return {
-        action: '/publicgaming/update', //edit action
+        action: '/desk/public/publicgaming/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/publicgaming',
+        redirect: '/desk/public/publicgaming',
 
  company_names: [],
 
@@ -179,7 +179,7 @@ data() {
 
 methods: {
     getLicenseeName: function(){
-          axios.get('/publicgaming_license_name/get')
+          axios.get('/desk/public/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;
          

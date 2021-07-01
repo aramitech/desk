@@ -5,7 +5,7 @@
 		if((Auth::guard('admin')->user()->twofa) == 0)
 		{
 			//redirect to OTP page
-			echo '<script>window.location.href = "/otp-verify"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify"</script>';
 		}
 		
 	}
@@ -18,7 +18,7 @@
 		if((Auth::guard('web')->user()->twofa) == 0)
 		{
 			//redirect to user OTP page
-			echo '<script>window.location.href = "/otp-verify-user"</script>';
+			echo '<script>window.location.href = "otp-verify-user"</script>';
 		}
 		
 	}

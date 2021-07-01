@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EloquentFilters\BookMarkers;
+namespace App\EloquentFilters\BookmarkersCompany;
 
 use Fouladgar\EloquentBuilder\Support\Foundation\Contracts\Filter;
 use Illuminate\Database\Eloquent\Builder;

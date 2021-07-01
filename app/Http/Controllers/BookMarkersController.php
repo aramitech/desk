@@ -32,7 +32,17 @@ class BookMarkersController extends Controller
         return view('bookmarkers.index', compact('bookmarkers'));
 
     }
+    public function userindex()
+    {
+   
+      $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+      //  return view('bookmarkers.index', compact('bookmarkers'));
 
+
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
+        return view('bookmarkers.user', compact('bookmarkers'));
+
+    }
 
     public function bookmarkersdata()
     {

@@ -40,7 +40,7 @@ Category Types List:
                                     <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center"><span class="bullet bullet-primary mr-1"></span> Bookmarkers</a>
                                     <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center"><span class="bullet bullet-warning mr-1"></span> Public Lotery</a>
                                     <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center"><span class="bullet bullet-success mr-1"></span> Public Gaming</a>
-                                    <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center"><span class="bullet bullet-danger mr-1"></span> Bug</a>
+                                    <a href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center"><span class="bullet bullet-danger mr-1"></span> All</a>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ Category Types List:
                                                         </div>
                                                         <div class="dropdown-item">
                                                             <div class="vs-checkbox-con">
-                                                                <input type="checkbox" data-color="warning" data-value="Backend">
+                                                                <input type="checkbox" data-color="warning" data-value="PublicLottery">
                                                                 <span class="vs-checkbox">
                                                                     <span class="vs-checkbox--check">
                                                                         <i class="vs-icon feather icon-check mr-0"></i>
@@ -102,13 +102,13 @@ Category Types List:
                                                         </div>
                                                         <div class="dropdown-item">
                                                             <div class="vs-checkbox-con">
-                                                                <input type="checkbox" data-color="danger" data-value="Bug">
+                                                                <input type="checkbox" data-color="danger" data-value="All">
                                                                 <span class="vs-checkbox">
                                                                     <span class="vs-checkbox--check">
                                                                         <i class="vs-icon feather icon-check mr-0"></i>
                                                                     </span>
                                                                 </span>
-                                                                <span>Bug</span>
+                                                                <span>All</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -120,8 +120,31 @@ Category Types List:
                                             <fieldset class="form-group">
                                                 <textarea name="description" class="new-todo-item-desc form-control" rows="3" placeholder="Add description"></textarea>
                                             </fieldset>
-                                        </div>
-                                        <div class="modal-footer">
+                                        
+
+
+
+
+                                        <fieldset class="form-group">
+                                                <select id="input-order-item-farmer-id" name="id" class="form-control" style="width: 100%; border-color: #ebedf2;">
+                                    <option value="">- Select -</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" data-credit="@if($user->name) 
+                        {{  $user->name }}
+                        @endif">   @if($user->name) 
+                        {{  $user->name }}
+                        @endif  </option>
+                                    @endforeach
+                                    </select>
+                                                </fieldset>
+
+                        <fieldset class="form-group">
+                     Check For All<input type="checkbox" name="all_users" value="All" class="new-todo-item-title form-control" >
+                    </fieldset>
+
+                                                </div>
+
+                                      <div class="modal-footer">
                                         
                                             <fieldset class="form-group position-relative has-icon-left mb-0">
                                                 <button type="button" class="btn btn-outline-light" data-dismiss="modal"><i class="feather icon-x d-block d-lg-none"></i>
@@ -181,12 +204,12 @@ Category Types List:
                                                         <div class="chip-wrapper">
                                                             <div class="chip mb-0">
                                                                 <div class="chip-body">
-                                                                    <span class="chip-text" data-value="Doc"><span class="bullet bullet-success bullet-xs"></span> Doc</span>
+                                                                    <span class="chip-text" data-value="All"><span class="bullet bullet-success bullet-xs"></span> All</span>
                                                                 </div>
                                                             </div>
                                                             <div class="chip mb-0">
                                                                 <div class="chip-body">
-                                                                    <span class="chip-text" data-value="Backend"><span class="bullet bullet-warning bullet-xs"></span> Backend</span>
+                                                                    <span class="chip-text" data-value="PublicLottery"><span class="bullet bullet-warning bullet-xs"></span> Public Lottery</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -241,35 +264,35 @@ Category Types List:
                                                             </div>
                                                             <div class="dropdown-item">
                                                                 <div class="vs-checkbox-con">
-                                                                    <input type="checkbox" data-color="warning" data-value="Backend">
+                                                                    <input type="checkbox" data-color="warning" data-value="PublicLottery">
                                                                     <span class="vs-checkbox">
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check mr-0"></i>
                                                                         </span>
                                                                     </span>
-                                                                    <span>Backend</span>
+                                                                    <span>Public Lottery</span>
                                                                 </div>
                                                             </div>
                                                             <div class="dropdown-item">
                                                                 <div class="vs-checkbox-con">
-                                                                    <input type="checkbox" data-color="success" data-value="Doc">
+                                                                    <input type="checkbox" data-color="success" data-value="PublicGaming">
                                                                     <span class="vs-checkbox">
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check mr-0"></i>
                                                                         </span>
                                                                     </span>
-                                                                    <span>Doc</span>
+                                                                    <span>Public Gaming</span>
                                                                 </div>
                                                             </div>
                                                             <div class="dropdown-item">
                                                                 <div class="vs-checkbox-con">
-                                                                    <input type="checkbox" data-color="danger" data-value="Bug">
+                                                                    <input type="checkbox" data-color="danger" data-value="All">
                                                                     <span class="vs-checkbox">
                                                                         <span class="vs-checkbox--check">
                                                                             <i class="vs-icon feather icon-check mr-0"></i>
                                                                         </span>
                                                                     </span>
-                                                                    <span>Bug</span>
+                                                                    <span>All</span>
                                                                 </div>
                                                             </div>
                                                         </div>

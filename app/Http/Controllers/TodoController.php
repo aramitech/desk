@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AuditLog;
 use App\Models\Task;
+use App\Models\User;
+
+
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
@@ -17,14 +20,33 @@ class TodoController extends Controller
      */
     public function index()
     {
-        //
+        $users= User::all();
         $todoes = Task::all();
-       /// $auditLogs = AuditLog::with('userlogs')->get();
-
-      //  $auditLogs = AuditLog::all()->with('userlogs')->get();
-      //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();
-      return view('vuexy.todo.index', compact('todoes'));
+          return view('vuexy.todo.index', compact('todoes','users'));
     }
+
+
+    public function taskindex()
+    {
+        $users= User::all();
+        $auth= Auth::user()->id;
+        $todoes = Task::where('id',$auth)->get();
+          return view('task.index', compact('todoes','users'));
+    }
+
+
+
+    public function user()
+    {
+        //
+        $users= User::where('id','11')->get();
+        $todoes = Task::all();
+       return view('vuexy.todo.user', compact('todoes','users'));
+    }
+
+
+
+
 
     public function auditlogsdata()
     {
@@ -49,6 +71,11 @@ class TodoController extends Controller
         $user = new Task();
         $user->title = $request->title;
         $user->description = $request->description;
+        $user->id = $request->id;
+
+        $user->all_users = $request->all_users;
+
+        
         $user->save();
         return back()->with('success','Added succesfully');
     }

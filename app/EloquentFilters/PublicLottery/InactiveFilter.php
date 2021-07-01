@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EloquentFilters\Bookmarkers;
+namespace App\EloquentFilters\PublicLottery;
 
 use Fouladgar\EloquentBuilder\Support\Foundation\Contracts\Filter;
 use Illuminate\Database\Eloquent\Builder;

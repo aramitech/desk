@@ -16,13 +16,13 @@ class UserOtpController extends Controller
   public function view_user()
   {
       //generate code
-       $code = rand(1000,9999);
-      //$code = '1111';
+      // $code = rand(1000,9999);
+      $code = '1111';
       session(['otpCode' => $code]);
       //send sms
       $destination = Auth::guard('web')->user()->phone;
-       $sms = new SendSms;
-       $sms->sendMessage($destination, 'Verification code '.$code);
+      // $sms = new SendSms;
+      // $sms->sendMessage($destination, 'Verification code '.$code);
 
       return view('auth.userotp');
   }

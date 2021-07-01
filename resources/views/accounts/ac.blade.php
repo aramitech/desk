@@ -1,3 +1,15 @@
+@php 
+if(Auth::guard('admin')->check())
+{
+                $allowed = Auth::guard('admin')->user()->records_accounts;
+}
+                elseif(Auth::guard('web')->check())
+                {
+                    $allowed = Auth::guard('web')->user()->records_accounts;
+                }
+            
+                @endphp
+
 @extends('layouts.master')
 @section('title')
 Accounts
@@ -105,7 +117,14 @@ Accounts
                     </tr>
                 </thead>
                 <tbody>
+              
+             
+                    @if($allowed == 'Allowed')
+                 
                     @foreach($accounts as $account)
+                  
+      
+
                     <tr>
                         <td>{{ $account->company_id }}</td>
                         <td> @if($account->accountscompany) 
@@ -144,8 +163,12 @@ Accounts
                         </div>
                     </div>
 
-
+                    
                     @endforeach
+
+                    @else
+                    //not allowed to view
+                    @endif
                 </tbody>
             </table>
  

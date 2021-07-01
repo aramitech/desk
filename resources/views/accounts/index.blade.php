@@ -106,6 +106,9 @@ Accounts
                 </thead>
                 <tbody>
                     @foreach($accounts as $account)
+                    @if ( Auth::user()->user_accounts_status == 'Allowed' )
+                    
+                                   
                     <tr>
                         <td>{{ $account->company_id }}</td>
                         <td> @if($account->accountscompany) 
@@ -144,7 +147,8 @@ Accounts
                         </div>
                     </div>
 
-
+                    @else   
+                                    @endif
                     @endforeach
                 </tbody>
             </table>

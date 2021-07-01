@@ -2,6 +2,7 @@
   <div>
      
      <vue-good-table
+       v-if="this.allowed=='Allowed'"    
       :columns="columns"
       :rows="rows"
       :search-options="{ enabled: true }"
@@ -169,7 +170,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditBookmarkerComponent.vue';
 
 export default {
-  props:['privilege'],
+  props:['privilege','allowed'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -178,8 +179,8 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '',
-      action: '/bookmarkers/update', //edit action
+      'redirect': '/desk/public/',
+      action: '/desk/public/bookmarkers/update', //edit action
       company_names: [],
       
        validated:false,
@@ -256,8 +257,8 @@ export default {
   },
   methods: {
           getBookmarkers: function(){
-            let url = '/bookmarkersdata/get?';
-            let url2 = '/bookmarkersdata_inactive';
+            let url = '/desk/public/bookmarkersdata/get?';
+            let url2 = '/desk/public/bookmarkersdata_inactive';
             if(new URL(location.href).searchParams.get('from') != null)
             {
               url = url+'from='+new URL(location.href).searchParams.get('from')+'&';
@@ -279,7 +280,7 @@ export default {
        
       },
        getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/desk/public/license_name/get')
         .then(function(response){
           this.company_names = response.data;
         }.bind(this));
@@ -360,7 +361,7 @@ export default {
              
             if (result.isConfirmed) {
               //do an axios for deleting
-          axios.get('/delete/contact/'+this.selectedItems).then((response) => {  
+          axios.get('/desk/public/delete/contact/'+this.selectedItems).then((response) => {  
                  
                   self.selectedItems.forEach(function(value,index,array){
                   self.rows= self.rows.filter(row=>row.bookmarker_id!=value); 

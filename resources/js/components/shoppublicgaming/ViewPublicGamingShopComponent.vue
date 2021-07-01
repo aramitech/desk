@@ -70,7 +70,7 @@ export default {
   props: [ 'shopdata' ],
 data() {
     return {
-        action: '/shop/update', //edit action
+        action: '/desk/public/shop/update', //edit action
         text: 'Updated Succesfully',
         redirect: '',
 
@@ -88,7 +88,7 @@ data() {
 
 methods: {
     getLicenseeName: function(){
-          axios.get('/publicgaming_license_name/get')
+          axios.get('/desk/public/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;
          

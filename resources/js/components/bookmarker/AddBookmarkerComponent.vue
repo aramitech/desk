@@ -11,7 +11,7 @@
                    <div class="trf">        <div class="form-group row"> 
  <div class="col-md-6">
             <label for="company_id"> Licensee Name</label>        
-            <multiselect  name="company_id" v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+            <multiselect   v-model="fields.company_id"   label="company_name" placeholder="Select License name" :options="company_names"  :allow-empty="false" :multiple="false"  :searchable="true" :close-on-select="true" :show-labels="false"  :max-height="150" @input="onChange">
               
             </multiselect>
             <div v-if="errors && errors.company_id" class="text-danger">{{ errors.company_id[0] }}</div>
@@ -131,9 +131,9 @@ export default {
   props:['data'],
 data() {
     return {
-        action: '/bookmarkers/add', //save action
+        action: '/desk/public/bookmarkers/add', //save action
         text: 'Added Succesfully',
-        redirect: '/bookmarkers',
+        redirect: '/desk/public/bookmarkers',
 
     company_names: [],
     shop_names: [],
@@ -150,13 +150,13 @@ data() {
 
         methods: {
         getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/desk/public/license_name/get')
         .then(function(response){
           this.company_names = response.data;   
         }.bind(this));
       },
        getShop_Names: function(company_id){
-        axios.get('/bookmarker_shop_name/get?company_id='+company_id)
+        axios.get('/desk/public/bookmarker_shop_name/get?company_id='+company_id)
         .then(function(response){
           this.shop_names = response.data;        
         }.bind(this));

@@ -1,3 +1,15 @@
+@php 
+if(Auth::guard('admin')->check())
+{
+                $allowed = Auth::guard('admin')->user()->records_bookmarkers;
+}
+                elseif(Auth::guard('web')->check())
+                {
+                    $allowed = Auth::guard('web')->user()->records_bookmarkers;
+                }
+            
+                @endphp
+
 @extends('layouts.master')
 @section('title')
     User
@@ -88,7 +100,7 @@
             @php 
                 array_push($privilege,$usertype);
             @endphp
-        <bookmarkers_good_table_component :privilege="{{ json_encode($privilege) }}"></bookmarkers_good_table_component>
+        <bookmarkers_good_table_component :privilege="{{ json_encode($privilege) }}":allowed="{{ json_encode($allowed) }}"></bookmarkers_good_table_component>
 
  
         </div>

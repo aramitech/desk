@@ -2,6 +2,7 @@
   <div>
      
      <vue-good-table
+     v-if="this.allowed=='Allowed'"
       :columns="columns"
       :rows="rows"
       :search-options="{ enabled: true }"
@@ -160,7 +161,7 @@ import { VueGoodTable } from 'vue-good-table';
 import Edit from './EditPubliclotteryComponent.vue';
 
 export default {
-    props:['privilege'],
+    props:['privilege','allowed'],
     mixins: [ FormMixin,DeleteMixin ],
     components:{
         VueGoodTable,Multiselect, Edit
@@ -170,7 +171,7 @@ export default {
     return {
       'text': 'Records Updated succesfully',
       'redirect': '',
-              action: '/publiclottery/update', //edit action
+              action: '/desk/public/publiclottery/update', //edit action
       company_names: [],
       
        validated:true,
@@ -241,7 +242,7 @@ export default {
    
    },
     getPublicLottery: function(){
-            let url = '/PublicLotterydata/get?';
+            let url = '/desk/public/PublicLotterydata/get?';
              if(new URL(location.href).searchParams.get('from') != null)
             {
               url = url+'from='+new URL(location.href).searchParams.get('from')+'&';
@@ -268,7 +269,7 @@ export default {
 
 
        getLicenseeName: function(){
-         axios.get('/publiclottery_license_name/get')
+         axios.get('/desk/public/publiclottery_license_name/get')
         .then(function(response){
           this.company_names = response.data;
         }.bind(this));
@@ -333,7 +334,7 @@ export default {
              
             if (result.isConfirmed) {
               //do an axios for deleting
-          axios.get('/delete/contact/'+this.selectedItems).then((response) => {  
+          axios.get('/desk/public/delete/contact/'+this.selectedItems).then((response) => {  
                  
                   self.selectedItems.forEach(function(value,index,array){
                   self.rows= self.rows.filter(row=>row.publiclottery_id!=value); 

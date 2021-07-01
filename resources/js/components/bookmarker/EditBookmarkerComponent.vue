@@ -111,9 +111,9 @@ export default {
   props: [ 'bookmarkerdata' ],
 data() {
     return {
-        action: '/bookmarkers/update', //edit action
+        action: '/desk/public/bookmarkers/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/bookmarkers',
+        redirect: '/desk/public/bookmarkers',
 
  company_names: [],
 
@@ -138,7 +138,7 @@ data() {
 
 methods: {
     getLicenseeName: function(){
-        axios.get('/license_name/get')
+        axios.get('/desk/public/license_name/get')
         .then(function(response){
           this.company_names = response.data;
          

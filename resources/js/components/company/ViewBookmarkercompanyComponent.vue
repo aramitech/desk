@@ -93,9 +93,9 @@ export default {
   props: [ 'bookmarkerdata' ],
 data() {
     return {
-        action: '/company/updateBookmarkersCompany', //edit action
+        action: '/desk/public/company/updateBookmarkersCompany', //edit action
         text: 'Updated Succesfully',
-        redirect: '/company/bookmarkers',
+        redirect: '/desk/public/company/bookmarkers',
          company_names:[],
          status_names:[],
         fields: {
@@ -119,13 +119,13 @@ data() {
 
      methods: {
       getCategoryTypeName: function(){   
-        axios.get('/CategoryTypeNam/get')
+        axios.get('/desk/public/CategoryTypeNam/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));
       },
        getStatusType: function(){   
-        axios.get('/StatusTypeNam/get')
+        axios.get('/desk/public/StatusTypeNam/get')
         .then(function(response){
           this.company_names = response.data;        
         }.bind(this));

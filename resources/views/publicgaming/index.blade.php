@@ -1,3 +1,16 @@
+@php 
+if(Auth::guard('admin')->check())
+{
+                $allowed = Auth::guard('admin')->user()->records_public_gaming;
+}
+                elseif(Auth::guard('web')->check())
+                {
+                    $allowed = Auth::guard('web')->user()->records_public_gaming;
+                }
+            
+                @endphp
+
+
 @extends('layouts.master')
 @section('title')
     User
@@ -86,9 +99,9 @@
                 @endphp
             @endif
             @php 
-                array_push($privilege,$usertype);
+                array_push($privilege,$usertype);  
             @endphp
-        <publicgaming_good_table_component :privilege="{{ json_encode($privilege) }}"></publicgaming_good_table_component>
+        <publicgaming_good_table_component :privilege="{{ json_encode($privilege) }}"  :allowed="{{ json_encode($allowed) }}"></publicgaming_good_table_component>
 
         </div>
         <upload-publicgaming-component/>
