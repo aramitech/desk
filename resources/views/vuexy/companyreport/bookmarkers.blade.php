@@ -28,7 +28,8 @@ Category Types List:
                    
                                     <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
                                         <!-- users edit socail form start -->
-                                        <form novalidate>
+                                        <div class="users-list-filter">
+                                    <form>
                                             <div class="row">
                                                 <div class="col-12 col-sm-12">
                                                 <div class="col-md-12 col-sm-12 text-right">
@@ -69,8 +70,9 @@ Category Types List:
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-role">PayBill</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToPayBill(this.value)" id="users-list-role">
-                                                        <option value="">All</option>
+                                                    <select class="form-control" name="Paybillno" id="users-list-role">
+                                                    <option value=""></option>
+                                                    <option value="">All</option>
                                                         <option value="HavePayBill">Have PayBill</option>
                                                         <option value="NoPayBill">No PayBill</option>
                                                     </select>
@@ -88,13 +90,17 @@ function goToTestPage(id) {
 function goToCompany(id) {
   window.location.href = "{{ route('companystatus') }}"+id;
 }
+// onchange="goToTestPage(this.value)"
+// onchange="goToCompany(this.value)"
+// onchange="goToPayBill(this.value)"
 </script>
 
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-status">Status</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToTestPage(this.value)" id="users-list-status">
-                                                        <option value="">All</option>
+                                                    <select class="form-control" name="status"  id="users-list-status">
+                                                    <option value=""></option>
+                                                    <option value="All">All</option>
                                                         <option value="Active">Active</option>
                                                         <option value="Blocked">Blocked</option>
                                                         <option value="deactivated">Deactivated</option>
@@ -104,17 +110,36 @@ function goToCompany(id) {
                                             <div class="col-12 col-sm-6 col-lg-3">
                                                 <label for="users-list-verified">Companies</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-control" onchange="goToCompany(this.value)" id="users-list-verified">
+                                                    <select class="form-control" name="categorytypes_id" id="users-list-verified">
                                                     <option value=""></option>
                                                     <option value="All">All</option>
-                                                        <option value="BookMarkers">Bookmarkers</option>
-                                                        <option value="PublicLoottery">Public Lottery</option>
-                                                        <option value="PublicGaming">Public Gaming</option>
+                                                        <option value="1">Bookmarkers</option>
+                                                        <option value="2">Public Lottery</option>
+                                                        <option value="3">Public Gaming</option>
 
                                                    </select>
                                                 </fieldset>
                                             </div>
-                                      
+
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                <label for="users-list-status">Company</label>
+                                                <fieldset class="form-group">
+                                                <select id="input-order-item-farmer-id" name="company_id" class="form-control" style="width: 100%; border-color: #ebedf2;">
+                                    <option value="">- Select -</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company->company_id }}" data-credit="@if($company->company_name) 
+                        {{  $company->accountscompany }}
+                        @endif">   @if($company->company_name) 
+                        {{  $company->company_name }}
+                        @endif  </option>
+                                    @endforeach
+                                    </select>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-3">
+	                                    	<button type="submit" class="btn btn-primary">Search</button>
+	
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

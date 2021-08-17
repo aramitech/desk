@@ -17,6 +17,16 @@ class ShopController extends Controller
         return view('shop.old', compact('shops'));
     }
     
+    
+    public function shop_numbers($id)
+    {
+        //$id=
+          $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+        $shops = Shops::with('Shopcompany')->where('category_type_id',1)->where('company_id',$id)->get();
+        return view('shop.old', compact('shops'));
+    }
+
+
     public function publicgaming_shop()
     {
         $shop_id=BookmarkersCompany::where('category_type_id',3)->pluck('category_type_id');
@@ -87,6 +97,18 @@ class ShopController extends Controller
        // return $request->id['shop_id'];
        // return $request;     return Favourite::find($id)->delete();
         $user = Shops::findOrFail($request->id['shop_id']);
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }
+
+
+    public function death(Request $request, $id )
+    {
+
+        
+       // return $request->id['shop_id'];
+       // return $request;     return Favourite::find($id)->delete();
+        $id;  $user = Shops::findOrFail( $id );
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }

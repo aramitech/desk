@@ -38,13 +38,13 @@
 									</div>
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" >
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div></div></div>
                         <div class="trf">  
     <div class="form-group row">                      
                                <div class="col-md-4">
-							<label>Mr No</label>
+							<label>MR No</label>
 							<input class="form-control"  name="mrno" v-model="fields.mrno" value="" type="text" placeholder="MR No">
                             <div v-if="errors && errors.mrno" class="text-danger">{{ errors.mrno[0] }}</div>
 						</div>
@@ -56,7 +56,7 @@
                         
                                 <div class="col-md-4">
 							<label>Transfer Fee</label>
-							<input class="form-control" @keydown="sum" name="transfer_fee" v-model="fields.transfer_fee" value="" type="text" placeholder="Transfer Fee" required>
+							<input class="form-control" @keydown="sum" name="transfer_fee" v-model="fields.transfer_fee" value="" type="text" placeholder="Transfer Fee" >
                             <div v-if="errors && errors.transfer_fee" class="text-danger">{{ errors.transfer_fee[0] }}</div>
 						</div>	</div>
                         </div>
@@ -64,35 +64,35 @@
 <div class="form-group row">  
       <div class="col-md-3">
 									<label>Annual License Fee</label>
-							<input class="form-control" @keydown="sum" name="annual_license_fee" v-model="fields.annual_license_fee" value="" type="text" placeholder="annual_license_fee" required>
+							<input class="form-control" @keydown="sum" name="annual_license_fee" v-model="fields.annual_license_fee" value="" type="text" placeholder="annual_license_fee" >
                             <div v-if="errors && errors.annual_license_fee" class="text-danger">{{ errors.annual_license_fee[0] }}</div>
 						</div>
                            <div class="col-md-3">
 							<label>Investigation Fee Local</label>
-							<input class="form-control" @keydown="sum" name="investigation_fee_local" v-model="fields.investigation_fee_local" value="" type="text" placeholder="investigation_fee_local" required>
+							<input class="form-control" @keydown="sum" name="investigation_fee_local" v-model="fields.investigation_fee_local" value="" type="text" placeholder="investigation_fee_local" >
                             <div v-if="errors && errors.investigation_fee_local" class="text-danger">{{ errors.investigation_fee_local[0] }}</div>
 						</div>
                      
                             <div class="col-md-3">
 							<label>Investigation Fee Foreign</label>
-							<input class="form-control" @keyup="sum" name="investigation_fee_foreign" v-model="fields.investigation_fee_foreign" value="" type="text" placeholder="investigation_fee_foreign" required>
+							<input class="form-control" @keyup="sum" name="investigation_fee_foreign" v-model="fields.investigation_fee_foreign" value="" type="text" placeholder="investigation_fee_foreign" >
                             <div v-if="errors && errors.investigation_fee_foreign" class="text-danger">{{ errors.investigation_fee_foreign[0] }}</div>
 						</div>
                             <div class="col-md-3">
 							<label>Premise Fee</label>
-							<input class="form-control" @keyup="sum" id="premise_fee" name="premise_fee" v-model="fields.premise_fee" value="" type="text" placeholder="Total Payout" required>
+							<input class="form-control" @keyup="sum" id="premise_fee" name="premise_fee" v-model="fields.premise_fee" value="" type="text" placeholder="Total Payout" >
                             <div v-if="errors && errors.premise_fee" class="text-danger">{{ errors.premise_fee[0] }}</div>
 						</div></div>
   <div class="form-group row">                       
                          <div class="col-md-4">
 							<label>Renewal Fee</label>
-							<input class="form-control" @keydown="sum" name="renewal_fee" v-model="fields.renewal_fee" value="" type="text" placeholder="renewal_fee"  required>
+							<input class="form-control" @keydown="sum" name="renewal_fee" v-model="fields.renewal_fee" value="" type="text" placeholder="renewal_fee"  >
                             <div v-if="errors && errors.renewal_fee" class="text-danger">{{ errors.renewal_fee[0] }}</div>
 						</div>
                         <div class="col-md-4">
 							<label>Operating Fee</label>
                            
-                           	<input class="form-control" @keydown="sum" name="operating_fee" v-model="fields.operating_fee" value="" type="text" placeholder="operating_fee" required>
+                           	<input class="form-control" @keydown="sum" name="operating_fee" v-model="fields.operating_fee" value="" type="text" placeholder="operating_fee" >
                             <div v-if="errors && errors.operating_fee" class="text-danger">{{ errors.operating_fee[0] }}</div>
 						</div>
                            <!-- <div class="col-md-4">
@@ -120,7 +120,7 @@ import Multiselect from 'vue-multiselect';
 
 // register globally
 Vue.component('multiselect', Multiselect)
-
+ 
 export default {
   mixins: [ FormMixin ],
   components: { Multiselect },

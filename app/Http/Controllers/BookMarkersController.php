@@ -150,8 +150,12 @@ class BookMarkersController extends Controller
 
         $user = new BookMarkers();
         $user->company_id = $request->company_id['company_id'];
-
-        $user->shop_id = $request->shop_id['shop_id'];
+        if (!empty($request->shop_id)){
+      $user->shop_id = $request->shop_id['shop_id'];
+        }
+ 
+    
+       // $user->shop_id = '1';
         $user->licensee_name = $request->licensee_name;
         $user->license_no = $request->license_no;
         $user->return_for_the_period_of = $request->return_for_the_period_of;

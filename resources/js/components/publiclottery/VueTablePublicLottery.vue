@@ -170,8 +170,8 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '',
-              action: '/desk/public/publiclottery/update', //edit action
+      'redirect': '/desk/public/publiclottery',
+       action: '/desk/public/publiclottery/update', //edit action
       company_names: [],
       
        validated:true,

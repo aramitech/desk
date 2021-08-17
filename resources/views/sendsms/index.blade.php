@@ -51,7 +51,7 @@
                 </thead>
                 <tbody>
                 @foreach($sendsmsis as $bookmarker)
-                @if ( Auth::user()->records_send_sms == 'Allowed' )
+               {{-- @if ( Auth::user()->records_send_sms == 'Allowed' ) --}}
 
                     <tr>
                         <td>{{ $bookmarker->sendsms_id }}</td>
@@ -73,8 +73,8 @@
                             <view-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
-                    @else   
-                @endif
+                 {{--   @else   
+                @endif--}}
                     @endforeach
                 </tbody>
             </table>

@@ -30,6 +30,28 @@ class AccountsController extends Controller
 
     }
 
+    public function accountsusers()
+    {
+   
+      $accounts = Accounts::with('accountscompany')->get();
+        $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+        return view('accounts.user', compact('accounts'));
+
+    }
+    
+
+
+    public function accountsedit()
+    {
+   
+      $accounts = Accounts::with('accountscompany')->get();
+        $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+        return view('vuexy.accounts.accounts_edit', compact('accounts'));
+
+    }
+
+    
+
 
     public function bookmarkersdata()
     {
@@ -165,6 +187,59 @@ class AccountsController extends Controller
         return back()->with('success','Added succesfully');
     }
 
+
+
+    public function updateaccounts(Request $request)
+    {
+      
+ 
+		if(Auth::guard('admin')->check())
+        {     
+            $id= Auth::guard('admin')->user()->admin_id;
+            $email= Auth::guard('admin')->user()->email;  
+            $category= 'Admin'; 
+        }
+    elseif(Auth::guard('web')->check())
+    {
+        //$userLog->id = Auth::user()->id;
+        $id= Auth::guard('web')->user()->id;
+        $email= Auth::guard('web')->user()->email;  
+        $category= 'User'; 
+    }
+
+
+        $user = Accounts::findOrFail($request->accounts_id);
+        $user->company_id = $request->company_id['company_id'];
+        $user->mrno = $request->mrno;
+        $user->application_fee = $request->application_fee;
+        $user->transfer_fee = $request->transfer_fee;
+        $user->annual_license_fee = $request->annual_license_fee;
+        $user->investigation_fee_local = $request->investigation_fee_local;
+        $user->investigation_fee_foreign = $request->investigation_fee_foreign;
+        $user->premise_fee = $request->premise_fee;
+        $user->renewal_fee = $request->renewal_fee;
+        $user->operating_fee = $request->operating_fee;
+        $user->totals = $request->totals;
+
+        $user->id = $id;    
+        $user->save();
+
+   
+        //log
+        $userLog = new AuditLog();
+        $userLog->audit_module = "User";
+        $userLog->audit_activity = "Added Accounts Entry ";
+       
+        $userLog->user_category = "User";
+       // $userLog->audit_log_id = $id;
+        $userLog->id =$id; $id;   
+        $userLog->save();
+
+        return back()->with('success','Updated succesfully');
+    }
+
+    
+
     public function upload(Request $request)
     {
        // return $request->company_id;
@@ -287,6 +362,14 @@ class AccountsController extends Controller
 
         return back()->with('success','Deleted succesfully');
     }
+
+    public function death(Request $request, $id )
+    {
+        $id;  $user = Accounts::findOrFail( $id );
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }  
+
 
 
     public function records()

@@ -85,7 +85,7 @@ data() {
     return {
         action: '/desk/public/bookmarkers/upload', //save action
         text: 'Uploaded Succesfully',
-        redirect: '/desk/public/',
+        redirect: '/desk/public/bookmarkers',
 
         company_names: [],
         fields: {

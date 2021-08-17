@@ -64,7 +64,7 @@ class AdminController extends Controller
         $publiclotteries = PublicLottery::all();
         $bookmarkers = BookMarkers::all();
         return view('admin-dashboard', compact('publiclotteries','bookmarkers','companyggrchart'));
-       // return view('admin-dashboard');
+        //return view('admin-dashboard');
     }
 
 
@@ -126,8 +126,10 @@ class AdminController extends Controller
             }
 
             $deposits = BookMarkers::max('deposits');
-
-
+            $total_ggr_bookmarkers = BookMarkers::sum('ggr');
+            $total_ggr_publiclotteries = PublicLottery::sum('ggr');
+            $total_ggr_publicgamings = Publicgamings::sum('ggr');
+        
             $tasks = Task::where('task_id','1')->get();
             //company status
             $companyactive =BookmarkersCompany::where('status','Active')->count();
@@ -163,9 +165,10 @@ class AdminController extends Controller
             $companyggrchart->dataset('Public Lottery GGR Reports', 'bar', $ldata_arr)
             // ->color($borderColors)
             ->backgroundcolor($fillColors);
-            return view('vuexy.vuexy-dashboard', compact('deposits','tasks','companies','companyggrchart','categories','publiclotteries','data_arr','companyactive','companyinactive'));
+            return view('vuexy.vuexy-dashboard', compact('deposits','tasks','companies','companyggrchart','categories','publiclotteries','data_arr','companyactive','companyinactive','total_ggr_bookmarkers','total_ggr_publiclotteries','total_ggr_publicgamings'));
         }
-
+                                                           
+  
         public function accountsetting()
         {
             //

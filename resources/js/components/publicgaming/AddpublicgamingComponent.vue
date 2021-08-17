@@ -173,18 +173,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                     <div class="modal-footer"> <div class="trf"> 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -206,6 +194,7 @@ export default {
    props:['data'],
 data() {
     return {
+            date: new Date().toISOString().substr(0, 10), // 05/09/2019
         action: '/desk/public/publicgaming/add', //save action
         text: 'Added Succesfully',
         redirect: '/desk/public/publicgaming',
@@ -229,6 +218,14 @@ data() {
                 ggrslot: '',
                 manual_ggtotal: '',
                 manual_ggrslot: '',
+
+
+ date: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_to: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_of: new Date().toISOString().substr(0, 10), // 05/09/2019 
+
+
+
       },
 
       isHidden:true,

@@ -20,7 +20,7 @@
            <div class="col-md-6">
 
                <label for="shop_id"> Shop</label>        
-            <multiselect  name="shop_id" v-model="fields.shop_id"   label="shop_name" placeholder="Select Shop name" :options="shop_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" >
+            <multiselect  name="shop_id" v-model="fields.shop_id"   label="shop_name" placeholder="Select Shop name" :options="shop_names"  :allow-empty="false" :multiple="false" :hide-selected="true" :max-height="150" >
               
             </multiselect>
             <div v-if="errors && errors.shop_id" class="text-danger">{{ errors.shop_id[0] }}</div>
@@ -28,7 +28,7 @@
 							<!-- <label>Licensee Name</label> -->
 							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
-						</div>
+			</div>
         
          </div>
 
@@ -130,6 +130,7 @@ export default {
   components: { Multiselect },
   props:['data'],
 data() {
+    
     return {
         action: '/desk/public/bookmarkers/add', //save action
         text: 'Added Succesfully',
@@ -141,8 +142,11 @@ data() {
         license_no:"",
         trading_name:'',
         licensee_name:'',
-
-                ggr : '',
+      
+       date: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_to: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_of: new Date().toISOString().substr(0, 10), // 05/09/2019 
+         ggr : '',
                 total_payout: '',              
       }
         }

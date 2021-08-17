@@ -1,6 +1,6 @@
 @extends('vuexy.layouts.master')
 @section('title')
-Category Types List:
+ACCOUNTS REPORT:
 @endsection
 @section('content')
 
@@ -39,7 +39,7 @@ Category Types List:
                 </div>
             </div>
                                                 <h4 class="media-heading">   
-                                                Company:
+                                                ACCOUNTS REPORT::
                                         
                                                 </h4>
                                                 <div class="card-body card-dashboard">
@@ -159,11 +159,34 @@ function goToCompany(id) {
                         <th>Premise Fee</th>  
                         <th>Renewal Fee</th>
                         <th>Operating Fee</th>  
+                        <th>Total</th> 
                     </tr>
                 </thead>
                 <tbody>
+
+                @php $application_fee=0;
+				$transfer_fee=0;
+				$annual_license_fee=0;
+				$investigation_fee_local=0;
+				$investigation_fee_foreign=0;
+				$premise_fee=0;
+                $renewal_fee=0;
+                $operating_fee=0;
+                $total_fee=0;
+				@endphp
                     @foreach($accounts as $bookmarker)
-                    <tr>
+                    @php 
+                $application_fee +=$bookmarker->application_fee ;
+				 $transfer_fee +=$bookmarker->transfer_fee ;
+				 $annual_license_fee +=$bookmarker->annual_license_fee ;
+				 $investigation_fee_local +=$bookmarker->investigation_fee_local ;
+				 $investigation_fee_foreign +=$bookmarker->investigation_fee_foreign ;
+				 $premise_fee +=$bookmarker->premise_fee ;
+                 $renewal_fee +=$bookmarker->renewal_fee ;
+                 $operating_fee +=$bookmarker->operating_fee ;
+                 $total_fee +=$bookmarker->operating_fee+$bookmarker->application_fee+$bookmarker->transfer_fee+$bookmarker->annual_license_fee +$bookmarker->investigation_fee_local+$bookmarker->investigation_fee_foreign+$bookmarker->premise_fee+$bookmarker->renewal_fee ;
+
+				@endphp  <tr>
                         <td>{{ $bookmarker->accounts_id }}</td>
                         <td>{{ $bookmarker->accountscompany->company_name }}</td>
                         <td>{{ $bookmarker->mrno }}</td>
@@ -178,11 +201,25 @@ function goToCompany(id) {
 
                         <td>{{ $bookmarker->renewal_fee }}</td>
                         <td>{{ $bookmarker->operating_fee }}</td>
-                
+                        <td>{{ $bookmarker->operating_fee+$bookmarker->application_fee+$bookmarker->transfer_fee+$bookmarker->annual_license_fee +$bookmarker->investigation_fee_local+$bookmarker->investigation_fee_foreign+$bookmarker->premise_fee+$bookmarker->renewal_fee }}</td>
                     </tr>
 
                     @endforeach
                 </tbody>
+                <tbody>
+			<th style="background-color:#aaf228" colspan="3">Total</th>
+		
+		    <td style="background-color:#aaf228">{{ $application_fee }}</td>
+			<td style="background-color:#aaf228">{{ $transfer_fee }}</td>
+			<td style="background-color:#aaf228">{{ $annual_license_fee }}</td>
+			<td style="background-color:#aaf228">{{ $investigation_fee_local }}</td>
+            <td style="background-color:#aaf228">{{ $investigation_fee_foreign }}</td>
+            <td style="background-color:#aaf228">{{ $premise_fee }}</td>
+			<td style="background-color:#aaf228">{{ $renewal_fee }}</td>
+            <td style="background-color:#aaf228">{{ $operating_fee }}</td>
+            <td style="background-color:#aaf228">{{ $total_fee }}</td>
+            
+            </tbody>
             </table>
 
 

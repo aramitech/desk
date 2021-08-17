@@ -22,16 +22,16 @@
                                             <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">92.6
-                                    
-                                  {{--  @foreach($deposits as $depo) 
-                                      <p>{{ $depo->deposits }}</p>
-                                       @endforeach --}}
+                                    <h2 class="text-bold-700 mt-1">
+
+ 
+                                      <p>{{ $total_ggr_bookmarkers }}</p>
+                                  
                                     </h2>
-                                    <p class="mb-0">Bookmaarkers</p>
+                                    <p class="mb-0">Bookmaarkers Total GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-1"></div>
+                                    <!-- <div id="line-area-chart-1"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -43,11 +43,13 @@
                                             <i class="feather icon-credit-card text-success font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5</h2>
-                                    <p class="mb-0">Public Lottery</p>
+                                    <h2 class="text-bold-700 mt-1"></h2>
+                                    <p>{{ $total_ggr_publiclotteries }}</p>
+                                 
+                                    <p class="mb-0">Total bPublic Lottery GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-2"></div>
+                                    <!-- <div id="line-area-chart-2"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -59,11 +61,12 @@
                                             <i class="feather icon-home text-danger font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">36%</h2>
-                                    <p class="mb-0">Public Gaming</p>
+                                    <h2 class="text-bold-700 mt-1">{{ $total_ggr_publicgamings }}</h2>
+                                    <p></p>
+                                    <p class="mb-0">Total Public Gaming GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-3"></div>
+                                    <!-- <div id="line-area-chart-3"></div> -->
                                 </div>
                             </div>
                         </div>
@@ -75,11 +78,13 @@
                                             <i class="feather icon-package text-warning font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1">97.5</h2>
-                                    <p class="mb-0"> Received</p>
+                                    <h2 class="text-bold-700 mt-1"></h2>
+                                    <p class="mb-0">. </p>
+                                    <p class="mb-0">. </p>
+                                    <p class="mb-0">. </p>
                                 </div>
                                 <div class="card-content">
-                                    <div id="line-area-chart-4"></div>
+                                    <!-- <div id="line-area-chart-4"></div> -->
                                 </div>
                             </div>
                         </div>

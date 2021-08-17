@@ -135,6 +135,14 @@ data() {
         wht:'',
         payouts:'',
         ggrtax:'',
+
+  date: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_of: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_to: new Date().toISOString().substr(0, 10), // 05/09/2019 
+
+
+
+
       }
         }
     },

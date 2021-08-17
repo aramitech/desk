@@ -138,6 +138,9 @@ data() {
         license_no:"",
         trading_name:'',
         licensee_name:'',
+  date: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_to: new Date().toISOString().substr(0, 10), // 05/09/2019
+      return_for_the_period_of: new Date().toISOString().substr(0, 10), // 05/09/2019 
 
                 ggr : '',
                 total_payout: '',              

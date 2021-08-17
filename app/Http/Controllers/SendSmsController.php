@@ -55,7 +55,6 @@ class SendSmsController extends Controller
        // $user->company_id = $request->company_id['company_id'];
         $user->message = $request->message;
         $user->company_id = 1;
-        
      
         $user->save();
 
@@ -91,11 +90,11 @@ class SendSmsController extends Controller
     public function send_bulksms(Request $request)
     {
  
-       $compay_contacts=  BookmarkersCompany::all()->pluck('contact');
+       $compay_contacts=  BookmarkersCompany::pluck('contact');
         $user = new SendSmses();
        // $user->company_id = $request->company_id['company_id'];
         $user->message = $request->message;
-        $user->company_id = 1;
+        //$user->company_id = 1;
           
         $user->save();
         $contact_arr=[];
@@ -106,7 +105,7 @@ class SendSmsController extends Controller
         {
             
             $message = $request->message;
-             $phone=  $compay_contacts['phone'];
+             $phone=  $compay_contacts;
          //   $phone=  '0712516957';
           $destination= $compay_contacts;
           $sms = new SendSms;

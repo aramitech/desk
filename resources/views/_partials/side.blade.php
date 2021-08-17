@@ -61,11 +61,18 @@
         
                                     @endif
                                     @if ( Auth::user()->user_accounts_status == 'Allowed' )
-                                    <li class="dropdown">
+                                   {{-- <li class="dropdown">
                                         <a href="{{ route('accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('user_accounts_status*')) ? 'active' : '' }}">
                                             <span class="micon icon-copy ti-user"></span><span class="mtext">Accounts</span>
                                         </a>
-                                    </li>                                   
+                                    </li>  --}}
+                                    
+                                    
+                                    <li class="dropdown">
+                                        <a href="{{ route('accountsusers')}}" class="dropdown-toggle no-arrow {{ (request()->is('user_accounts_accountsusers*')) ? 'active' : '' }}">
+                                            <span class="micon icon-copy ti-user"></span><span class="mtext">Accounts</span>
+                                        </a>
+                                    </li> 
                                      @else   
                                     @endif
                                  
@@ -76,6 +83,10 @@
                                         </a>
                                     </li>  
 
-                                                                 
+                                    <li class="dropdown">
+                                        <a href="{{ route('taskindexreplied')}}" class="dropdown-toggle no-arrow {{ (request()->is('taskindexreplied*')) ? 'active' : '' }}">
+                                            <span class="micon icon-copy ti-user"></span><span class="mtext">Seen Task </span>
+                                        </a>
+                                    </li>                              
                                     
 </ul>

@@ -4,6 +4,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myLargeModalLabel">Add Bookmarkers Shop</h4>
+      <!-- <form method="POST" @submit.prevent="submit">
+          <button type="submit" class="btn btn-primary">View Bookmarker Shop</button>
+       </form> -->
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form method="POST" @submit.prevent="submit">

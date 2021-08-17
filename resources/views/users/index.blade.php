@@ -47,7 +47,7 @@
                         <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
@@ -69,8 +69,9 @@
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#assignroleuser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Assign Role</button>
 
                                     <a href="{{ route('assignroleuser',$user->id)}}"> <button class="btn btn-primary btn-sm" data-toggle="tooltip"  data-original-title="Edit"><i class="fa fa-edit">Role</i> </button></a>
-     
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('userdelete',{{$user}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                    <a class="btn btn-danger btn-sm" href="{{ route('userss.delete', $user->id) }}"  data-target="#smstext-{{ $user->id }}"><i class="fa fa-plus"></i>Delete</a>
+
+                                    <!-- <button class="btn btn-sm btn-danger" @click="deleteItem('users.delete',{{$user}})"><i class="dw dw-delete-3"></i> Delete</button> -->
                              
                                    
                              

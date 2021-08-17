@@ -118,7 +118,7 @@ data() {
                 ggr : '',
                 total_payout: '',   
 
-            
+           
       }
         }
 

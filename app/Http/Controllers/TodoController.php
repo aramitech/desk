@@ -30,12 +30,18 @@ class TodoController extends Controller
     {
         $users= User::all();
         $auth= Auth::user()->id;
-        $todoes = Task::where('id',$auth)->get();
-          return view('task.index', compact('todoes','users'));
+        $todoes = Task::where('id',$auth)->where('status','!=','Seen')->get();
+        return view('task.index', compact('todoes','users'));
     }
 
-
-
+    public function taskindexreplied()
+    {
+        $users= User::all();
+        $auth= Auth::user()->id;
+        $todoes = Task::where('id',$auth)->where('status','Seen')->get();
+        return view('task.index', compact('todoes','users'));
+    }
+    
     public function user()
     {
         //
@@ -94,10 +100,34 @@ class TodoController extends Controller
         return back()->with('success','Updated succesfully');
     }
 
-    public function destroy(Request $request)
+
+    public function replytotask(Request $request)
     {
-       
-        $user = Adminusers::findOrFail($request->admin_id);
+  
+        $user = Task::findOrFail($request->task_id);
+        $user->replymessage = $request->replymessage;
+        $user->status = 'Seen';
+        $user->save();
+        return back()->with('success','Updated succesfully');
+    }
+    
+
+
+    public function records_confirm_task(Request $request)
+    {
+        $user = Task::findOrFail($request->id);
+        $user->status = 'Seen';
+        $user->save();
+        return back()->with('success','Updated succesfully');
+    }
+
+    
+
+
+    public function deletetask(Request $request, $id)
+    {
+      
+        $user = Task::findOrFail($request->id);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }

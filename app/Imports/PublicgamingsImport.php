@@ -38,22 +38,22 @@ class PublicgamingsImport implements ToModel, WithHeadingRow, WithBatchInserts, 
         try
         {
             \Log::info($row);
-            $wht = 0.2*$row['payouts'] ?? $row['payouts'];
-            $ggr = $row['sales'] ?? $row['sales']-$row['payouts'] ?? $row['payouts'];
-            $ggrtax = 0.15*$ggr;
+            $wht = 0.2* $row['payouts'] ?? $row['payouts'];
+           // $ggr = $row['sales'] ?? $row['sales']-$row['payouts'] ?? $row['payouts'];
+           // $ggrtax = 0.15*$ggr;
             Publicgamings::create([
                 'company_id'=> $this->company_id,
-                'licensee_name'=> $this->licensee_name,
+               // 'licensee_name'=> $this->licensee_name,
                 'license_no'=> $this->license_no,
-                'date' => $row[''],
-                'sales' => $row['sales'] ?? $row['sales'],
-                'payouts' => $row['payouts'] ?? $row['payouts'],
-                    'payoutsslot' => $row['payoutsslot'] ?? $row['payoutsslot'],
+                'date' => now(),
+               // 'sales' => $row['sales'] ?? $row['sales'],
+              //  'payouts' => $row['payouts'] ?? $row['payouts'],
+                  //  'payoutsslot' => $row['payoutsslot'] ?? $row['payoutsslot'],
                 'wht' => $wht,
                 'return_for_the_period_of' => now(),
                 'return_for_the_period_to' => now(),
-                'ggr' => $ggr,
-                'winloss' => $ggr,
+               // 'ggr' => $ggr,
+                //'winloss' => $ggr,
             ]);
             
         }
@@ -82,7 +82,7 @@ class PublicgamingsImport implements ToModel, WithHeadingRow, WithBatchInserts, 
     }
     public function headingRow(): int
     {
-        return 4;
+        return 3;
     }
     public function batchSize(): int
     {

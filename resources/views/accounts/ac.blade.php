@@ -105,7 +105,7 @@ Accounts
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company </th>
-                          <th>Mr No</th>
+                          <th>MR No</th>
                         
                         <th>Application F</th> 
                         <th>Transfer F</th>
@@ -144,22 +144,29 @@ Accounts
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
                               <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                              {{--<a class="btn btn-primary btn-sm" href="{{ route('accountsedit', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Edit</a>--}}
 
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('accountscompanydelete',{{$account}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                {{--  <button class="btn btn-sm btn-danger" @click="deleteItem('accountscompanydelete',{{$account}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
+                                  <a class="btn btn-danger btn-sm" href="{{ route('records_delete', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Delete</a>
+
+
+
+
+                                  
                                </div> 
                             </div>
                             </td>  <td></td>
                     </tr>
                     <div class="modal fade" id="editbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($account)}}"/>
+                            <edit-accounts-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>
                     </div>
 
                     <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($account)}}"/>
+                            <view-accounts-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>
                     </div>
 
@@ -167,7 +174,7 @@ Accounts
                     @endforeach
 
                     @else
-                    //not allowed to view
+                    
                     @endif
                 </tbody>
             </table>

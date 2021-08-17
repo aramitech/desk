@@ -26,6 +26,8 @@ class SendSms{
             'destination'=>$phone,
             'message'=>$message,
         ];
+        Log::info($parameters);
+        exit();
         try{
           
              $this->client=new Client();

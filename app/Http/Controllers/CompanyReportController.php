@@ -8,7 +8,7 @@ use App\Models\PublicLotteryNumber;
 use App\Models\Shops;
 use App\Models\PublicGamingCompany;
 use Illuminate\Http\Request;
-
+use EloquentBuilder;    
 class CompanyReportController extends Controller
 {
     /**
@@ -23,12 +23,12 @@ class CompanyReportController extends Controller
     public function bookmarkers_company_report()
     {
         //$bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
-       // $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        $companies  = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->OrderBy('category_type_id')->get();
       
-        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->OrderBy('category_type_id')->get();
+        $bookmarkers = EloquentBuilder::to(BookmarkersCompany::with('CompanyCategoryType')->with('Shopcompany')->OrderBy('category_type_id'), request()->all())->get();
 
       
-        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers'));
+        return view('vuexy.companyreport.bookmarkers', compact('bookmarkers','companies'));
     }
 
     

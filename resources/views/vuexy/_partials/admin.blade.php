@@ -15,10 +15,10 @@
             <li class="active"><a href="{{ route('admin-master')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Dashboard</span></a>
                         </li>
          
-                <li class=" nav-item"><a href="{{ route('users')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Users</span></a>
+                        <li class=" nav-item"><a href="{{ route('accounts')}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Accounts Entry </span></a>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Companies</span></a>
+                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Companies Entry</span></a>
                     <ul class="menu-content">
                 <li class=" nav-item"><a href="{{ route('company.bookmarkers','BookMarkers')}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">BookMarkers</span></a>
                 </li>
@@ -29,7 +29,7 @@
                 </ul>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Records</span></a>
+                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Records Entry</span></a>
                     <ul class="menu-content">
                         <li><a href="{{ route('bookmarkers')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">BookMarkers</span></a>
                         </li>
@@ -42,19 +42,7 @@
                 </li>
 
 
-                <li><a href="{{ route('shop')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Shop</span></a>
-                </li>
-
-                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">SMS</span></a>
-                    <ul class="menu-content">
-                <li><a href="{{ route('sendsms')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Send SMS To Company</span></a>
-                </li>
-                <li><a href="{{ route('sendsmstocontact')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Send SMS To Contact</span></a>
-                </li>
-                <li><a href="{{ route('sendbulksms')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bulk SMS</span></a>
-                </li>
-                </ul>
-                </li>
+         
 
 
 
@@ -67,10 +55,10 @@
                 <!-- <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Companies</span></a> -->
               
 
-                <li><a href="{{ route('company.bookmarkers_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Companies</span></a>
+                <li><a href="{{ route('company.bookmarkers_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Companies Status</span></a>
                         </li>
 
-                        <li><a href="{{ route('company.accounts')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Accounts</span></a>
+                        <li><a href="{{ route('company.accounts')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Finance Report</span></a>
                         </li>
                 <!-- <ul class="menu-content"> 
                 <li><a href="{{ route('company.bookmarkers_company_report')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bookmarkers </span></a>
@@ -87,22 +75,18 @@
                         </li> -->
 
                             
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Records</span></a>
-              
-
-                    <ul class="menu-content">
-                        <li><a href="{{ route('reports')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bookmarkers </span></a>
+         
+                        <li><a href="{{ route('reports')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bookmarkers Report</span></a>
                         </li>
-                        <li><a href="{{ route('indexpubliclottery')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Public Lottery</span></a>
+                        <li><a href="{{ route('indexpubliclottery')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Public Lottery Report</span></a>
                         </li>
-                        <li><a href="{{ route('indexpublicgaming')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Public Gaming </span></a>
+                        <li><a href="{{ route('indexpublicgaming')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Public Gaming Report</span></a>
                         </li>
                 
 
-                     
+                        <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Graphical Reports</span></a>
+                <ul class="menu-content"> 
 
-                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Graph</span></a>
-                    <ul class="menu-content">
                         <li><a href="{{ route('reports.publicgamingGGr')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Public Gaming GGR</span></a>
                         </li>
                         <li><a href="{{ route('reports.publiclotteryGGr')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Public Lottery GGR</span></a>
@@ -111,19 +95,39 @@
                         </li>
                     </ul>
                 </li>  
-              
                 </ul>
-                </li>     </ul>
-                </li>
+                </li>  
+                
    
                 <li><a href="{{ route('useractivitylogs')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Activity Logs</span></a>
 </li>    
 
-<li><a href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Account Setting</span></a>
-</li>    
+
 
 <!-- <li><a href="{{ route('calender')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Calender</span></a>
 </li>  -->
 <li><a href="{{ route('todo')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Task</span></a>
 </li> 
+
+<li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Account Setting</span></a>
+                    <ul class="menu-content">
+              
+              
+                    <li><a href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">My Account </span></a>
+</li>        <li class=" nav-item"><a href="{{ route('users')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Users</span></a>
+                </li>
+
+              
+                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">SMS </span></a>
+                    <ul class="menu-content"> 
+                <li><a href="{{ route('sendsms')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Send SMS To Company</span></a>
+                </li>
+                <li><a href="{{ route('sendsmstocontact')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Send SMS To Contact</span></a>
+                </li>
+                <li><a href="{{ route('sendbulksms')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Bulk SMS</span></a>
+                </li>  </li>
+                </ul>
+                </li>
+
+
 </ul></div></div>

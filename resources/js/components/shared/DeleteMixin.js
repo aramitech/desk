@@ -16,23 +16,23 @@ export default {
       //method for deleting admin user used in the views/adminuser.index blade
       deleteItem: function deleteItem(path,id){
        
-        var userdeletepath='/users/delete';
-        var adminuserdeletepath='/admin_users/delete';
-        var bookmarkerdeletepath='/bookmarkers/delete';
-        var publiclotterydeletepath='/publiclottery/delete';
+        var userdeletepath='/desk/public/users/delete';
+        var adminuserdeletepath='/desk/public/admin_users/delete';
+        var bookmarkerdeletepath='/desk/public/bookmarkers/delete';
+        var publiclotterydeletepath='/desk/public/publiclottery/delete';
          var publicgamingdeletepath='/publicgaming/delete';
-        var bookmarkerscompanydeletepath='/company/delete_destroybookmarkerscompany';
-        var accountscompanydeletepath='/accounts/delete_accounts';
+        var bookmarkerscompanydeletepath='/desk/public/company/delete_destroybookmarkerscompany';
+        var accountscompanydeletepath='/desk/public/accounts/delete_accounts';
 
       
       
         
-        var publicgamingcompanydeletepath='/company/delete_destroypublicgamingcompany';
-        var publiclotterycompanydeletepath='/company/delete';
-        var fccontactdeletepath='/company/delete_destroybookmarkerscompany';
-        var shopscompanydeletepath='/shop/delete';
+        var publicgamingcompanydeletepath='/desk/public/company/delete_destroypublicgamingcompany';
+        var publiclotterycompanydeletepath='/desk/public/company/delete';
+        var fccontactdeletepath='/desk/public/company/delete_destroybookmarkerscompany';
+        var shopscompanydeletepath='/desk/public/shop/delete';
         
-        var fpath='desk/public';
+        var fpath='';
         var item='';
         if(path=="userdelete"){
           fpath=userdeletepath;
@@ -61,7 +61,7 @@ export default {
           fpath=publiclotterydeletepath;
           item="Public Lottery";
         }
-        else if(path == "publicgamingdelete")
+        else if(path == "/publicgamingdelete")
         {
           fpath=publicgamingdeletepath;
           item="Public Gaming";

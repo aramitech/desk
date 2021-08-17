@@ -18,7 +18,7 @@ class CompanyIdFilter extends Filter
     public function apply(Builder $builder, $value): Builder
     {
         
-            return $builder->where('company_id', $value);
+     return $builder->where('company_id', $value);
         
        
     }

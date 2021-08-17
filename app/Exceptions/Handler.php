@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use Illuminate\Auth\AuthenticationException as AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,4 +37,16 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+    public function render($request, Exception $exception)
+    {
+        if ($exception instanceof AuthenticationException) {
+            return redirect('/');
+        }
+        return parent::render($request, $exception);
+    }
+
+
+
 }

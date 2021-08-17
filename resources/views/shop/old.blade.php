@@ -9,12 +9,12 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
-                    <h4> Company</h4>
+                    <h4> SHop</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Company</li>
+                        <li class="breadcrumb-item active" aria-current="page"> Shop</li>
                     </ol>
                 </nav>
             </div>
@@ -32,7 +32,7 @@
     <div class="card-box mb-30">
     @include('layouts.messages')
     @include('layouts.errors')
-    <h2 class="h4 pd-20"> Company List</h2>
+    <h2 class="h4 pd-20"> Shop List</h2>
         <div class="pb-20">
         <table class="table hover  data-table-export nowrap">
                 <thead>
@@ -64,7 +64,9 @@
                               <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('shopscompanydelete',{{$shop}})"><i class="dw dw-delete-3"></i> Delete</button>
+                                   {{-- <button class="btn btn-sm btn-danger" @click="deleteItem('shopscompanydelete',{{$shop}})"><i class="dw dw-delete-3"></i> Delete</button> --}}
+                                    <a class="btn btn-danger btn-sm" href="{{ route('shopo.delete', $shop->shop_id) }}"  data-target="#smstext-{{ $shop->shop_id }}"><i class="fa fa-plus"></i>Delete</a>
+
                                </div> 
                             </div>
                             </td>  <td></td>

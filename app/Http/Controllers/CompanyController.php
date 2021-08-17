@@ -206,4 +206,14 @@ class CompanyController extends Controller
     }
 
     
+    public function death(Request $request, $id )
+    {
+        $id;  $user = BookmarkersCompany::findOrFail( $id );
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }  
+
+
+    
+
 }

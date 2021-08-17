@@ -95,7 +95,8 @@ class UsersController extends Controller
         $user->records_public_lotery = $request->records_public_lotery;
 
         $user->records_public_gaming = $request->records_public_gaming;
-
+        $user->lottery_name = $request->lottery_name;
+        
         $user->save();
         return back()->with('success','Role Updated succesfully');
     }
@@ -104,16 +105,25 @@ class UsersController extends Controller
     
     public function destroy(Request $request)
     {
-       return $user = User::findOrFail($request->id['id']);
+        $user = User::findOrFail($request->id['id']);
         $user->delete();
         return back()->with('success','Deleted succesfully');
     }
 
+    public function death(Request $request, $id )
+    {
 
+        
+       // return $request->id['shop_id'];
+       // return $request;     return Favourite::find($id)->delete();
+        $id;  $user = User::findOrFail( $id );
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }
     public function profile()
     {
-        $auth=Auth::user()->email; 
-        $users = User::where('email',$auth)->get();
+        $auth=Auth::guard('web')->user()->id; 
+        $users = User::where('id',$auth)->get();
         return view('profile.index', compact('users'));
     }
 

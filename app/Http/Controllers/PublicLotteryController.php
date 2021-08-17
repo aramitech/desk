@@ -25,6 +25,22 @@ class PublicLotteryController extends Controller
         $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
         return view('publiclottery.index', compact('publiclotteries'));
     }
+    
+    public function indexlotterynumber()
+    {
+        //
+        $publiclotterylotterynumbers = PublicLotteryNumber::with('publicLotterycompany')->get();
+        return view('company.lotterynumber', compact('publiclotterylotterynumbers'));
+    }
+
+    public function lottery_numbers_names($id)
+    {
+        //
+        $publiclotterylotterynumbers = PublicLotteryNumber::with('publicLotterycompany')->where('company_id',$id)->get();
+        return view('company.lotterynumber', compact('publiclotterylotterynumbers'));
+    }
+
+    
 
     public function userpubliclottery()
     {
@@ -130,7 +146,8 @@ class PublicLotteryController extends Controller
         $user = new PublicLottery();
         $user->company_id = $request->company_id['company_id'];
         $user->license_no = $request->license_no;
-        $user->lottery_name= $request->publiclotterynumber_id['publiclotterynumber_id'];
+        //$user->lottery_name= $request->publiclotterynumber_id['publiclotterynumber_id'];
+        $user->lottery_name= '1';
         $user->return_for_of = $request->return_for_of;
         $user->return_to = $request->return_to;
         $user->date = $request->date;
@@ -287,6 +304,16 @@ class PublicLotteryController extends Controller
 
         return back()->with('success','Updated succesfully');
     }
+
+
+    public function death_lotterynumber(Request $request, $id )
+    {
+        $id;  $user = PublicLotteryNumber::findOrFail( $id );
+        $user->delete();
+        return back()->with('success','Deleted succesfully');
+    }  
+
+
 
 
     public function destroy(Request $request)

@@ -217,10 +217,13 @@ Category Types List:
                                                     <div class="float-right todo-item-action d-flex">
                                                         <a class='todo-item-info success'><i class="feather icon-info"></i></a>
                                                         <a class='todo-item-favorite warning'><i class="feather icon-star"></i></a>
-                                                        <a class='todo-item-delete'><i class="feather icon-trash"></i></a>
+                                                        <a class='todo-item-delete' href="{{ route('deletetask',$todo->task_id) }}"><i class="feather icon-trash"></i></a>
                                                     </div>
                                                 </div>
                                                 <p class="todo-desc truncate mb-0">{{ $todo->description }}</p>
+                                          
+                                                <p class="todo-desc truncate mb-0">{{ $todo->status }}</p>
+                                                <p class="todo-desc truncate mb-0">{{ $todo->replymessage }}</p>
                                             </li>
                                             @endforeach
                                         </ul>

@@ -193,7 +193,7 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '',
+      'redirect': '/desk/public/publicgaming',
        action: '/desk/public/publicgaming/update', //edit action
       company_names: [],
       

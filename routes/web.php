@@ -31,6 +31,7 @@ Route::post('/users/updatepassword', [App\Http\Controllers\UsersController::clas
 Route::get('/users/assignroleuser/{id}', [App\Http\Controllers\UsersController::class, 'assignroleuser'])->name('assignroleuser');
 Route::post('/updaterole', [App\Http\Controllers\UsersController::class, 'updaterole'])->name('updaterole');
 
+Route::get('/userss/delete/{id}', [App\Http\Controllers\UsersController::class, 'death'])->name('userss.delete');
 
 
 // ADMIN
@@ -63,6 +64,11 @@ Route::get('/company/bookmarkers2', [App\Http\Controllers\CompanyController::cla
 
 Route::get('/company/publiclottery', [App\Http\Controllers\CompanyPublicLotteryController::class, 'publiclottery'])->name('company.publiclottery');
 Route::post('/company/addpubliclottery', [App\Http\Controllers\CompanyController::class, 'addpubliclottery']);
+Route::get('/records_delete_company/{id}', [App\Http\Controllers\CompanyController::class, 'death'])->name('records_delete_company');
+
+Route::get('/publiclotterynumber_id/{id}', [App\Http\Controllers\PublicLotteryController::class, 'death_lotterynumber'])->name('records_delete_lotterynumber');
+
+
 
 Route::get('/company/publicgaming', [App\Http\Controllers\CompanyPublicGamingController::class, 'publicgaming'])->name('company.publicgaming');
 
@@ -166,15 +172,20 @@ Route::get('/publicgamingAllreports_createPDF/pdf/{id}',[App\Http\Controllers\Re
 
 
 //Public Lotery number
+Route::get('/indexlotterynumber', [App\Http\Controllers\PublicLotteryController::class, 'indexlotterynumber'])->name('indexlotterynumber');
+Route::get('/lottery_numbers_names/{id}', [App\Http\Controllers\PublicLotteryController::class, 'lottery_numbers_names'])->name('lottery_numbers_names');
+
+
 Route::post('/lotterynumber/add', [App\Http\Controllers\PublicLotteryController::class, 'lotterynumber_store'])->name('lotterynumber.add');
 
 Route::get('/lotery_shop_name/get',[App\Http\Controllers\PublicLotteryController::class, 'lotery_shop_name'])->name('lotterynumber.lotery_shop_name');
+Route::get('/lotterynumbershop', [App\Http\Controllers\CompanyReportController::class, 'lotterynumbershop'])->name('lotterynumbershop');
 
 
 Route::get('/publicgaming', [App\Http\Controllers\PublicgamingsController::class, 'index'])->name('publicgaming');
 Route::post('/publicgaming/add', [App\Http\Controllers\PublicgamingsController::class, 'store'])->name('publicgaming.add');
 Route::post('/publicgaming/update', [App\Http\Controllers\PublicgamingsController::class, 'update'])->name('publicgaming.update');
-Route::post('/publicgaming/delete', [App\Http\Controllers\PublicgamingsController::class, 'destroy'])->name('publicgaming.delete');
+Route::get('/publicgaming/delete', [App\Http\Controllers\PublicgamingsController::class, 'destroy'])->name('publicgaming.delete');
 Route::get('/publicgaming_license_name/get',[App\Http\Controllers\PublicgamingsController::class, 'getLicenseeName']);
 Route::post('/publicgaming/upload', [App\Http\Controllers\PublicgamingsController::class, 'upload'])->name('publicgaming.upload');
 Route::get('/publicgamingsdata/get',[App\Http\Controllers\PublicgamingsController::class, 'publicgamingsdata'])->name('publicgaming.publicgamingsdata');
@@ -240,7 +251,7 @@ Route::get('/activestatuscompanies',[App\Http\Controllers\ReportsController::cla
 
 Route::get('/sendsms',[App\Http\Controllers\SendSmsController::class, 'index'])->name('sendsms');   
 Route::post('/sendsms/add', [App\Http\Controllers\SendSmsController::class, 'store'])->name('sendsms.add');
-Route::get('/sendsms/get',[App\Http\Controllers\SendSmsController::class, 'CategoryTypes']);
+Route::get('/sesendbulksmsndsms/get',[App\Http\Controllers\SendSmsController::class, 'CategoryTypes']);
 
 Route::get('/sendbulksms',[App\Http\Controllers\SendSmsController::class, 'sendbulksms'])->name('sendbulksms');   
 Route::post('/send_bulksms/add', [App\Http\Controllers\SendSmsController::class, 'send_bulksms'])->name('sendsms.send_bulksms');
@@ -250,6 +261,7 @@ Route::post('/sendsmstocontact/add', [App\Http\Controllers\SendSmsController::cl
 
 
 
+Route::get('/shop_numbers/{id}',[App\Http\Controllers\ShopController::class, 'shop_numbers'])->name('shop_numbers');   
 
 
 Route::get('/shop',[App\Http\Controllers\ShopController::class, 'index'])->name('shop');   
@@ -259,7 +271,9 @@ Route::post('/shop/update', [App\Http\Controllers\ShopController::class, 'update
 Route::get('/publiclottery_shop', [App\Http\Controllers\ShopController::class, 'publiclottery_shop'])->name('publiclottery_shop');
 Route::get('/publicgaming_shop', [App\Http\Controllers\ShopController::class, 'publicgaming_shop'])->name('publicgaming_shop');
 Route::get('/license_shop_name/get',[App\Http\Controllers\ShopController::class, 'update']);
-Route::post('/shop/delete', [App\Http\Controllers\ShopController::class, 'destroy'])->name('shop.delete');
+Route::get('/shop/delete/{id}', [App\Http\Controllers\ShopController::class, 'destroy'])->name('shop.delete');
+Route::get('/shopo/delete/{id}', [App\Http\Controllers\ShopController::class, 'death'])->name('shopo.delete');
+
 
 //otp  verify
 Route::get('/otp-verify',[App\Http\Controllers\OtpController::class, 'view'])->name('otp-verify');
@@ -270,7 +284,7 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  Route::post('/otp-verify-user',[App\Http\Controllers\UserOtpController::class, 'verify_user'])->name('verify_user');
 
  ///New
- Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin-master');
+ Route::get('/admin/master', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-master');
 
  Route::get('/admin/accountsetting/{id}', [App\Http\Controllers\AdminController::class, 'accountsetting'])->name('accountsetting');
  Route::post('/admin/adminchangepassword', [App\Http\Controllers\AdminuserController::class, 'adminchangepassword'])->name('adminchangepassword');
@@ -286,18 +300,25 @@ Route::post('/otp-verify',[App\Http\Controllers\OtpController::class, 'verify'])
  Route::post('/todo/addtask', [App\Http\Controllers\TodoController::class, 'addtask'])->name('todo.addtask');
  Route::get('/todo/user', [App\Http\Controllers\TodoController::class, 'user'])->name('todo.user');
  Route::get('/taskindex', [App\Http\Controllers\TodoController::class, 'taskindex'])->name('taskindex');
+ Route::get('/taskindexreplied', [App\Http\Controllers\TodoController::class, 'taskindexreplied'])->name('taskindexreplied');
+ Route::get('/records_confirm_task/{id}', [App\Http\Controllers\TodoController::class, 'records_confirm_task'])->name('records_confirm_task');
+ Route::post('/replytotask', [App\Http\Controllers\TodoController::class, 'replytotask'])->name('replytotask');
+ Route::get('/deletetask/{id}', [App\Http\Controllers\TodoController::class, 'deletetask'])->name('deletetask');
 
  
  
- Route::get('/lotterynumbershop', [App\Http\Controllers\CompanyReportController::class, 'lotterynumbershop'])->name('lotterynumbershop');
 
 
+ Route::get('/accountsedit', [App\Http\Controllers\AccountsController::class, 'accountsedit'])->name('accountsedit');
 
 Route::get('/accounts', [App\Http\Controllers\AccountsController::class, 'index'])->name('accounts');
 Route::post('/accounts/add', [App\Http\Controllers\AccountsController::class, 'store'])->name('accounts.add');
 Route::get('/accounts/delete_accounts/{id}', [App\Http\Controllers\AccountsController::class, 'destroy'])->name('accounts.delete_accounts');
 
 Route::get('/company/accounts', [App\Http\Controllers\AccountsController::class, 'records'])->name('company.accounts');
+Route::get('/records_delete/{id}', [App\Http\Controllers\AccountsController::class, 'death'])->name('records_delete');
+Route::post('/accounts/updateaccounts', [App\Http\Controllers\AccountsController::class, 'updateaccounts'])->name('accounts.updateaccounts');
+Route::get('/accountsusers', [App\Http\Controllers\AccountsController::class, 'accountsusers'])->name('accountsusers');
 
 
 
@@ -305,6 +326,19 @@ Route::get('/AllBookMarkersrecordsreport', [App\Http\Controllers\ReportsControll
 Route::get('/Allpubliclotteryrecordsreport', [App\Http\Controllers\ReportsController::class, 'Allpubliclotteryrecordsreport'])->name('Allpubliclotteryrecordsreport');
 Route::get('/Allgamingrecordsreport', [App\Http\Controllers\ReportsController::class, 'Allgamingrecordsreport'])->name('Allgamingrecordsreport');
 
+
+
+Route::get('/registry', [App\Http\Controllers\RegistryController::class, 'index'])->name('registry');
+Route::post('/registry/add', [App\Http\Controllers\RegistryController::class, 'store'])->name('registry.add');
+
+Route::get('/filingregistry', [App\Http\Controllers\FilingRegistryController::class, 'index'])->name('filingregistry');
+Route::get('/class_names/get',[App\Http\Controllers\FilingRegistryController::class, 'class_names'])->name('class_names');
+Route::post('/file_registry/add', [App\Http\Controllers\FilingRegistryController::class, 'store'])->name('file_registry.add');
+
+
+Route::get('/assignregistry', [App\Http\Controllers\AssignRegistryController::class, 'index'])->name('assignregistry');
+Route::post('/assign_registry/add', [App\Http\Controllers\AssignRegistryController::class, 'store'])->name('assign_registry.add');
+Route::get('/folio_names/get',[App\Http\Controllers\AssignRegistryController::class, 'folio_names'])->name('folio_names');
 
 
 //  });

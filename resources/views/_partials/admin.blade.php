@@ -4,16 +4,12 @@
             <span class="micon icon-copy ti-dashboard"></span><span class="mtext">Dashboard</span>
         </a>
     </li>
-    <li class="dropdown">
-        <a href="{{ route('users')}}" class="dropdown-toggle no-arrow {{ (request()->is('user*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Users</span>
-        </a>
-    </li>
+  
   
 
     <li class="dropdown">
         <a href="{{ route('accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('accounts*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Accounts</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Finance Entry</span>
         </a>
     </li>
 
@@ -21,7 +17,7 @@
 
     <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Company</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Company Entry</span>
         </a>
         <ul class="submenu">
         <li class="dropdown">
@@ -58,7 +54,7 @@
    
     <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Records</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Records Entry</span>
         </a>
         <ul class="submenu">
         <li class="dropdown">
@@ -90,33 +86,34 @@
 
 
 
+ 
 
 
-<!-- 
+
     <li class="dropdown">
         <a href="javascript:;" class="dropdown-toggle">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">SMS</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Registry Entry</span>
         </a>
         <ul class="submenu">
         <li class="dropdown">
-        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Company</span>
+        <a href="{{ route('registry')}}" class="dropdown-toggle no-arrow {{ (request()->is('registry*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Registry</span>
         </a>
     </li>
 
-
     <li class="dropdown">
-        <a href="{{ route('sendsmstocontact')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsmstocontact*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Contact</span>
+        <a href="{{ route('filingregistry')}}" class="dropdown-toggle no-arrow {{ (request()->is('filingregistry*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Filing</span>
         </a>
     </li>
+    
     <li class="dropdown">
-        <a href="{{ route('sendbulksms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendbulksms*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Bulk SMS</span>
+        <a href="{{ route('assignregistry')}}" class="dropdown-toggle no-arrow {{ (request()->is('assignregistry*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Assign </span>
         </a>
     </li>
         </ul>
-    </li> -->
+    </li>
 
 
 
@@ -131,7 +128,12 @@
 
 
 
- 
+
+
+
+
+
+
 
 
     <li class="dropdown">
@@ -144,38 +146,33 @@
                      
                         <li class="dropdown">
                             <a href="{{ route('company.bookmarkers_company_report')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.bookmarkers_company_report*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Companies </span>
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Companies Status</span>
                              </a>
                             </li>
 
                             <li class="dropdown">
                             <a href="{{ route('company.accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.accounts*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Accounts </span>
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Finance Report </span>
                              </a>
                             </li>
-                            </ul>
+                        
 
-                            <li class="dropdown">
-								<a href="javascript:;" class="dropdown-toggle">
-									<span class="micon fa fa-plug"></span><span class="mtext">Records</span>
-								</a>
-								<ul class="submenu child">
                      
                         <li class="dropdown">
                             <a href="{{ route('reports')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers </span>
+                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Report</span>
                              </a>
                             </li>
 					
                            <li class="dropdown">
                             <a href="{{ route('indexpubliclottery')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpubliclottery*')) ? 'active' : '' }}">
-                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
+                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery Report</span>
                             </a>
                             </li>
 							
                             <li class="dropdown">
                             <a href="{{ route('indexpublicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('indexpublicgaming*')) ? 'active' : '' }}">
-                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
+                                <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  Report</span>
                             </a>
                            </li>
 
@@ -210,35 +207,11 @@
 							</li>
 				
 
-                            <li class="dropdown">
-								<a href="javascript:;" class="dropdown-toggle">
-									<span class="micon fa fa-plug"></span><span class="mtext">All Rec</span>
-								</a>
-								<ul class="submenu child">
-								
-                                <li class="dropdown"> 
-                            <a href="{{ route('reports.allCompaniesGraph')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.allCompaniesGraph*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">All Companies Graph</span>
-                                </a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="{{ route('reports.activestatuscompanies')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.activestatuscompanies*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="mtext">Active/Inactive Companies</span>
-                                </a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="{{ route('reports.company-ggr')}}" class="dropdown-toggle no-arrow {{ (request()->is('reports.company-ggr*')) ? 'active' : '' }}">
-                                    <span class="micon icon-copy ti-user"></span><span class="graph">Bookmarkers GGR</span>
-                                </a>
-                            </li>
+        
 
                      	
                                 
 
-								</ul>
-							</li>
 
 
 
@@ -250,9 +223,31 @@
             <span class="micon icon-copy ti-user"></span><span class="mtext">Activity Logs</span>
         </a>
     </li>
+
+    <li class="dropdown">
+        <a href="{{ route('todo')}}" class="dropdown-toggle no-arrow {{ (request()->is('todo*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Task</span>
+        </a>
+    </li>
+
+  
+    <li class="dropdown">
+        <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Account Setting</span>
+        </a>
+        <ul class="submenu">
+        
+      
+
+
     <li class="dropdown">
         <a href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}" class="dropdown-toggle no-arrow {{ (request()->is('accountsetting*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Account Setting</span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">My Account</span>
+        </a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ route('users')}}" class="dropdown-toggle no-arrow {{ (request()->is('user*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Users</span>
         </a>
     </li>
     <!-- <li class="dropdown">
@@ -261,12 +256,37 @@
         </a>
     </li> -->
 
+
+
+
+
     <li class="dropdown">
-        <a href="{{ route('todo')}}" class="dropdown-toggle no-arrow {{ (request()->is('todo*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Task</span>
+        <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">SMS</span>
+        </a>
+        <ul class="submenu">
+
+    <li class="dropdown">
+        <a href="{{ route('sendsms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Company</span>
         </a>
     </li>
 
+
+    <li class="dropdown">
+        <a href="{{ route('sendsmstocontact')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendsmstocontact*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Send SMS To Contact</span>
+        </a>
+    </li>
+    <li class="dropdown">
+        <a href="{{ route('sendbulksms')}}" class="dropdown-toggle no-arrow {{ (request()->is('sendbulksms*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Bulk SMS</span>
+        </a>
+    </li>
+
+
+    </ul>
+    </li> 
 <!-- 
    <li class="dropdown">   
         <a href="{{ route('publiclottery_shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclottery_shop*')) ? 'active' : '' }}">

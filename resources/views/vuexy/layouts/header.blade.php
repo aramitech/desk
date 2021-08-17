@@ -47,6 +47,12 @@
                             <ul class="search-list search-list-main"></ul>
                         </div>
                     </li>
+
+     
+						
+					
+
+
                     <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-shopping-cart"></i><span class="badge badge-pill badge-primary badge-up cart-item-count">6</span></a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-cart dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -153,18 +159,47 @@
                         </ul>
                     </li> -->
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::guard('admin')->user()->name }} </span><span class="user-status"></span></div><span><img class="round" src="{{ asset('tyu/app-assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40"></span>
+                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
+                                
+                        	@if(Auth::guard('superadmin')->check())
+								{{ Auth::guard('superadmin')->user()->name }}
+								@php
+									$logout = 'super-admin-logout';
+									$sidebar = '_partials.super';
+								@endphp
+							@elseif(Auth::guard('admin')->check())
+								{{ Auth::guard('admin')->user()->name }}
+								@php
+									$logout = 'admin-logout';
+									$sidebar = '_partials.admin';
+								@endphp
+							@elseif(Auth::guard('web')->check())
+								{{ Auth::guard('web')->user()->name }}
+								@php
+									$logout = 'logout';
+									$sidebar = '_partials.side';
+								@endphp
+							@endif
+                        
+                        
+                        </span><span class="user-status"></span></div><span><img class="round" src="{{ asset('tyu/app-assets/images/portrait/small/avatar-s-11.jpg')}}" alt="avatar" height="40" width="40"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-mail"></i> My Inbox</a><a class="dropdown-item" href="{{ route('todo') }}"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="{{ route('todo') }}"><i class="feather icon-check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="feather icon-message-square"></i> Chats</a>
                             <div class="dropdown-divider"></div>
                             
-                            <a class="dropdown-item" 
+                        <a class="dropdown-item" 
 							onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> 
 							Log Out
-						</a>
-           
+						</a> 
+            
                         </div>
+
+                        <form id="logout-form" action="{{  route($logout) }}" method="POST" class="d-none">
+							@csrf
+						</form>
+
+
                     </li>
                 </ul>
             </div>

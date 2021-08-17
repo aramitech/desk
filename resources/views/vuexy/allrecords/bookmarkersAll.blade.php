@@ -1,6 +1,6 @@
 @extends('vuexy.layouts.master')
 @section('title')
-Category Types List:
+BOOKMARKERS REPORT
 @endsection
 @section('content')
 
@@ -158,8 +158,28 @@ function goToTestPage(id) {
                     </tr>
                 </thead>
                 <tbody>
+
+                @php $bets_no=0;
+				$deposits=0;
+				$total_sales=0;
+				$total_payout=0;
+				$wht=0;
+				$ggr=0;
+                $ggrtax=0;
+				@endphp
                     @foreach($bookmarkers as $bookmarker)
-                    <tr>
+                    @php 
+                $bets_no +=$bookmarker->bets_no ;
+				 $deposits +=$bookmarker->deposits ;
+				 $total_sales +=$bookmarker->total_sales ;
+				 $total_payout +=$bookmarker->total_payout ;
+				 $wht +=$bookmarker->wht ;
+				 $ggr +=$bookmarker->ggr ;
+                 $ggrtax +=$bookmarker->ggrtax ;
+    
+				@endphp 
+                  
+                   <tr>
                         <td>{{ $bookmarker->bookmarker_id }}</td>
                         <td>                       
                         @if($bookmarker->bookmarkerscompany) 
@@ -168,20 +188,31 @@ function goToTestPage(id) {
                         </td>
                         <td>{{ $bookmarker->licensee_name }}</td>
                         <td>{{ $bookmarker->bets_no }}</td>
-                   
                         <td>{{ $bookmarker->deposits }}</td>
                         <td>{{ $bookmarker->total_sales }}</td>
                         <td>{{ $bookmarker->total_payout }}</td>
-
                         <td>{{ $bookmarker->wht }}</td>
-
                         <td>{{ $bookmarker->ggr }}</td>
                         <td>{{ $bookmarker->ggrtax }}</td>
                 
-                    </tr>
+                    </tr>    
 
                     @endforeach
                 </tbody>
+
+                <tbody>
+			<td style="background-color:#aaf228" colspan="3">Total</td>
+		
+		    <td style="background-color:#aaf228">{{ $bets_no }}</td>
+			<td style="background-color:#aaf228">{{ $deposits }}</td>
+			<td style="background-color:#aaf228">{{ $total_sales }}</td>
+			<td style="background-color:#aaf228">{{ $total_payout }}</td>
+			<td style="background-color:#aaf228">{{ $wht }}</td>
+			<td style="background-color:#aaf228">{{ $ggr }}</td>
+            <td style="background-color:#aaf228">{{ $ggrtax }}</td>
+            
+            </tbody>
+
             </table>
 
 

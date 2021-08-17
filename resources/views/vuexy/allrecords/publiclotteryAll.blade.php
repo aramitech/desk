@@ -39,7 +39,7 @@ Category Types List:
                 </div>
             </div>
                                                 <h4 class="media-heading">   
-                                              Bookmarkers  Records:
+                                              PUBLIC LOTTERY  RECORDS:
                                         
                                                 </h4>
                                                 <div class="card-body card-dashboard">
@@ -157,9 +157,26 @@ function goToTestPage(id) {
                         <th>GGR TAX</th>  
                     </tr>
                 </thead>
+
                 <tbody>
+                @php $total_tickets_sold=0;
+				$sales=0;
+				$payouts=0;
+		
+				$wht=0;
+				$ggr=0;
+                $ggrtax=0;
+				@endphp
                     @foreach($publiclotteries as $bookmarker)
-                    <tr>
+                    @php 
+                $total_tickets_sold +=$bookmarker->total_tickets_sold ;
+				 $sales +=$bookmarker->sales ;
+				 $payouts +=$bookmarker->payouts ;
+				 $wht +=$bookmarker->wht ;
+				 $ggr +=$bookmarker->ggr ;
+                 $ggrtax +=$bookmarker->ggrtax ;
+    
+				@endphp  <tr>
                         <td>{{ $bookmarker->publiclottery_id }}</td>
                         <td>                       
                         @if($bookmarker->publicLotterycompany) 
@@ -182,6 +199,18 @@ function goToTestPage(id) {
 
                     @endforeach
                 </tbody>
+
+                <tbody>
+			<th style="background-color:#aaf228" colspan="3">Total</th>
+		
+		    <td style="background-color:#aaf228" >{{ $total_tickets_sold }}</td>
+			<td style="background-color:#aaf228" >{{ $sales }}</td>
+			<td  style="background-color:#aaf228">{{ $payouts }}</td>
+			<td style="background-color:#aaf228">{{ $ggr }}</td>
+			<td style="background-color:#aaf228">{{ $wht }}</td>
+            <td style="background-color:#aaf228">{{ $ggrtax }}</td>
+            
+            </tbody>
             </table>
 
 

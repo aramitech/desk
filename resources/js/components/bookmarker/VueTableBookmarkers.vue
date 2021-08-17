@@ -179,7 +179,7 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '/desk/public/',
+      'redirect': '/desk/public/bookmarkers',
       action: '/desk/public/bookmarkers/update', //edit action
       company_names: [],
       

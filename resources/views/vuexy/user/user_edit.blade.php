@@ -67,6 +67,7 @@
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <div class="controls">
+                                                        
                                                         <input type="text" class="form-control" name="id" placeholder="ID " value="{{ $user->id }}">
 
                                                             <label><h4>Perspnal File No</h4></label>
@@ -106,133 +107,175 @@
                       
                                                     </div>
                                                 </div>
+
+
                                                 <div class="col-12">
                                                     <div class="table-responsive border rounded px-1 ">
                                                         <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permission</h6>
-                                        <table class="table table-borderless">
-                                        <thead>
-                                    <tr>
-                                    <th></th>
-                                    <th>Allowed</th>
-                                    <th>Not Allowed</th>
-                                    <th></th>
-                                    <th>Allowed</th>
-                                    <th>Not Allowed</th>
-                                    <th></th>
-                                    <th>Allowed</th>
-                                    <th>Not Allowed</th>
-                                    <th></th>
-                                    <th>Allowed</th>
-                                    <th>Not Allowed</th>
-                
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Edit</td>
-                                                <td>
-                                                    <input type="radio" name="editstatus" {{ $user->editstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                              </td><td>             <input type="radio" name="editstatus" {{ $user->editstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-                                                                              </td>
-                                                <td>Delete</td>
-                                                <td>
-                                                    <input type="radio" name="deletestatus" {{ $user->deletestatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                    </td><td>       <input type="radio" name="deletestatus" {{ $user->deletestatus == 'NotAllowed' ? 'checked' : '' }}  value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Bookmarkers</td>
-                                                <td>
-                                                    <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                   </td><td>        <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                              
-                                                </td>
-                                                <td>Public Lottery </td>
-                                                <td>
-                                                    <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                </td><td>          <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Public Gaming</td>
-                                                <td>
-                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                   </td><td>    <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-                                                    </td>
-                                                <td>Snd SMS</td>
-                                                <td>
-                                                    <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                        </td><td>   <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Bookmarkers Shop </td>
-                                                <td>
-                                                    <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                         </td><td>  <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Companies</td>
-                                                <td>
-                                                    <input type="radio" name="companies_status" {{ $user->companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                    </td><td>       <input type="radio" name="companies_status" {{ $user->companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Account</td>
-                                                <td>
-                                                    <input type="radio" name="account_status" {{ $user->account_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                    </td><td>  <input type="radio" name="account_status" {{ $user->account_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>User Accounts</td>
-                                                <td>
-                                                    <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                      </td><td>    <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Records Public Lotery</td>
-                                                <td>
-                                                    <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                     </td><td>       <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Records Bookmarkers</td>
-                                                <td>
-                                                     <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                          </td><td>  <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                              
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Records Public Gaming</td>
-                                                <td>
-                                                    <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                    </td><td>  <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Records Company</td>
-                                                <td>
-                                                    <input type="radio" name="records_company" {{ $user->records_company == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                      </td><td>    <input type="radio" name="records_company" {{ $user->records_company == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                                <td>Records Accounts</td>
-                                                <td>
-                                                    <input type="radio" name="records_accounts" {{ $user->records_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="new-todo-item-title form-control" >
-                                     </td><td>       <input type="radio" name="records_accounts" {{ $user->records_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="new-todo-item-title form-control" >
-
-                                                </td>
-                                             
-                                            </tr>
-
-
-
-                                        </tbody>
-                                    </table> 
+                                                       
                                                     </div>
                                                 </div>
+
+                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card border-warning text-center bg-transparent">
+                                <div class="card-content">
+                                    <div class="card-body">
+                 
+                  <strong>  Companies </strong> <li class="list-group-item float-left">
+                                      <input type="radio" name="companies_status" {{ $user->companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > <strong>Allowed </strong>
+                         <br> <hr>    <input type="radio" name="companies_status" {{ $user->companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed   </strong>    
+                                        </li>
+                         <hr> <br>  <br> 
+                         <strong>  Public Gaming </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > <strong>Allowed </strong>
+                        <br> <hr> <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr> <br>  <br>  <br> 
+                         <strong>Bookmarkers </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > <strong>Allowed </strong>
+                         <hr> <br>   <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr>
+
+                         <hr> <br>  <br>  <br> 
+                        <strong> Public Lottery </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > <strong>Allowed </strong>
+                         <hr> <br>    <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed </strong>      
+                                        </li>
+                         <hr>
+                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card border-warning text-center bg-transparent">
+                                <div class="card-content">
+                                    <div class="card-body">
+                 
+                  <strong>  Bookmarkers Shop  </strong> <li class="list-group-item float-left">
+                  <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" ><strong> Allowed   </strong> 
+                  <br> <hr> <input type="radio" name="bookmarkersshop_status" {{ $user->bookmarkersshop_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed   </strong>    
+                                        </li>
+                         <hr> <br>  <br> 
+                         <strong>  Lottery Name </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="lottery_name" {{ $user->lottery_name == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" ><strong> Allowed  </strong> 
+                         <hr> <br> <input type="radio" name="lottery_name" {{ $user->lottery_name == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr> <br>  <br>  <br>  <br>
+                         <strong>Records Accounts </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="records_accounts" {{ $user->records_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" ><strong>Allowed  </strong>
+                         <hr> <br> <input type="radio" name="records_accounts" {{ $user->records_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr>
+
+                         <hr> <br>  <br>  <br> 
+                        <strong> User Accounts</strong> <li class="list-group-item float-left">
+                       <hr> <br>  <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" ><strong>Allowed </strong> 
+                       <hr> <br> <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed </strong>      
+                                        </li>
+                         <hr>
+                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+<!-- ................................................................... -->
+<!-- ................................................................... -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card border-warning text-center bg-transparent">
+                                <div class="card-content">
+                                    <div class="card-body">
+                 
+                  <strong>  Edit </strong> <li class="list-group-item float-left">
+                  <input type="radio" name="editstatus" {{ $user->editstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" ><strong>Allowed   </strong>
+                  <br> <hr> <input type="radio" name="editstatus" {{ $user->editstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed   </strong>    
+                                        </li>
+                         <hr> <br>  <br> 
+                         <strong>  Delete</strong> <li class="list-group-item float-left">
+                         <input type="radio" name="deletestatus" {{ $user->deletestatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >Allowed
+                         <hr> <br> <input type="radio" name="deletestatus" {{ $user->deletestatus == 'NotAllowed' ? 'checked' : '' }}  value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr> <br>  <br>  <br>  <br> 
+                         <strong>Send SMS </strong> <li class="list-group-item float-left">
+                         <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >Allowed
+                         <hr> <br> <input type="radio" name="sendsms_status" {{ $user->sendsms_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr>
+
+                         <hr> <br>  <br>  <br> 
+                        <strong> Search</strong> <li class="list-group-item float-left">
+                        <input type="radio" name="search" {{ $user->search == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >Allowed
+                        <hr> <br> <input type="radio" name="search" {{ $user->search == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed </strong>      
+                                        </li>
+                         <hr>
+                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+<!-- ................................................................... -->
+<!-- ................................................................... -->
+
+
+
+<!-- ................................................................... -->
+<!-- ................................................................... -->
+
+<div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="card border-warning text-center bg-transparent">
+                                <div class="card-content">
+                                    <div class="card-body">
+                 
+                  <strong>  Records Bookmarkers </strong> <li class="list-group-item float-left">
+                  <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >  Allowed
+                  <hr> <br> <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed   </strong>    
+                                        </li>
+                         <hr> <br>  <br> <br> 
+                         <strong>  Records Public Gaming</strong> <li class="list-group-item float-left">
+                         <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > Allowed
+                         <hr> <br> <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr> <br>  <br>  <br>  <br> 
+                         <strong>Records Public Lotery</strong> <li class="list-group-item float-left">
+                         <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >   Allowed
+                         <hr> <br> <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed  </strong>     
+                                        </li>
+                         <hr>
+
+                         <hr> <br>  <br>  <br> 
+                        <strong> Records Company</strong> <li class="list-group-item float-left">
+                        <input type="radio" name="records_company" {{ $user->records_company == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >Allowed
+                        <hr> <br>  <input type="radio" name="records_company" {{ $user->records_company == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > <strong>Not Allowed </strong>      
+                                        </li>
+                         <hr>
+                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+<!-- ................................................................... -->
+<!-- ................................................................... -->
+
+
+
+
+
+
+
+                                                
+                                                
                                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                                     <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
                                                         Changes</button>
@@ -417,6 +460,10 @@
                                                 </h4>
                                                 <div class="card-body card-dashboard">
                                                 <div class="table-responsive">
+                                              
+                                              
+                                              
+                                              
                                                 <table class="table table-striped table-bordered complex-headers">
                                                 <thead>
                                                     <tr>

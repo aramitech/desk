@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    User
+Shop
 @endsection
 @section('content')
 <div id="app">

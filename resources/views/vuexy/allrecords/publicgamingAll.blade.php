@@ -1,6 +1,6 @@
 @extends('vuexy.layouts.master')
 @section('title')
-Category Types List:
+PUBLIC GAMING REPORT
 @endsection
 @section('content')
 
@@ -147,42 +147,85 @@ function goToTestPage(id) {
                        
                         
                         <th>Licensee Name</th> 
-                        <th>Bets No</th>
+                        <th>Sales</th>
                     
-                        <th>Deposits</th>
-                        <th>Total Sales</th>     
-                        <th>Total Payout</th>  
+                        <th>Payouts</th>
+                        <th>WHT</th>     
+                        <th>GGR</th>  
                          
-                        <th>GGR</th>
-                        <th>WHT</th>
                         <th>GGR TAX</th>  
+                        <th>Sales Slot</th>
+                        <th>Payouts Slot</th>  
+                        <th>WHT Slots</th>  
+                        <th>GGR Slot</th>  
+                        <th>GGR Tax Slot</th>  
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($publicgamings as $bookmarker)
-                    <tr>
-                        <td>{{ $bookmarker->publicgaming_id }}</td>
+                   @php $sales=0;
+				$payouts=0;
+				$wht=0;
+				$ggr=0;
+				$ggrtax=0;
+				$salesslot=0;
+                $payoutsslot=0;
+                $whtslot=0;
+                $ggrslot=0;
+                $ggrtaxslot=0;
+				@endphp
+
+                    @foreach($publicgamings  as $publicgaming)
+                    @php 
+                $sales +=$publicgaming->sales ;
+				 $payouts +=$publicgaming->payouts ;
+				 $wht +=$publicgaming->wht ;
+				 $ggr +=$publicgaming->ggr ;
+				 $ggrtax +=$publicgaming->ggrtax ;
+				 $salesslot +=$publicgaming->salesslot ;
+                 $payoutsslot +=$publicgaming->payoutsslot ;
+                 $whtslot +=$publicgaming->whtslot ;
+                 $ggrslot +=$publicgaming->ggrslot ;
+                 $ggrtaxslot +=$publicgaming->ggrtaxslot ;
+				@endphp <tr>
+                        <td>{{ $publicgaming->publicgaming_id }}</td>
                         <td>                       
-                        @if($bookmarker->publicGamingcompany) 
-                        {{  $bookmarker->publicGamingcompany->company_name }}
+                        @if($publicgaming->publicGamingcompany) 
+                        {{  $publicgaming->publicGamingcompany->company_name }}
                         @endif
                         </td>
-                        <td>{{ $bookmarker->license_no }}</td>
-                        <td>{{ $bookmarker->total_tickets_sold }}</td>
+                        <td>{{ $publicgaming->license_no }}</td>
+                        <td>{{ $publicgaming->sales }}</td>
                    
-                        <td>{{ $bookmarker->sales }}</td>
-                        <td>{{ $bookmarker->payouts }}</td>
-                        <td>{{ $bookmarker->ggr }}</td>
+                        <td>{{ $publicgaming->payouts }}</td>
+                        <td>{{ $publicgaming->wht }}</td>
+                        <td>{{ $publicgaming->ggr }}</td>
+                        <td>{{ $publicgaming->ggrtax }}</td>
 
-                        <td>{{ $bookmarker->wht }}</td>
-
-                      
-                        <td>{{ $bookmarker->ggrtax }}</td>
-                <td></td>
+                        <td>{{ $publicgaming->salesslot }}</td>
+                        <td>{{ $publicgaming->payoutsslot }}</td>
+                        <td>{{ $publicgaming->whtslot }}</td>
+                        <td>{{ $publicgaming->ggrslot }}</td>
+                        <td>{{ $publicgaming->ggrtaxslot }}</td>
+            
                     </tr>
 
                     @endforeach
                 </tbody>
+                <tbody>
+			<th style="background-color:#aaf228" colspan="3">Total</th>
+		
+		    <td style="background-color:#aaf228">{{ $sales }}</td>
+			<td style="background-color:#aaf228">{{ $payouts }}</td>
+			<td style="background-color:#aaf228">{{ $wht }}</td>
+			<td style="background-color:#aaf228">{{ $ggr }}</td>
+			<td style="background-color:#aaf228">{{ $ggrtax }}</td>
+			<td style="background-color:#aaf228">{{ $salesslot }}</td>
+            <tdstyle="background-color:#aaf228" >{{ $payoutsslot }}</td>
+            <td style="background-color:#aaf228">{{ $whtslot }}</td>
+            <td style="background-color:#aaf228">{{ $ggrslot }}</td>
+            <td style="background-color:#aaf228">{{ $ggrtaxslot }}</td>
+            
+            </tbody>
             </table>
 
 

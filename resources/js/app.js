@@ -93,7 +93,16 @@ Vue.component('add-lotteryshop-component', require('./components/publiclottery/A
 
 Vue.component('accounts_good_table_component', require('./components/accounts/Accounts_Good_Table_Component.vue').default);
 Vue.component('add-accounts-component', require('./components/accounts/AddAccountsComponent.vue').default);
+Vue.component('edit-accounts-component', require('./components/accounts/EditAccountsComponent.vue').default);
+Vue.component('view-accounts-component', require('./components/accounts/ViewAccountsComponent.vue').default);
+Vue.component('add-user-accounts-component', require('./components/accounts/Add_User_AccountsComponent.vue').default);
 
+Vue.component('confirm-task-component', require('./components/Task/ReplyTaskComponent.vue').default);
+
+Vue.component('add-registry-component', require('./components/Registry/RegistryComponent.vue').default);
+
+Vue.component('add-filing-registry-component', require('./components/Registry/FilingRegistryComponent.vue').default);
+Vue.component('add-assign-registry-component', require('./components/Registry/AssignRegistryComponent.vue').default);
 
 
 

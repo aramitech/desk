@@ -28,6 +28,11 @@
                         Add  Lottery 
                     </a>
                     
+                    <a class="btn btn-primary" href="{{ route('indexlotterynumber') }}" role="button" type="button">
+                        View  Lottery Name
+                    </a>
+
+
                 </div>
             </div>
         </div>
@@ -75,7 +80,12 @@
                               <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
+
+                                    <a class="btn btn-primary btn-sm" href="{{ route('lottery_numbers_names', $bookmarker->company_id ) }}"  data-target="#smstext-{{ $bookmarker->company_id }}"><i class="fa fa-plus"></i>View Lottery Numbers</a>
+
+
+                                    {{--  <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
+                                  <a class="btn btn-danger btn-sm" href="{{ route('records_delete_company', $bookmarker->company_id ) }}"  data-target="#smstext-{{ $bookmarker->company_id }}"><i class="fa fa-plus"></i>Delete</a>
                                </div> 
                             </div>
                             </td>  <td></td>
