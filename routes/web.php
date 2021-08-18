@@ -55,9 +55,15 @@ Route::get('/company', [App\Http\Controllers\CompanyController::class, 'index'])
 Route::post('/company/add', [App\Http\Controllers\CompanyController::class, 'store'])->name('company.add');
 Route::post('/company/update', [App\Http\Controllers\CompanyController::class, 'updateBookmarkersCompany'])->name('company.update');
 Route::post('/company/delete', [App\Http\Controllers\CompanyController::class, 'destroy'])->name('company.delete');
-Route::get('/company/bookmarkers', [App\Http\Controllers\CompanyController::class, 'bookmarkers'])->name('company.bookmarkers');
+//add middleware to protect unauthorized
+Route::group(['middleware' => ['companies.access']], function () {
+    Route::get('/company/bookmarkers', [App\Http\Controllers\CompanyController::class, 'bookmarkers'])->name('company.bookmarkers');
+});
+//add middleware to protect unauthorized
+Route::group(['middleware' => ['bookmarkers.access']], function () {
+    Route::get('/company/publickgaming', [App\Http\Controllers\CompanyController::class, 'publickgaming'])->name('company.publickgaming');
+});
 Route::post('/company/addbookmarkers', [App\Http\Controllers\CompanyController::class, 'addbookmarkers']);
-Route::get('/company/publickgaming', [App\Http\Controllers\CompanyController::class, 'publickgaming'])->name('company.publickgaming');
 Route::post('/company/addpublicgaming', [App\Http\Controllers\CompanyController::class, 'addpublicgaming'])->name('company.addpublicgaming');
 
 Route::get('/company/bookmarkers2', [App\Http\Controllers\CompanyController::class, 'bookmarkers2'])->name('company.bookmarkers2');

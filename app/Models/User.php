@@ -22,6 +22,23 @@ class User extends Authenticatable
         'email',
         'password',
         'audit_log_id',
+        'editstatus',
+        'deletestatus',
+        'bookmarkersstatus',
+        'publiclotterystatus',
+        'publicgamingstatus',
+        'sendsms_status',
+        'bookmarkersshop_status',
+        'companies_status',
+        'account_status',
+        'user_accounts_status',
+        'records_bookmarkers',
+        'records_public_lotery',
+        'records_public_gaming',
+        'records_send_sms',
+        'records_company',
+        'records_accounts',
+        'lottery_name',
     ];
 
     /**

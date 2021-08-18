@@ -109,9 +109,10 @@ Admin
                                                     <input type="text" class="form-control" placeholder="Phone" value="{{ $user->phone }}" >
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="table-responsive border rounded px-1 ">
-                                                    <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permission</h6>
+                                            <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permissions</h6>
+                                            <div class="col-12 row">
+                                                <div class="table-responsive border rounded px-1 col-6">
+                                                    <h4>Bookmarkers</h4>
                                                     <table class="table table-striped table-borderless">
                                                         <thead class="table-light">
                                                             <tr>
@@ -181,6 +182,20 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Public Lottery</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                                         <tr>
                                                             <td>Lottery Name</td>
                                                             <td>
@@ -226,6 +241,20 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Actions</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                                         <tr>
                                                             <td>Edit</td>
                                                             <td>
@@ -286,6 +315,20 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Records Bookmarkers</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
                                                         <tr>
                                                             <td> Records Bookmarkers</td>
                                                             <td>

@@ -57,6 +57,10 @@ class Kernel extends HttpKernel
         'auth.superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        //Middlewares for access restriction
+        'companies.access' => \App\Http\Middleware\CompaniesAccess::class,
+        'bookmarkers.access' => \App\Http\Middleware\BookMarkersAccess::class,
+        /////
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
