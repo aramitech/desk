@@ -213,12 +213,12 @@ $(document).ready(function() {
             gridLines: {
                 color: grid_line_color,
             },
-            scaleLabel: {
-                display: true,
-            },
-            ticks: {
-                stepSize: 1000
-            },
+              scaleLabel: {
+                  display: true,
+              },
+            // ticks: {
+            //     stepSize: 1000
+            // },
             }],
         },
         title: {
