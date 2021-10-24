@@ -48,6 +48,10 @@ Category Types List:
                  
 
 
+               <div class="table-responsive">
+                 
+
+
 
                   <!-- users filter start -->
                   <div class="card">
@@ -62,7 +66,7 @@ Category Types List:
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-content collapse show">
+                        <div class="card-content collapse">
                             <div class="card-body">
                                 <div class="users-list-filter">
                                     <form>

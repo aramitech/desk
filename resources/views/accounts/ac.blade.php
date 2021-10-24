@@ -61,11 +61,11 @@ Accounts
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
-                        Add Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">   Add Record  </i>
                     </a>
 
                     <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
-                        Upload Record
+                  <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a> -->
                 </div>
             </div>
@@ -100,8 +100,8 @@ Accounts
             @php 
                 array_push($privilege,$usertype);
             @endphp
-            <table class="table hover  data-table-export nowrap">
-                <thead>
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company </th>
@@ -113,7 +113,7 @@ Accounts
                         <th>Annual License F</th>
                         <th>Status</th>    
                         <th>Action</th>
-                        <th ></th>
+                  
                     </tr>
                 </thead>
                 <tbody>
@@ -126,7 +126,7 @@ Accounts
       
 
                     <tr>
-                        <td>{{ $account->company_id }}</td>
+                        <td>{{ $account->accounts_id }}</td>
                         <td> @if($account->accountscompany) 
                         {{  $account->accountscompany->company_name }}
                         @endif</td>
@@ -143,10 +143,10 @@ Accounts
                                     <i class="dw dw-more"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
-                              <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                              <a class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$account->accounts_id}}" type="button"><i class="dw dw-edit2"></i> View</a>
                               {{--<a class="btn btn-primary btn-sm" href="{{ route('accountsedit', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Edit</a>--}}
 
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$account->accounts_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
                                 {{--  <button class="btn btn-sm btn-danger" @click="deleteItem('accountscompanydelete',{{$account}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
                                   <a class="btn btn-danger btn-sm" href="{{ route('records_delete', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Delete</a>
 
@@ -156,15 +156,15 @@ Accounts
                                   
                                </div> 
                             </div>
-                            </td>  <td></td>
+                            </td> 
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$account->accounts_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-accounts-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$account->accounts_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-accounts-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>

@@ -24,6 +24,12 @@ class PublicgamingsController extends Controller
         $publicgamings = Publicgamings::all();
         return view('publicgaming.index', compact('publicgamings'));
     }
+    
+    public function publicgamingadminindex()
+    {
+        $publicgamings = Publicgamings::all();
+        return view('vuexy.publicgaming.index', compact('publicgamings'));
+    }
 
 
     public function publicgaminguserindex()
@@ -41,7 +47,6 @@ class PublicgamingsController extends Controller
             return $license_name;
         }
     }
-
     public function publicgamingsdata()
     {
 
@@ -81,8 +86,50 @@ class PublicgamingsController extends Controller
         $publicgamings = Publicgamings::with('publicGamingcompany')->get();
         return $publicgamings;
     }
+    
+    public function publicgamingsdatauser()
+    {
 
+        
+        if(request()->get('inactive') == 'on')
+        {
+            $id= Auth::guard('web')->user()->id;
+            $publicgamings = BookmarkersCompany::where('category_type_id','3')->with('publicGamingcompany')->get()->groupBy('company_id');
+            $constraints = '';
+            if(request()->get('from')){
+                $publicgamings = BookmarkersCompany::where('category_type_id','3')->with(['publicGamingcompany' => function($query){
+                    $query->whereDate('return_for_the_period_of', "<", \Carbon\Carbon::create(request()->get('from')));
+                }])->get()->groupBy('company_id');
+            }
+  
+            $publiclotterydata = [];
+            // $companies = [];
+            foreach($publicgamings as $publiclottery)
+        
+            {
+                // array_push($companies,$publiclottery[0]->company_id);
+                if($publiclottery[0]->publicGamingcompany->count() > 0)
+                {
+                    array_push($publiclotterydata,$publiclottery[0]->publicGamingcompany->first());
+                }
+                else{
+                    $arr = ["publicgaming_id"=>null,"company_id"=>$publiclottery[0]->company_id,"public_gamingcompany"=>$publiclottery[0]->public_gamingcompany.company_name,"license_no"=>$publiclottery[0]->trading_name,"license_no"=>$publiclottery[0]->companlicense_noy_id,"return_for_the_period_of"=>null,"return_for_the_period_to"=>null,"date"=>null,"sales"=>"0","sales"=>"0","payouts"=>0,"wht"=>0,"ggr"=>null,"ggrtax"=>null,"id"=>null];
+                    array_push($publiclotterydata,$arr);
+                }
+            }
+            return $publiclotterydata;
+        }
+        else {
+            $id= Auth::guard('web')->user()->id;
+            $publicgamings = Publicgamings::with('publicGamingcompany')->where('id', $id)->latest()->take(3)->get();
+            return $publicgamings;
+        }
+        $id= Auth::guard('web')->user()->id;
+        $publicgamings = Publicgamings::with('publicGamingcompany')->where('id', $id)->latest()->take(3)->get();
+        return $publicgamings;
+    }
 
+    
     /**
      * Show the form for creating a new resource.
      *

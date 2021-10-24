@@ -61,7 +61,7 @@ Category Types List:
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-content collapse show">
+                        <div class="card-content collapse">
                             <div class="card-body">
                                 <div class="users-list-filter">
                                     <form>

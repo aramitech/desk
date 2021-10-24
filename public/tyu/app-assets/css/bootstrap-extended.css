@@ -327,8 +327,8 @@ pre code {
 
 /* Form specific Scss */
 label {
-  color : #464646;
-  font-size : 0.85rem;
+  color : #000;
+  font-size : 1.85rem;
   margin-bottom : 0;
   padding-left : 0.2rem;
 }
@@ -344,7 +344,7 @@ textarea.form-control {
 
 .form-control {
   border : 1px solid #D9D9D9;
-  color : #5F5F5F;
+  color : #000;
 }
 
 .form-section {
@@ -415,7 +415,7 @@ textarea.form-control {
 }
 
 .form-control.form-control-sm {
-  padding : 0.6rem;
+  padding : 1.9rem;
 }
 .form-control.form-control-sm::-webkit-input-placeholder {
   font-size : 0.7rem;
@@ -1734,6 +1734,7 @@ button, html [type='button'], [type='reset'], [type='submit'] {
           transition : 300ms ease all;
   background : inherit;
   margin-left : 0;
+  background-color: #4b6843;
 }
 .header-navbar .navbar-container .bookmark-wrapper ul.nav li > a.nav-link {
   padding : 1.4rem 0.5rem 1.35rem;
@@ -1759,7 +1760,7 @@ button, html [type='button'], [type='reset'], [type='submit'] {
   padding : 1.65rem 0.5rem;
 }
 .header-navbar .navbar-container ul.nav li > a.nav-link {
-  color : #626262;
+  color : #fff;
   padding : 1.6rem 0.5rem 1.35rem 1rem;
 }
 .header-navbar .navbar-container ul.nav li > a.nav-link i.flag-icon {
@@ -1830,7 +1831,7 @@ button, html [type='button'], [type='reset'], [type='submit'] {
 }
 .header-navbar .navbar-container ul.nav li i.ficon {
   font-size : 1.5rem;
-  color : #626262;
+  color : #fff;
 }
 .header-navbar .navbar-container ul.nav li i.ficon:hover {
   color : #7367F0;
@@ -3466,7 +3467,7 @@ _:-ms-lang(x), .toast-bs-container {
 }
 
 .modal .modal-header {
-  background-color : #F8F8F8;
+  background-color : #398214;
   border-radius : 0.42rem;
   padding : 0.8rem;
   border-bottom : none;

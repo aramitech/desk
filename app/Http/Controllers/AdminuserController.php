@@ -45,6 +45,8 @@ class AdminuserController extends Controller
         $user = new Adminusers();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
+        
         $user->password = Hash::make($request->password);
         $user->save();
         return back()->with('success','Added succesfully');

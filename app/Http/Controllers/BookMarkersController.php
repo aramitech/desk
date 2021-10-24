@@ -32,6 +32,24 @@ class BookMarkersController extends Controller
         return view('bookmarkers.index', compact('bookmarkers'));
 
     }
+    
+
+
+
+
+    public function adminindex()
+    {
+   
+      $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+      //  return view('bookmarkers.index', compact('bookmarkers'));
+
+
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
+        return view('vuexy.bookmarkers.index', compact('bookmarkers'));
+
+    }
+
+
     public function userindex()
     {
    
@@ -93,6 +111,59 @@ class BookMarkersController extends Controller
       
      
     }
+    
+
+    public function bookmarkersdatauser()
+    {
+        $id= Auth::guard('web')->user()->id;
+        if(request()->get('inactive') == 'on')
+        {
+            $bookmarkers = BookmarkersCompany::where('category_type_id','1')->with('bookmarkerscompany')->groupBy('company_id');
+            $constraints = '';
+            if(request()->get('from')){
+                $bookmarkers = BookmarkersCompany::where('category_type_id','1')->with(['bookmarkerscompany' => function($query){
+                    $query->whereDate('return_for_the_period_of', "<", \Carbon\Carbon::create(request()->get('from')));
+                }])->get()->groupBy('company_id');
+            }
+            // if(request()->get('to')){
+            //     $bookmarkers = BookmarkersCompany::whereHas('bookmarkerscompany', function($query){
+            //         $query->whereDate('return_for_the_period_to', ">", request()->get('to'));
+            //     })->with('bookmarkerscompany')->get()->groupBy('company_id');
+            // }
+
+            // $bookmarkers = BookMarkers::with('bookmarkerscompany')->orderByDesc('bookmarker_id')->get()->groupBy('company_id');
+        
+            
+            // whereHas('bookmarkerscompany', function($query){
+            //     $query->select('bookmarker_id','company_id','shop_id','licensee_name','license_no','return_for_the_period_of',
+            //                 'return_for_the_period_to','branch','date','bets_no','deposits','total_sales','total_payout',
+            //                 'wht','winloss','ggr','ggrtax','id');
+            // })->
+            $bookmarkersdata = [];
+            // $companies = [];
+            foreach($bookmarkers as $bookMarker)
+        
+            {
+                // array_push($companies,$bookMarker[0]->company_id);
+                if($bookMarker[0]->bookmarkerscompany->count() > 0)
+                {
+                    array_push($bookmarkersdata,$bookMarker[0]->bookmarkerscompany->first());
+                }
+                else{
+                    $arr = ["bookmarker_id"=>null,"company_id"=>$bookMarker[0]->company_id,"licensee_name"=>$bookMarker[0]->trading_name,"license_no"=>$bookMarker[0]->companlicense_noy_id,"return_for_the_period_of"=>null,"return_for_the_period_to"=>null,"branch"=>null,"date"=>null,"bets_no"=>"0","deposits"=>"0","total_sales"=>0,"total_payout"=>0,"wht"=>0,"winloss"=>null,"ggr"=>null,"ggrtax"=>null,"id"=>null];
+                    array_push($bookmarkersdata,$arr);
+                }
+            }
+            return $bookmarkersdata;
+        }
+        else {
+            $bookmarkers = BookMarkers::with('bookmarkerscompany')->where('id', $id)->latest()->take(3)->get();
+            return $bookmarkers;
+        }
+      
+     
+    }
+
 
     public function bookmarker_shop_name()
     {
@@ -101,8 +172,14 @@ class BookMarkersController extends Controller
        
         return $shops;
     }
-
-
+    
+    public function posts()
+    {
+        // $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+        $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+       
+        return response()->json($bookmarkers);
+    }
     
     
     public function addbookmarkers()

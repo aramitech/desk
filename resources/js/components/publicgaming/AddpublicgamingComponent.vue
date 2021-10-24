@@ -197,7 +197,8 @@ data() {
             date: new Date().toISOString().substr(0, 10), // 05/09/2019
         action: '/desk/public/publicgaming/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/publicgaming',
+        redirect: '',
+        //redirect: '/desk/public/publicgaming/',
     types: ['Online','Manual','Online?Tables+Slots'],
  company_names: [],
 

@@ -18,6 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
+        'departments_id',
         'name',
         'email',
         'password',
@@ -63,6 +64,15 @@ class User extends Authenticatable
     public function userlogs()
     {
         return $this->hasMany(AuditLog::class,'id');
+    }
+    public function departmentsusers()
+    {
+        return $this->belongsTo(Departments::class,'departments_id');
+    }
+
+    public function usertypesusers()
+    {
+        return $this->belongsTo(UserType::class,'user_types_id');
     }
 
     //inject to session

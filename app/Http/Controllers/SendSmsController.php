@@ -31,16 +31,37 @@ class SendSmsController extends Controller
         return view('sendsms.index', compact('sendsmsis'));
     }
 
+    
+    public function sendsmsuseradmin()
+    {
+        
+        $sendsmsis = SendSmses::all();
+        return view('vuexy.sendsms.index', compact('sendsmsis'));
+    }
     public function sendsmstocontact()
     {
         $sendsmsis = SendSmses::all();
         return view('sendsms.sendsmstocontact', compact('sendsmsis'));
     }
 
+    
+    public function sendsmstocontactuseradmin()
+    {
+        $sendsmsis = SendSmses::all();
+        return view('vuexy.sendsms.sendsmstocontact', compact('sendsmsis'));
+    }
+    
+
     public function sendbulksms()
     {
         $sendsmsis = SendSmses::all();
         return view('sendsms.sendbulksms', compact('sendsmsis'));
+    }
+
+    public function sendbulksmsuseradmin()
+    {
+        $sendsmsis = SendSmses::all();
+        return view('vuexy.sendsms.sendbulksms', compact('sendsmsis'));
     }
     /**
      * Show the form for creating a new resource.

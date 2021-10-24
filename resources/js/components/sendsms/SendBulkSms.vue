@@ -6,10 +6,11 @@
                     <h4 class="modal-title" id="myLargeModalLabel">Send Bulk  SMS To All Companies</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
+                 <div class="trf">
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
 
-
+  
 
                         <div class="form-group">
 							<label> SMS</label>
@@ -23,7 +24,7 @@
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
-            </div>
+            </div></div>
         </div>
     </div>
 </template>

@@ -21,12 +21,17 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i>
                     </a>
+
+                    <a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgamingcompany" type="button">
+                    <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
+                    </a>
+                    
                 </div>
             </div>
         </div>
-    </div>
+        </div>
     <!-- ./header and breadcrumbs -->
     <!-- main content card -->
     <div class="card-box mb-30">
@@ -34,8 +39,13 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Public Gaming Company List</h2>
         <div class="pb-20">
-        <table class="table hover  data-table-export nowrap">
-                <thead>
+       
+        <!-- <game-component></game-component> -->
+       
+       
+       
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category</th>
@@ -92,9 +102,14 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+              
+            </div>   
+    
+        <upload-publicgaming-company-component/>
+    
     </div>
     <!-- ./main content card -->
     <add-publicgamingcompany-component/>
 </div>
+
 @endsection

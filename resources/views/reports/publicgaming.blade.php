@@ -45,6 +45,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div> 
+                <a href="{{route('Allpublicgamingstotals',  $publicgamings[0]->category_type_id)}}" class="btn btn-success btn-xs" role="button">View Public Lottery By Totals</a> 
                 <!-- <a href="{{route('gamingsAllreport', $publicgamings[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All Public Gamings</a>  -->
                 <a href="{{route('Allgamingrecordsreport', $publicgamings[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All Public Gamings</a> 
 

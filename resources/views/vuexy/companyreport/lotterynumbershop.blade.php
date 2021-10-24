@@ -61,7 +61,7 @@ Category Types List:
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-content collapse show">
+                        <div class="card-content collapse">
                             <div class="card-body">
                                 <div class="users-list-filter">
                                     <form>
@@ -116,7 +116,7 @@ function goToTestPage(id) {
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Lottery</th>
-                          <th>Lottery Name</th>
+                          <th>Lottery Game</th>
                         
                         <th>License Number</th> 
                         <th>Lottery Number</th>

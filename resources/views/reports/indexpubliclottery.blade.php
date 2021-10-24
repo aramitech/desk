@@ -21,8 +21,9 @@
             <div class="col-md-6 col-sm-12 text-right">   
                 <div> 
                 <!-- <a href="{{route('publiclotteryAllreport', 1)}}" class="btn btn-info btn-xs" role="button">View All Public Lottery</a>  -->
+                <a href="{{route('Allpubliclotterytotals', 2)}}" class="btn btn-success btn-xs" role="button">View Public Lottery By Totals</a> 
 
-                <a href="{{route('Allpubliclotteryrecordsreport', 1)}}" class="btn btn-info btn-xs" role="button">View All Public Lottery</a> 
+                <a href="{{route('Allpubliclotteryrecordsreport', 1)}}" class="btn btn-primary btn-xs" role="button">View All Public Lottery</a> 
                 <!-- <a href="{{route('publiclotteryAllreport', $publiclotteries[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All Public Lottery</a>  -->
                 
                  </div>
@@ -36,8 +37,8 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Public Lottery Company List</h2>
         <div class="pb-20">
-        <table class="table hover multiple-select-row data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company Name</th>

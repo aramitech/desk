@@ -5,7 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Models\BookmarkersCompany;
 use App\Models\PublicGamingCompany;
+use App\Models\CategoryTypes;
+
 use Illuminate\Http\Request;
+use App\Imports\BookMarkersCompanyImport;
+use App\Imports\PublicLotteryCompanyImport;
+use App\Imports\PublicGamingCompanyImport;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class CompanyController extends Controller
 {
@@ -20,6 +27,10 @@ class CompanyController extends Controller
         $companies = Company::where('category_type_id','1')->get();
         return view('company.publiclottery', compact('companies'));
     }
+    
+
+
+
     public function bookmarkers()
     {
         //
@@ -27,7 +38,26 @@ class CompanyController extends Controller
         $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
         return view('company.bookmarkers', compact('bookmarkers'));
     }
+    
+    public function bookmarkersadminusercompany()
+    {
+        //
 
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        return view('vuexy.company.bookmarkers', compact('bookmarkers'));
+    }
+
+
+
+
+    public function bookmarkersusers()
+    {
+        //
+
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','1')->OrderBy('category_type_id')->get();
+        return view('company.bookmarkersusers', compact('bookmarkers'));
+    }
+    
     public function bookmarkers2()
     {
         //
@@ -55,7 +85,15 @@ class CompanyController extends Controller
         }
     }
 
-
+        //return Company Name
+        public function company_category_name()
+        {
+            {
+                $company_name = CategoryTypes::all();
+                return $company_name;
+            }
+        }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -83,7 +121,11 @@ class CompanyController extends Controller
         $user->branch = $request->branch;
         $user->category_type_id = '2'; 
         $user->paybillno = $request->paybillno;
-        
+        $user->directorsshareholder = $request->directorsshareholder;
+        $user->shareholdingstructure = $request->shareholdingstructure;
+        $user->nationality = $request->nationality;
+        $user->companyregistration = $request->companyregistration;
+        $user->krapin = $request->krapin;
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -112,7 +154,11 @@ class CompanyController extends Controller
         // $user->category_type_id = $request->category_type_id['categorytypes_id'];   
         $user->category_type_id = '1'; 
         $user->paybillno = $request->paybillno;
-        
+        $user->directorsshareholder = $request->directorsshareholder;
+        $user->shareholdingstructure = $request->shareholdingstructure;
+        $user->nationality = $request->nationality;
+        $user->companyregistration = $request->companyregistration;
+        $user->krapin = $request->krapin;
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -140,7 +186,11 @@ class CompanyController extends Controller
         // $user->category_type_id = $request->category_type_id['categorytypes_id'];   
         $user->category_type_id = '3'; 
         $user->paybillno = $request->paybillno;
-        
+        $user->directorsshareholder = $request->directorsshareholder;
+        $user->shareholdingstructure = $request->shareholdingstructure;
+        $user->nationality = $request->nationality;
+        $user->companyregistration = $request->companyregistration;
+        $user->krapin = $request->krapin;
         $user->save();
         return back()->with('success','Added succesfully');
     }
@@ -215,5 +265,69 @@ class CompanyController extends Controller
 
 
     
+    public function upload(Request $request)
+    {
+       // return $request->company_id;
+       // exit();
+        //$user->company_id = $request->company_id['company_id'];
+        $request->validate([
+            'file' => 'required',
+        ]);
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw","csv");
+        $result = array($request->file('file')->getClientOriginalExtension());
+        
+        if(!in_array($result[0],$extensions)){
+            return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
+        }
+        $path = $request->file;
+      
+        Excel::import(new BookMarkersCompanyImport($request->company_id), $path);
 
+        return response()->json('Success',200);
+    }
+
+
+    public function publiclotterycompany(Request $request)
+    {
+       // return $request->company_id;
+       // exit();
+        //$user->company_id = $request->company_id['company_id'];
+        $request->validate([
+            'file' => 'required',
+        ]);
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw","csv");
+        $result = array($request->file('file')->getClientOriginalExtension());
+        
+        if(!in_array($result[0],$extensions)){
+            return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
+        }
+        $path = $request->file;
+      
+        Excel::import(new PublicLotteryCompanyImport($request->company_id), $path);
+
+        return response()->json('Success',200);
+    }
+    
+    public function publicgamingcompany(Request $request)
+    {
+       // return $request->company_id;
+       // exit();
+        //$user->company_id = $request->company_id['company_id'];
+        $request->validate([
+            'file' => 'required',
+        ]);
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw","csv");
+        $result = array($request->file('file')->getClientOriginalExtension());
+        
+        if(!in_array($result[0],$extensions)){
+            return response()->json(["errors"=>["file"=>["File must be of Excel type ( e.g. .xlsx,.xls, or .csv)"]]],422);
+        }
+        $path = $request->file;
+      
+        Excel::import(new PublicGamingCompanyImport($request->company_id), $path);
+
+        return response()->json('Success',200);
+    }
+    
+    
 }

@@ -45,7 +45,8 @@ data() {
     return {
         action: '/desk/public/users/updatepassword', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/users/profile',
+        redirect: '',
+        //redirect: '/desk/public/users/profile',
         fields: {
             id:this.userdata.id,
             name:this.userdata.name,

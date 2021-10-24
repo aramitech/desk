@@ -5,14 +5,18 @@
         </a>
     </li>
   
-  
+    <li class="dropdown">
+        <a href="{{ route('departments')}}" class="dropdown-toggle no-arrow {{ (request()->is('departments*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Departments</span>
+        </a>
+    </li>
 
     <li class="dropdown">
         <a href="{{ route('accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('accounts*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">Finance Entry</span>
         </a>
     </li>
-
+    
 
 
     <li class="dropdown">
@@ -109,7 +113,7 @@
     
     <li class="dropdown">
         <a href="{{ route('assignregistry')}}" class="dropdown-toggle no-arrow {{ (request()->is('assignregistry*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Assign </span>
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Tasking </span>
         </a>
     </li>
         </ul>

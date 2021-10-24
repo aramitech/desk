@@ -12,6 +12,52 @@ Category Types List:
             <div class="content-header row">
             </div>
             <div class="content-body">
+
+
+         <!-- invoice functionality start -->
+         <section class="invoice-print mb-1">
+               <table>        
+                    <tr>
+                    
+                        <td width="500">
+                        <div class="col-sm-12 col-12 text-left pt-1">
+               <div class="card">
+                    <div class="card-header">                                             
+                        <h4 class="card-title">Send Mail</h4>
+                        <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="feather icon-chevron-down"></i></a></li>
+                                <li><a data-action="close"><i class="feather icon-x"></i></a></li>
+                            </ul>                  
+                    </div>
+                    <div class="card-content collapse">
+                    <form action="{{ route('send-mail-accounts') }}" method="post">       
+                    @csrf
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" aria-describedby="button-addon2">
+
+<input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="button-addon2">
+                            <div class="input-group-append" id="button-addon2">
+                                <button type="submit" class="btn btn-primary btn-lg">Send Mail</button>
+                            </form>
+                    </div>
+                    </div>  </div>   </div>    
+
+                        </td>
+                        <td width="500">   <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
+                        <button class="btn btn-primary btn-print mb-1 mb-md-0"> <i class="feather icon-file-text"></i> Print</button>
+                      <a href="{{route('bookmarkerspdf')}}" class="btn btn-success"><i class="feather icon-download"></i> Download </a> 
+                              <a href="{{route('exportExcelBookmarkers')}}" class="btn btn-warning"> <i class="feather icon-excel"></i> Export to Excel </a> 
+
+                    
+                    </div></div>  </div>  </td>
+                        
+                
+                    </tr>
+                   </table>
+
+    </section>
+                <!-- invoice functionality end -->
+       <!-- users filter start -->
+
                 <!-- users edit start -->
                 <section class="users-edit">
                     <div class="card">
@@ -61,7 +107,7 @@ Category Types List:
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-content collapse show">
+                        <div class="card-content collapse">
                             <div class="card-body">
                                 <div class="users-list-filter">
                                     <form>

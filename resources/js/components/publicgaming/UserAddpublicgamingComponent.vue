@@ -205,7 +205,8 @@ data() {
     return {
         action: '/desk/public/publicgaming/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/publicgaming',
+        redirect: '',
+        // redirect: '/desk/public/publicgaminguserindex/',
     types: ['Online','Manual','Online?Tables+Slots'],
  company_names: [],
 

@@ -215,6 +215,10 @@ export default {
           field: 'publicgaming_id',
         },
         {
+          label: 'Date',
+          field: 'date',
+        },
+        {
           label: 'Name',
           field: 'public_gamingcompany.company_name',
         },

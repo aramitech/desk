@@ -23,7 +23,7 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i>
                     </a>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
                         Add  Shop

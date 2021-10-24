@@ -20,6 +20,20 @@ class CompanyPublicLotteryController extends Controller
         $companies = Company::where('category_type_id','2')->get();
         return view('company.publiclottery', compact('companies'));
     }
+
+
+
+    
+    public function publiclotteryuser()
+    {
+        //
+        $companies = BookmarkersCompany::where('category_type_id','2')->get();
+        return view('companyuser.publiclotteryuser', compact('companies'));
+    }
+    
+
+
+
     public function publiclottery()
     {
         //
@@ -27,6 +41,15 @@ class CompanyPublicLotteryController extends Controller
         $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','2')->OrderBy('category_type_id')->get();
         return view('company.publiclottery', compact('bookmarkers'));
     }
+    
+    public function publiclotteryadminusercompany()
+    {
+        //
+
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','2')->OrderBy('category_type_id')->get();
+        return view('vuexy.company.publiclottery', compact('bookmarkers'));
+    }
+
 
     public function bookmarkers2()
     {

@@ -4,7 +4,7 @@
             <h4 class="modal-title" id="myLargeModalLabel">Edit  Finance Details</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
-      <form method="POST" @submit.prevent="submit">
+    <form method="POST" @submit.prevent="submit">
                     <div class="modal-body">
                    <div class="trf">        <div class="form-group row"> 
  <div class="col-md-6">
@@ -18,13 +18,13 @@
            <div class="col-md-6">
 
    	<label>Trading Name</label>   
-							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder=" " :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 			
             <div v-if="errors && errors.shop_id" class="text-danger">{{ errors.shop_id[0] }}</div>
          
 							<!-- <label>Licensee Name</label> -->
-							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
+							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder=" " required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
 						</div>
         
@@ -36,61 +36,63 @@
 									</div>
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" >
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="" :disabled="validated ? false : true" >
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div></div></div>
                         <div class="trf">  
     <div class="form-group row">                      
                                <div class="col-md-4">
 							<label>MR No</label>
-							<input class="form-control"  name="mrno" v-model="fields.mrno" value="" type="text" placeholder="MR No">
+							<input class="form-control"  name="mrno" v-model="fields.mrno" value="" type="text" placeholder=" ">
                             <div v-if="errors && errors.mrno" class="text-danger">{{ errors.mrno[0] }}</div>
 						</div>
                        <div class="col-md-4">
 							<label>Application Fee</label>
-							<input class="form-control" @keydown="sum" name="application_fee" v-model="fields.application_fee" value="" type="text" placeholder="Application Fee">
+							<input class="form-control" @keydown="sum" name="application_fee" v-model="fields.application_fee" value="" type="text" placeholder="">
                             <div v-if="errors && errors.application_fee" class="text-danger">{{ errors.application_fee[0] }}</div>
 						</div>
                         
                                 <div class="col-md-4">
 							<label>Transfer Fee</label>
-							<input class="form-control" @keydown="sum" name="transfer_fee" v-model="fields.transfer_fee" value="" type="text" placeholder="Transfer Fee" >
+							<input class="form-control" @keydown="sum" name="transfer_fee" v-model="fields.transfer_fee" value="" type="text" placeholder=" " >
                             <div v-if="errors && errors.transfer_fee" class="text-danger">{{ errors.transfer_fee[0] }}</div>
 						</div>	</div>
                         </div>
        <div class="trf"> 
 <div class="form-group row">  
-      <div class="col-md-3">
+      <div class="col-md-4">
 									<label>Annual License Fee</label>
 							<input class="form-control" @keydown="sum" name="annual_license_fee" v-model="fields.annual_license_fee" value="" type="text" placeholder="annual_license_fee" >
                             <div v-if="errors && errors.annual_license_fee" class="text-danger">{{ errors.annual_license_fee[0] }}</div>
 						</div>
-                           <div class="col-md-3">
+                           <div class="col-md-4">
 							<label>Investigation Fee Local</label>
-							<input class="form-control" @keydown="sum" name="investigation_fee_local" v-model="fields.investigation_fee_local" value="" type="text" placeholder="investigation_fee_local" >
+							<input class="form-control" @keydown="sum" name="investigation_fee_local" v-model="fields.investigation_fee_local" value="" type="text" placeholder="" >
                             <div v-if="errors && errors.investigation_fee_local" class="text-danger">{{ errors.investigation_fee_local[0] }}</div>
 						</div>
                      
-                            <div class="col-md-3">
+                            <div class="col-md-4">
 							<label>Investigation Fee Foreign</label>
-							<input class="form-control" @keyup="sum" name="investigation_fee_foreign" v-model="fields.investigation_fee_foreign" value="" type="text" placeholder="investigation_fee_foreign" >
+							<input class="form-control" @keyup="sum" name="investigation_fee_foreign" v-model="fields.investigation_fee_foreign" value="" type="text" placeholder="" >
                             <div v-if="errors && errors.investigation_fee_foreign" class="text-danger">{{ errors.investigation_fee_foreign[0] }}</div>
 						</div>
-                            <div class="col-md-3">
-							<label>Premise Fee</label>
-							<input class="form-control" @keyup="sum" id="premise_fee" name="premise_fee" v-model="fields.premise_fee" value="" type="text" placeholder="Total Payout" >
-                            <div v-if="errors && errors.premise_fee" class="text-danger">{{ errors.premise_fee[0] }}</div>
-						</div></div>
+                            </div>
   <div class="form-group row">                       
+                        <div class="col-md-4">
+							<label>Premise Fee</label>
+							<input class="form-control" @keyup="sum" id="premise_fee" name="premise_fee" v-model="fields.premise_fee" value="" type="text" placeholder=" " >
+                            <div v-if="errors && errors.premise_fee" class="text-danger">{{ errors.premise_fee[0] }}</div>
+						</div>
+                        
                          <div class="col-md-4">
 							<label>Renewal Fee</label>
-							<input class="form-control" @keydown="sum" name="renewal_fee" v-model="fields.renewal_fee" value="" type="text" placeholder="renewal_fee"  >
+							<input class="form-control" @keydown="sum" name="renewal_fee" v-model="fields.renewal_fee" value="" type="text" placeholder=""  >
                             <div v-if="errors && errors.renewal_fee" class="text-danger">{{ errors.renewal_fee[0] }}</div>
 						</div>
                         <div class="col-md-4">
 							<label>Operating Fee</label>
                            
-                           	<input class="form-control" @keydown="sum" name="operating_fee" v-model="fields.operating_fee" value="" type="text" placeholder="operating_fee" >
+                           	<input class="form-control" @keydown="sum" name="operating_fee" v-model="fields.operating_fee" value="" type="text" placeholder="" >
                             <div v-if="errors && errors.operating_fee" class="text-danger">{{ errors.operating_fee[0] }}</div>
 						</div>
                            <!-- <div class="col-md-4">
@@ -98,10 +100,31 @@
 							<input class="form-control" id="totals" name="totals" v-model="fields.totals" value="total" type="text" placeholder="total" required>
                             <div v-if="errors && errors.totals" class="text-danger">{{ errors.totals[0] }}</div>
 						</div> -->
-						</div></div>
+						</div>
+       <div class="form-group row">                  
+           <div class="col-md-4">
+							<label>Bank Guarantee</label>
+							<input class="form-control" id="bank_guarantee" name="bank_guarantee" v-model="fields.bank_guarantee" value="" type="text" placeholder=" " >
+                            <div v-if="errors && errors.bank_guarantee" class="text-danger">{{ errors.bank_guarantee[0] }}</div>
+						</div>
+                        
+                         <div class="col-md-4">
+							<label>Reference Amount</label>
+							<input class="form-control"  name="reference_amount" v-model="fields.reference_amount" value="" type="text" placeholder=""  >
+                            <div v-if="errors && errors.reference_amount" class="text-danger">{{ errors.reference_amount[0] }}</div>
+						</div>
+  
+                           <!-- <div class="col-md-4">
+							<label>total</label>
+							<input class="form-control" id="totals" name="totals" v-model="fields.totals" value="total" type="text" placeholder="total" required>
+                            <div v-if="errors && errors.totals" class="text-danger">{{ errors.totals[0] }}</div>
+						</div> -->
+						</div>
+                        
+                        </div>
                         
                     </div>
-                   
+                
                 </form>
     </div>
 </template>
@@ -114,9 +137,10 @@ export default {
   props: [ 'bookmarkerdata' ],
 data() {
     return {
-        action: '/desk/public/company/updateBookmarkersCompany', //edit action
+        action: '/desk/public/accounts/updateaccounts', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/company/bookmarkers',
+//redirect: '/desk/public/accounts/',
+        redirect: '',
          company_names:[],
          premise_fee_names:[],
          shop_names: [],
@@ -127,6 +151,8 @@ data() {
         licensee_name:'',
                 totals : '',
                 total_payout: '', 
+
+            accounts_id:this.bookmarkerdata.accounts_id,
 
             company_id:this.bookmarkerdata.company_id,
             category_type_id:this.bookmarkerdata.company_category_type,
@@ -145,6 +171,8 @@ data() {
             categorytype:this.bookmarkerdata.categorytype,
               renewal_fee:this.bookmarkerdata.renewal_fee,
               operating_fee:this.bookmarkerdata.operating_fee,
+               bank_guarantee:this.bookmarkerdata.bank_guarantee,
+                reference_amount:this.bookmarkerdata.reference_amount,
         }
         }
     },
@@ -189,13 +217,16 @@ methods: {
       },
     },
     mounted() {
+      
+     this.fields.accounts_id=this.bookmarkerdata.accounts_id;
+
         this.fields.company_id=this.bookmarkerdata.company_id;
         this.fields.category_type_id=this.bookmarkerdata.company_category_type;
         this.fields.company_id=this.bookmarkerdata.accountscompany;
         
         this.fields.company_name=this.bookmarkerdata.company_name;
-        this.fields.trading_name=this.bookmarkerdata.trading_name;
-        this.fields.license_no=this.bookmarkerdata.license_no;
+        this.fields.trading_name=this.bookmarkerdata.accountscompany.trading_name;
+        this.fields.license_no=this.bookmarkerdata.accountscompany.license_no;
         this.fields.mrno=this.bookmarkerdata.mrno;
         this.fields.application_fee=this.bookmarkerdata.application_fee;
         this.fields.transfer_fee=this.bookmarkerdata.transfer_fee;
@@ -207,6 +238,8 @@ methods: {
         this.fields.renewal_fee=this.bookmarkerdata.renewal_fee;
 
         this.fields.operating_fee=this.bookmarkerdata.operating_fee;
+        this.fields.bank_guarantee=this.bookmarkerdata.bank_guarantee;
+        this.fields.reference_amount=this.bookmarkerdata.reference_amount;
 
        
        console.log(this.fields.category_type_id);

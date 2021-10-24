@@ -18,24 +18,28 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-md-6 col-sm-12 text-right">
+            <div class="col-md-12 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i>
+                    </a>
+
+                    <a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkerscompany" type="button">
+                    <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
 
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addlotteryshop" type="button">
                         Add  Lottery 
                     </a>
                     
-                    <a class="btn btn-primary" href="{{ route('indexlotterynumber') }}" role="button" type="button">
-                        View  Lottery Name
+                    <a class="btn btn-warning" href="{{ route('indexlotterynumber') }}" role="button" type="button">
+                        View  Lottery Game
                     </a>
 
 
                 </div>
             </div>
-        </div>
+       
     </div>
     <!-- ./header and breadcrumbs -->
     <!-- main content card -->
@@ -44,8 +48,8 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Public Lottery Company List</h2>
         <div class="pb-20">
-        <table class="table hover  data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category</th>
@@ -107,7 +111,9 @@
                 </tbody>
             </table>
         </div>
-
+        <upload-publiclottery-company-component/>
+ 
+        </div>
     <!-- ./main content card -->
     <add-lotteryshop-component/>
 

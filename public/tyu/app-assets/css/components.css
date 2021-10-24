@@ -3543,11 +3543,11 @@ table.dataTable {
   border : 2px solid #F8F8F8;
 }
 table.dataTable th, table.dataTable td {
-  border-bottom : 1px solid #F8F8F8;
+  border-bottom : 1px solid #0F0E0E;
   border-top : 0;
 }
 table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td {
-  font-size : 0.85rem;
+  font-size : 0.95rem;
   border : 0;
 }
 table.dataTable thead tr {

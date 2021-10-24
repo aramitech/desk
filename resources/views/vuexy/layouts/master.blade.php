@@ -5,7 +5,7 @@
 		if((Auth::guard('admin')->user()->twofa) == 0)
 		{
 			//redirect to OTP page
-			echo '<script>window.location.href = "/otp-verify"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify"</script>';
 		}
 		
 	}
@@ -18,7 +18,7 @@
 		if((Auth::guard('web')->user()->twofa) == 0)
 		{
 			//redirect to user OTP page
-			echo '<script>window.location.href = "/otp-verify-user"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify-user"</script>';
 		}
 		
 	}
@@ -107,6 +107,28 @@
 
 
 
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/invoice.css')}}">
+    <!-- END: Page CSS-->
+
+
+
+
+    <script src="{{ asset('tables/jquery-3.5.1.js')}}"></script> 
+	  <script src="{{ asset('tables/dataTables.bootstrap4.min.js')}}"></script>
+	  <script src="{{ asset('tables/jquery.dataTables.min.js')}}"></script> 
+	  <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script> 
+
+
+<link rel="stylesheet" type="text/css" href="{{ asset('tables/dataTables.bootstrap4.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('tables/bootstrap.css')}}">
+
 </head>
 <!-- END: Head-->
 @include('vuexy.layouts.header') 
@@ -150,7 +172,7 @@
     <script src="{{ asset('tyu/app-assets/js/scripts/components.js')}}"></script>
     <!-- END: Theme JS-->
 
-    <!-- BEGIN: Page JS-->
+    <!-- BEGIN: Page JS--> 
     <script src="{{ asset('tyu/app-assets/js/scripts/datatables/datatable.js')}}"></script>
     <!-- END: Page JS-->
 
@@ -177,11 +199,22 @@
 
     <!-- BEGIN Vendor JS-->
 
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="xdty/app-assets/vendors/js/extensions/dropzone.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/dataTables.select.min.js"></script>
+    <script src="xdty/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('tyu/app-assets/js/scripts/pages/app-todo.js')}}"></script>
     <!-- END: Page JS-->
-
+   <!-- BEGIN: Page JS-->
+   <script src="xdty/app-assets/js/scripts/ui/data-list-view.js"></script>
+    <!-- END: Page JS-->
 
   <!-- BEGIN: Page JS-->
   <script src="{{ asset('tyu/app-assets/js/scripts/extensions/fullcalendar.js')}}"></script>
@@ -190,4 +223,20 @@
     <script src="{{ asset('tyu/app-assets/js/scripts/modal/components-modal.js')}}"></script>
     <!-- END: Page JS-->
     <script src="{{ asset('tyu/app-assets/vendors/js/charts/chart.min.js')}}"></script>
+
+
+
+    <!-- BEGIN: Page JS-->
+    <script src="{{ asset('tyu/app-assets/js/scripts/pages/invoice.js')}}"></script>
+
+    <script src="{{ asset('tables/jquery-3.5.1.js')}}"></script> 
+	<script src="{{ asset('tables/dataTables.bootstrap4.min.js')}}"></script>
+	 <script src="{{ asset('tables/jquery.dataTables.min.js')}}"></script> 
+
+
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 </html>

@@ -34,7 +34,8 @@ data() {
     return {
         action: '/desk/public/categorytypes/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/categorytypes',
+        redirect: '',
+       // redirect: '/desk/public/categorytypes',
         }
     },
 

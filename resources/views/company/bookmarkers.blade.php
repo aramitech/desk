@@ -20,23 +20,29 @@
             </div>
 
             
-            <div class="col-md-6 col-sm-12 text-right">
+            <div class="col-md-12 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i>
                     </a>
+
+                    <a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkerscompany" type="button">
+                    <i class="icon-copy fa fa-upload" aria-hidden="true">   Upload Record  </i>
+                    </a>
+
+
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
                         Add  Shop
                     </a>
 
-                    <a class="btn btn-primary" href="{{ route('shop') }}" role="button" type="button">
-                        View All Shop
-                    </a>
+                    <a class="btn btn-warning" href="{{ route('shop') }}" role="button" type="button">
+                       View All Shop
+                     </a>
 
 
                 </div>
             </div>
-        </div>
+     
     </div>
     <!-- ./header and breadcrumbs -->
     <!-- main content card -->
@@ -45,8 +51,8 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Bookmarkers Company List</h2>
         <div class="pb-20">
-        <table class="table hover  data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category</th>
@@ -107,15 +113,25 @@
                         </div>
                     </div>
 
+
+                    <div class="modal fade" id="uploadbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                        </div>
+                    </div>
+
+
         
                     @endforeach
                 </tbody>
             </table>
         </div>
-
+        <upload-bookmarker-company-component/>
     <!-- ./main content card -->
+    </div>
     <add-shop-component/>
 
+    
     </div>
     <!-- ./main content card -->
     <add-bookmarkerscompany-component/>

@@ -61,11 +61,11 @@ if(Auth::guard('admin')->check())
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
-                        Add Record
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i>
                     </a>
 
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
-                        Upload Record
+                    <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>    
                     </a>
                 </div>
             </div>

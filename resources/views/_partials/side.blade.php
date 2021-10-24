@@ -6,7 +6,7 @@
     </li>
 
 
-    @if ( Auth::user()->bookmarkersstatus == 'Allowed' )
+    @if ( Auth::user()->records_bookmarkers_r == 'Allowed' )
     <li class="dropdown">
         <a href="{{ route('bookmarkers.userindex')}}" class="dropdown-toggle no-arrow {{ (request()->is('bookmarkers.userindex*')) ? 'active' : '' }}">
             <span class="micon icon-copy ti-user"></span><span class="mtext">BookMarkers</span>
@@ -21,7 +21,7 @@
                                         </a>
                                     </li>                                   
                                      @else   
-                                    @endif
+                                    @endif 
 
    
                                     @if ( Auth::user()->publicgamingstatus == 'Allowed' )
@@ -42,24 +42,75 @@
     </li>
     @else   
                                     @endif
-    @if ( Auth::user()->bookmarkersshop_status == 'Allowed' )
+    @if ( Auth::user()->records_bookmarkers == 'Allowed' || Auth::user()->records_public_lotery == 'Allowed' || Auth::user()->records_public_gaming == 'Allowed' )
     <li class="dropdown">
-        <a href="{{ route('shop')}}" class="dropdown-toggle no-arrow {{ (request()->is('shop*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext">Bookmarkers Shop</span>
+        <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Company Entry</span>
         </a>
+        <ul class="submenu">
+        @if ( Auth::user()->records_bookmarkers == 'Allowed' )
+
+        <li class="dropdown">
+        <a href="{{ route('company.bookmarkersusers','BookMarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('bookmarkerscompany*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">BookMarkers</span>
+        </a>
+    </li>
+    @else    
+     @endif
+    @if (Auth::user()->public_lottery_companies_status == 'Allowed')
+
+    <li class="dropdown">
+        <a href="{{ route('company.publiclotteryuser','publiclotteryuser')}}" class="dropdown-toggle no-arrow {{ (request()->is('publiclotteryuser*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Lottery</span>
+        </a>
+    </li>
+    @else   
+     @endif
+    @if (Auth::user()->public_gaming_companies_status == 'Allowed' )
+    <li class="dropdown">
+        <a href="{{ route('company.publicgaminguser','Publicgaming')}}" class="dropdown-toggle no-arrow {{ (request()->is('publicgamingcompany*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Public Gaming  </span>
+        </a>
+    </li>
+    @else   
+     @endif
+        </ul>
     </li>
     @else   
                                     @endif
 
 
-    @if ( Auth::user()->companies_status == 'Allowed' )
-    <li> <a href="{{ route('company.bookmarkers')}}" class="dropdown-toggle no-arrow {{ (request()->is('company.bookmarkers*')) ? 'active' : '' }}">
-            <span class="micon icon-copy ti-user"></span><span class="mtext"> Company</span>
-        </a></li>
-        @else   
+    @if ( Auth::user()->access_registry == 'Allowed' )
+    <li class="dropdown">
+        <a href="javascript:;" class="dropdown-toggle">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Registry Entry</span>
+        </a>
+        <ul class="submenu">
+        @if ( Auth::user()->access_file_registry == 'Allowed' )
+        <li class="dropdown">
+        <a href="{{ route('registryuser')}}" class="dropdown-toggle no-arrow {{ (request()->is('registry*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Registry</span>
+        </a>
+    </li>
+    @else   @endif
+    @if ( Auth::user()->assign_file_registry == 'Allowed' )
+    <li class="dropdown">
+        <a href="{{ route('filingregistryuser')}}" class="dropdown-toggle no-arrow {{ (request()->is('filingregistryuser*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Filing</span>
+        </a>
+    </li>
+    @else   @endif
+    @if ( Auth::user()->assign_task == 'Allowed' )
+    <li class="dropdown">
+        <a href="{{ route('assignregistryuser')}}" class="dropdown-toggle no-arrow {{ (request()->is('assignregistryuser*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Assign </span>
+        </a>
+    </li>
+    @else   @endif
+        </ul>
+    </li>
 
-        
-                                    @endif
+        @else   @endif
                                     @if ( Auth::user()->user_accounts_status == 'Allowed' )
                                    {{-- <li class="dropdown">
                                         <a href="{{ route('accounts')}}" class="dropdown-toggle no-arrow {{ (request()->is('user_accounts_status*')) ? 'active' : '' }}">
@@ -78,15 +129,28 @@
                                  
 
                                 <li class="dropdown">
-                                        <a href="{{ route('taskindex')}}" class="dropdown-toggle no-arrow {{ (request()->is('taskindex*')) ? 'active' : '' }}">
+                                        <a href="{{ route('taskindexreplied')}}" class="dropdown-toggle no-arrow {{ (request()->is('taskindex*')) ? 'active' : '' }}">
                                             <span class="micon icon-copy ti-user"></span><span class="mtext">Task</span>
                                         </a>
                                     </li>  
 
-                                    <li class="dropdown">
+                                    <!-- <li class="dropdown">
                                         <a href="{{ route('taskindexreplied')}}" class="dropdown-toggle no-arrow {{ (request()->is('taskindexreplied*')) ? 'active' : '' }}">
                                             <span class="micon icon-copy ti-user"></span><span class="mtext">Seen Task </span>
                                         </a>
-                                    </li>                              
+                                    </li>                               -->
                                     
+
+
+                                  
+                                    @if ( Auth::user()->user_types_id == '1' )
+       <li class="dropdown">
+        <a href="{{ route('users_admin')}}" class="dropdown-toggle no-arrow {{ (request()->is('user*')) ? 'active' : '' }}">
+            <span class="micon icon-copy ti-user"></span><span class="mtext">Users</span>
+        </a>
+    </li>
+    @else   
+                                    @endif
+
+
 </ul>

@@ -11,33 +11,51 @@
                 </div>
                 <form method="POST" @submit.prevent="submit">
                     <div class="modal-body"> 
-                        
+
+
+ <div class="trf"> 
+<div class="form-group row">   
+
+                            <div class="col-md-6">
+							<label>Reference</label>
+
+  <multiselect  name="file_registry_ref" v-model="fields.file_registry_ref"   label="allpref" placeholder="Select " :options="class_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+              
+            </multiselect>
+                            <div v-if="errors && errors.file_registry_ref" class="text-danger">{{ errors.file_registry_ref[0] }}</div>
+						</div>
+      </div>
+
+</div>
+
+
+
+
+
  <div class="trf"> 
 <div class="form-group row">   
 
                             <div class="col-md-6">
 							<label>Class</label>
 
-  <multiselect  name="registry_id" v-model="fields.registry_id"   label="class" placeholder="Select class" :options="class_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
-              
-            </multiselect>
+							<input class="form-control"  name="class" v-model="fields.class" value="" type="text" placeholder="" >
+
                             <div v-if="errors && errors.class" class="text-danger">{{ errors.class[0] }}</div>
 						</div>
                         
   
-                          <div class="col-md-6">
-							<label>Subject</label>
-							<input class="form-control"  name="subject" v-model="fields.subject" value="" type="text" placeholder="subject" >
-                            <div v-if="errors && errors.subject" class="text-danger">{{ errors.subject[0] }}</div>
-						</div></div>
+                          <!-- <div class="col-md-6">
+							<label>Subject</label> -->
+							<input class="form-control"  name="subject" v-model="fields.subject" value="" type="hidden" placeholder="subject" >
+                            <!-- <div v-if="errors && errors.subject" class="text-danger">{{ errors.subject[0] }}</div>
+						</div> -->
+                       
 
- <div class="form-group row">   
-
-                            <div class="col-md-6">
-							<label>Number</label>
-							<input class="form-control"  name="number" v-model="fields.number" value="" type="text" placeholder="Shop Number" >
-                            <div v-if="errors && errors.number" class="text-danger">{{ errors.number[0] }}</div>
-						</div>
+                            <!-- <div class="col-md-6">
+							<label>Number</label> -->
+							<input class="form-control"  name="serial_number" v-model="fields.serial_number" value="" type="hidden" placeholder="Shop Number" >
+                            <!-- <div v-if="errors && errors.serial_number" class="text-danger">{{ errors.serial_number[0] }}</div>
+						</div> -->
                         
   
                           <div class="col-md-6">
@@ -75,9 +93,9 @@
                         
   
                           <div class="col-md-6">
-							<label>Status</label>
+							<label>Comment</label>
 				
-         			<input class="form-control"  name="status" v-model="fields.status" value="" type="text" placeholder="status" >
+<textarea class="form-control" name="status" id="message" v-model="fields.status" placeholder=""></textarea>
 
     <div v-if="errors && errors.status" class="text-danger">{{ errors.status[0] }}</div>
 						</div></div></div>
@@ -111,13 +129,14 @@ data() {
         class_names: [],
         action: '/desk/public/file_registry/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/filingregistry',
+        redirect: '',
+        // redirect: '/desk/public/filingregistry',
         }
     },
 
 methods: {
       getClassName: function(){
-        axios.get('/desk/public/class_names/get')
+        axios.get('/desk/public/class_names_filing/get')
         .then(function(response){
           this.class_names = response.data;   
         }.bind(this));
@@ -126,11 +145,12 @@ methods: {
 
  onChange (value) {
       this.value = value;
+       this.fields.class=this.value.class;
     this.fields.subject=this.value.subject;
-       this.fields.number=this.value.number;
+       this.fields.serial_number=this.value.serial_number;
      this.fields.file_name=this.value.file_name;
     //this.fields.shop_id = value.shopcompany;
-    console.log(value)
+   
     },
 
     },

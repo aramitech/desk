@@ -12,7 +12,11 @@ use App\Models\AuditLog;
 use App\Imports\BookMarkersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use EloquentBuilder;
-
+use App\Exports\AccountsExports;
+use PDF;
+use Carbon\Carbon; 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
 class AccountsController extends Controller
 
 {
@@ -29,12 +33,29 @@ class AccountsController extends Controller
         return view('accounts.ac', compact('accounts'));
 
     }
+    
+    //export excel
+    public function exportExcel()
+    {
+        return new AccountsExports(request()->all());
+    }
 
-    public function accountsusers()
+    
+  
+    public function accountsregistryuseradmin()
     {
    
       $accounts = Accounts::with('accountscompany')->get();
         $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+        return view('vuexy.registryaccounts.index', compact('accounts'));
+
+    }
+
+    public function accountsusers()
+    {
+   $id= Auth::guard('web')->user()->id;
+      $accounts = Accounts::with('accountscompany')->get();
+        $accounts = EloquentBuilder::to(Accounts::with('accountscompany')->where('id', $id), request()->all())->latest()->take(2)->get();
         return view('accounts.user', compact('accounts'));
 
     }
@@ -49,9 +70,6 @@ class AccountsController extends Controller
         return view('vuexy.accounts.accounts_edit', compact('accounts'));
 
     }
-
-    
-
 
     public function bookmarkersdata()
     {
@@ -140,7 +158,20 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-         
+        $request->validate([
+            'mrno' => 'required',
+            'application_fee' => 'numeric|between:0,999999999.99',
+            'transfer_fee' => 'numeric|between:0,999999999.99',
+            'annual_license_fee'=> 'numeric|between:0,999999999.99',
+            'investigation_fee_local'=> 'numeric|between:0,999999999.99',
+            'investigation_fee_foreign' => 'numeric|between:0,999999999.99',
+            'premise_fee' => 'numeric|between:0,999999999.99',
+            'renewal_fee' => 'numeric|between:0,999999999.99',
+            'operating_fee' => 'numeric|between:0,999999999.99',
+           
+            'bank_guarantee' => 'numeric|between:0,999999999.99',
+            'reference_amount' => 'numeric|between:0,999999999.99',   
+        ]); 
         
 		if(Auth::guard('admin')->check())
         {     
@@ -169,7 +200,10 @@ class AccountsController extends Controller
         $user->renewal_fee = $request->renewal_fee;
         $user->operating_fee = $request->operating_fee;
         $user->totals = $request->totals;
+        $user->bank_guarantee = $request->bank_guarantee;
+        $user->reference_amount = $request->reference_amount;
 
+        
         $user->id = $id;    
         $user->save();
 
@@ -177,7 +211,7 @@ class AccountsController extends Controller
         //log
         $userLog = new AuditLog();
         $userLog->audit_module = "User";
-        $userLog->audit_activity = "Added Accounts Entry ";
+        $userLog->audit_activity = "Added Accounts Entry mrno: $request->mrno";
        
         $userLog->user_category = "User";
        // $userLog->audit_log_id = $id;
@@ -220,8 +254,11 @@ class AccountsController extends Controller
         $user->renewal_fee = $request->renewal_fee;
         $user->operating_fee = $request->operating_fee;
         $user->totals = $request->totals;
+        $user->bank_guarantee = $request->bank_guarantee;
+        $user->reference_amount = $request->reference_amount;
 
-        $user->id = $id;    
+        
+        $user->id = $id;     
         $user->save();
 
    
@@ -374,12 +411,85 @@ class AccountsController extends Controller
 
     public function records()
     {
+        $currentTime = Carbon::now()->format('d M Y');
       $companies= BookmarkersCompany::all();
       $accounts = Accounts::with('accountscompany')->get();
         $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
-        return view('vuexy.accounts.index', compact('accounts','companies'));
+        return view('vuexy.accounts.index', compact('currentTime','accounts','companies'));
 
     }
+    
+    public function accountsadmins()
+    {
+      $companies= BookmarkersCompany::all();
+      $accounts = Accounts::with('accountscompany')->get();
+        $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+        return view('vuexy.accountsuseradmin.index', compact('accounts','companies'));
+
+    }
+
+ 
+    public function accountspdf()
+    {
+        $companies= BookmarkersCompany::all();
+        $accounts = Accounts::with('accountscompany')->get();
+          $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+          $currentTime = Carbon::now()->format('d M Y');
+     
+        $pdf = PDF::loadView('vuexy.accounts.acc',compact('currentTime','accounts','companies'));
+        return $pdf->download('Accounts.pdf');
+    } 
+
+
+    public function sendmail(Request $request){
+        // $data["email"]=$request->get("email");
+        // $data["client_name"]=$request->get("client_name");
+        // $data["subject"]=$request->get("subject");
+       
+          $data["email"]=$request->email;
+        $data["client_name"]='Simon';
+        $data["subject"]=$request->subject;
+  
+  
+        $companies= BookmarkersCompany::all();
+        $accounts = Accounts::with('accountscompany')->get();
+          $accounts = EloquentBuilder::to(Accounts::with('accountscompany'), request()->all())->get();
+  
+  
+        $currentTime = Carbon::now()->format('d M Y');
+       // $pdf = PDF::loadView('vuexy.accounts.acc', $data);
+        $pdf = PDF::loadView('vuexy.accounts.acc', $data,compact('currentTime','accounts','companies'));
+  
+        try{
+        
+           
+        //    Mail::send('vuexy.mail.test', $data, function($message) use ($data, $subject) {
+        //       $email='aramitechnology@gmail.com';
+        //       $message->to($email)->subject($subject);
+        //   });
+            Mail::send('vuexy.mail.test', $data, function($message) use ($data,$pdf) {
+            $message->to($data["email"], $data["client_name"])
+            ->subject($data["subject"])
+            ->attachData($pdf->output(), "invoice.pdf");
+            });
+        }catch(JWTException $exception){
+            $this->serverstatuscode = "0";
+            $this->serverstatusdes = $exception->getMessage();
+        }
+        if (Mail::failures()) {
+             $this->statusdesc  =   "Error sending mail";
+             $this->statuscode  =   "0";
+  
+        }else{
+  
+           $this->statusdesc  =   "Message sent Succesfully";
+           $this->statuscode  =   "1";
+        }
+        return back()->with('success','Sent succesfully');
+        return response()->json(compact('this'));
+  }
+  
+
 
 
 }

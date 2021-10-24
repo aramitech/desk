@@ -14,10 +14,11 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="active"><a href="{{ route('admin-master')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Dashboard</span></a>
                         </li>
-         
+                        <li class=" nav-item"><a href="{{ route('departments')}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Departments</span></a>
+                </li>
                         <li class=" nav-item"><a href="{{ route('accounts')}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Accounts Entry </span></a>
                 </li>
-
+                
                 <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Companies Entry</span></a>
                     <ul class="menu-content">
                 <li class=" nav-item"><a href="{{ route('company.bookmarkers','BookMarkers')}}"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">BookMarkers</span></a>
@@ -43,7 +44,17 @@
 
 
          
-
+                <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">Registry Entry</span></a>
+                    <ul class="menu-content">
+                        <li><a href="{{ route('registry')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Registry</span></a>
+                        </li>
+                        <li><a href="{{ route('filingregistry')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Filing</span></a>
+                        </li>
+                        <li><a href="{{ route('assignregistry')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Wish List">Tasking </span></a>
+                        </li>
+                     
+                    </ul>
+                </li>
 
 
 
@@ -83,6 +94,18 @@
                         <li><a href="{{ route('indexpublicgaming')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Public Gaming Report</span></a>
                         </li>
                 
+                        <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Registry Reports</span></a>
+                <ul class="menu-content"> 
+
+                        <li><a href="{{ route('reports.registry')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Registry</span></a>
+                        </li>
+                        <li><a href="{{ route('reports.filing')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Filing</span></a>
+                        </li>
+                        <li><a href="{{ route('reports.tasking')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Tasking</span></a>
+                        </li>
+                    </ul>
+                </li>
+
 
                         <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Graphical Reports</span></a>
                 <ul class="menu-content"> 
@@ -116,8 +139,12 @@
                     <li><a href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">My Account </span></a>
 </li>        <li class=" nav-item"><a href="{{ route('users')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Users</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('viewassignedusersroles')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Users Allocation</span></a>
+                </li>
+                <!-- <li class=" nav-item"><a href="{{ route('setting.backup')}}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Back Up Database</span></a>
+                </li> -->
 
-              
+                
                 <li class=" nav-item"><a href="#"><i class="feather icon-book"></i><span class="menu-title" data-i18n="Ecommerce">SMS </span></a>
                     <ul class="menu-content"> 
                 <li><a href="{{ route('sendsms')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Send SMS To Company</span></a>

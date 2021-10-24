@@ -27,4 +27,13 @@ class FileRegistry extends Model
       return $this->belongsTo(Registry::class,'registry_id');
   }
 
+
+    //FileRegistry<>Registry 
+    public function assignregistry_registry()
+    {
+        return $this->hasMany(AssignRegistry::class,'registry_id');
+    }
+  
+
+
 }

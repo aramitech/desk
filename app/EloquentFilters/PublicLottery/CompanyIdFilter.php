@@ -17,12 +17,9 @@ class CompanyIdFilter extends Filter
      */
     public function apply(Builder $builder, $value): Builder
     {
-        if(request()->get('inactive') == 'on')
-        {
-            return $builder->where('company_id', "<", $value);
-        }
-        else{
-            return $builder->where('company_id', ">=", $value);
-        }
-    }
+    
+        
+        return $builder->where('company_id', $value);
+ 
+}
 }

@@ -13,10 +13,18 @@ class ShopController extends Controller
     public function index()
     {
           $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
-        $shops = Shops::with('Shopcompany')->where('category_type_id',1)->get();
+           $shops = Shops::with('Shopcompany')->where('category_type_id',1)->get();
         return view('shop.old', compact('shops'));
     }
     
+    public function shopindex()
+    {
+          $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
+           $shops = Shops::with('Shopcompany')->where('category_type_id',1)->get();
+        return view('vuexy.shop.index', compact('shops'));
+    }
+
+
     
     public function shop_numbers($id)
     {
@@ -51,8 +59,8 @@ class ShopController extends Controller
  {
     // if(Auth::user()->user_type == 'organization_user' || Auth::user()->user_type == 'organization')
      {
-         //$category_type_id = CategoryTypes::where('categorytypes_id','1')->with('CompanyCategoryType')->get();
-         $license_name = BookmarkersCompany::where('category_type_id',1)->get();
+         //$category_typea23q_id = CategoryTypes::where('categorytypes_id','1')->with('CompanyCategoryType')->get();
+         $license_name = BookmarkersCompany::with('Shopcompany')->where('category_type_id',1)->get();
          return $license_name;
      }
  }
@@ -71,6 +79,7 @@ class ShopController extends Controller
         $user->shop_name = $request->shop_name;
         $user->location = $request->location;
         $user->shop_number = $request->shop_number;
+        $user->lrnumber = $request->lrnumber;
         $user->status = $request->status;
 
         
@@ -83,7 +92,7 @@ class ShopController extends Controller
       
         ]);
         $user = Shops::findOrFail($request->shop_id);
-        $user->company_id = $request->company_id['company_id'];
+       // $user->company_id = $request->company_id['company_id'];
         $user->category_type_id = $request->category_type_id;
         $user->shop_name = $request->shop_name;
         $user->location = $request->location;

@@ -7,6 +7,7 @@ use App\Models\PublicLottery;
 use App\Models\Publicgamings;
 use App\Models\BookmarkersCompany;
 use Illuminate\Http\Request;
+use App\Exports\BookmarkersExports;
 use Auth;
 use Hash;
 Use \Carbon\Carbon;
@@ -22,6 +23,15 @@ class ReportsController extends Controller
      * @return \Illuminate\Http\Response
      */
     ////////////======//company ggr reposrt////===////////
+   
+          //export excel
+          public function exportExcelBookmarkers()
+          {
+              return new BookmarkersExports(request()->all());
+          }
+            
+   
+   
     public function companyGGr()
     {
         $companies =EloquentBuilder::to(BookmarkersCompany::whereHas('bookmarkerscompany', function($query){
@@ -353,8 +363,16 @@ class ReportsController extends Controller
 
     public function indexpubliclottery()
     {
+        try {
+            // Validate the value...
+     
         $publiclotteries = BookmarkersCompany::where('category_type_id',2)->get();
         return view('reports.indexpubliclottery', compact('publiclotteries'));
+    } catch (Throwable $e) {
+        report($e);
+
+        return false;
+    }
     }
     public function publiclotterysreport()
     {
@@ -445,7 +463,27 @@ class ReportsController extends Controller
         return view('profile.index', compact('users'));
     }
 
+    public function AllBookMarkertotals()
+    {
+        $bcompanies = EloquentBuilder::to(BookmarkersCompany::with('bookmarkerscompany')->where('category_type_id',1), request()->all())->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany')->where('bookmarker_id','!=',NULL), request()->all())->get();
+        return view('vuexy.allrecordstotals.bookmarkersAll', compact('bcompanies'));
+    }
 
+    
+    public function Allpubliclotterytotals()
+    {
+        $bcompanies = EloquentBuilder::to(BookmarkersCompany::with('publicLotterycompany')->where('category_type_id',2), request()->all())->get();
+        $publiclotteries = EloquentBuilder::to(PublicLottery::with('publicLotterycompany')->where('publiclottery_id','!=',NULL), request()->all())->get();
+        return view('vuexy.allrecordstotals.publiclotteryAll', compact('bcompanies'));
+    }
+    
+    public function Allpublicgamingstotals()
+    {
+        $bcompanies = EloquentBuilder::to(BookmarkersCompany::with('publicGamingcompany')->where('category_type_id',3), request()->all())->get();
+        $publicgamings = EloquentBuilder::to(Publicgamings::with('publicGamingcompany')->where('publicgaming_id','!=',NULL), request()->all())->get();
+        return view('vuexy.allrecordstotals.publicgamingAll', compact('bcompanies'));
+    }
 
     public function AllBookMarkersrecordsreport()
     {
@@ -474,4 +512,36 @@ class ReportsController extends Controller
         return view('vuexy.allrecords.publicgamingAll', compact('publicgamings','bcompanies','companies'));
     }
     
+
+
+    public function bookmarkerspdf()
+    {
+        $companies= BookmarkersCompany::all();
+        $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
+        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany')->where('bookmarker_id','!=',NULL), request()->all())->get();          $currentTime = Carbon::now()->format('d M Y');
+     
+        $pdf = PDF::loadView('vuexy.allrecords.pdfbookmarkers',compact('currentTime','bookmarkers','companies'));
+        return $pdf->download('Bookmarkers.pdf');
+    } 
+    
+    public function publiclotterypdf()
+    {
+        $companies= BookmarkersCompany::all();
+        $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
+       $currentTime = Carbon::now()->format('d M Y');
+        $publiclotteries = EloquentBuilder::to(PublicLottery::with('publicLotterycompany')->where('publiclottery_id','!=',NULL), request()->all())->get();
+
+        $pdf = PDF::loadView('vuexy.allrecords.pdfbookmarkers',compact('currentTime','publiclotteries','companies'));
+        return $pdf->download('Bookmarkers.pdf');
+    } 
+
+    public function publicgamingpdf()
+    {
+        $companies= BookmarkersCompany::all();
+        $publicgamings = Publicgamings::with('publicGamingcompany')->get();
+        $publicgamings = EloquentBuilder::to(Publicgamings::with('publicGamingcompany')->where('publicgaming_id','!=',NULL), request()->all())->get();
+     
+        $pdf = PDF::loadView('vuexy.allrecords.pdfbookmarkers',compact('currentTime','publicgamings','companies'));
+        return $pdf->download('Publicgamings.pdf');
+    } 
 }

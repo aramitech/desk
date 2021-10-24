@@ -284,10 +284,10 @@ template {
   font-size: 2.5rem; }
 
 .h2, h2 {
-  font-size: 2rem; }
+  font-size: 1.6rem; }
 
 .h3, h3 {
-  font-size: 1.75rem; }
+  font-size: 1.05rem; }
 
 .h4, h4 {
   font-size: 1.5rem; }
@@ -1485,7 +1485,7 @@ pre code {
   color: #212529; }
 
 .table td, .table th {
-  padding: .75rem;
+  padding: 1.15rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6; }
 
@@ -1698,15 +1698,15 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.5em + .75rem + 2px);
+  height: calc(1.5em + 1.75rem + 2px);
   padding: .375rem .75rem;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 500;
   line-height: 1.5;
-  color: #495057;
+  color: #090909;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #13c42f;
   border-radius: .25rem;
   -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
   transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
@@ -1804,7 +1804,7 @@ select.form-control:focus::-ms-value {
 .form-control-sm {
   height: calc(1.5em + .5rem + 2px);
   padding: .25rem .5rem;
-  font-size: .875rem;
+  font-size: 1.075rem;
   line-height: 1.5;
   border-radius: .2rem; }
 
@@ -2707,7 +2707,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 21rem;
   padding: .5rem 0;
   margin: .125rem 0 0;
   font-size: 1rem;
@@ -3566,7 +3566,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1b00ff; }
+  background-color: #fdaf4b; }
 
 .nav-fill .nav-item {
   -ms-flex: 1 1 auto;
@@ -3946,7 +3946,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #fff;;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: .25rem; }

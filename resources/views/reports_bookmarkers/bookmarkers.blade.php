@@ -54,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="{{ URL::to('/bookmarkersrepo/pdf',$id) }}">Export to PDF</a>
+									<a class="dropdown-item" href="{{ URL::to('/desk/public/bookmarkersrepo/pdf',$id) }}">Export to PDF</a>
         </div>
 
 								</div>

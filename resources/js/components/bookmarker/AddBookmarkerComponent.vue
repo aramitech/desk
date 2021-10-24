@@ -26,7 +26,7 @@
             <div v-if="errors && errors.shop_id" class="text-danger">{{ errors.shop_id[0] }}</div>
          
 							<!-- <label>Licensee Name</label> -->
-							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="Licensee Name" required>
+							<input class="form-control" name="licensee_name" v-model="fields.licensee_name" type="hidden" placeholder="" required>
                             <div v-if="errors && errors.licensee_name" class="text-danger">{{ errors.licensee_name[0] }}</div>
 			</div>
         
@@ -36,30 +36,30 @@
   <div class="form-group row">
 					<div class="col-md-6">
 							<label>Trading Name</label>   
-							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder="Trading Name" :disabled="validated ? false : true" required>
+							<input class="form-control" name="trading_name" v-model="fields.trading_name" value="" type="text" placeholder=" " :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.trading_name" class="text-danger">{{ errors.trading_name[0] }}</div>
 						</div>
                       <div class="col-md-6">
 							<label>License No</label>
-							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder="License No" :disabled="validated ? false : true" required>
+							<input class="form-control"  name="license_no" v-model="fields.license_no" value="" type="text" placeholder=" " :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.license_no" class="text-danger">{{ errors.license_no[0] }}</div>
 						</div></div></div>
                         <div class="trf">  
     <div class="form-group row">                      
                         <div class="col-md-4">
-							<label>Return For The Period Of</label>
-							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="Return For The Period Of">
+							<label>From</label>
+							<input class="form-control"  name="return_for_the_period_of" v-model="fields.return_for_the_period_of" value="" type="date" placeholder="  ">
                             <div v-if="errors && errors.return_for_the_period_of" class="text-danger">{{ errors.return_for_the_period_of[0] }}</div>
 						</div>
                        <div class="col-md-4">
-							<label>Return For The Period To</label>
-							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="Return For The Period To">
+							<label>To</label>
+							<input class="form-control"  name="return_for_the_period_to" v-model="fields.return_for_the_period_to" value="" type="date" placeholder="">
                             <div v-if="errors && errors.return_for_the_period_to" class="text-danger">{{ errors.return_for_the_period_to[0] }}</div>
 						</div>
                         
                                 <div class="col-md-4">
 							<label>Date</label>
-							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="Date" required>
+							<input class="form-control"  name="date" v-model="fields.date" value="" type="date" placeholder="" required>
                             <div v-if="errors && errors.date" class="text-danger">{{ errors.date[0] }}</div>
 						</div>	</div>
                         </div>
@@ -67,18 +67,18 @@
 <div class="form-group row">  
       <div class="col-md-3">
 							<label>Bets No</label>
-							<input class="form-control"  name="bets_no" v-model="fields.bets_no" value="" type="text" placeholder="bets_no" required>
+							<input class="form-control"  name="bets_no" v-model="fields.bets_no" value="" type="text" placeholder="" required>
                             <div v-if="errors && errors.bets_no" class="text-danger">{{ errors.bets_no[0] }}</div>
 						</div>
                            <div class="col-md-3">
 							<label>Deposits</label>
-							<input class="form-control"  name="deposits" v-model="fields.deposits" value="" type="text" placeholder="Deposits" required>
+							<input class="form-control"  name="deposits" v-model="fields.deposits" value="" type="text" placeholder="" required>
                             <div v-if="errors && errors.deposits" class="text-danger">{{ errors.deposits[0] }}</div>
 						</div>
                      
                             <div class="col-md-3">
 							<label>Total Sales</label>
-							<input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="total_sales" required>
+							<input class="form-control" @keyup="sum" name="total_sales" v-model="fields.total_sales" value="" type="text" placeholder="" required>
                             <div v-if="errors && errors.total_sales" class="text-danger">{{ errors.total_sales[0] }}</div>
 						</div>
                             <div class="col-md-3">
@@ -87,23 +87,30 @@
                             <div v-if="errors && errors.total_payout" class="text-danger">{{ errors.total_payout[0] }}</div>
 						</div></div>
   <div class="form-group row">                       
-                           <div class="col-md-4">
+                           <div class="col-md-3">
 							<label>WHT</label>
 							<input class="form-control"  name="wht" v-model="fields.wht" value="" type="text" placeholder="WHT" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.wht" class="text-danger">{{ errors.wht[0] }}</div>
 						</div>
-                           <div class="col-md-4">
+                           <div class="col-md-3">
 							<label>GGR TAX</label>
-							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="validated ? false : true" placeholder="winloss" >
+							<input class="form-control"  name="winloss" v-model="fields.winloss" value="" type="hidden" :disabled="validated ? false : true" placeholder="" >
                            
-                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="ggrtax" :disabled="validated ? false : true" required>
+                           	<input class="form-control"  name="ggrtax" v-model="fields.ggrtax" value="" type="text" placeholder="" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.ggrtax" class="text-danger">{{ errors.ggrtax[0] }}</div>
 						</div>
-                           <div class="col-md-4">
+                           <div class="col-md-3">
 							<label>GGR</label>
-							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="GGR" :disabled="validated ? false : true" required>
+							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="" :disabled="validated ? false : true" required>
                             <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
 						</div>
+
+ <div class="col-md-3">
+							<label>Excercice Tax</label>
+							<input class="form-control" @keydown="ggrtax" id="ggr" name="ggr" v-model="fields.ggr" value="ggr" type="text" placeholder="" :disabled="validated ? false : true" required>
+                            <div v-if="errors && errors.ggr" class="text-danger">{{ errors.ggr[0] }}</div>
+						</div>
+
 						</div></div>
                         
                     </div>
@@ -121,7 +128,7 @@
 import FormMixin from '../shared/FormMixin';
 
 import Multiselect from 'vue-multiselect';
-
+import moment from 'moment'
 // register globally
 Vue.component('multiselect', Multiselect)
 
@@ -129,15 +136,17 @@ export default {
   mixins: [ FormMixin ],
   components: { Multiselect },
   props:['data'],
+  
 data() {
     
     return {
         action: '/desk/public/bookmarkers/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/bookmarkers',
-
+        redirect: '',
+ //redirect: '/desk/public/bookmarkers',
     company_names: [],
     shop_names: [],
+    
       fields: {
         license_no:"",
         trading_name:'',
@@ -150,9 +159,17 @@ data() {
                 total_payout: '',              
       }
         }
+        
     },
 
         methods: {
+         getHumanDate : function (date) {
+                return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
+            },
+  if (value) {
+    return moment(String(value)).format('DD/MM/YYYY hh:mm')
+  
+},
         getLicenseeName: function(){
         axios.get('/desk/public/license_name/get')
         .then(function(response){
@@ -171,12 +188,13 @@ data() {
   this.fields.ggr=this.fields.total_sales - this.fields.total_payout;
   this.fields.wht=0.2 * this.fields.total_payout;
   this.fields.ggrtax=0.15 * this.fields.ggr;  
-   
+   this.fields.ggrtax=0.15 * this.fields.ggr; 
    },
       ggrtax()
    {
  this.fields.ggrtax=0.15 * this.fields.ggr;  
    },
+   
  onChange (value) {
       this.value = value;
       this.getShop_Names(value.company_id)
@@ -189,6 +207,7 @@ data() {
    
      },
      computed: {
+         
                 ggr: function(){
                  this.fields.ggr = this.total_payout * 0.2;           
 
@@ -199,9 +218,13 @@ data() {
 
      this.getLicenseeName() ; 
     },
+
+
+    
      mounted() {
         //this.ggr = this.total_payout * 0.2;
   }
+  
 }
 </script>
 

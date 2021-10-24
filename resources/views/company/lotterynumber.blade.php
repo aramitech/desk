@@ -29,7 +29,7 @@
                     </a>
                     
                     <a class="btn btn-primary" href="{{ route('lotterynumbershop') }}" role="button" type="button">
-                        View  Lottery Name
+                        View  Lottery Game
                     </a> -->
 
 
@@ -44,14 +44,14 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Public Lottery Numbers List</h2>
         <div class="pb-20">
-        <table class="table hover  data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                       
                           <th>Company</th>
                           <th>Lisence No</th>
-                        <th>Lottery Name</th> 
+                        <th>Lottery Game</th> 
                         <th>Lottery Numbers</th>
                         <th>From</th>
                         <th>To</th>

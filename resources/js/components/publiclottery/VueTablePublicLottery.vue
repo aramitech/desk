@@ -170,7 +170,8 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '/desk/public/publiclottery',
+      'redirect': '',
+      //'redirect': '/desk/public/publiclottery',
        action: '/desk/public/publiclottery/update', //edit action
       company_names: [],
       
@@ -188,6 +189,10 @@ export default {
         {
           label: 'ID',
           field: 'publiclottery_id',
+        },
+           {
+          label: 'Date',
+          field: 'date',
         },
         {
           label: 'Company',

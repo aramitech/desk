@@ -179,7 +179,8 @@ export default {
   data(){
     return {
       'text': 'Records Updated succesfully',
-      'redirect': '/desk/public/bookmarkers',
+      'redirect': '',
+      //'redirect': '/desk/public/bookmarkers',
       action: '/desk/public/bookmarkers/update', //edit action
       company_names: [],
       
@@ -211,10 +212,10 @@ export default {
           label: 'ID',
           field: 'bookmarker_id',
         },
-        // {
-        //   label: 'Name',
-        //   field: 'company_id',
-        // },
+        {
+          label: 'Date',
+          field: 'date',
+        },
         {
           label: 'Licensee Name',
           field: 'licensee_name',
@@ -257,6 +258,7 @@ export default {
   },
   methods: {
           getBookmarkers: function(){
+   
             let url = '/desk/public/bookmarkersdata/get?';
             let url2 = '/desk/public/bookmarkersdata_inactive';
             if(new URL(location.href).searchParams.get('from') != null)

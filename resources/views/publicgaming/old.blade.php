@@ -35,8 +35,8 @@
     <h2 class="h4 pd-20">Public Gaming List</h2>
         <div class="pb-20">
            
-        <table class="table table stripe hover nowrap  data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Date</th>

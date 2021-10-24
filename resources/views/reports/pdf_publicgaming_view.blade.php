@@ -111,7 +111,12 @@ width: 20%;
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
 <!-- <h3 align="center">COMPANY LETTER HEAD</h3> -->
-<h3 align="center">PUBLIC GAMING RETURNS FORM</h3>
+                                    <h4>OFFICE OF THE PRESIDENT</h4>
+                                    <h4> MINISTRY OF INTERIOR AND</h4>
+                                    <h4>  CO-ORDINATION OF NATIONAL GOVERNMENT</h4>
+                                    <h4> BETTING CONTROL AND LICENSING BOARD</h4>
+                                    <h5>  Kenya Charity Sweepstake House, 3rd & 8th floor, Mama Ngina Street</h5>  
+                                    <h4 align="center">PUBLIC GAMING RETURNS FORM</h4> 
 <img style="width: 180px;" src="" alt="">
 <div style="width: 100%; clear: both;">
 </div>

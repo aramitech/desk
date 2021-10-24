@@ -72,7 +72,7 @@ data() {
     return {
         action: '/desk/public/shop/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/',
+        redirect: '',
 
  company_names: [],
 

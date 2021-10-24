@@ -18,6 +18,13 @@
 							<input class="form-control" name="email" v-model="fields.email" value="" type="email" placeholder="me@example.com" required>
                             <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
 						</div>
+
+	<div class="form-group">
+							<label>Phone</label>
+							<input class="form-control" name="phone" v-model="fields.phone" value="" type="text" placeholder="" required>
+                            <div v-if="errors && errors.phone" class="text-danger">{{ errors.phone[0] }}</div>
+						</div>
+
                         <div class="form-group">
 							<label>Password</label>
 							<input class="form-control"  name="password" v-model="fields.password" value="" type="password" placeholder="********" required>

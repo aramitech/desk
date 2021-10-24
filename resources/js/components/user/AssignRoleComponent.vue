@@ -183,7 +183,8 @@ data() {
     return {
         action: '/desk/public/users/updaterole', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/users',
+        redirect: '',
+        // redirect: '/desk/public/users',
         fields: {
             id:this.userdata.id,  
             name:this.userdata.name,

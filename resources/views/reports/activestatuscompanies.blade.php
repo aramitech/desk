@@ -83,8 +83,9 @@
 								</div>
 							</div>
 						</div> 
-						<div class="invoice-desc pb-30"> <table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
-                <thead>
+						<div class="invoice-desc pb-30"> 
+						<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                     <th class="table-plus">#</th>
                         <th>company_name</th>

@@ -1,4 +1,4 @@
-@extends('vuexy.layouts.master')
+@extends('vuexy.layouts.master4')
 @section('title')
 Category Types List:
 @endsection
@@ -14,6 +14,7 @@ Category Types List:
             </div>
             <div class="content-body">
                 <!-- Full calendar start -->
+                <br> <br> <br> <br>
                 <section id="basic-examples">
                     <div class="row">
                         <div class="col-12">
@@ -56,7 +57,7 @@ Category Types List:
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <form action="#">
+                                <form action="{{ route('storeevents') }}" method="post">
                                     <div class="modal-body">
                                         <div class="d-flex justify-content-between align-items-center add-category">
                                             <div class="chip-wrapper"></div>
@@ -83,19 +84,19 @@ Category Types List:
                                             </div>
                                         </div>
                                         <fieldset class="form-label-group">
-                                            <input type="text" class="form-control" id="cal-event-title" placeholder="Event Title">
+                                            <input type="text" name="event_title" class="form-control" id="cal-event-title" placeholder="Event Title">
                                             <label for="cal-event-title">Event Title</label>
                                         </fieldset>
                                         <fieldset class="form-label-group">
-                                            <input type="text" class="form-control pickadate" id="cal-start-date" placeholder="Start Date">
+                                            <input type="text" name="start_date" class="form-control pickadate" id="cal-start-date" placeholder="Start Date">
                                             <label for="cal-start-date">Start Date</label>
                                         </fieldset>
                                         <fieldset class="form-label-group">
-                                            <input type="text" class="form-control pickadate" id="cal-end-date" placeholder="End Date">
+                                            <input type="text" name="end_date" class="form-control pickadate" id="cal-end-date" placeholder="End Date">
                                             <label for="cal-end-date">End Date</label>
                                         </fieldset>
                                         <fieldset class="form-label-group">
-                                            <textarea class="form-control" id="cal-description" rows="5" placeholder="Description"></textarea>
+                                            <textarea class="form-control" name="description" id="cal-description" rows="5" placeholder="Description"></textarea>
                                             <label for="cal-description">Description</label>
                                         </fieldset>
                                     </div>

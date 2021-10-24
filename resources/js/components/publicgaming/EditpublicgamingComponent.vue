@@ -138,8 +138,8 @@ data() {
     return {
         action: '/desk/public/publicgaming/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/publicgaming',
-
+        redirect: '',
+        //redirect: '/desk/public/publicgaming',
  company_names: [],
 
         fields: {

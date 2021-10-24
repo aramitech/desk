@@ -1458,7 +1458,7 @@ input:focus ~ .bg-primary {
 .btn-primary {
   border-color : #4839EB !important;
   background-color : #7367F0 !important;
-  color : #FFFFFF;
+  color : #060606;
 }
 .btn-primary:hover {
   border-color : #5E50EE !important;

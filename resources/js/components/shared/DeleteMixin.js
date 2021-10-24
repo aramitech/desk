@@ -12,7 +12,7 @@ export default {
         redirect: ''
       }
     },  
-    methods: {  
+    methods: {   
       //method for deleting admin user used in the views/adminuser.index blade
       deleteItem: function deleteItem(path,id){
        
@@ -24,8 +24,12 @@ export default {
         var bookmarkerscompanydeletepath='/desk/public/company/delete_destroybookmarkerscompany';
         var accountscompanydeletepath='/desk/public/accounts/delete_accounts';
 
-      
-      
+        var registrydeletepath='/desk/public/registry/delete';
+        var fileregistrydeletepath='/desk/public/fileregistry/delete';
+        var fileregistryassigndeletepath='/desk/public/assignfileregistry/delete';
+        var departmentdeletepath='/desk/public/departments/delete';
+
+        
         
         var publicgamingcompanydeletepath='/desk/public/company/delete_destroypublicgamingcompany';
         var publiclotterycompanydeletepath='/desk/public/company/delete';
@@ -56,6 +60,31 @@ export default {
           fpath=bookmarkerdeletepath;
           item="Bookmarker ";
         }
+
+        else if(path == "registrydelete")
+        {
+          fpath=registrydeletepath;
+          item="Registry ";
+        }
+        
+        else if(path == "departmentdelete")
+        {
+          fpath=departmentdeletepath;
+          item="Departments ";
+        }
+        
+        else if(path == "fileregistrydelete")
+        {
+          fpath=fileregistrydeletepath;
+          item="File Registry ";
+        }
+
+        else if(path == "fileregistryassigndelete")
+        {
+          fpath=fileregistryassigndeletepath;
+          item="Assign File Registry ";
+        }
+        
         else if(path == "publiclotterydelete")
         {
           fpath=publiclotterydeletepath;

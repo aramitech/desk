@@ -84,7 +84,7 @@ data() {
     return {
         action: '/desk/public/shop/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/',
+        redirect: '',
 
     company_names: [],
       fields: {

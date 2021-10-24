@@ -15,9 +15,9 @@ class Registry extends Model
         'registry_id',
         'class',
         'subject',
-        'number',
+        'serial_number',
         'file_name', 
-       
+        'volume', 
          ];       
 
    //FileRegistry<>Registry 

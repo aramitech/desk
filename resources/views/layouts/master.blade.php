@@ -18,7 +18,7 @@
 		if((Auth::guard('web')->user()->twofa) == 0)
 		{
 			//redirect to user OTP page
-			echo '<script>window.location.href = "otp-verify-user"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify-user"</script>';
 		}
 		
 	}
@@ -41,12 +41,16 @@
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	
+
+	
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -57,6 +61,20 @@
 
 		gtag('config', 'UA-119386393-1');
 	</script>
+
+
+
+<script src="{{ asset('tables/jquery-3.5.1.js')}}"></script> 
+	  <script src="{{ asset('tables/dataTables.bootstrap4.min.js')}}"></script>
+	  <script src="{{ asset('tables/jquery.dataTables.min.js')}}"></script> 
+	  <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+      
+
+
 </head>
 <body>
 
@@ -103,16 +121,24 @@
 					</div>
 				</div>
 			</div>
+		
 			<div class="user-info-dropdown">
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="{{ asset('vendors/images/login-img.png')}}" alt="">
+	
+	@if(Auth::guard('admin')->check())
+						
+						@elseif(Auth::guard('web')->check())
+						<img src="../public/{{ Auth::guard('web')->user()->file }}"  class="users-avatar-shadow rounded" height="50" width="80" >
+					
+						@endif 
+				 
 						</span>
 						<span class="user-name">
 							@if(Auth::guard('superadmin')->check())
 								{{ Auth::guard('superadmin')->user()->name }}
-								@php
+					 			@php
 									$logout = 'super-admin-logout';
 									$sidebar = '_partials.super';
 								@endphp
@@ -309,6 +335,24 @@
 	<script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 
 
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
+    <!-- END: Page Vendor JS-->
+    <script src="{{ asset('tyu/app-assets/js/scripts/datatables/datatable.js')}}"></script>
+
+	<script>
+	$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 	<script src="{{ asset('vendors/scripts/datatable-setting.js')}}"></script>
 
 	<script>

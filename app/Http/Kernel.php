@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'auth.all' => \App\Http\Middleware\AllMiddleware::class,
         'auth.admin' => \App\Http\Middleware\AdminMiddleware::class,
         'auth.superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
@@ -60,6 +61,19 @@ class Kernel extends HttpKernel
         //Middlewares for access restriction
         'companies.access' => \App\Http\Middleware\CompaniesAccess::class,
         'bookmarkers.access' => \App\Http\Middleware\BookMarkersAccess::class,
+        'bookmarkersrecords.access' => \App\Http\Middleware\BookmarkersRecordsAccess::class,
+        'publiclotterycompany.access' => \App\Http\Middleware\PublicLotteryCompanyAccess::class,
+        'accounts.access' => \App\Http\Middleware\AccountsAccess::class,
+        'publiclottery.access' => \App\Http\Middleware\PublicLotteryRecordsAccess::class,
+        'publicgaming.access' => \App\Http\Middleware\PublicGamingAccess::class,
+        'bookmarkerscompany.access' => \App\Http\Middleware\BookMarkersCompanyAccess::class,
+        'publicgamingcompany.access' => \App\Http\Middleware\PublicGamingCompanyAccess::class,
+        'registry.access' => \App\Http\Middleware\RegistryAccess::class,
+        'fileregistry.access' => \App\Http\Middleware\FileRegistryAccess::class,
+        'assignregistry.access' => \App\Http\Middleware\TaskingAccess::class,
+
+        
+        
         /////
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

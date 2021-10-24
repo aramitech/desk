@@ -21,7 +21,7 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#adduser" type="button">
-                        Add User
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  User </i> 
                     </a>
                 </div>
             </div>
@@ -39,26 +39,29 @@
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Name</th>
-                        <th>Email</th>
+                      
                         <th>P/F No</th>
                         <th>Section</th>
+                        <th>Department</th>
                         <th>Phone</th>
                         <th>Created On</th>
                         <th class="datatable-nosort">Action</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody> 
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
                         <td>{{ $user->perspnal_file_no }}</td>
+                        <td>@if($user->departmentsusers) 
+                        {{  $user->departmentsusers->department_name }}
+                        @endif</td>
                         <td>{{ $user->section }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->created_at->format("y-M-d") }}</td>
                         <td>
-
+ 
                         <div class="dropdown">
                                  <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                     <i class="dw dw-more"></i>
@@ -66,7 +69,7 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#edituser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#assignroleuser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Assign Role</button>
+                                  {{--  <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#assignroleuser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Assign Role</button>--}}
 
                                     <a href="{{ route('assignroleuser',$user->id)}}"> <button class="btn btn-primary btn-sm" data-toggle="tooltip"  data-original-title="Edit"><i class="fa fa-edit">Role</i> </button></a>
                                     <a class="btn btn-danger btn-sm" href="{{ route('userss.delete', $user->id) }}"  data-target="#smstext-{{ $user->id }}"><i class="fa fa-plus"></i>Delete</a>
@@ -97,7 +100,7 @@
             </table>
         </div>
     </div>
-    <!-- ./main content card -->
+    <!-- ./main content card -->  
     <add-user-component/>
 </div>
 

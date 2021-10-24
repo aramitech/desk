@@ -18,7 +18,7 @@ class BookMarkersAccess
     {    
         if ( Auth::check() )
         {
-            if ( Auth::user()->bookmarkersstatus == 'Allowed' )
+            if ( Auth::user()->records_bookmarkers_r == 'Allowed' )
             {
                 return $next($request);
             }

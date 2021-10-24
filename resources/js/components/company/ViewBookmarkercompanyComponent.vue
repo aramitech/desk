@@ -95,7 +95,9 @@ data() {
     return {
         action: '/desk/public/company/updateBookmarkersCompany', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/company/bookmarkers',
+        redirect: '',
+         //redirect: '/desk/public/company/bookmarkers',
+
          company_names:[],
          status_names:[],
         fields: {

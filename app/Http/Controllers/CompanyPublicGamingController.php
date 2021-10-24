@@ -6,7 +6,7 @@ use App\Models\Company;
 use App\Models\BookmarkersCompany;
 use App\Models\PublicGamingCompany;
 use Illuminate\Http\Request;
-
+ 
 class CompanyPublicGamingController extends Controller
 {
     /**
@@ -28,6 +28,26 @@ class CompanyPublicGamingController extends Controller
         return view('company.publickgaming', compact('bookmarkers'));
     }
 
+    
+    public function publicgamingadminusercompany()
+    {
+        //
+
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','3')->OrderBy('category_type_id')->get();
+        return view('vuexy.company.publickgaming', compact('bookmarkers'));
+    }
+
+    
+    public function publicgaminguser()
+    {
+        $bookmarkers = BookmarkersCompany::with('CompanyCategoryType')->where('category_type_id','3')->OrderBy('category_type_id')->get();
+        return view('companyuser.publickgaminguser', compact('bookmarkers'));
+    }
+
+    
+
+
+
     public function bookmarkers2()
     {
         //
@@ -44,7 +64,11 @@ class CompanyPublicGamingController extends Controller
         $publickgamings = PublicGamingCompany::all();
         return view('company.publickgaming', compact('publickgamings'));
     }
-    
+    public function publicgaminglist()
+    {
+        $publickgamings = BookmarkersCompany::latest()->paginate(2);
+        return $publickgamings;
+    }
 
     //return Company Name
     public function getCompanyName()

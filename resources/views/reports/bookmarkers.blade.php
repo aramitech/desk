@@ -54,7 +54,7 @@
 									<a class="dropdown-item" href="#">View Assets</a> -->
 
 									<div class="d-flex justify-content-end mb-4">
-									<a class="dropdown-item" href="/bookmarkersrepo/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
+									<a class="dropdown-item" href="/desk/public/bookmarkersrepo/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
         </div>
 
 								</div>
@@ -89,8 +89,8 @@
 						</div> 
 						<div class="invoice-desc pb-30">
 					
-							<table class="table table stripe hover nowrap multiple-select-row data-table-export nowrap">
-                <thead>
+						<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Date</th>

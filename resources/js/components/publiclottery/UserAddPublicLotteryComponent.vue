@@ -20,9 +20,9 @@
            
         </div> 
                       <div class="col-md-6">
-							<label>Lottery Name</label>
+							<label>Lottery Game</label>
 					      
-            <multiselect  name="publiclotterynumber_id" v-model="fields.publiclotterynumber_id"   label="lottery_name" placeholder="Select Lottery name" :options="Lottery_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" >
+            <multiselect  name="publiclotterynumber_id" v-model="fields.publiclotterynumber_id"   label="lottery_name" placeholder="Select Lottery Game" :options="Lottery_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" >
               
             </multiselect>
             <div v-if="errors && errors.publiclotterynumber_id" class="text-danger">{{ errors.publiclotterynumber_id[0] }}</div>
@@ -124,7 +124,8 @@ data() {
     return {
         action: '/desk/public/publiclottery/add', //save action
         text: 'Added Succesfully',
-        redirect: '/desk/public/userpubliclottery',
+        redirect: '',
+          // redirect: '/desk/public/userpubliclottery',
            company_names: [],
             Lottery_names: [],
       fields: {

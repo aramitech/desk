@@ -55,7 +55,7 @@
 
 									<div class="d-flex justify-content-end mb-4">
 									
-									<a class="dropdown-item" href="/publicgamingsrepo/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
+									<a class="dropdown-item" href="/desk/public/publicgamingsrepo/pdf/{{$id}}?from={{request()->get('from')}}&to={{request()->get('to')}} ">Export to PDF</a>
         </div>
 
 								</div>

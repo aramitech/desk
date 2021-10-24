@@ -23,12 +23,12 @@
                                         </div>
                                     </div>
                                     <h2 class="text-bold-700 mt-1">
-
  
-                                      <p>{{ $total_ggr_bookmarkers }}</p>
+ 
+                                     <h2> <p class="btn btn-warning">{{ $total_ggr_bookmarkers }}</p></h2>
                                   
                                     </h2>
-                                    <p class="mb-0">Bookmaarkers Total GGR</p>
+                                    <p class="mb-0">Bookmarkers Total GGR</p>
                                 </div>
                                 <div class="card-content">
                                     <!-- <div id="line-area-chart-1"></div> -->
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Pending Task </h4>
@@ -220,150 +220,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Publi Lottery</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <div>
-                                        {!! $companyggrchart->container() !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-end">
-                                    <h4>All Companies</h4>
-                                    <!-- <div class="dropdown chart-dropdown">
-                                        <button class="btn btn-sm border-0 dropdown-toggle px-0" type="button" id="dropdownItem1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Last 7 Days
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem1">
-                                            <a class="dropdown-item" href="#">Last 21 Days</a>
-                                            <a class="dropdown-item" href="#">Last Month</a>
-                                            <a class="dropdown-item" href="#">Last Year</a>
-                                        </div>
-                                    </div> -->
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body pt-0">
-                                        <div id="session-chart" class="mb-1"></div>
-                                        <div class="chart-info d-flex justify-content-between mb-1">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="feather icon-monitor font-medium-2 text-primary"></i>
-                                                <span class="text-bold-600 mx-50">All Companies</span>
-                                                <span> {{ $companies->count() }}</span>
-                                            </div>
-                                            <!-- <div class="series-result">
-                                                <span>2%</span>
-                                                <i class="feather icon-arrow-up text-success"></i>
-                                            </div> -->
-                                        </div>
-                                        <!-- <div class="chart-info d-flex justify-content-between mb-1">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="feather icon-tablet font-medium-2 text-warning"></i>
-                                                <span class="text-bold-600 mx-50">Mobile</span>
-                                                <span> - 34.9%</span>
-                                            </div>
-                                            <div class="series-result">
-                                                <span>8%</span>
-                                                <i class="feather icon-arrow-up text-success"></i>
-                                            </div>
-                                        </div>
-                                        <div class="chart-info d-flex justify-content-between mb-50">
-                                            <div class="series-info d-flex align-items-center">
-                                                <i class="feather icon-tablet font-medium-2 text-danger"></i>
-                                                <span class="text-bold-600 mx-50">Tablet</span>
-                                                <span> - 6.5%</span>
-                                            </div>
-                                            <div class="series-result">
-                                                <span>-5%</span>
-                                                <i class="feather icon-arrow-down text-danger"></i>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="card chat-application">
-                                <div class="card-header">
-                                    <h4 class="card-title">Recent Task</h4>
-                                </div>
-                                <div class="chat-app-window">
-                                    <div class="user-chats">
-                                        <div class="chats">
-                                            <div class="chat">
-                                                <div class="chat-avatar">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" /> -->
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                    @foreach($tasks as $task) 
-                                                        <p>{{ $task->description }}</p>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar mt-50">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" /> -->
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Apple pie pie jujubes chupa chups muffin</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat">
-                                                <div class="chat-avatar">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="">
-                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-2.jpg" alt="avatar" height="40" width="40" /> -->
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Chocolate cake</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="chat chat-left">
-                                                <div class="chat-avatar mt-50">
-                                                    <a class="avatar m-0" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="">
-                                                        <!-- <img src="../tyu/app-assets/images/portrait/small/avatar-s-5.jpg" alt="avatar" height="40" width="40" /> -->
-                                                    </a>
-                                                </div>
-                                                <div class="chat-body">
-                                                    <div class="chat-content">
-                                                        <p>Donut sweet pie oat cake dragée fruitcake</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                      
-                                       
-                                        </div>
-                                    </div>
-                                    <div class="chat-footer">
-                                        <div class="card-body d-flex justify-content-around pt-0">
-                                            <input type="text" class="form-control mr-50" placeholder="Type your Message">
-                                            <button type="button" class="btn btn-icon btn-primary"><i class="feather icon-navigation"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="card">
+                        <div class="col-md-6 col-12">
+                              <div class="card">
                                 <div class="card-header d-flex justify-content-between pb-0">
                                     <h4 class="card-title">Company Categories</h4>
                                 </div>
@@ -404,6 +262,105 @@
                             </div>
                         </div>
                     </div>
+                 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				           <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Most Recent Activities Logs </h2>
+                                </div>
+								
+								
+    <table id="example" class="table table-striped table-bordered" style="width:100%">             <thead>
+                    <tr>
+                        
+              
+                        <th>Name</th>
+                        <th>Audit Activity</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+              
+                @foreach($activitylogs as $auditLog)
+                    <tr>
+                        <td > @if($auditLog->userlogs) 
+                        {{  $auditLog->userlogs->name }}
+                        @endif
+                        
+                        </td>
+                        <td>{{ $auditLog->audit_activity }}</td>
+                        <td>{{ $auditLog->created_at }}</td>
+                   
+                    </tr>
+
+                    @endforeach
+                </tbody>
+    
+            </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                              <div class="card">
+                                <div class="card-header d-flex justify-content-between pb-0">
+                                    <h4 class="card-title">Most Recent Audit Logs </h4>
+                                </div>
+
+  <table id="example" class="table table-striped table-bordered" style="width:100%">             <thead>
+                    <tr>
+                        <th class="table-plus">#</th>
+                        
+            
+                        <th>Name</th>
+                        <th>Email </th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+              
+                @foreach($auditLogs as $auditLog)
+                     <tr>
+                        <td>{{ $auditLog->audit_log_id }}</td>
+                        <td>{{ $auditLog->name }}</td>
+                    
+                        <td>{{ $auditLog->email }}</td>
+                        <td>{{ $auditLog->created_at }}</td>
+                   
+                    </tr>
+
+                    @endforeach
+                </tbody>
+    
+            </table>
+                            </div>
+                        </div>
+                    </div>
+				 
+				 
+				 
+				 
+				 
+				 
                 </section>
                 <!-- Dashboard Ecommerce ends -->
 

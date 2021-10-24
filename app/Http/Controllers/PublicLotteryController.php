@@ -26,12 +26,30 @@ class PublicLotteryController extends Controller
         return view('publiclottery.index', compact('publiclotteries'));
     }
     
+    public function adminuserpubliclottery()
+    {
+        //
+        $publiclotteries = PublicLottery::with('publicLotterycompany')->get();
+        return view('vuexy.publiclottery.index', compact('publiclotteries'));
+    }
+
+
+
     public function indexlotterynumber()
     {
         //
         $publiclotterylotterynumbers = PublicLotteryNumber::with('publicLotterycompany')->get();
         return view('company.lotterynumber', compact('publiclotterylotterynumbers'));
     }
+
+    public function indexlotterynumberadmins()
+    {
+        //
+        $publiclotterylotterynumbers = PublicLotteryNumber::with('publicLotterycompany')->get();
+        return view('vuexy.company.lotterynumber', compact('publiclotterylotterynumbers'));
+    }
+
+
 
     public function lottery_numbers_names($id)
     {
@@ -111,6 +129,45 @@ class PublicLotteryController extends Controller
         return $publiclotteries;
     }
 
+    public function PublicLotterydatauser()
+    {
+        $id= Auth::guard('web')->user()->id;
+        if(request()->get('inactive') == 'on')
+        {
+            $publiclotteries = BookmarkersCompany::where('category_type_id','2')->with('publicLotterycompany')->get()->groupBy('company_id');
+            $constraints = '';
+            if(request()->get('from')){
+                $publiclotteries = BookmarkersCompany::where('category_type_id','2')->with(['publicLotterycompany' => function($query){
+                    $query->whereDate('return_for_of', "<", \Carbon\Carbon::create(request()->get('from')));
+                }])->get()->groupBy('company_id');
+            }
+  
+            $publiclotterydata = [];
+            // $companies = [];
+            foreach($publiclotteries as $publiclottery)
+        
+            {
+                // array_push($companies,$publiclottery[0]->company_id);
+                if($publiclottery[0]->publicLotterycompany->count() > 0)
+                {
+                    array_push($publiclotterydata,$publiclottery[0]->publicLotterycompany->first());
+                }
+                else{
+                    $arr = ["publiclottery_id"=>null,"company_id"=>$publiclottery[0]->company_id,"license_no"=>$publiclottery[0]->trading_name,"license_no"=>$publiclottery[0]->companlicense_noy_id,"return_for_of"=>null,"return_to"=>null,"date"=>null,"total_tickets_sold"=>"0","sales"=>"0","payouts"=>0,"wht"=>0,"ggr"=>null,"ggrtax"=>null,"id"=>null];
+                    array_push($publiclotterydata,$arr);
+                }
+            }
+            return $publiclotterydata;
+        }
+        else {
+            $publiclotteries = PublicLottery::with('publicLotterycompany')->where('id', $id)->latest()->take(3)->get();
+            return $publiclotteries;
+        }
+        $publiclotteries = PublicLottery::with('publicLotterycompany')->where('id', $id)->latest()->take(3)->get();
+        return $publiclotteries;
+    }
+
+    
 
     
     /**

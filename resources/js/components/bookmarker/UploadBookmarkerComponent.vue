@@ -4,10 +4,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myLargeModalLabel">Upload Bookmarkers</h4>
+                    
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form method="POST" @submit.prevent="formSubmit" enctype="multipart/form-data">
                     <div class="modal-body">
+
+<!-- ///////////////////////////////////////////// -->
+<div class="form-group col-md-12">
+							<label for="kra">Sample</label>
+							<div class="alert alert-info shadow-sm col-md-12">
+								<a class="border-left" href="/desk/public/sample/Bookmakers.xlsx">Download Sample File</a>
+                            </div>
+						</div>
+<!-- //////////////////////////////////////////////// -->
+
+
+
                           <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="company_id"> Licensee Name</label>        
@@ -85,8 +98,8 @@ data() {
     return {
         action: '/desk/public/bookmarkers/upload', //save action
         text: 'Uploaded Succesfully',
-        redirect: '/desk/public/bookmarkers',
-
+       // redirect: '/desk/public/bookmarkers',
+redirect: '',
         company_names: [],
         fields: {
             company_id:'',

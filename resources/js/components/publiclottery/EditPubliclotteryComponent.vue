@@ -116,7 +116,7 @@ data() {
     return {
         action: '/desk/public/publiclottery/update', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/',
+        redirect: '',
 
         company_names: [],
         fields: {

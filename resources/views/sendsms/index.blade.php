@@ -21,8 +21,13 @@
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addsms" type="button">
-                         SendSms
+                         Send SMS To Company
                     </a>
+
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#sendsmstocategory" type="button">
+                         Send SMS To Category
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -79,6 +84,8 @@
                 </tbody>
             </table>
         </div>
+        <add-sendsmscompanycategory-component/>
+
     </div>
     <!-- ./main content card -->
      

@@ -1,7 +1,7 @@
 <template>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">View Company</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Task</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
         <form method="POST" @submit.prevent="submit">
@@ -12,20 +12,24 @@
 							<label>Title</label>
                             							<input class="form-control" name="title" v-model="fields.title" type="text" placeholder="Company Name" >
 
-							<input class="form-control" name="task_id" v-model="fields.task_id" type="hidden" placeholder="" >
+							<input class="form-control" name="task_id" v-model="fields.task_id" type="hidden" :disabled="validated ? false : true" placeholder="" >
                             <div v-if="errors && errors.title" class="text-danger">{{ errors.title[0] }}</div>
 						</div>
 						<div class="col-md-6">
-							<label>Description</label>
-							<input class="form-control" name="description" v-model="fields.description" value="" type="text" placeholder="Trading Name" >
-                            <div v-if="errors && errors.description" class="text-danger">{{ errors.description[0] }}</div>
+							<label>Reply</label>
+                     <textarea class="form-control" name="replymessage" id="replymessage" v-model="fields.replymessage" placeholder=""></textarea>
+                           
+                            <div v-if="errors && errors.replymessage" class="text-danger">{{ errors.replymessage[0] }}</div>
+
+
 						</div></div>
 
                          <div class="form-group row">
                         <div class="col-md-6">
-							<label>Reply</label>
-							<input class="form-control"  name="replymessage" v-model="fields.replymessage" value="" type="text" placeholder="" >
-                            <div v-if="errors && errors.replymessage" class="text-danger">{{ errors.replymessage[0] }}</div>
+							<label>Description</label>
+
+							<input class="form-control" name="description" v-model="fields.description" :disabled="validated ? false : true" value="" type="text" placeholder="Trading Name" >
+                            <div v-if="errors && errors.description" class="text-danger">{{ errors.description[0] }}</div>
 						</div>
                         
                        
@@ -55,7 +59,8 @@ data() {
     return {
         action: '/desk/public/replytotask', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/taskindex',
+        redirect: '',
+        //redirect: '/desk/public/taskindex',
          titles:[],
          status_names:[],
         fields: {

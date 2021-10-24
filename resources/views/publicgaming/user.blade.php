@@ -63,9 +63,11 @@ if(Auth::guard('admin')->check())
                     <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button">
                         Add Record
                     </a> -->
+                    <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">
+                Records</a>
 
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
-                        Upload Record
+                    <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
                 </div>
             </div>
@@ -86,7 +88,53 @@ if(Auth::guard('admin')->check())
         <upload-publicgaming-component/>
     </div>
     <!-- ./main content card -->
-    <add-publicgaming-component/>
+
+    
+
+    <div class="modal fade" id="myModal">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">Public Gaming</h4>
+    </div>
+    <div class="modal-body">
+    @php
+                $usertype = '';
+                $privilege = [];
+            @endphp
+           @if(Auth::guard('superadmin')->check())
+                @php
+                    $usertype = ['usertype'=>'super-admin'];
+                @endphp
+            @elseif(Auth::guard('admin')->check())
+                @php
+                    $usertype = ['usertype'=>'admin'];
+                @endphp
+            @elseif(Auth::guard('web')->check())
+                @php
+                    $usertype = ['usertype'=>'user'];
+                    $privilege = ['edit_status'=>Auth::user()->editstatus,'delete_status'=>Auth::user()->deletestatus]
+                @endphp
+            @endif
+            @php 
+                array_push($privilege,$usertype);
+            @endphp
+        <user_publicgaming_good_table_component :privilege="{{ json_encode($privilege) }}":allowed="{{ json_encode($allowed) }}"></user_publicgaming_good_table_component>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
 </div>
 @endsection
 

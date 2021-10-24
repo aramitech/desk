@@ -25,6 +25,9 @@ Vue.component('assignrole-user-component', require('./components/user/AssignRole
 
 Vue.component('add-publiclottery-component', require('./components/company/AddLotteryCompanyComponent.vue').default);
 Vue.component('add-bookmarkerscompany-component', require('./components/company/AddBookmarkersCompanyComponent.vue').default);
+Vue.component('add-bookmarkerscompanyuser-component', require('./components/company/AddBookmarkersCompanyUserComponent.vue').default);
+
+
 Vue.component('add-publicgamingcompany-component', require('./components/company/AddPublicgamingsCompanyComponent.vue').default);
 
 
@@ -59,15 +62,25 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
  Vue.component('add-categorytype-component', require('./components/categorytypes/AddCategoryTypeComponent.vue').default);
  Vue.component('edit-bookmarkercompany-component', require('./components/company/EditBookmarkercompanyComponent.vue').default);
  Vue.component('view-bookmarkercompany-component', require('./components/company/ViewBookmarkercompanyComponent.vue').default);
+ Vue.component('upload-bookmarker-company-component', require('./components/company/UploadBookmarkerCompanyComponent.vue').default);
+ Vue.component('upload-publiclottery-company-component', require('./components/company/UploadPublicLotteryCompanyComponent.vue').default);
+ Vue.component('upload-publicgaming-company-component', require('./components/company/UploadPublicGamingCompanyComponent.vue').default);
+
+
+
 
  Vue.component('change_password-user-component', require('./components/user/ChangePasswordComponent.vue').default);
 
  Vue.component('bookmarkers_good_table_component', require('./components/bookmarker/VueTableBookmarkers.vue').default);
+ Vue.component('user_bookmarkers_good_table_component', require('./components/bookmarker/UserVueTableBookmarkers.vue').default);
 
  Vue.component('edit-bookmarkers-component', require('./components/bookmarker/EditBookmarkerComponent.vue').default);
 
  Vue.component('publiclottery_good_table_component', require('./components/publiclottery/VueTablePublicLottery.vue').default);
+ Vue.component('user_publiclottery_good_table_component', require('./components/publiclottery/UserVueTablePublicLottery.vue').default);
+ 
  Vue.component('publicgaming_good_table_component', require('./components/publicgaming/VueTableGamings.vue').default);
+ Vue.component('user_publicgaming_good_table_component', require('./components/publicgaming/UserVueTableGamings.vue').default);
 
  Vue.component('shop_good_table_component', require('./components/shop/VueTableShop.vue').default);
 
@@ -87,6 +100,9 @@ Vue.component('view-publicgaming-component', require('./components/publicgaming/
 Vue.component('add-sendsms-component', require('./components/sendsms/SendSms.vue').default);
 Vue.component('add-sendsms-tocontact-component', require('./components/sendsms/SendSmsToContact.vue').default);
 Vue.component('add-send-bulk-sms-component', require('./components/sendsms/SendBulkSms.vue').default);
+Vue.component('add-sendsmscompanycategory-component', require('./components/sendsms/SendSMSToCategory.vue').default);
+
+
 
 Vue.component('add-lotteryshop-component', require('./components/publiclottery/AddLotteryShopComponent.vue').default);
 
@@ -98,13 +114,37 @@ Vue.component('view-accounts-component', require('./components/accounts/ViewAcco
 Vue.component('add-user-accounts-component', require('./components/accounts/Add_User_AccountsComponent.vue').default);
 
 Vue.component('confirm-task-component', require('./components/Task/ReplyTaskComponent.vue').default);
+Vue.component('add-task-component', require('./components/Task/AddTaskComponent.vue').default);
 
 Vue.component('add-registry-component', require('./components/Registry/RegistryComponent.vue').default);
 
 Vue.component('add-filing-registry-component', require('./components/Registry/FilingRegistryComponent.vue').default);
 Vue.component('add-assign-registry-component', require('./components/Registry/AssignRegistryComponent.vue').default);
 
+Vue.component('edit-fileregistry-component', require('./components/Registry/EditRegistryComponent.vue').default);
+Vue.component('view-fileregistry-component', require('./components/Registry/ViewRegistryComponent.vue').default);
 
+Vue.component('edit-filing-component', require('./components/Registry/EditFileRegistryComponent.vue').default);
+
+
+Vue.component('add-companyuser-component', require('./components/companyuser/AddLotteryCompanyComponent.vue').default);
+Vue.component('add-publicgamingcompanyuser-component', require('./components/companyuser/AddPublicGamingUserComponent.vue').default);
+
+
+Vue.component('add-assignregistryuser-component', require('./components/registryuser/AssignRegistryUserComponent.vue').default);
+Vue.component('add-filinguser-registry-component', require('./components/registryuser/FilingRegistryUserComponent.vue').default);
+
+Vue.component('add-registryuser-component', require('./components/registryuser/RegistryUserComponent.vue').default);
+
+
+
+Vue.component('add-deparrtments-component', require('./components/deparrtments/DepartmentsComponent.vue').default);
+Vue.component('edit-deparrtments-component', require('./components/deparrtments/EditDepartmentComponent.vue').default);
+Vue.component('view-deparrtments-component', require('./components/deparrtments/ViewDepartmentComponent.vue').default);
+
+Vue.component('game-component', require('./components/company/ViewPublicGamingTable.vue').default);
+
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -113,6 +153,7 @@ Vue.component('add-assign-registry-component', require('./components/Registry/As
  */
 import swal from 'sweetalert';
 import DeleteMixin from './components/shared/DeleteMixin';
+
 const app = new Vue({
     el: '#app',
     mixins: [ DeleteMixin ]    
@@ -125,3 +166,9 @@ import VueGoodTablePlugin from 'vue-good-table';
 import 'vue-good-table/dist/vue-good-table.css'
 
 Vue.use(VueGoodTablePlugin);
+
+
+
+
+
+

@@ -79,7 +79,12 @@ data() {
         fields: {
           
             shop_id:this.shopdata.shop_id,
-            company_id:this.shopdata.company_id,
+            company_id:this.shopdata.shopcompany.company_id,
+             company_id:this.shopdata.shopcompany.company_name,
+            company_name:this.shopdata.shopcompany.company_name,
+            trading_name:this.shopdata.shopcompany.trading_name,
+             license_no:this.shopdata.shopcompany.license_no,
+           company_id:this.shopdata.company_id,
             shop_name:this.shopdata.shop_name,    
              location:this.shopdata.location, 
              Shop_company:this.shopdata.company_name, 
@@ -111,9 +116,14 @@ methods: {
     },
         created: function(){  
      this.getLicenseeName()   
-    },
+    }, 
     mounted() {
         this.fields.shop_id=this.shopdata.shop_id;
+         this.fields.company_id=this.shopdata.shopcompany.company_id;
+          this.fields.company_id=this.shopdata.shopcompany.company_name;
+            this.fields.license_no=this.shopdata.shopcompany.license_no;
+         this.fields.trading_name=this.shopdata.shopcompany.trading_name;
+         this.fields.company_name=this.shopdata.shopcompany.company_name;
         this.fields.company_id=this.shopdata.company_id;
        this.fields.shop_name=this.shopdata.shop_name;
          this.fields.location=this.shopdata.location;    
@@ -122,4 +132,8 @@ methods: {
    }
 }
 </script>
+  
+
+
+
   

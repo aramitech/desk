@@ -17,6 +17,8 @@ Admin
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
+                        @include('layouts.messages')
+                         @include('layouts.errors')
                             <ul class="nav nav-tabs mb-3" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
@@ -39,8 +41,10 @@ Admin
                                     <!-- users edit media object start -->
                                     <div class="media mb-2">
                                         <a class="mr-2 my-25" href="#">
-                                        <img src="{{ asset('assets/images/about-icon-01.png')}}" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
-                                        </a>
+                                        @foreach($users as $user)
+                                               <img src="../../{{ $user->file }}" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90" >
+                                                @endforeach
+                                    </a>
                                         <div class="media-body mt-50">
                                             <h4 class="media-heading">   
                                                 @foreach($users as $user)
@@ -69,7 +73,7 @@ Admin
                                                         <label>
                                                             <h4>Personal File No</h4>
                                                         </label>
-                                                        <input type="text" class="form-control" placeholder="Username" value="{{ $user->perspnal_file_no }}" >
+                                                        <input type="text" readonly class="form-control" placeholder="Username" value="{{ $user->perspnal_file_no }}" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -77,7 +81,7 @@ Admin
                                                         <label>
                                                             <h4>Name</h4>
                                                         </label>
-                                                        <input type="text" class="form-control" placeholder="Name" value="{{ $user->name }}" >
+                                                        <input type="text" readonly class="form-control" placeholder="Name" value="{{ $user->name }}" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -85,28 +89,30 @@ Admin
                                                         <label>
                                                             <h4>E-mail</h4>
                                                         </label>
-                                                        <input type="email" class="form-control" placeholder="Email" value="{{ $user->email }}" >
+                                                        <input type="email" readonly class="form-control" placeholder="Email" value="{{ $user->email }}" >
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6">
                                                 <div class="form-group">
                                                     <label>
-                                                        <h4>Status</h4>
+                                                        <h4>Department</h4>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="Account Status" value="{{ $user->account_status }}" >
+                                                    <input type="text" readonly class="form-control" placeholder="Account Status" value="@if($user->departmentsusers){{  $user->departmentsusers->department_name }}
+                        @endif" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
-                                                        <h4>Section</h4>
+                                                        <h4>User Type</h4>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="Section" value="{{ $user->section }}" >
+                                                    <input type="text" readonly class="form-control" value="@if($user->usertypesusers){{  $user->usertypesusers->user_types }}
+                        @endif" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
                                                         <h4>Phone</h4>
                                                     </label>
-                                                    <input type="text" class="form-control" placeholder="Phone" value="{{ $user->phone }}" >
+                                                    <input type="text" readonly class="form-control" placeholder="Phone" value="{{ $user->phone }}" >
                                                 </div>
                                             </div>
                                             <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2"><i class="feather icon-lock mr-50 "></i>Permissions</h6>
@@ -122,36 +128,28 @@ Admin
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                 
+                                                     
+
+
                                                         <tr>
-                                                            <td>Companies</td>
+                                                            <td> Records Bookmarkers</td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="companies_status" {{ $user->companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <input type="radio" name="records_bookmarkers_r" {{ $user->records_bookmarkers_r == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
                                                                 <label class="form-check-label" for="admin-read"></label>
                                                             </div>
                                                             </td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="companies_status" {{ $user->companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >    
+                                                                <input type="radio" name="records_bookmarkers_r" {{ $user->records_bookmarkers_r == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
                                                                 <label class="form-check-label" for="admin-write"></label>
                                                             </div>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Public Gaming</td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
-                                                                <label class="form-check-label" for="admin-read"></label>
-                                                            </div>
-                                                            </td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
-                                                                <label class="form-check-label" for="admin-write"></label>
-                                                            </div>
-                                                            </td>
-                                                        </tr>
+
+
+
                                                         <tr>
                                                             <td>Bookmarkers</td>
                                                             <td>
@@ -162,7 +160,8 @@ Admin
                                                             </td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                            <input type="radio" name="bookmarkersstatus" {{ $user->bookmarkersstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                
                                                                 <label class="form-check-label" for="admin-write"></label>
                                                             </div>
                                                             </td>
@@ -182,6 +181,26 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+
+
+                                                        <tr>
+                                                            <td>Bookmarkers View Shop</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_view_shop_status" {{ $user->bookmarkers_view_shop_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_view_shop_status" {{ $user->bookmarkers_view_shop_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -197,7 +216,7 @@ Admin
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td>Lottery Name</td>
+                                                            <td>Lottery Game</td>
                                                             <td>
                                                             <div class="form-check">
                                                                 <input type="radio" name="lottery_name" {{ $user->lottery_name == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
@@ -211,39 +230,112 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                      
                                                         <tr>
-                                                            <td>Records Accounts</td>
+                                                            <td>View Lottery Games</td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="records_accounts" {{ $user->records_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <input type="radio" name="lottery_name_view" {{ $user->lottery_name_view == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
                                                                 <label class="form-check-label" for="admin-read"></label>
                                                             </div>
                                                             </td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="records_accounts" {{ $user->records_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <input type="radio" name="lottery_name_view" {{ $user->lottery_name_view == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
                                                                 <label class="form-check-label" for="admin-write"></label>
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                        
                                                         <tr>
-                                                            <td>User Accounts</td>
+                                                            <td>Records Public Lottery</td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
                                                                 <label class="form-check-label" for="admin-read"></label>
                                                             </div>
                                                             </td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
                                                                 <label class="form-check-label" for="admin-write"></label>
                                                             </div>
                                                             </td>
                                                         </tr>
+
+
+
+                                                       
+
+
+                                                        <tr>
+                                                            <td>Public Lottery Status</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                            <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="publiclotterystatus" {{ $user->publiclotterystatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                               
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Public Gamings </h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>Public Gaming</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="publicgamingstatus" {{ $user->publicgamingstatus == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Records Public Gaming</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                       
+                                                        
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
                                                 <div class="table-responsive border rounded px-1 col-6 ">
                                                     <h4>Actions</h4>
                                                     <table class="table table-striped table-borderless">
@@ -318,8 +410,11 @@ Admin
                                                         </tbody>
                                                     </table>
                                                 </div>
+
+
+
                                                 <div class="table-responsive border rounded px-1 col-6 ">
-                                                    <h4>Records Bookmarkers</h4>
+                                                    <h4>Companies</h4>
                                                     <table class="table table-striped table-borderless">
                                                         <thead class="table-light">
                                                             <tr>
@@ -330,46 +425,16 @@ Admin
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td> Records Bookmarkers</td>
+                                                            <td>Companies</td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <input type="radio" name="companies_status" {{ $user->companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
                                                                 <label class="form-check-label" for="admin-read"></label>
                                                             </div>
                                                             </td>
                                                             <td>
                                                             <div class="form-check">
-                                                                <input type="radio" name="records_bookmarkers" {{ $user->records_bookmarkers == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
-                                                                <label class="form-check-label" for="admin-write"></label>
-                                                            </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Records Public Gaming</td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
-                                                                <label class="form-check-label" for="admin-read"></label>
-                                                            </div>
-                                                            </td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="records_public_gaming" {{ $user->records_public_gaming == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
-                                                                <label class="form-check-label" for="admin-write"></label>
-                                                            </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Records Public Lottery</td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
-                                                                <label class="form-check-label" for="admin-read"></label>
-                                                            </div>
-                                                            </td>
-                                                            <td>
-                                                            <div class="form-check">
-                                                                <input type="radio" name="records_public_lotery" {{ $user->records_public_lotery == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <input type="radio" name="companies_status" {{ $user->companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >    
                                                                 <label class="form-check-label" for="admin-write"></label>
                                                             </div>
                                                             </td>
@@ -389,9 +454,385 @@ Admin
                                                             </div>
                                                             </td>
                                                         </tr>
+                                                      
+
+                                                        <tr>
+                                                            <td>Records Bookmarkers</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_companies_status" {{ $user->bookmarkers_companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_companies_status" {{ $user->bookmarkers_companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Records Public Lottery</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_lottery_companies_status" {{ $user->public_lottery_companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_lottery_companies_status" {{ $user->public_lottery_companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Records Public Gaming</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_gaming_companies_status" {{ $user->public_gaming_companies_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_gaming_companies_status" {{ $user->public_gaming_companies_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+
+
+
+
                                                         </tbody>
                                                     </table>
                                                 </div>
+
+
+
+
+
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Accounts</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>User Accounts</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="user_accounts_status" {{ $user->user_accounts_status == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Records Accounts</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="records_accounts" {{ $user->records_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="records_accounts" {{ $user->records_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                       
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+<div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Registry</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                      
+                                                        <tr>
+                                                            <td>Registry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="access_file_registry" {{ $user->access_file_registry == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="access_file_registry" {{ $user->access_file_registry == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                      
+
+
+                                                        <tr>
+                                                            <td>File Registry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="assign_file_registry" {{ $user->assign_file_registry == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="assign_file_registry" {{ $user->assign_file_registry == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Assign Registry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="assign_task" {{ $user->assign_task == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="assign_task" {{ $user->assign_task == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+
+
+
+                                                <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>All Registry</h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                       
+                                                        <tr>
+                                                            <td>All Registry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="access_registry" {{ $user->access_registry == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="access_registry" {{ $user->access_registry == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >    
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                       
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+									    <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Admins Roles  </h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> Assign Companies</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_companies" {{ $user->admin_assign_companies == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_companies" {{ $user->admin_assign_companies == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Assign Record Entry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_record_entry" {{ $user->admin_assign_record_entry == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_record_entry" {{ $user->admin_assign_record_entry == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Assign Accounts</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_accounts" {{ $user->admin_assign_accounts == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_accounts" {{ $user->admin_assign_accounts == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Assign Registry</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_registry" {{ $user->admin_assign_registry == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="admin_assign_registry" {{ $user->admin_assign_registry == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>			
+												
+												
+												
+												    <div class="table-responsive border rounded px-1 col-6 ">
+                                                    <h4>Admins User Modules </h4>
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th>Module</th>
+                                                                <th>Allowed</th>
+                                                                <th>Not Allowed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td> Bookmarkers Group</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_group" {{ $user->bookmarkers_group == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="bookmarkers_group" {{ $user->bookmarkers_group == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Public Lottery Group</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_lottery_group" {{ $user->public_lottery_group == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input  type="radio" name="public_lottery_group" {{ $user->public_lottery_group == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" > 
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Public Gaming Group</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_gaming_group" {{ $user->public_gaming_group == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" > 
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="public_gaming_group" {{ $user->public_gaming_group == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Actions Group</td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="actions_group" {{ $user->actions_group == 'Allowed' ? 'checked' : '' }} value="Allowed" class="" >
+                                                                <label class="form-check-label" for="admin-read"></label>
+                                                            </div>
+                                                            </td>
+                                                            <td>
+                                                            <div class="form-check">
+                                                                <input type="radio" name="actions_group" {{ $user->actions_group == 'NotAllowed' ? 'checked' : '' }} value="NotAllowed" class="" >
+                                                                <label class="form-check-label" for="admin-write"></label>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+												
+												
+												
+												
+												
+												
+												
                                             </div>
                                             
                                             

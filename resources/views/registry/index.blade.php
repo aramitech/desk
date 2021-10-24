@@ -22,9 +22,7 @@
             
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button">
-                        Add  Record
-                    </a>
+                  
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
                         Add  Registry
                     </a>
@@ -42,30 +40,34 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20">Registry List</h2>
         <div class="pb-20">
-        <table class="table hover  data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
-                        <th class="table-plus">#</th>
+                    <th class="table-plus">#</th>
+                        <th>REF</th>
+                       
                         <th>class</th>
-                          <th>Subject</th>
+                        {{--  <th>Subject</th>
                         
-                        <th>Number</th> 
+                        <th>Number</th>   --}}
                         <th>File Name</th>
-                    
+                        <th>Volume</th> 
                          <th>Action</th>
-                        <th ></th>
+                 
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($registries as $bookmarker)
           
                     <tr>
-                        <td>{{ $bookmarker->registry_id }}</td>
+                    <td>{{ $bookmarker->registry_id }}</td>
+                        <td>{{ $bookmarker->allpref }}</td>
+                        
                         <td>{{ $bookmarker->class }}</td>
-                        <td>{{ $bookmarker->subject }}</td>
-                        <td>{{ $bookmarker->number }}</td>
-                        <td>{{ $bookmarker->file_name }}</td>
-                   
+                       {{-- <td>{{ $bookmarker->subject }}</td>
+                        <td>{{ $bookmarker->serial_number }}</td>--}}
+                        <td>{{ $bookmarker->file_name }}</td> 
+                        <td>{{ $bookmarker->volume }}</td>
   
                      
                         <td>
@@ -77,28 +79,24 @@
                               <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->registry_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
 
                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->registry_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                 {{--  <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
+                                <button class="btn btn-sm btn-danger" @click="deleteItem('registrydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
 
-                     
-
-                    <a class="btn btn-primary btn-sm" href="{{ route('shop_numbers', $bookmarker->registry_id ) }}"  data-target="#smstext-{{ $bookmarker->registry_id }}"><i class="fa fa-plus"></i>View Shops</a>
-
-                                  <a class="btn btn-danger btn-sm" href="{{ route('records_delete_company', $bookmarker->registry_id ) }}"  data-target="#smstext-{{ $bookmarker->registry_id }}"><i class="fa fa-plus"></i>Delete</a>
+                         
 
                                
                                </div> 
                             </div>
-                            </td>  <td></td>
+                            </td> 
                     </tr>
                     <div class="modal fade" id="editbookmarkercompany{{$bookmarker->registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <edit-fileregistry-component :fileregistrydata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
                     <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                            <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
+                            <view-fileregistry-component :fileregistrydata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 

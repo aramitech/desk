@@ -43,15 +43,15 @@
 <div class="form-group row">   
 
                             <div class="col-md-6">
-							<label>Lottery Name</label>
-							<input class="form-control"  name="lottery_name" v-model="fields.lottery_name" value="" type="text" placeholder="Lottery Name" required>
+							<label>Lottery Game</label>
+							<input class="form-control"  name="lottery_name" v-model="fields.lottery_name" value="" type="text" placeholder="Lottery Game" required>
                             <div v-if="errors && errors.lottery_name" class="text-danger">{{ errors.lottery_name[0] }}</div>
 						</div>
                         
   
                           <div class="col-md-6">
-							<label>Lottery Number</label>
-							<input class="form-control"  name="lottery_number" v-model="fields.lottery_number" value="" type="text" placeholder="Lottery Number" >
+							<!-- <label>Lottery Number</label> -->
+							<input class="form-control"  name="lottery_number" v-model="fields.lottery_number" value="" type="hidden" placeholder="Lottery Number" >
                             <div v-if="errors && errors.lottery_number" class="text-danger">{{ errors.lottery_number[0] }}</div>
 						</div></div>
 

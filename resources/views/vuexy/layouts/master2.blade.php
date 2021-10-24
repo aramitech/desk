@@ -5,7 +5,7 @@
 		if((Auth::guard('admin')->user()->twofa) == 0)
 		{
 			//redirect to OTP page
-			echo '<script>window.location.href = "/otp-verify"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify"</script>';
 		}
 		
 	}
@@ -18,7 +18,7 @@
 		if((Auth::guard('web')->user()->twofa) == 0)
 		{
 			//redirect to user OTP page
-			echo '<script>window.location.href = "/otp-verify-user"</script>';
+			echo '<script>window.location.href = "/desk/public/otp-verify-user"</script>';
 		}
 		
 	}
@@ -67,7 +67,6 @@
 
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <!-- END: Vendor CSS-->
 
 
@@ -75,17 +74,22 @@
 
 
         <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/ag-grid/ag-grid.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/vendors/css/tables/ag-grid/ag-theme-material.css')}}">
+
     <!-- END: Vendor CSS-->
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/app-user.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('tyu/app-assets/css/pages/aggrid.css')}}">
     <!-- END: Page CSS-->
 
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('tables/dataTables.bootstrap4.min.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('tables/bootstrap.css')}}">
 
 </head>
+
+
+
+
+
 <!-- END: Head-->
 @include('vuexy.layouts.header') 
 <!-- BEGIN: Body-->
@@ -100,7 +104,7 @@
     <!-- BEGIN: Content-->
     @yield('content')
     <!-- END: Content-->
-  
+   
      @include('vuexy.layouts.footer')   
 </body>
 	<!-- chart -->
@@ -117,30 +121,23 @@
    <script src="{{ asset('tyu/app-assets/vendors/js/vendors.min.js')}}"></script>
     <!-- BEGIN Vendor JS-->
 
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js')}}"></script>
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
-    <!-- END: Page Vendor JS-->
-
+    
     <!-- BEGIN: Theme JS-->
     <script src="{{ asset('tyu/app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{ asset('tyu/app-assets/js/core/app.js')}}"></script>
     <script src="{{ asset('tyu/app-assets/js/scripts/components.js')}}"></script>
     <!-- END: Theme JS-->
 
-    <!-- BEGIN: Page JS-->
-    <script src="{{ asset('tyu/app-assets/js/scripts/datatables/datatable.js')}}"></script>
-    <!-- END: Page JS-->
-
+    <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+			
+	
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('tyu/app-assets/vendors/js/tables/ag-grid/ag-grid-community.min.noStyle.js')}}"></script>
+
     <!-- END: Page Vendor JS-->
     <script src="{{ asset('tyu/app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
 
@@ -1286,7 +1283,9 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
             stops: [0, 100]
           },
         },
-        series: [Math.ceil(<?php echo 100*($companyactive/($companyactive+$companyinactive));?>)],
+        series: [Math.ceil(<?php
+        error_reporting(0);
+        echo 100*($companyactive/($companyactive+$companyinactive));?>)],
         stroke: {
           lineCap: 'round'
         },
@@ -1459,4 +1458,16 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
     });
     </script>
 
+
+
+	
+	 <script src="{{ asset('tables/jquery-3.5.1.js')}}"></script> 
+	<script src="{{ asset('tables/dataTables.bootstrap4.min.js')}}"></script>
+	 <script src="{{ asset('tables/jquery.dataTables.min.js')}}"></script> 
+
+ <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 </html>

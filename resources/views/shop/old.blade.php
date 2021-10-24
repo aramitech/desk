@@ -41,7 +41,8 @@
                         <th>Company</th>
                         
                         <th>Shop Name</th>  
-                         <th>Location</th>   
+                         <th>Location</th>  
+                         <th>Shop Number</th>   
                       <th>Action</th>
                         <th ></th>
                     </tr>
@@ -55,6 +56,7 @@
                         @endif</td>
                         <td>{{ $shop->shop_name }}</td>    
                         <td>{{ $shop->location }}</td> 
+                        <td>{{ $shop->shop_number }}</td>   
                         <td>
                             <div class="dropdown">
                                  <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">

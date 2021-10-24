@@ -60,14 +60,20 @@
 
  <div class="form-group row">   
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
 							<label>shop Number</label>
 							<input class="form-control"  name="shop_number" v-model="fields.shop_number" value="" type="text" placeholder="Shop Number" >
                             <div v-if="errors && errors.shop_number" class="text-danger">{{ errors.shop_number[0] }}</div>
 						</div>
-                        
+                              
+                              
+                   <div class="col-md-4">
+							<label>LR Number</label>
+							<input class="form-control"  name="lrnumber" v-model="fields.lrnumber" value="" type="text" placeholder="LR Number" >
+                            <div v-if="errors && errors.lrnumber" class="text-danger">{{ errors.lrnumber[0] }}</div>
+						</div>        
   
-                          <div class="col-md-6">
+                          <div class="col-md-4">
 							<label>Status</label>
 				
             <multiselect  name="status" v-model="fields.status"  placeholder="Select status" :options="types"  :allow-empty="true" :multiple="false" :hide-selected="false" :max-height="150" @input="onChange2"> 

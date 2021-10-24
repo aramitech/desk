@@ -8,6 +8,16 @@
                 </div>
                 <form method="POST" @submit.prevent="formSubmit" enctype="multipart/form-data">
                     <div class="modal-body">
+
+<!-- ///////////////////////////////////////////// -->
+<div class="form-group col-md-12">
+							<label for="kra">Sample</label>
+							<div class="alert alert-info shadow-sm col-md-12">
+								<a class="border-left" href="/desk/public/sample/Bookmakers.xlsx">Download Sample File</a>
+                            </div>
+						</div>
+<!-- //////////////////////////////////////////////// -->
+
                           <div class="form-group row">
                             <div class="col-md-12">
                                 <label for="company_id"> Licensee Name</label>        

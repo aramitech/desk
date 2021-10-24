@@ -33,16 +33,52 @@
                             <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
 						</div></div>
       <div class="form-group row">
-                           <div class="col-md-6">
+                           <div class="col-md-6"> 
 							<label>Contact</label>
 							<input class="form-control"  name="contact" v-model="fields.contact" value="" type="text" placeholder="Contact" required>
                             <div v-if="errors && errors.contact" class="text-danger">{{ errors.contact[0] }}</div>
 						</div>
                             <div class="col-md-6">
-							<label>Location</label>
+							<label>Physical Location</label>
 							<input class="form-control"  name="physicaladdress" v-model="fields.physicaladdress" value="" type="text" placeholder="Physical Address" required>
                             <div v-if="errors && errors.physicaladdress" class="text-danger">{{ errors.physicaladdress[0] }}</div>
 						</div></div>
+
+
+
+      <div class="form-group row">
+                           <div class="col-md-6">
+							<label>Directors Shareholders</label>
+							<input class="form-control"  name="directorsshareholder" v-model="fields.directorsshareholder" value="" type="text" placeholder="Directors Shareholder" required>
+                            <div v-if="errors && errors.directorsshareholder" class="text-danger">{{ errors.directorsshareholder[0] }}</div>
+						</div>
+                            <div class="col-md-6">
+							<label>Shareholding Structure</label>
+							<input class="form-control"  name="shareholdingstructure" v-model="fields.shareholdingstructure" value="" type="text" placeholder="Shareholding Structure" required>
+                            <div v-if="errors && errors.shareholdingstructure" class="text-danger">{{ errors.shareholdingstructure[0] }}</div>
+						</div></div>
+
+
+
+
+
+      <div class="form-group row">
+                           <div class="col-md-6">
+							<label>Nationality</label>
+							<input class="form-control"  name="nationality" v-model="fields.nationality" value="" type="text" placeholder="Nationality" required>
+                            <div v-if="errors && errors.nationality" class="text-danger">{{ errors.nationality[0] }}</div>
+						</div>
+                            <div class="col-md-6">
+							<label>Company Registration</label>
+							<input class="form-control"  name="companyregistration" v-model="fields.companyregistration" value="" type="text" placeholder="Company Registration" required>
+                            <div v-if="errors && errors.companyregistration" class="text-danger">{{ errors.companyregistration[0] }}</div>
+						</div></div>
+
+
+
+
+
+
  <div class="form-group row">
                        <div class="col-md-6">
 							<label>PAYBILL NO</label>
@@ -53,7 +89,14 @@
 							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="hidden" placeholder="Branch" >
 						</div>
                         
-                                                 <!-- <div class="col-md-6">
+            <div class="col-md-6">
+							<label>KRA PIN </label>
+							<input class="form-control"  name="krapin" v-model="fields.krapin" value="" type="text" placeholder="KRA PIN" >
+                            <div v-if="errors && errors.krapin" class="text-danger">{{ errors.krapin[0] }}</div>
+					
+						
+							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="hidden" placeholder="Branch" >
+						</div>                     <!-- <div class="col-md-6">
             <label for="category_type_id"> Category</label>        
           
             <multiselect  name="category_type_id" v-model="fields.category_type_id"   label="categorytype" placeholder="Select Category name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
@@ -90,8 +133,8 @@ data() {
     return {
         action: '/desk/public/company/addbookmarkers', //save action
          text: 'Added Succesfully',
-        redirect: '/desk/public/company/bookmarkers',
-
+        redirect: '',
+        //redirect: '/desk/public/company/bookmarkers',
         company_names:[],
        fields: {
     

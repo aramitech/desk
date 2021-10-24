@@ -26,7 +26,7 @@
 						</div>
                         <div class="col-md-6">
 							<label>Email</label>
-							<input class="form-control"  name="email" v-model="fields.email" value="" type="email" placeholder="Email" required>
+							<input class="form-control"  name="email" v-model="fields.email" value="" type="email" placeholder="Email" >
                             <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
 						</div></div>
       <div class="form-group row">
@@ -43,7 +43,7 @@
  <div class="form-group row">
                         <div class="col-md-6">
 							<label>Shop</label>
-							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="Branch" required>
+							<input class="form-control"  name="branch" v-model="fields.branch" value="" type="text" placeholder="Branch" >
                             <div v-if="errors && errors.branch" class="text-danger">{{ errors.branch[0] }}</div>
 						</div>
                         
@@ -70,6 +70,12 @@
                         
                                   <div class="col-md-6">
                     <label>Active Status</label>
+    
+     <multiselect  name="status" v-model="fields.status"   label="categorytype" placeholder="Select Category name" :options="company_names"  :allow-empty="true" :multiple="false" :hide-selected="true" :max-height="150" @input="onChange">
+              
+            </multiselect>
+    
+    
       ((( Active  <input type="radio" name="status" v-model="fields.status" id="status" value="Active">
                   Not Active  <input type="radio" name="status" v-model="fields.status" id="status" value="Not Active">
                  )))                    <input class="form-control" :disabled="validated ? false : true" name="status" v-model="fields.status" type="text"    >
@@ -101,9 +107,10 @@ data() {
     return {
         action: '/desk/public/company/updateBookmarkersCompany', //edit action
         text: 'Updated Succesfully',
-        redirect: '/desk/public/company/bookmarkers',
+        redirect: '',
+          //redirect: '/desk/public/company/bookmarkers',
          company_names:[],
-         status_names:[],
+         status_names:['Active','Not Active'],
         fields: {
             company_id:this.bookmarkerdata.company_id,
             category_type_id:this.bookmarkerdata.company_category_type,

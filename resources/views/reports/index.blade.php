@@ -19,10 +19,11 @@
                 </nav>
             </div>
             <div class="col-md-6 col-sm-12 text-right">
-                <div>   
-                <a href="{{route('AllBookMarkersrecordsreport', $bookmarkers[0]->category_type_id)}}" class="btn btn-info btn-xs" role="button">View All</a> 
+            <a href="{{route('AllBookMarkertotals', $bookmarkers[0]->category_type_id)}}" class="btn btn-success btn-xs" role="button">View By Totals</a> 
+ 
+                <a href="{{route('AllBookMarkersrecordsreport', $bookmarkers[0]->category_type_id)}}" class="btn btn-primary btn-xs" role="button">View All</a> 
      </div>
-            </div>
+       
         </div>
     </div>
     <!-- ./header and breadcrumbs -->
@@ -32,8 +33,8 @@
     @include('layouts.errors')
     <h2 class="h4 pd-20"> Company List</h2>
         <div class="pb-20">
-        <table class="table hover multiple-select-row data-table-export nowrap">
-                <thead>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company Name</th>
