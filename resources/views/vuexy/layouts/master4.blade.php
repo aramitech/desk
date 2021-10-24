@@ -120,6 +120,28 @@ $(document).ready(function() {
 } );
 </script>
 
+
+
+
+
+
+<link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+        button.dt-button.btn-primary{
+            background:var(--bs-primary)!important;
+            color:white;
+        }
+    </style>
+
+
+
 </head>
 <!-- END: Head-->
 @include('vuexy.layouts.header4') 
