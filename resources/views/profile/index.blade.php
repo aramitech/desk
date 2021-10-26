@@ -57,7 +57,7 @@
                                 </a> -->
                                 <!-- <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> -->
                                     <!-- <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a> -->
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#edituser{{$user->id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#edituser{{$user->id}}" type="button" data-backdrop="static" data-keyboard="false"><i class="dw dw-edit2"></i> Edit</button>
 
                                     
                                 <!-- </div> -->

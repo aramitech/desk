@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="static" data-keyboard="false">
                         Add BookMarkers
                     </a>
                 </div>
@@ -73,7 +73,7 @@
                                   
                                     
                                     @if ( Auth::user()->editstatus == 'Allowed' )
-                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarker{{$bookmarker->bookmarker_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
+                                     <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarker{{$bookmarker->bookmarker_id}}" type="button" data-backdrop="static" data-keyboard="false"><i class="dw dw-edit2"></i> Edit</button>
                                      @else   
                                     @endif
                                     @if ( Auth::user()->deletestatus == 'Allowed' )

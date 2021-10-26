@@ -64,7 +64,7 @@ if(Auth::guard('admin')->check())
                 Records</a>
 
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
                 </div>

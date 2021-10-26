@@ -59,7 +59,7 @@ Accounts
                     </a> -->
                     
                 </div>
-                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">
+                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg" data-backdrop="static" data-keyboard="false">
                Records</a>
             </div>
         </div>

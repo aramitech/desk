@@ -105,8 +105,6 @@ width: 20%;
 </style>
 
 
-
-
 @yield('styles')
 </head>
 <body>
@@ -134,9 +132,8 @@ Email : info@bclb.go.ke		  				              NAIROBI.
 
 
 
+<h1 style="display:inline;" align="center"> BOOKMARKERS REPORT </h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2 style="display:inline;" align="right"> {{ $currentTime }} </h2>
 
-<h1 align="center">BOOKMARKERS REPORT</h1>
-<h2 align="right">  {{ $currentTime }}</h2>
 
 <table class="table table-striped dataex-html5-selectors">  <thead>
               <thead>

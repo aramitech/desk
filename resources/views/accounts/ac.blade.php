@@ -60,7 +60,7 @@ Accounts
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-plus-square" aria-hidden="true">   Add Record  </i>
                     </a>
 

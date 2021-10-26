@@ -34,7 +34,7 @@ Category Types List:
                                                 <div class="col-md-12 col-sm-12 text-right">
                        
                 <div>
-                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcategorytype" type="button">
+                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcategorytype" type="button" data-backdrop="static" data-keyboard="false">
                         Add Category Type
                     </a>
                   

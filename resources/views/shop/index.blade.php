@@ -20,7 +20,7 @@ Shop
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add Shop </i>   
                     </a>
 

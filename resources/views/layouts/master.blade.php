@@ -108,7 +108,7 @@ $(document).ready(function() {
 					</a>
 				</div>
 			</div>
-			<div class="user-notification">
+			<!-- <div class="user-notification">
 				<div class="dropdown">
 					<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
 						<i class="icon-copy dw dw-notification"></i>
@@ -120,7 +120,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		
 			<div class="user-info-dropdown">
 				<div class="dropdown">

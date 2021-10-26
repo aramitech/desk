@@ -20,11 +20,11 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addsms" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addsms" type="button" data-backdrop="static" data-keyboard="false">
                          Send SMS To Company
                     </a>
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#sendsmstocategory" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#sendsmstocategory" type="button" data-backdrop="static" data-keyboard="false">
                          Send SMS To Category
                     </a>
 

@@ -36,8 +36,8 @@
 								<div  class="card-content" class="pb-20">
 									<div class="col-md-12 col-sm-12 text-right">
 										<div style="margin:5px">
-											<a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button"> <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i> </a>
-											<a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkerscompany" type="button"> <i class="icon-copy fa fa-upload" aria-hidden="true">   Upload Record  </i> </a> <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+											<a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addcompany" type="button"  data-backdrop="static" data-keyboard="false"> <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Record </i> </a>
+											<a class="btn btn-success" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkerscompany" type="button" data-backdrop="static" data-keyboard="false"> <i class="icon-copy fa fa-upload" aria-hidden="true">   Upload Record  </i> </a> <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
                                                 Add  Shop
                                             </a> <a class="btn btn-warning" href="{{ route('shopindex') }}" role="button" type="button">
                                             View All Shop

@@ -60,11 +60,11 @@ if(Auth::guard('admin')->check())
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpublicgaming" type="button" data-backdrop="static" data-keyboard="false">
                         Add Record
                     </a>
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
                 </div>

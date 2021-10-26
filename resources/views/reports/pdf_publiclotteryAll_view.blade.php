@@ -108,15 +108,26 @@ width: 20%;
 </head>
 <body>
 
-
 <div style="margin-top: 20px; width: 100%; text-align:center;">
-<!-- <h3 align="center">COMPANY LETTER HEAD</h3> -->
-<h3 align="center">ALL PUBLICLOTTERY RETURNS FORM</h3>
-<img style="width: 180px;" src="" alt="">
+                        <!-- <img src="http://localhost:8000/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                            -->
+                           
+                                <div class="invoice-details mt-2">
+                                    <h3>OFFICE OF THE PRESIDENT</h3>
+                                    <h3> MINISTRY OF INTERIOR AND</h3>
+                                    <h3>  CO-ORDINATION OF NATIONAL GOVERNMENT</h3>
+                                    <h3> BETTING CONTROL AND LICENSING BOARD</h3>
+                                  
 <div style="width: 100%; clear: both;">
+Telephone: 0111021400						              P. O.  Box 43977 – 00100,
+Email : info@bclb.go.ke		  				              NAIROBI.	
+
 </div>
 
 </div>
+<h3 align="center">ALL PUBLICLOTTERY RETURNS FORM</h3>
+
+
+
 
 
 <div style="width: 100%; padding: 20px">

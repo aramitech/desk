@@ -27,7 +27,7 @@
  @if ( Auth::user()->bookmarkersshop_status == 'Allowed' )
                             
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button" data-backdrop="static" data-keyboard="false">
                         Add  Shop
                     </a>
                     @else   

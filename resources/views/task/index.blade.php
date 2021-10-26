@@ -57,7 +57,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"> 
 
-                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$todo->task_id}}" type="button"><i class="dw dw-edit2"></i> Reply</button>
+                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$todo->task_id}}" type="button" data-backdrop="static" data-keyboard="false"><i class="dw dw-edit2"></i> Reply</button>
                                   <a class="btn btn-primary btn-sm" href="{{ route('records_confirm_task', $todo->task_id ) }}"  data-target="#smstext-{{ $todo->task_id }}"><i class="fa fa-plus"></i>Confirm</a>
 
                                

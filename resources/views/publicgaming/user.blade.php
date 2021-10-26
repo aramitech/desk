@@ -66,7 +66,7 @@ if(Auth::guard('admin')->check())
                     <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">
                 Records</a>
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpublicgaming" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
                 </div>

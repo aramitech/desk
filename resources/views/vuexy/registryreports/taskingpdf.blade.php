@@ -104,13 +104,15 @@ width: 20%;
 }
 </style>
 
+
+
 @yield('styles')
 </head>
 <body>
 
 
 <div style="margin-top: 20px; width: 100%; text-align:center;">
-                        <!-- <img src="http://localhost:8000/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                            -->
+                        <img src="http://localhost/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                           
                            
                                 <div class="invoice-details mt-2">
                                     <h3>OFFICE OF THE PRESIDENT</h3>

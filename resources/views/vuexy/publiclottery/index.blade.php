@@ -54,10 +54,10 @@ if(Auth::guard('admin')->check())
 
         <div class="col-md-12 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button" data-backdrop="static" data-keyboard="false">
                         Add Record
                     </a>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>   
                     </a>
                 </div>

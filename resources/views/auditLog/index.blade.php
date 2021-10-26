@@ -45,7 +45,7 @@
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addauditLog" type="button">
+                    <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addauditLog" type="button" data-backdrop="static" data-keyboard="false">
                         Add auditLog
                     </a> -->
                 </div>

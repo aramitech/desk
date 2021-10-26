@@ -34,7 +34,7 @@ if(Auth::guard('admin')->check())
                 <div>
              
                 @if ( Auth::user()->lottery_name == 'Allowed' )
-<a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addlotteryshop" type="button">
+<a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addlotteryshop" type="button" data-backdrop="static" data-keyboard="false">
                         Add  Lottery 
                     </a>
                     @else   

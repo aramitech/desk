@@ -104,6 +104,9 @@ width: 20%;
 }
 </style>
 
+
+
+
 @yield('styles')
 </head>
 <body>
