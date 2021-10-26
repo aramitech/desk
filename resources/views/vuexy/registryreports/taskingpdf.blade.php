@@ -110,7 +110,7 @@ width: 20%;
 </head>
 <body>
 
-
+   
 <div style="margin-top: 20px; width: 100%; text-align:center;">
                         <img src="http://localhost/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                           
                            
