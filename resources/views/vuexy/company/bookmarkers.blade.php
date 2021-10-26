@@ -26,7 +26,13 @@
 					<div class="row">
 						<div class="col-md-12 col-12">
 							<div class="card"> @include('layouts.messages') @include('layouts.errors')
-                                <div class="card-header bg-warning">BOOKMARKERS COMPANY LIST  </div>
+								<ul class="nav nav-pills flex-column mt-md-0 mt-1">
+                                <li class="nav-item">                 <li class="nav-item">
+              <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
+<H2 >BOOKMARKERS COMPANY LIST </H2></a>
+
+</li></ul>
+
 								<div  class="card-content" class="pb-20">
 									<div class="col-md-12 col-sm-12 text-right">
 										<div style="margin:5px">
@@ -61,9 +67,11 @@
 												<td>{{ $bookmarker->license_no }}</td>
 												<td>{{ $bookmarker->physicaladdress }}</td>
 												<td>{{ $bookmarker->status }}</td>
-												<td>
+												<td class="not-exported">
 													<div class="btn-group dropdown mr-1 mb-1">
-                                                        <a href="#" role="button" style="paddingTop:2px;paddingBottom:2px;font-size:12px" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
+													{{-- <a href="#" role="button" style="paddingTop:2px;paddingBottom:4px;font-size:12px" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a> --}}
+
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item text-success" href="#" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-eye"></i> View</a>
                                                             <a class="dropdown-item text-info" href="#" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-edit"></i> Edit</a> 

@@ -147,7 +147,9 @@ table.dataTable thead .sorting_desc_disabled {
 	cursor: pointer;
 	*cursor: hand;
 	background-repeat: no-repeat;
-	background-position: center right
+	background-position: center right;
+	background-color: #4b6843;
+    color: #fff;    
 }
 
 table.dataTable thead .sorting {
