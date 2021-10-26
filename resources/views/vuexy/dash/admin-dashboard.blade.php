@@ -57,7 +57,8 @@
 </li></ul>
 </div></div>
 
-                                <table class="table table-striped dataex-html5-selectors">               <thead>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+              <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Description</th>
@@ -126,7 +127,7 @@
 
 
 
-                       <table class="table zero-configuration">              <thead>
+<table id="example" class="table table-striped table-bordered" style="width:100%">            <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         

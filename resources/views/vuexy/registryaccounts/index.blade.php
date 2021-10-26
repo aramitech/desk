@@ -80,7 +80,7 @@ if(Auth::guard('admin')->check())
                         <th>Annual License F</th>
                         <th>Status</th>    
                         <th>Action</th>
-                        <th ></th>
+                     
                     </tr>
                 </thead>
                 <tbody>
@@ -104,43 +104,28 @@ if(Auth::guard('admin')->check())
                         <td>{{ $account->annual_license_fee }}</td>
                         <td>{{ $account->status }}</td>
                      
-                        <td>
+                        <td class="not-exported">
+													<div class="btn-group dropdown mr-1 mb-1">
+													{{-- <a href="#" role="button" style="paddingTop:2px;paddingBottom:4px;font-size:12px" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a> --}}
 
-                        <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
-				                    <span class="sr-only">Toggle Dropdown</span>
-				                  </button>
-				                  <div class="dropdown-menu" role="menu">
-                                    <a class="dropdown-item edit_data" href="editbookmarkercompany{{$account->company_id}}"  data-target="#smstext-{{$account->company_id}}"><i class="fa fa-plus"></i>Edit</a>
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
+                                                        <div class="dropdown-menu">
+               
 
-				                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item edit_data" href="{{ route('accountsedit', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Edit</a>
-				                  </div>
+                                                            <a class="dropdown-item text-primary" data-toggle="modal" data-target="#viewbookmarkercompany{{$account->company_id}}" role="button"><i class="fa fa-eye"></i>  View</a>
 
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#editbookmarkercompany{{$account->company_id}}" role="button"><i class="fa fa-edit"></i>  Edit</a>
+<a class="dropdown-item text-danger" href="{{ route('records_delete', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-trash"></i> Delete</a>
 
-
-
-                        <div class="btn-group dropdown mr-1 mb-1">
-                    <button type="button" class="btn btn-primary"></button>
-                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-
-
-                                          
-
-                    <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#viewbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
-                              {{--<a class="btn btn-primary btn-sm" href="{{ route('accountsedit', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Edit</a>--}}
-
-                                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editbookmarkercompany{{$account->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-                                {{--  <button class="btn btn-sm btn-danger" @click="deleteItem('accountscompanydelete',{{$account}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
-                                  <a class="btn btn-danger btn-sm" href="{{ route('records_delete', $account->accounts_id ) }}"  data-target="#smstext-{{ $account->accounts_id }}"><i class="fa fa-plus"></i>Delete</a>
+                                                        </div>
+													</div>
+												</td>
 
 
 
-</div></div>
+
+
+
                      
                             </div>
 

@@ -49,7 +49,7 @@
 									Actions
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="#">Export List</a>
+									<a class="dropdown-item" href="{{ route('exportExcelBookmarkers') }}">Export To Excel</a>
 									<!-- <a class="dropdown-item" href="#">Policies</a>
 									<a class="dropdown-item" href="#">View Assets</a> -->
 

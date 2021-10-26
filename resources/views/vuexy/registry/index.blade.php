@@ -110,28 +110,22 @@ if(Auth::guard('admin')->check())
                         <td>{{ $bookmarker->number }}</td>
                         <td>{{ $bookmarker->file_name }}</td>
                    
-  
+                        <td class="not-exported">
+													<div class="btn-group dropdown mr-1 mb-1">
+													{{-- <a href="#" role="button" style="paddingTop:2px;paddingBottom:4px;font-size:12px" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a> --}}
+
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item text-success" href="#" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->registry_id}}" role="button"><i class="fa fa-eye"></i> View</a>
+                                                            <a class="dropdown-item text-info" href="#" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->registry_id}}" role="button"><i class="fa fa-edit"></i> Edit</a> 
+                                                            <a class="dropdown-item text-danger" @click="deleteItem('registrydelete',{{$bookmarker}})"><i class="fa fa-trash"></i> Delete</a>
+                                                        </div>
+													</div>
+												</td>
+
+
+
                      
-                        <td>
-                        <div class="btn-group dropdown mr-1 mb-1">
-                    <button type="button" class="btn btn-primary"></button>
-                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                   <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->registry_id}}" type="button"><i class="dw dw-edit2"></i>View</a>
-
-                  <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->registry_id}}" type="button"><i class="dw dw-edit2"></i> Edit</a>
-
-
-                  <button class="btn btn-sm btn-danger" @click="deleteItem('registrydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>
-
-
-</div></div>
-                     
-                            </div>
-                            </td>  
                     </tr>
                     <div class="modal fade" id="editbookmarkercompany{{$bookmarker->registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

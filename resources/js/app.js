@@ -125,6 +125,7 @@ Vue.component('edit-fileregistry-component', require('./components/Registry/Edit
 Vue.component('view-fileregistry-component', require('./components/Registry/ViewRegistryComponent.vue').default);
 
 Vue.component('edit-filing-component', require('./components/Registry/EditFileRegistryComponent.vue').default);
+Vue.component('view-filing-component', require('./components/Registry/ViewFileRegistryComponent.vue').default);
 
 
 Vue.component('add-companyuser-component', require('./components/companyuser/AddLotteryCompanyComponent.vue').default);

@@ -8,7 +8,6 @@
 
 <!-- The above 3 meta tags must come first in the head; any other head content must come after these tags -->
 <title>{{  'Registry' }} </title>
-
 <style>
 @page {
 margin: 0px;
@@ -134,7 +133,7 @@ Email : info@bclb.go.ke		  				              NAIROBI.
 
 <h1 align="center"> REGISTRY REPORT</h1>
 
-<table class="table table-striped dataex-html5-selectors">  <thead>
+<table>  <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>class</th>

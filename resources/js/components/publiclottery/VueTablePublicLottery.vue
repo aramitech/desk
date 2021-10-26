@@ -223,7 +223,7 @@ export default {
           field: 'wht',
         },
          {
-          label: 'Action',
+          label: 'Actions ',
           field: 'action',
         }
         

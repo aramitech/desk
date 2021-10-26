@@ -46,8 +46,8 @@ table.dataTable td.dt-nowrap {
 }
 table.dataTable td {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: medium;
-    font-weight: 50;
+	font-size: larger;
+	font-weight: 300;
 }
 table.dataTable thead th.dt-head-left,
 table.dataTable thead td.dt-head-left,
