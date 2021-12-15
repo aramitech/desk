@@ -22,11 +22,6 @@ class PublicLotteryNumber extends Model
         'periodto'
          ];       
 
- //Contacts<>Org relationship
- public function contactOrg()
- {
-     return $this->belongsTo(Organization::class,'organization_id');
- }
 
  public function publicLotterycompany()  
  {

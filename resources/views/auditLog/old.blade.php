@@ -80,13 +80,13 @@ Admin:  Audit Logs
                         <td>{{ $auditLog->created_at }}</td>
                    
                     </tr>
-                    <div class="modal fade" id="editauditLog{{$auditLog->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editauditLog{{$auditLog->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-auditLog-component :auditLogdata="{{ json_encode($auditLog)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="assignroleauditLog{{$auditLog->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="assignroleauditLog{{$auditLog->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <assignrole-auditLog-component :auditLogdata="{{ json_encode($auditLog)}}"/>
                         </div>

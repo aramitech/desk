@@ -896,9 +896,10 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
             stops: [0, 80, 100]
           }
         },
+        
         series: [{
-          name: 'Subscribers',
-          data: [28, 40, 36, 52, 38, 60, 55]
+          name: 'Total Bookmarkers GGR',
+          data: <?php echo ($bookmarkerstotalsbymonth['0']);?>,
         }],
 
         xaxis: {
@@ -932,7 +933,8 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
       // Line Area Chart - 2
       // ----------------------------------
 
-      var revenuelineChartoptions = {
+
+      var gainedlineChartoptions = {
         chart: {
           height: 100,
           type: 'area',
@@ -950,7 +952,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
             }
           },
         },
-        colors: [$success],
+        colors: [$primary],
         dataLabels: {
           enabled: false
         },
@@ -968,8 +970,8 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
           }
         },
         series: [{
-          name: 'Revenue',
-          data: [350, 275, 400, 300, 350, 300, 450]
+          name: 'Total Public Lottery GGR',
+          data: <?php echo ($publiclotterytotalsbymonth['0']);?>,
         }],
 
         xaxis: {
@@ -991,12 +993,17 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
         },
       }
 
-      var revenuelineChart = new ApexCharts(
+      var gainedlineChart = new ApexCharts(
         document.querySelector("#line-area-chart-2"),
-        revenuelineChartoptions
+        gainedlineChartoptions
       );
 
-      revenuelineChart.render();
+      gainedlineChart.render();
+
+
+
+
+
 
 
       // Line Area Chart - 3
@@ -1013,7 +1020,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
             enabled: true
           },
           grid: {
-            show: false,
+            show: true,
             padding: {
               left: 0,
               right: 0
@@ -1038,8 +1045,8 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
           }
         },
         series: [{
-          name: 'Sales',
-          data: [10, 15, 7, 12, 3, 16]
+          name: 'Total Public Lottery GGR',
+          data: <?php echo ($publicgamingbymonth['0']);?>,
         }],
 
         xaxis: {
@@ -1175,7 +1182,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
         markers: {
           size: 0,
           hover: {
-            size: 5
+            size: 3
           }
         },
         xaxis: {
@@ -1187,7 +1194,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
           axisTicks: {
             show: false,
           },
-          categories: ['01', '05', '09', '13', '17', '21', '26', '31'],
+          categories: ['B', 'L', 'G', '1', '1', '1', '1', '7', '5'],
           axisBorder: {
             show: false,
           },
@@ -1208,12 +1215,16 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
           x: { show: false }
         },
         series: [{
-          name: "This Month",
+          name: "BookMarkers",
           data: [45000, 47000, 44800, 47500, 45500, 48000, 46500, 48600]
         },
         {
-          name: "Last Month",
+          name: " PublicLoottery",
           data: [46000, 48000, 45500, 46600, 44500, 46500, 45000, 47000]
+        },
+        {
+          name: "gg Month",
+          data: [14000, 14800, 44500, 4600, 4450, 4650, 4500, 47000]
         }
         ],
 
@@ -1378,6 +1389,88 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
 
       clientChart.render();
 
+
+
+
+
+
+
+///goal-count-chart
+      // -----------------------------
+
+      var goalChartoptions = {
+        chart: {
+          height: 250,
+          type: 'radialBar',
+          sparkline: {
+            enabled: true,
+          },
+          dropShadow: {
+            enabled: true,
+            blur: 3,
+            left: 1,
+            top: 1,
+            opacity: 0.1
+          },
+        },
+        colors: [$success],
+        plotOptions: {
+          radialBar: {
+            size: 110,
+            startAngle: -150,
+            endAngle: 150,
+            hollow: {
+              size: '77%',
+            },
+            track: {
+              background: $strok_color,
+              strokeWidth: '50%',
+            },
+            dataLabels: {
+              name: {
+                show: false
+              },
+              value: {
+                offsetY: 18,
+                color: '#99a2ac',
+                fontSize: '4rem'
+              }
+            }
+          }
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#00b5b5'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100]
+          },
+        },
+        series: [Math.ceil(<?php echo 100*($risk_closed/($risk_closed+$risk_reopened));?>)],
+        stroke: {
+          lineCap: 'round'
+        },
+
+      }
+
+      var goalChart = new ApexCharts(
+        document.querySelector("#goal-count-chart"),
+        goalChartoptions
+      );
+
+      goalChart.render();
+
+
+
+
+
+
+
       // Session Chart
       // ----------------------------------
 
@@ -1455,8 +1548,128 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
       );
 
       customerChart.render();
+  
+
+
+
+      // Customer Chart
+      // -----------------------------
+
+      var customerChartoptions = {
+        chart: {
+          type: 'pie',
+          height: 330,
+          dropShadow: {
+            enabled: false,
+            blur: 5,
+            left: 1,
+            top: 1,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        labels: ['Desktop', 'Mobile', 'Tablet'],
+        series: <?php echo json_encode($bookmarkersshop['shop_name']);?>,
+        dataLabels: {
+          enabled: false
+        },
+        legend: { show: false },
+        stroke: {
+          width: 5
+        },
+        colors: [$primary, $warning, $danger],
+        fill: {
+          type: 'gradient',
+          gradient: {
+            gradientToColors: [$primary_light, $warning_light, $danger_light]
+          }
+        }
+      }
+
+      var customerChart = new ApexCharts(
+        document.querySelector("#shop-chart"),
+        customerChartoptions
+      );
+
+      customerChart.render();
+
+  /////////////////////////////////////////
+      var BookmarkerChartoptions = {
+        chart: {
+          type: 'Donut',
+          height: 330,
+          dropShadow: {
+            enabled: false,
+            blur: 5,
+            left: 1,
+            top: 1,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        labels: <?php echo json_encode($categories['category']);?>,
+        series: <?php echo json_encode($categories['companycount']);?>,
+        dataLabels: {
+          enabled: false
+        },
+        legend: { show: false },
+        stroke: {
+          width: 5
+        },
+        colors: [$primary, $warning, $danger],
+        fill: {
+          type: 'gradient',
+          gradient: {
+            gradientToColors: [$primary_light, $warning_light, $danger_light]
+          }
+        }
+      }
+
+      var BookmarkerChart = new ApexCharts(
+        document.querySelector("#bookmarker-chart"),
+        BookmarkerChartoptions
+      );
+
+      BookmarkerChart.render();
     });
+
+
+
+
+
+ // Bookmarkers Chart
+      // -----------------------------
+
+  
+    
+
+
+
+
+
+
+
+
+
+
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

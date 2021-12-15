@@ -80,13 +80,13 @@
 
                         </td>
                     </tr>
-                    <div class="modal fade" id="edituser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="edituser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-user-component :userdata="{{ json_encode($user)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="assignroleuser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="assignroleuser{{$user->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <assignrole-user-component :userdata="{{ json_encode($user)}}"/>
                         </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,15 +110,16 @@ width: 20%;
 </head>
 <body>
 
-
-<div style="margin-top: 20px; width: 100%; text-align:center;">
-                        <!-- <img src="http://localhost:8000/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                            -->
-                           
+<br><br><br><br>
+<div style="margin-top: 100px; width: 100%; text-align:center;">
+                               
+                             
                                 <div class="invoice-details mt-2">
-                                    <h3>OFFICE OF THE PRESIDENT</h3>
-                                    <h3> MINISTRY OF INTERIOR AND</h3>
-                                    <h3>  CO-ORDINATION OF NATIONAL GOVERNMENT</h3>
-                                    <h3> BETTING CONTROL AND LICENSING BOARD</h3>
+ <img src="http://localhost/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="100" height="100" />
+                                    <h4>OFFICE OF THE PRESIDENT</h4>
+                                    <h4> MINISTRY OF INTERIOR AND</h4>
+                                    <h4>  CO-ORDINATION OF NATIONAL GOVERNMENT</h4>
+                                    <h4> BETTING CONTROL AND LICENSING BOARD</h4>
                                   
 <div style="width: 100%; clear: both;">
 Telephone: 0111021400						              P. O.  Box 43977 – 00100,
@@ -133,7 +135,7 @@ Email : info@bclb.go.ke		  				              NAIROBI.
 
 
 
-<h1 align="center"> REGISTRY REPORT</h1>
+<h2 align="center"> REGISTRY REPORT</h2>
 
 <table class="table table-striped dataex-html5-selectors">  <thead>
                     <tr>

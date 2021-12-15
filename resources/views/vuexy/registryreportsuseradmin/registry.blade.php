@@ -19,9 +19,11 @@ ACCOUNTS REPORT:
 
                         <fieldset class="col-12 col-md-5 mb-1 mb-md-0">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Email" aria-describedby="button-addon2">
                                 <div class="input-group-append" id="button-addon2">
-                                    <button class="btn btn-outline-primary" type="button">Send Mail</button>
+                                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button" data-backdrop="static" data-keyboard="false">
+                                Send Mail
+                    </a>
+                    
                                 </div>
                             </div>
                         </fieldset>
@@ -130,6 +132,7 @@ ACCOUNTS REPORT:
                                 </div> --}}
                             
                                 <div class="invoice-details mt-2">
+                                <img src="http://localhost:8000/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                                    
                                     <h3>OFFICE OF THE PRESIDENT</h3>
                                     <h3> MINISTRY OF INTERIOR AND</h3>
                                     <h3>  CO-ORDINATION OF NATIONAL GOVERNMENT</h3>

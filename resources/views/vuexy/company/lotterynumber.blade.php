@@ -66,8 +66,8 @@ if(Auth::guard('admin')->check())
             </div>
 
 
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-            
+            <div class="col-md-12 col-sm-12 table-responsive">
+		<table id="example" class="table table-striped  table-bordered table-hover">
                 <thead>
                 <tr>
                         <th class="table-plus">#</th>
@@ -98,45 +98,41 @@ if(Auth::guard('admin')->check())
                         <td>{{ $bookmarker->periodto }}</td>
                         <td>{{ $bookmarker->status }}</td>
       
-                        <td>
-                        <div class="btn-group dropdown mr-1 mb-1">
-                    <button type="button" class="btn btn-primary"></button>
-                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                      
+                        <td class="not-exported">
+													<div class="btn-group dropdown mr-1 mb-1">
 
-<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-{{--  <button class="btn btn-sm btn-danger" @click="deleteItem('bookmarkerscompanydelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button>--}}
-<a class="btn btn-danger btn-sm" href="{{ route('records_delete_lotterynumber', $bookmarker->publiclotterynumber_id ) }}"  data-target="#smstext-{{ $bookmarker->publiclotterynumber_id }}"><i class="fa fa-plus"></i>Delete</a>
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sr-only">Toggle Dropdown</span> </a>
+                                                    
+                                                             <div class="dropdown-menu">
+               
 
 
-</div></div>
-                     
-                            </div>
-                       
-                           
-                             
-                              
-                        
-                            </td> 
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-edit"></i>  View</a>
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-edit"></i>  Edit</a>
+<a class="dropdown-item text-danger" @click="deleteItem('publiclotterynumberdelete',{{$bookmarker}})"><i class="dw dw-delete-3"></i> Delete</button></a>
+
+                                                        </div>
+													</div>
+												</td>
+                      
+                 
+                      
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
 
-                    <div class="modal fade" id="uploadbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="uploadbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
@@ -146,7 +142,7 @@ if(Auth::guard('admin')->check())
         
                     @endforeach
                 </tbody>
-            </table>
+            </table>   <br><br><br><br><br><br><br>
         </div>
         <upload-bookmarker-company-component/>
     <!-- ./main content card -->

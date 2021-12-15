@@ -76,13 +76,13 @@
                             </div>
                             </td>  
                     </tr>
-                    <div class="modal fade" id="editdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-deparrtments-component :deparrtmentsdata="{{ json_encode($department)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-deparrtments-component :deparrtmentsdata="{{ json_encode($department)}}"/>
                         </div>

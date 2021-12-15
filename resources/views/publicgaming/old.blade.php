@@ -88,13 +88,13 @@
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-publicgaming-component :publicgamingerdata="{{ json_encode($publicgaming)}}"/>
                         </div>

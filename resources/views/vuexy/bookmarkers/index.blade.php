@@ -62,6 +62,11 @@ if(Auth::guard('admin')->check())
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadbookmarkers" type="button" data-backdrop="static" data-keyboard="false">
                     <i class="icon-copy fa fa-upload" aria-hidden="true">Upload Record</i>    
                     </a>
+
+
+            
+
+
                 </div>
             </div>
 
@@ -99,7 +104,7 @@ if(Auth::guard('admin')->check())
     <add-bookmarker-component/>
  
 </div>
-
+<add-shop-component/>
                              
                             </div>
                         </div>

@@ -147,6 +147,15 @@ Vue.component('game-component', require('./components/company/ViewPublicGamingTa
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
+
+Vue.component('email-registrypdf-component', require('./components/emailpdf/EmailRegistryComponent.vue').default);
+Vue.component('emailfilingpdf-component', require('./components/emailpdf/EmailFilingComponent.vue').default);
+Vue.component('sendmailtasking-component', require('./components/emailpdf/EmailTaskingComponent.vue').default);
+Vue.component('email-accounts-component', require('./components/emailpdf/EmailAccountsComponent.vue').default);
+
+
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

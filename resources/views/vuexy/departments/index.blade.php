@@ -1,0 +1,147 @@
+@php 
+if(Auth::guard('admin')->check())
+{
+                $allowed = Auth::guard('admin')->user()->user_accounts_status;
+}
+                elseif(Auth::guard('web')->check())
+                {
+                    $allowed = Auth::guard('web')->user()->user_accounts_status;
+                }
+            
+                @endphp
+
+
+@extends('vuexy.layouts.master4')
+@section('title')
+    Admin
+@endsection
+@section('content')
+<div id="app">
+<div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <br><br><br>
+
+            <div class="content-body">
+                <!-- Dashboard Ecommerce Starts -->
+                <section id="dashboard-ecommerce">
+                 
+				 
+				 
+				 
+				 
+				 
+				 
+				           <div class="row">
+                        <div class="col-md-12 col-12">
+                            <div class="card">
+                               		
+                                @include('layouts.messages')
+    @include('layouts.errors')
+ 
+
+    <ul class="nav nav-pills flex-column mt-md-0 mt-1">
+                                <li class="nav-item">                 <li class="nav-item">
+              <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
+<H2 >ACCOUNTS LIST </H2></a>
+
+</li></ul>
+
+
+        <div class="pb-20">
+
+        <div class="col-md-12 col-sm-12 text-right">
+                <div>
+
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button" data-backdrop="static" modal-backdrop-bg:red data-keyboard="false">
+                    <i class="icon-copy fa fa-plus-square" aria-hidden="true">  Add  Departments </i>         
+                    </a>
+    
+                </div>
+            </div>
+
+            <!-- <game-component></game-component> -->
+        <div class="pb-20">
+                 <!-- check user type logged in -->
+ 
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+                    <tr>
+                        <th class="table-plus">#</th>
+                        <th>Department Name</th>
+
+                    
+                         <th>Action</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($departments as $department)
+          
+                    <tr>
+                        <td>{{ $department->departments_id }}</td>
+                        <td>{{ $department->department_name }}</td>
+    
+
+                        <td class="not-exported">
+													<div class="btn-group dropdown mr-1 mb-1">
+
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sr-only">Toggle Dropdown</span> </a>
+                                                    
+                                                             <div class="dropdown-menu">
+               
+
+
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#viewdepartmentcompany{{$department->departments_id}}" role="button"><i class="fa fa-edit"></i>  View</a>
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#editdepartmentcompany{{$department->departments_id}}" role="button"><i class="fa fa-edit"></i>  Edit</a>
+<a class="dropdown-item text-danger" @click="deleteItem('departmentdelete',{{$department}})"><i class="dw dw-delete-3"></i> Delete</button></a>
+
+                                                        </div>
+													</div>
+												</td>
+                    </tr>
+                    <div class="modal fade" id="editdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <edit-deparrtments-component :deparrtmentsdata="{{ json_encode($department)}}"/>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="viewdepartmentcompany{{$department->departments_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <view-deparrtments-component :deparrtmentsdata="{{ json_encode($department)}}"/>
+                        </div>
+                    </div>
+
+        
+                    @endforeach
+                </tbody>
+            </table>
+            <br><br>
+        </div>
+
+    <!-- ./main content card -->
+    <add-deparrtments-component/>
+
+    </div>
+    <!-- ./main content card -->
+    <add-deparrtments-component/>
+</div>
+                             
+                            </div>
+                        </div>
+                    
+                    </div>
+				 
+				 
+				 
+                </section>
+                <!-- Dashboard Ecommerce ends -->
+
+            </div>
+        </div>
+        </div></div>
+
+@endsection

@@ -32,6 +32,15 @@ class DepartmentsController extends Controller
     }
 
     
+    public function departmentsadmin()
+    {
+        //
+        $departments = Departments::All();
+        return view('vuexy.departments.index', compact('departments'));
+    }
+
+
+    
     public function department_names()
     {
         {

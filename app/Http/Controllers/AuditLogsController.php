@@ -23,7 +23,7 @@ class AuditLogsController extends Controller
       //  $auditLogs = AuditLog::all()->with('userlogs')->get();
       //  $contactsAirtime = Airtime_contact::where('customer_id',$customer_id)->with('contactGroup')->get();
 
-        return view('auditLog.index', compact('auditLogs'));
+        return view('vuexy.auditLog.index', compact('auditLogs'));
     }
 
     public function auditlogsdata()

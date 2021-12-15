@@ -1,7 +1,7 @@
 <template>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Edit 667Bookmarkers Shop</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">Edit Bookmarkers Shop</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
                   <form method="POST" @submit.prevent="submit">
@@ -77,17 +77,15 @@ data() {
  company_names: [],
 
         fields: {
-          
-            shop_id:this.shopdata.shop_id,
-            company_id:this.shopdata.shopcompany.company_id,
-             company_id:this.shopdata.shopcompany.company_name,
-            company_name:this.shopdata.shopcompany.company_name,
-            trading_name:this.shopdata.shopcompany.trading_name,
-             license_no:this.shopdata.shopcompany.license_no,
-           company_id:this.shopdata.company_id,
+              shop_id:this.shopdata.shop_id,
+     company_name:this.shopdata.company_name,
+
+            company_id:this.shopdata.company_id,
             shop_name:this.shopdata.shop_name,    
              location:this.shopdata.location, 
-             Shop_company:this.shopdata.company_name, 
+  trading_name:this.shopdata.trading_name,
+            license_no:this.shopdata.license_no,
+
        }
         }
     },
@@ -97,10 +95,9 @@ methods: {
           axios.get('/desk/public/publicgaming_license_name/get')
         .then(function(response){
           this.company_names = response.data;
-          console.log(Shopcompany,'gggggggggggg') 
+         
         }.bind(this));
          console.log(response, 'kkkkk')
-             console.log(Shop_company,'gggggggggggg')   
       },
 
 
@@ -110,30 +107,24 @@ methods: {
     this.fields.license_no=this.value.license_no;
        this.fields.trading_name=this.value.trading_name;
      this.fields.licensee_name=this.value.company_name
-         
     console.log(value)
     },
     },
         created: function(){  
      this.getLicenseeName()   
-    }, 
+    },
     mounted() {
-        this.fields.shop_id=this.shopdata.shop_id;
+         this.fields.shop_id=this.shopdata.shop_id;
          this.fields.company_id=this.shopdata.shopcompany.company_id;
-          this.fields.company_id=this.shopdata.shopcompany.company_name;
+          this.fields.company_name=this.shopdata.Shopcompany.company_name;
             this.fields.license_no=this.shopdata.shopcompany.license_no;
          this.fields.trading_name=this.shopdata.shopcompany.trading_name;
-         this.fields.company_name=this.shopdata.shopcompany.company_name;
         this.fields.company_id=this.shopdata.company_id;
        this.fields.shop_name=this.shopdata.shop_name;
          this.fields.location=this.shopdata.location;    
          this.fields.trading_name=this.shopdata.Shopcompany.trading_name; 
-         console.log(Shop_company,'gggggggggggg')      
+         console.log(shopcompany,'gggggggggggg')            
    }
 }
 </script>
-  
-
-
-
   

@@ -73,13 +73,13 @@
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>

@@ -133,7 +133,7 @@
                                           
                  <td></td>    
                     </tr>
-                    <div class="modal fade" id="editpublicLottery{{$publicLottery->publicLottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpublicLottery{{$publicLottery->publicLottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publicLottery-component :publicLotterydata="{{ json_encode($publicLottery)}}"/>
                         </div>

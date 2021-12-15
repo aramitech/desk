@@ -155,7 +155,7 @@ function goToCompany(id) {
 
                  
                                                 
-                                                <table class="table table-striped dataex-html5-selectors">               <thead>
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">                <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Category</th>
@@ -183,13 +183,13 @@ function goToCompany(id) {
                      
                 
                     </tr>
-                    <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>

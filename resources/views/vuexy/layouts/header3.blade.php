@@ -192,10 +192,22 @@
                         
                         
                         </span><span class="user-status"></span></div><span>
-                        <img src="../../public/{{ Auth::guard('web')->user()->file }}" alt="" class="users-avatar-shadow rounded" height="90" width="90" ></span>
-                        </a>
+                        @if(Auth::guard('web')->check())
+                        <img src="../public/{{ Auth::guard('web')->user()->file }}" alt="" class="users-avatar-shadow rounded" height="90" width="90" ></span>
+							@endif
+                            @if(Auth::guard('admin')->check())
+                        <img src="../public/{{ Auth::guard('admin')->user()->file }}" alt="" class="users-avatar-shadow rounded" height="90" width="90" ></span>
+							@endif      </a>
+
+                            
+                            @if(Auth::guard('web')->check())
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('accountsetting',Auth::guard('web')->user()->id)}}"><i class="feather icon-user"></i> Edit Profile</a>
-                        <a class="dropdown-item" href="{{ route('taskindex') }}"><i class="feather icon-check-square"></i> Task</a>
+                        <a class="dropdown-item" href="{{ route('taskindex') }}"><i class="feather icon-check-square"></i> Task</a>							@endif
+                            @if(Auth::guard('admin')->check())
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('accountsetting',Auth::guard('admin')->user()->admin_id)}}"><i class="feather icon-user"></i> Edit Profile</a>
+                        <a class="dropdown-item" href="{{ route('taskindex') }}"><i class="feather icon-check-square"></i> Task</a>							@endif
+
+
                             <div class="dropdown-divider"></div>
                             
                         <a class="dropdown-item" 
@@ -205,7 +217,25 @@
 						</a> 
             
                         </div>
-
+                        @if(Auth::guard('superadmin')->check())
+								{{ Auth::guard('superadmin')->user()->name }}
+								@php
+									$logout = 'super-admin-logout';
+									$sidebar = '_partials.super';
+								@endphp
+							@elseif(Auth::guard('admin')->check())
+								{{ Auth::guard('admin')->user()->name }}
+								@php
+									$logout = 'admin-logout';
+									$sidebar = '_partials.admin';
+								@endphp
+							@elseif(Auth::guard('web')->check())
+								{{ Auth::guard('web')->user()->name }}
+								@php
+									$logout = 'logout';
+									$sidebar = '_partials.side';
+								@endphp
+							@endif
                         <form id="logout-form" action="{{  route($logout) }}" method="POST" class="d-none">
 							@csrf
 						</form>

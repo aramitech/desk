@@ -19,7 +19,7 @@ class UsersController extends Controller
     public function index()
     {
             $users = User::with('usertypesusers')->with('departmentsusers')->get();
-        return view('users.index', compact('users'));
+        return view('vuexy.users.allusers', compact('users'));
     }
     
 

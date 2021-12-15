@@ -67,13 +67,13 @@
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publicgamingshop-component :publicgamingshopdata="{{ json_encode($shop)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-publicgamingshop-component :publicgamingshopdata="{{ json_encode($shop)}}"/>
                         </div>

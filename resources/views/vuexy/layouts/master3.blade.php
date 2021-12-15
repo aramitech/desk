@@ -128,7 +128,11 @@ $(document).ready(function() {
 
 
     <!-- BEGIN: Main Menu-->
-    @include('vuexy._partials.side2')   
+    @if(Auth::guard('web')->check())
+    @include('vuexy._partials.side2')							@endif
+                            @if(Auth::guard('admin')->check())
+                            @include('vuexy._partials.admin')	
+                            @endif
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->

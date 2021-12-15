@@ -55,13 +55,13 @@
             
                         </td>
                     </tr>
-                    <div class="modal fade" id="editcategorytype{{$categorytype->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editcategorytype{{$categorytype->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-categorytype-component :categorytypedata="{{ json_encode($categorytype)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="assignrolecategorytype{{$categorytype->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="assignrolecategorytype{{$categorytype->id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <assignrole-categorytype-component :categorytypedata="{{ json_encode($categorytype)}}"/>
                         </div>

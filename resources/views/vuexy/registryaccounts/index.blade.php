@@ -52,14 +52,52 @@ if(Auth::guard('admin')->check())
 
 
         <div class="pb-20">
-
+<script>
+.modal-backdrop
+{
+display:none;
+visibility:hidden; 
+position:relative
+}
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+            </script>
         <div class="col-md-12 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
-                        Add Record
+                    <a class="btn btn-primary" href="#" role="button" id="modal" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="false" data-keyboard="false" >
+                        Add Recordsasdasasd
                     </a>
 
+
+                    <div class="modal fade" id="notifyModal" data-backdrop="false"
+tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id="info_content">
+        <a class="btn btn-primary" href="#" role="button" id="modal" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="false" data-keyboard="false" >
+                        Add Record
+                    </a>        </div>
+    </div>
+</div>
+
+
     
+                    <script type="text/javascript">
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+</script>
+
+
+
                 </div>
             </div>
 
@@ -67,8 +105,8 @@ if(Auth::guard('admin')->check())
         <div class="pb-20">
                  <!-- check user type logged in -->
  
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                <thead>
+                 <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company </th>
@@ -106,8 +144,6 @@ if(Auth::guard('admin')->check())
                      
                         <td class="not-exported">
 													<div class="btn-group dropdown mr-1 mb-1">
-													{{-- <a href="#" role="button" style="paddingTop:2px;paddingBottom:4px;font-size:12px" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a> --}}
-
                                                         <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
                                                         <div class="dropdown-menu">
                
@@ -155,15 +191,15 @@ if(Auth::guard('admin')->check())
 
 
                         
-                            </td>  <td></td>
+                         
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-accounts-component :bookmarkerdata="{{ json_encode($account)}}" :user_types_id="{{ json_encode($account)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-accounts-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>

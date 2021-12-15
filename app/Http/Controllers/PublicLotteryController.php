@@ -55,7 +55,7 @@ class PublicLotteryController extends Controller
     {
         //
         $publiclotterylotterynumbers = PublicLotteryNumber::with('publicLotterycompany')->where('company_id',$id)->get();
-        return view('company.lotterynumber', compact('publiclotterylotterynumbers'));
+        return view('vuexy.company.lotterynumber', compact('publiclotterylotterynumbers'));
     }
 
     
@@ -241,7 +241,7 @@ class PublicLotteryController extends Controller
      public function lotterynumber_store(Request $request)
      {
          $request->validate([
-             'lottery_number' => 'required',
+           
              'status' => 'required',
                
          ]);
@@ -265,7 +265,7 @@ class PublicLotteryController extends Controller
          $user->license_no = $request->license_no;
          $user->lottery_name= $request->lottery_name;
 
-         $user->lottery_number = $request->lottery_number;
+         $user->lottery_number = '1';
          $user->status = $request->status;
          $user->periodfrom = $request->periodfrom;
          $user->periodto = $request->periodto;

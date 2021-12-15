@@ -109,11 +109,11 @@ width: 20%;
 </head>
 <body>
 
-
+<br><br><br><br>
 <div style="margin-top: 20px; width: 100%; text-align:center;">
-                        <!-- <img src="http://localhost:8000/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="133" height="133" />                            -->
                            
                                 <div class="invoice-details mt-2">
+                                <img src="http://localhost/desk/public/tyu/app-assets/images/logo/logo.png" alt="" width="100" height="100" />       
                                     <h3>OFFICE OF THE PRESIDENT</h3>
                                     <h3> MINISTRY OF INTERIOR AND</h3>
                                     <h3>  CO-ORDINATION OF NATIONAL GOVERNMENT</h3>

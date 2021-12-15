@@ -28,10 +28,9 @@ class ShopController extends Controller
     
     public function shop_numbers($id)
     {
-        //$id=
           $shop_id=BookmarkersCompany::where('category_type_id',1)->pluck('category_type_id');
-        $shops = Shops::with('Shopcompany')->where('category_type_id',1)->where('company_id',$id)->get();
-        return view('shop.old', compact('shops'));
+         $shops = Shops::with('Shopcompany')->where('category_type_id',1)->where('company_id',$id)->get();
+        return view('vuexy.shop.index', compact('shops'));
     }
 
 

@@ -1,7 +1,7 @@
 <template>
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title" id="myLargeModalLabel">Edit Bookmarkers Shop</h4>
+            <h4 class="modal-title" id="myLargeModalLabel">View Bookmarkers Shop</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         </div>
                   <form method="POST" @submit.prevent="submit">
@@ -54,10 +54,7 @@
  
                         
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
+              
                 </form>
     </div>
 </template>
@@ -77,11 +74,15 @@ data() {
  company_names: [],
 
         fields: {
-          
-            shop_id:this.shopdata.shop_id,
+              shop_id:this.shopdata.shop_id,
+     company_name:this.shopdata.company_name,
+
             company_id:this.shopdata.company_id,
             shop_name:this.shopdata.shop_name,    
              location:this.shopdata.location, 
+  trading_name:this.shopdata.trading_name,
+            license_no:this.shopdata.license_no,
+
        }
         }
     },
@@ -110,10 +111,16 @@ methods: {
      this.getLicenseeName()   
     },
     mounted() {
-        this.fields.shop_id=this.shopdata.shop_id;
+         this.fields.shop_id=this.shopdata.shop_id;
+         this.fields.company_id=this.shopdata.shopcompany.company_id;
+          this.fields.company_name=this.shopdata.company_name;
+            this.fields.license_no=this.shopdata.shopcompany.license_no;
+         this.fields.trading_name=this.shopdata.shopcompany.trading_name;
         this.fields.company_id=this.shopdata.company_id;
        this.fields.shop_name=this.shopdata.shop_name;
-         this.fields.location=this.shopdata.location;          
+         this.fields.location=this.shopdata.location;    
+         this.fields.trading_name=this.shopdata.Shopcompany.trading_name; 
+         console.log(shopcompany,'gggggggggggg')            
    }
 }
 </script>

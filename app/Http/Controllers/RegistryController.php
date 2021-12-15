@@ -87,7 +87,7 @@ class RegistryController extends Controller
       
        
           $pdf = PDF::loadView('vuexy.registryreports.registrypdf',compact('registries'));
-          return $pdf->download('registries.pdf');
+          return $pdf->download('RRegistries.pdf');
       } 
 
  

@@ -81,13 +81,13 @@
                             </div>
                             </td> 
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->file_registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->file_registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-filing-component :filingdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->file_registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->file_registry_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-filing-component :filingdata="{{ json_encode($bookmarker)}}"/>
                         </div>

@@ -130,7 +130,7 @@
                         <td>{{ $publicgaming->ggr }}</td>                      
                  <td></td>    
                     </tr>
-                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpublicgaming{{$publicgaming->publicgaming_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publicgaming-component :publicgamingdata="{{ json_encode($publicgaming)}}"/>
                         </div>

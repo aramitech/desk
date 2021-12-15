@@ -48,7 +48,7 @@ Accounts
             </div>
             <div class="col-md-6 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="static" data-keyboard="false">
                         Add Record
                     </a>
 
@@ -135,13 +135,13 @@ Accounts
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmaraccountker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$bookmaraccountker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookaccountmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$account->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($account)}}"/>
                         </div>

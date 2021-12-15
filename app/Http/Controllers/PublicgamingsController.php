@@ -43,7 +43,7 @@ class PublicgamingsController extends Controller
        // if(Auth::user()->user_type == 'organization_user' || Auth::user()->user_type == 'organization')
         {
             //$category_type_id = CategoryTypes::where('categorytypes_id','1')->with('CompanyCategoryType')->get();
-            $license_name = BookmarkersCompany::where('category_type_id',"3")->get();
+            $license_name = BookmarkersCompany::with('Shopcompany')->where('category_type_id',"3")->get();
             return $license_name;
         }
     }

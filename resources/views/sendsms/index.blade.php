@@ -67,13 +67,13 @@
 
                           
                     </tr>
-                    <div class="modal fade" id="editbookmarker{{$bookmarker->sendsms_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarker{{$bookmarker->sendsms_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarker{{$bookmarker->sendsms_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarker{{$bookmarker->sendsms_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>

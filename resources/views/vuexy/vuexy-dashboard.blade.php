@@ -14,7 +14,7 @@
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="col-lg-4 col-sm-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex flex-column align-items-start pb-0">
                                     <div class="avatar bg-rgba-primary p-50 m-0">
@@ -31,29 +31,46 @@
                                     <p class="mb-0">Bookmarkers Total GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <!-- <div id="line-area-chart-1"></div> -->
+                                    <div id="line-area-chart-1"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
+                        
+
+
+
+
+                        <div class="col-lg-4 col-sm-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex flex-column align-items-start pb-0">
-                                    <div class="avatar bg-rgba-success p-50 m-0">
+                                    <div class="avatar bg-rgba-primary p-50 m-0">
                                         <div class="avatar-content">
-                                            <i class="feather icon-credit-card text-success font-medium-5"></i>
+                                            <i class="feather icon-users text-primary font-medium-5"></i>
                                         </div>
                                     </div>
-                                    <h2 class="text-bold-700 mt-1"></h2>
-                                    <p>{{ $total_ggr_publiclotteries }}</p>
-                                 
-                                    <p class="mb-0">Total bPublic Lottery GGR</p>
+                                    <h2 class="text-bold-700 mt-1">
+ 
+ 
+                                     <h2> <p class="btn btn-warning">{{ $total_ggr_publiclotteries }}</p></h2>
+                                  
+                                    </h2>
+                                    <p class="mb-0">Total Public Lottery GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <!-- <div id="line-area-chart-2"></div> -->
+                                    <div id="line-area-chart-2"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
+
+
+
+
+
+
+
+
+
+                        <div class="col-lg-4 col-sm-6 col-12">
                             <div class="card">
                                 <div class="card-header d-flex flex-column align-items-start pb-0">
                                     <div class="avatar bg-rgba-danger p-50 m-0">
@@ -66,25 +83,7 @@
                                     <p class="mb-0">Total Public Gaming GGR</p>
                                 </div>
                                 <div class="card-content">
-                                    <!-- <div id="line-area-chart-3"></div> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex flex-column align-items-start pb-0">
-                                    <div class="avatar bg-rgba-warning p-50 m-0">
-                                        <div class="avatar-content">
-                                            <i class="feather icon-package text-warning font-medium-5"></i>
-                                        </div>
-                                    </div>
-                                    <h2 class="text-bold-700 mt-1"></h2>
-                                    <p class="mb-0">. </p>
-                                    <p class="mb-0">. </p>
-                                    <p class="mb-0">. </p>
-                                </div>
-                                <div class="card-content">
-                                    <!-- <div id="line-area-chart-4"></div> -->
+                                    <div id="line-area-chart-3"></div> 
                                 </div>
                             </div>
                         </div>
@@ -157,69 +156,34 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Pending Task </h4>
+                                <div class="card-header d-flex justify-content-between align-items-end">
+                                    <h4 class="mb-0">Lottery Numbers</h4>
+                                    <p class="font-medium-5 mb-0"><i class="feather icon-help-circle text-muted cursor-pointer"></i></p>
                                 </div>
                                 <div class="card-content">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between mb-25">
-                                            <div class="browser-info">
-                                                <p class="mb-25">Bookmarkers</p>
-                                                <h4>73%</h4>
+                                    <div class="card-body px-0 pb-0">
+                                        <div id="goal-count-chart" class="mt-75"></div>
+                                        <div class="row text-center mx-0">
+                                            <div class="col-6 border-top border-right d-flex align-items-between flex-column py-1">
+                                                <p class="mb-50">Active </p>
+                                                <p class="font-large-1 text-bold-700"> {{ $risk_closed }}</p>
                                             </div>
-                                            <div class="stastics-info text-right">
-                                                <span>800 <i class="feather icon-arrow-up text-success"></i></span>
-                                                <span class="text-muted d-block">13:16</span>
+                                            <div class="col-6 border-top d-flex align-items-between flex-column py-1">
+                                                <p class="mb-50">Inactive</p>
+                                                <p class="font-large-1 text-bold-700">{{ $risk_reopened }}</p>
                                             </div>
-                                        </div>
-                                        <div class="progress progress-bar-primary mb-2">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="73" aria-valuemin="73" aria-valuemax="100" style="width:73%"></div>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-25">
-                                            <div class="browser-info">
-                                                <p class="mb-25">Public Lottery</p>
-                                                <h4>8%</h4>
-                                            </div>
-                                            <div class="stastics-info text-right">
-                                                <span>-200 <i class="feather icon-arrow-down text-danger"></i></span>
-                                                <span class="text-muted d-block">13:16</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-primary mb-2">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="8" aria-valuemin="8" aria-valuemax="100" style="width:8%"></div>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-25">
-                                            <div class="browser-info">
-                                                <p class="mb-25">Public Gaming</p>
-                                                <h4>19%</h4>
-                                            </div>
-                                            <div class="stastics-info text-right">
-                                                <span>100 <i class="feather icon-arrow-up text-success"></i></span>
-                                                <span class="text-muted d-block">13:16</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-primary mb-2">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="19" aria-valuemin="19" aria-valuemax="100" style="width:19%"></div>
-                                        </div>
-                                        <div class="d-flex justify-content-between mb-25">
-                                            <div class="browser-info">
-                                                <p class="mb-25"> Explorer</p>
-                                                <h4>27%</h4>
-                                            </div>
-                                            <div class="stastics-info text-right">
-                                                <span>-450 <i class="feather icon-arrow-down text-danger"></i></span>
-                                                <span class="text-muted d-block">13:16</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-primary mb-50">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="27" aria-valuemin="27" aria-valuemax="100" style="width:27%"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                   
+
+                      
+
+
                         <div class="col-md-6 col-12">
                               <div class="card">
                                 <div class="card-header d-flex justify-content-between pb-0">
@@ -228,12 +192,14 @@
                                 <div class="card-content">
                                     <div class="card-body py-0">
                                         <div id="customer-chart"></div>
+                                       
+                                    
                                     </div>
                                     <ul class="list-group list-group-flush customer-info">
                                         <li class="list-group-item d-flex justify-content-between ">
                                             <div class="series-info">
                                                 <i class="fa fa-circle font-small-3 text-primary"></i>
-                                                <span class="text-bold-600">{{ $categories['category'][0] }}</span>
+                                                <span class="text-bold-600">{{ $categories['category']['0'] }}</span>
                                             </div>
                                             <div class="product-result">
                                                 <span>{{ $categories['companycount'][0] }}</span>
@@ -266,19 +232,62 @@
 				 
 				 
 				 
+			<!-- //////////////////////////////////////	 
+			//////////////////////////////////////	 
+			/////////////////////////////////////////	  -->
 				 
+            <!-- <div class="row">
+            <div class="col-md-6 col-12">
+                              <div class="card">
+                                <div class="card-header d-flex justify-content-between pb-0">
+                                    <h4 class="card-title">Shop Categories</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body py-0">
+                                        <div id="radar-chart"></div>
+                                       
+                                    
+                                    </div>
+                                    <ul class="list-group list-group-flush customer-info">
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-primary"></i>
+                                                <span class="text-bold-600">{{ $bookmarkersshop['shop_name']['0'] }}</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span>{{ $bookmarkersshop['shop_name'][0] }}</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-warning"></i>
+                                                <span class="text-bold-600">{{ $categories['category'][1] }}</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span>{{ $categories['companycount'][1] }}</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between ">
+                                            <div class="series-info">
+                                                <i class="fa fa-circle font-small-3 text-danger"></i>
+                                                <span class="text-bold-600">{{ $categories['category'][2] }}</span>
+                                            </div>
+                                            <div class="product-result">
+                                                <span>{{ $categories['companycount'][2] }}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div> -->
+                   
+			 
 				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
-				 
+			<!-- /////////////////////////////////////////	 
+			/////////////////////////////////////////	 
+			///////////////////////////////////////	  -->
 				 
 				 
 				           <div class="row">

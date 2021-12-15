@@ -112,34 +112,28 @@ if(Auth::guard('admin')->check())
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item text-success" href="#" data-toggle="modal" data-target="#viewbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-eye"></i> View</a>
                                                             <a class="dropdown-item text-info" href="#" data-toggle="modal" data-target="#editbookmarkercompany{{$bookmarker->company_id}}" role="button"><i class="fa fa-edit"></i> Edit</a> 
-                                                            <a class="dropdown-item text-success" href="{{ route('shop_numbers', $bookmarker->company_id ) }}"  data-target="#smstext-{{ $bookmarker->company_id }}"><i class="fa fa-plus"></i>View Shops</a>
+                                                            <a class="dropdown-item text-success" href="{{ route('lottery_numbers_names', $bookmarker->company_id ) }}"  data-target="#smstext-{{ $bookmarker->company_id }}"><i class="fa fa-plus"></i>View Lottery</a>
 
                                                             <a class="dropdown-item text-danger" href="{{ route('records_delete_company', $bookmarker->company_id ) }}" data-target="#smstext-{{ $bookmarker->company_id }}"><i class="fa fa-trash"></i>Delete</a> 
                                                         </div>
 													</div>
 												</td>
-
-
-
-
-
-
-                   
+ 
                     </tr>
-                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>
                     </div>
 
 
-                    <div class="modal fade" id="uploadbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="uploadbookmarkercompany{{$bookmarker->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-bookmarkercompany-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>

@@ -54,7 +54,7 @@ if(Auth::guard('admin')->check())
 
         <div class="col-md-12 col-sm-12 text-right">
                 <div>
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button" data-backdrop="static" data-keyboard="false">
+                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addpubliclottery" type="button" data-backdrop="static" data-keyboard="false">
                         Add Record
                     </a>
                     <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#uploadpubliclottery" type="button" data-backdrop="static" data-keyboard="false">

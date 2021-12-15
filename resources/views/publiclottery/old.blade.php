@@ -88,13 +88,13 @@
                             </div>
                             </td>  
                     </tr>
-                    <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-publiclottery-component :publiclotteryerdata="{{ json_encode($publiclottery)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewpubliclottery{{$publiclottery->publiclottery_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-publiclottery-component :publiclotteryerdata="{{ json_encode($publiclottery)}}"/>
                         </div>

@@ -129,7 +129,7 @@
                         <td>{{ $bookmarker->ggrtax }}</td>                      
                  <td></td>    
                     </tr>
-                    <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editbookmarker{{$bookmarker->bookmarker_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-bookmarker-component :bookmarkerdata="{{ json_encode($bookmarker)}}"/>
                         </div>

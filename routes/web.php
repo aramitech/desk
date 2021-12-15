@@ -221,7 +221,7 @@ Route::get('/users_admin', [App\Http\Controllers\UsersController::class, 'users_
 
 Route::any('/admin-logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('admin-logout');
 
-Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin-dashboard');
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'master'])->name('admin-dashboard');
 // SUPER ADMIN
 Route::any('/super-admin-logout', [App\Http\Controllers\Auth\SuperAdminLoginController::class, 'logout'])->name('super-admin-logout');
 
@@ -451,7 +451,7 @@ Route::get('/publicgamingpdf', [App\Http\Controllers\ReportsController::class, '
 
 
 
-
+ 
 
 Route::get('/shop_numbers/{id}',[App\Http\Controllers\ShopController::class, 'shop_numbers'])->name('shop_numbers');   
 
@@ -603,7 +603,7 @@ Route::post('/registry/updateregistry', [App\Http\Controllers\RegistryController
 Route::post('/registry/delete', [App\Http\Controllers\RegistryController::class, 'destroy'])->name('registry.delete');
 
 
-
+Route::get('/departmentsadmin', [App\Http\Controllers\DepartmentsController::class, 'departmentsadmin'])->name('departmentsadmin');
 Route::get('/departments', [App\Http\Controllers\DepartmentsController::class, 'index'])->name('departments');
 Route::post('/departments/add', [App\Http\Controllers\DepartmentsController::class, 'store'])->name('departments.add');
 Route::post('/departments/delete', [App\Http\Controllers\DepartmentsController::class, 'destroy'])->name('departments.delete');

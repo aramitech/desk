@@ -56,7 +56,7 @@ if(Auth::guard('admin')->check())
                 <div>
                 
 
-                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button">
+                    <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addshop" type="button" data-backdrop="static" data-keyboard="false">
                         Add  Shop
                     </a>
 
@@ -91,33 +91,28 @@ if(Auth::guard('admin')->check())
                         <td>{{ $shop->shop_name }}</td>    
                         <td>{{ $shop->location }}</td> 
                         <td>{{ $shop->shop_number }}</td>              
-                        <td>
-                        <div class="btn-group dropdown mr-1 mb-1">
-                    <button type="button" class="btn btn-primary"></button>
-                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#viewshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> View</button>
+                        <td class="not-exported">
+													<div class="btn-group dropdown mr-1 mb-1">
+                                                        <a href="#" role="button" style="" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="sr-only">Toggle Dropdown</span> </a>
+                                                        <div class="dropdown-menu">
+               
 
-<button class="btn btn-sm btn-info" data-toggle="modal" data-target="#editshopcompany{{$shop->company_id}}" type="button"><i class="dw dw-edit2"></i> Edit</button>
-{{-- <button class="btn btn-sm btn-danger" @click="deleteItem('shopscompanydelete',{{$shop}})"><i class="dw dw-delete-3"></i> Delete</button> --}}
-<a class="btn btn-danger btn-sm" href="{{ route('shopo.delete', $shop->shop_id) }}"  data-target="#smstext-{{ $shop->shop_id }}"><i class="fa fa-plus"></i>Delete</a>
-</div></div>
-                     
-                            </div>
+<a class="dropdown-item text-primary" data-toggle="modal" data-target="#viewshopcompany{{$shop->shop_id}}" role="button"><i class="fa fa-eye"></i>  View</a>
+<a class="dropdown-item text-success" data-toggle="modal" data-target="#editshopcompany{{$shop->shop_id}}" role="button"><i class="fa fa-edit"></i>  Edit</a>
+<a class="dropdown-item text-danger" href="{{ route('shopo.delete', $shop->shop_id) }}"  data-target="#smstext-{{ $shop->shop_id }}"><i class="fa fa-trash"></i> Delete</a>
 
-
-                            </td>  
+                                                       </div>
+													</div>
+												</td>
+         
                     </tr>
-                    <div class="modal fade" id="editshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editshopcompany{{$shop->shop_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="viewshopcompany{{$shop->company_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="viewshopcompany{{$shop->shop_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <view-shop-component :shopdata="{{ json_encode($shop)}}"/>
                         </div>
@@ -127,7 +122,7 @@ if(Auth::guard('admin')->check())
         
                     @endforeach
                 </tbody>
-            </table>
+            </table>  <br><br><br><br><br><br><br>
         </div>
         <upload-bookmarker-company-component/>
     <!-- ./main content card -->

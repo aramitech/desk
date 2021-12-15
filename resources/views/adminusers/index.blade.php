@@ -68,7 +68,7 @@
                             </div>
                             </td>  <td></td>
                     </tr>
-                    <div class="modal fade" id="editadminuser{{$adminuser->admin_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editadminuser{{$adminuser->admin_id}}" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
                         <div class="modal-dialog modal-dialog-centered">
                             <edit-adminuser-component :adminuserdata="{{ json_encode($adminuser)}}"/>
                         </div>

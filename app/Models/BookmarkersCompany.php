@@ -47,7 +47,7 @@ class BookmarkersCompany extends Model
   //Shop<>Comany relationship
   public function Shopcompany()  
   {
-      return $this->hasMany(Shops::class,'company_id','shop_id');
+      return $this->hasMany(Shops::class,'company_id','category_type_id');
   }
 
    //Accounts<>Companies relationship

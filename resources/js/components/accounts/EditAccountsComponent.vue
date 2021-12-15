@@ -235,8 +235,8 @@ methods: {
         this.fields.transfer_fee=this.bookmarkerdata.transfer_fee;
         this.fields.annual_license_fee=this.bookmarkerdata.annual_license_fee;
         this.fields.investigation_fee_local=this.bookmarkerdata.investigation_fee_local;
-       this.fields.investigation_fee_foreign=this.bookmarkerdata.investigation_fee_foreign;     
-       this.fields.premise_fee=this.bookmarkerdata.premise_fee;
+        this.fields.investigation_fee_foreign=this.bookmarkerdata.investigation_fee_foreign;     
+        this.fields.premise_fee=this.bookmarkerdata.premise_fee;
         this.fields.categorytype=this.bookmarkerdata.categorytype;
         this.fields.renewal_fee=this.bookmarkerdata.renewal_fee;
 

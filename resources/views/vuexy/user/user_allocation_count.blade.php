@@ -435,7 +435,7 @@ Admin
 
 
                                                         <tr>
-                                                            <td>Assign Registry</td>assign_file_registry_not_allowed
+                                                            <td>Assign Registry</td>
                                                             <td>
                                                             <div class="form-check">
                                                                 <a href="{{ route('access_assign_file_registry',$Allowedaccess) }}">{{ $assign_file_registry }}</a>
