@@ -41,11 +41,8 @@ class BookMarkersController extends Controller
     {
    
       $bookmarkers = BookMarkers::with('bookmarkerscompany')->get();
-      //  return view('bookmarkers.index', compact('bookmarkers'));
-
-
-        $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
-        return view('vuexy.bookmarkers.index', compact('bookmarkers'));
+      $bookmarkers = EloquentBuilder::to(BookMarkers::with('bookmarkerscompany'), request()->all())->get();
+      return view('vuexy.bookmarkers.index', compact('bookmarkers'));
 
     }
 

@@ -186,7 +186,7 @@ function goToTestPage(id) {
 
                  
                                                 
-                                                <table class="table table-striped dataex-html5-selectors">               <thead>
+             <table class="table table-striped dataex-html5-selectors">               <thead>
                     <tr>
                         <th class="table-plus">#</th>
                         <th>Company</th>
