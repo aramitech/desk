@@ -132,6 +132,9 @@
 $(document).ready(function() {
     $('#example').DataTable();
 } );
+$(document).ready(function() {
+    $('#example2').DataTable();
+} );
 </script>
 			
 	
@@ -952,7 +955,7 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
             }
           },
         },
-        colors: [$primary],
+        colors: [$info],
         dataLabels: {
           enabled: false
         },
@@ -1681,6 +1684,9 @@ var lineChart = new Chart(lineChartctx, lineChartconfig);
  <script type="text/javascript">
 $(document).ready(function() {
     $('#example').DataTable();
+} );
+$(document).ready(function() {
+    $('#example2').DataTable();
 } );
 </script>
 </html>

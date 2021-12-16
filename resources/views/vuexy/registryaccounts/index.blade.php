@@ -42,17 +42,17 @@ if(Auth::guard('admin')->check())
                                 @include('layouts.messages')
     @include('layouts.errors')
  
-
+<div class="card-title">
     <ul class="nav nav-pills flex-column mt-md-0 mt-1">
                                 <li class="nav-item">                 <li class="nav-item">
-              <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
-<H2 >ACCOUNTS LIST </H2></a>
+              <a class=" bg-rgba-white nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
+                <H2 >ACCOUNTS LIST </H2></a>
 
-</li></ul>
+                </li></ul></div>
 
 
         <div class="pb-20">
-<script>
+<style>
 .modal-backdrop
 {
 display:none;
@@ -66,11 +66,11 @@ position:relative
     margin: 2px auto;
     z-index: 1100 !important;
 }
-            </script>
+            </style>
         <div class="col-md-12 col-sm-12 text-right">
                 <div>
                     <a class="btn btn-primary" href="#" role="button" id="modal" data-toggle="modal" data-target="#addbookmarkers" type="button" data-backdrop="false" data-keyboard="false" >
-                        Add Recordsasdasasd
+                        Add Record
                     </a>
 
 
@@ -104,7 +104,7 @@ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="tru
             <!-- <game-component></game-component> -->
         <div class="pb-20">
                  <!-- check user type logged in -->
- 
+ <div class="card-body">
                  <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
                     <tr>
@@ -213,6 +213,7 @@ tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="tru
                     @endif
                 </tbody>
             </table>
+</div>
         </div>
         <upload-publicgaming-component/>
     </div>
